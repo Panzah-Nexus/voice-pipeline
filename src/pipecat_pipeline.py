@@ -1,7 +1,7 @@
 """Pipecat pipeline setup.
 
-This module configures Pipecat with STT, LM, and TTS components.
-Replace the placeholders with actual model initialization code.
+This module configures Pipecat with Ultravox for both speech recognition and
+language generation, plus an external TTS service for audio synthesis.
 """
 from __future__ import annotations
 
@@ -16,17 +16,21 @@ except Exception as exc:  # pragma: no cover - optional dependency
     UltravoxSTTService = None
     print("UltravoxSTTService unavailable:", exc)
 
-# TODO: import LM and TTS classes
+try:
+    from pipecat.services.openai.tts import OpenAITTSService
+except Exception as exc:  # pragma: no cover - optional dependency
+    OpenAITTSService = None
+    print("OpenAI TTS service unavailable:", exc)
 
 # Load environment variables from .env file
 load_dotenv()
 
-def create_pipeline() -> Pipeline:
-    """Create and return a Pipecat pipeline."""
+def create_pipeline():
+    """Create and return initialized STT and TTS services."""
 
     hf_token = os.environ.get("HUGGING_FACE_TOKEN")
-    pipeline = Pipeline()
 
+    stt = None
     if UltravoxSTTService:
         stt = UltravoxSTTService(
             model_size="1b",
@@ -34,14 +38,63 @@ def create_pipeline() -> Pipeline:
             temperature=0.5,
             max_tokens=150,
         )
-        pipeline.add_component(stt)
 
-    # TODO: configure language model and TTS components
+    tts = None
+    if OpenAITTSService:
+        tts = OpenAITTSService(
+            api_key=os.environ.get("OPENAI_API_KEY"),
+            voice=os.environ.get("OPENAI_TTS_VOICE", "nova"),
+            model=os.environ.get("OPENAI_TTS_MODEL", "gpt-4o-mini-tts"),
+        )
 
-    return pipeline
+    return stt, tts
+
+
+async def run_server(services, host: str = "0.0.0.0", port: int = 8000) -> None:
+    """Run a simple WebSocket server that processes audio through Ultravox and TTS."""
+    stt, tts = services
+    import asyncio
+    import websockets
+    import numpy as np
+    import json
+
+    async def handler(ws):
+        audio_buffer = bytearray()
+        async for message in ws:
+            if isinstance(message, bytes):
+                audio_buffer.extend(message)
+                continue
+            if message == "END":
+                if not stt or not tts:
+                    await ws.send(bytes(audio_buffer))
+                    audio_buffer.clear()
+                    continue
+
+                audio = np.frombuffer(bytes(audio_buffer), dtype=np.int16).astype(np.float32) / 32768.0
+                text_parts = []
+                async for chunk in stt._model.generate(
+                    messages=[{"role": "user", "content": "<|audio|>\n"}],
+                    temperature=0.5,
+                    max_tokens=150,
+                    audio=audio,
+                ):
+                    data = json.loads(chunk)
+                    delta = data.get("choices", [{}])[0].get("delta", {})
+                    if "content" in delta:
+                        text_parts.append(delta["content"])
+                text = "".join(text_parts)
+
+                async for frame in tts.run_tts(text):
+                    if hasattr(frame, "audio"):
+                        await ws.send(frame.audio)
+
+                audio_buffer.clear()
+
+    async with websockets.serve(handler, host, port):
+        await asyncio.Future()  # run forever
 
 
 if __name__ == "__main__":
-    p = create_pipeline()
-    # TODO: run WebSocket server that processes audio through `p`
-    pass
+    services = create_pipeline()
+    import asyncio
+    asyncio.run(run_server(services))

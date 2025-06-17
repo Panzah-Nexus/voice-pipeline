@@ -7,6 +7,7 @@ from __future__ import annotations
 
 
 import os
+from dotenv import load_dotenv
 from pipecat import Pipeline
 
 try:
@@ -17,6 +18,8 @@ except Exception as exc:  # pragma: no cover - optional dependency
 
 # TODO: import LM and TTS classes
 
+# Load environment variables from .env file
+load_dotenv()
 
 def create_pipeline() -> Pipeline:
     """Create and return a Pipecat pipeline."""

@@ -79,7 +79,7 @@ deactivate
 Add to your `~/.bashrc` or `~/.zshrc`:
 ```bash
 # Auto-setup for voice pipeline
-alias voice-start="cd /path/to/voice-pipeline && source venv/bin/activate && export WS_SERVER='wss://your-deployment-id.cerebrium.app/ws'"
+alias voice-start="cd /path/to/voice-pipeline && source venv/bin/activate && export WS_SERVER='wss://api.cortex.cerebrium.ai/v4/p-468ff80b/voice-pipeline-airgapped/ws"
 ```
 
 Then just run: `voice-start` followed by `python local_client.py`

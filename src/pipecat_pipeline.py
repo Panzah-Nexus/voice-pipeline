@@ -22,6 +22,14 @@ except Exception as exc:  # pragma: no cover - optional dependency
     OpenAITTSService = None
     print("OpenAI TTS service unavailable:", exc)
 
+try:
+    from pipecat.services.piper.tts import PiperTTSService
+    import aiohttp
+except Exception as exc:  # pragma: no cover - optional dependency
+    PiperTTSService = None
+    aiohttp = None
+    print("Piper TTS service unavailable:", exc)
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -40,7 +48,18 @@ def create_pipeline():
         )
 
     tts = None
-    if OpenAITTSService:
+    if os.environ.get("PIPER_BASE_URL") and PiperTTSService:
+        session = aiohttp.ClientSession()
+        tts = PiperTTSService(
+            base_url=os.environ["PIPER_BASE_URL"],
+            aiohttp_session=session,
+            sample_rate=(
+                int(os.environ["PIPER_SAMPLE_RATE"])
+                if os.environ.get("PIPER_SAMPLE_RATE")
+                else None
+            ),
+        )
+    elif OpenAITTSService:
         tts = OpenAITTSService(
             api_key=os.environ.get("OPENAI_API_KEY"),
             voice=os.environ.get("OPENAI_TTS_VOICE", "nova"),

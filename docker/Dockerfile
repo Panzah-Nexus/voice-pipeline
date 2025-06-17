@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN pip install --no-cache-dir \
     pipecat-ai[ultravox] \
     websockets \
-    sounddevice
+    sounddevice \
+    aiohttp
 
 
 WORKDIR /app

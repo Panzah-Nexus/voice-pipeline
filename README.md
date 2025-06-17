@@ -12,7 +12,7 @@ and then run the same code locally on an NVIDIA A10 GPU with minimal changes.
 - **Dockerized Environment**: Scripts for building and running Docker containers that include the necessary dependencies.
 - **Streaming via WebSockets**: Simple client/server example for routing microphone audio to the remote inference machine and returning synthesized speech back to local speakers.
 - **Pipecat Integration**: Example pipeline using Ultravox for speech-to-text
-  and built-in language generation, plus OpenAI TTS for speech synthesis.
+  and built-in language generation, plus Piper TTS for speech synthesis.
 
 For full design details see [docs/pipeline_design.md](docs/pipeline_design.md).
 See [docs/ultravox_setup.md](docs/ultravox_setup.md) for instructions on running
@@ -63,7 +63,7 @@ docker run --gpus all -p 8000:8000 -it voice-pipeline
 
 This repository now includes a basic working pipeline. Speech and language
 understanding are handled entirely by the Ultravox model. The reply is then
-converted to speech using OpenAI TTS. When testing on Cerebrium (or another
+converted to speech using the Piper TTS service. When testing on Cerebrium (or another
 cloud GPU), run the Docker container and expose the websocket port. The local
 `websocket_client.py` connects to that port to send microphone audio and play
 back responses.

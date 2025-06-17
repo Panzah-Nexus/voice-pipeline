@@ -1,0 +1,18 @@
+pipecat-ai[ultravox]
+fastapi
+uvicorn[standard]
+websockets
+python-dotenv
+numpy
+sounddevice
+torch
+torchaudio
+
+# Local Piper TTS for air-gapped deployment
+piper-tts
+onnxruntime-gpu
+
+# Audio processing
+librosa
+
+

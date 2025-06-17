@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import sounddevice as sd
 import numpy as np
-from typing import Iterable, Iterator
+from typing import Iterator
 
 SAMPLE_RATE = 16000
 CHUNK_DURATION_SEC = 0.5

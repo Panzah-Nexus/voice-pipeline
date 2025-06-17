@@ -1,0 +1,42 @@
+[cerebrium.deployment]
+name = "voice-pipeline-airgapped"
+python_version = "3.11"
+include = ["./*", "src/main.py", "cerebrium.toml"]
+exclude = [".*", "venv", "__pycache__", "*.pyc", "node_modules"]
+docker_base_image_url = "nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04"
+
+[cerebrium.runtime.custom]
+port = 8000
+healthcheck_endpoint = "/health"
+readycheck_endpoint = "/ready"
+dockerfile_path = "./docker/Dockerfile"
+
+[cerebrium.hardware]
+cpu = 8
+memory = 24.0
+compute = "AMPERE_A10"
+gpu_count = 1
+provider = "aws"
+region = "us-east-1"
+
+[cerebrium.scaling]
+min_replicas = 0
+max_replicas = 2
+cooldown = 30
+
+[cerebrium.secrets]
+HF_TOKEN = "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"
+# NO OPENAI_API_KEY - Air-gapped deployment
+PIPER_MODEL = "en_US-lessac-medium"
+PIPER_SAMPLE_RATE = "22050"
+
+[cerebrium.dependencies.pip]
+fastapi = "latest"
+uvicorn = "latest"
+websockets = "latest"
+numpy = "latest"
+"pipecat-ai[ultravox]" = "latest"
+piper-tts = "latest"
+onnxruntime-gpu = "latest"
+python-dotenv = "latest"
+cerebrium = "latest" 

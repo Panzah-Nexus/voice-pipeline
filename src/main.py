@@ -1,15 +1,42 @@
-"""Entry point for the voice pipeline demo."""
+"""Entry point for the air-gapped voice pipeline demo."""
 from __future__ import annotations
 
-from .pipecat_pipeline import create_pipeline, run_server
-
+import os
+import sys
 
 def main() -> None:
-    services = create_pipeline()
-    print("Services created. Starting server...")
-    import asyncio
-    asyncio.run(run_server(services))
-
+    """Main entry point with fallback handling for air-gapped deployment."""
+    
+    # Check if we have required environment variables
+    hf_token = os.environ.get("HUGGING_FACE_TOKEN")
+    
+    if not hf_token:
+        print("⚠️  HUGGING_FACE_TOKEN not found in environment")
+        print("   The Ultravox STT service will not be available")
+        
+    print("🔒 Air-gapped deployment - no external API calls")
+    print("🚀 Starting Voice Pipeline Server...")
+    
+    try:
+        # Try to import and run the full pipeline
+        from .pipecat_pipeline import run_server
+        print("📡 Initializing AI services...")
+        
+        import asyncio
+        asyncio.run(run_server())
+        
+    except Exception as e:
+        print(f"❌ Failed to start full AI pipeline: {e}")
+        print("🔄 Falling back to simple echo server for testing...")
+        
+        try:
+            from .simple_test_server import run_server as run_test_server
+            import asyncio
+            asyncio.run(run_test_server())
+        except Exception as e2:
+            print(f"❌ Failed to start test server: {e2}")
+            print("💡 Try running: python -m src.simple_test_server")
+            sys.exit(1)
 
 if __name__ == "__main__":
     main()

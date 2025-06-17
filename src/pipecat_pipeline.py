@@ -5,6 +5,7 @@ Replace the placeholders with actual model initialization code.
 """
 from __future__ import annotations
 
+
 import os
 from pipecat import Pipeline
 
@@ -19,6 +20,7 @@ except Exception as exc:  # pragma: no cover - optional dependency
 
 def create_pipeline() -> Pipeline:
     """Create and return a Pipecat pipeline."""
+
     hf_token = os.environ.get("HUGGING_FACE_TOKEN")
     pipeline = Pipeline()
 
@@ -32,6 +34,7 @@ def create_pipeline() -> Pipeline:
         pipeline.add_component(stt)
 
     # TODO: configure language model and TTS components
+
     return pipeline
 
 

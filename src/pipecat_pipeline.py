@@ -5,17 +5,36 @@ Replace the placeholders with actual model initialization code.
 """
 from __future__ import annotations
 
+
+import os
 from pipecat import Pipeline
 
-# TODO: import STT, LM, and TTS classes
+try:
+    from pipecat.services.ultravox import UltravoxSTTService
+except Exception as exc:  # pragma: no cover - optional dependency
+    UltravoxSTTService = None
+    print("UltravoxSTTService unavailable:", exc)
+
+# TODO: import LM and TTS classes
 
 
 def create_pipeline() -> Pipeline:
     """Create and return a Pipecat pipeline."""
-    # TODO: load the smallest Ultravox model from Hugging Face
-    # TODO: configure STT and language model
+
+    hf_token = os.environ.get("HUGGING_FACE_TOKEN")
     pipeline = Pipeline()
-    # pipeline.add_component(...)
+
+    if UltravoxSTTService:
+        stt = UltravoxSTTService(
+            model_size="1b",
+            hf_token=hf_token,
+            temperature=0.5,
+            max_tokens=150,
+        )
+        pipeline.add_component(stt)
+
+    # TODO: configure language model and TTS components
+
     return pipeline
 
 

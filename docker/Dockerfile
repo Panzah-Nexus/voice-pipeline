@@ -6,7 +6,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Install python deps
-RUN pip install --no-cache-dir pipecat ultrasimple-tts websockets sounddevice
+
+RUN pip install --no-cache-dir \
+    pipecat-ai[ultravox] \
+    websockets \
+    sounddevice
+
 
 WORKDIR /app
 COPY ../src /app/src

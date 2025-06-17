@@ -16,7 +16,8 @@ and then run the same code locally on an NVIDIA A10 GPU with minimal changes.
 
 For full design details see [docs/pipeline_design.md](docs/pipeline_design.md).
 See [docs/ultravox_setup.md](docs/ultravox_setup.md) for instructions on running
-the Ultravox services.
+the Ultravox services. For a walkthrough of deploying on Cerebrium, read
+[docs/cerebrium_setup.md](docs/cerebrium_setup.md).
 
 
 ## Quick Start
@@ -44,7 +45,7 @@ docker run --gpus all -p 8000:8000 -it voice-pipeline
 - [Pipecat-AI](https://pypi.org/project/pipecat-ai/) with the `ultravox` extra
   installed (see Dockerfile)
 - [Ultravox](https://github.com/rhasspy/ultravox) models from Hugging Face
-  (you'll need a `HUGGING_FACE_TOKEN` environment variable)
+ (you'll need a `HUGGING_FACE_TOKEN` environment variable)
 
 
 ## Usage
@@ -57,6 +58,7 @@ docker run --gpus all -p 8000:8000 -it voice-pipeline
    and converts the reply to speech with a TTS engine.
 
 4. The audio is streamed back to your machine and played through your speakers.
+   Set `WS_SERVER` to your Cerebrium URL when connecting remotely.
 
 ## Notes
 

@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import os
 from dotenv import load_dotenv
-from pipecat import Pipeline
+from pipecat.pipeline.pipeline import Pipeline
 
 try:
     from pipecat.services.ultravox import UltravoxSTTService

@@ -2,11 +2,12 @@
 from __future__ import annotations
 
 import asyncio
+import os
 import websockets
 
 from . import audio_utils
 
-WS_SERVER = "ws://localhost:8000"
+WS_SERVER = os.environ.get("WS_SERVER", "ws://localhost:8000")
 
 
 async def stream_microphone():

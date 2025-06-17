@@ -11,8 +11,8 @@ and then run the same code locally on an NVIDIA A10 GPU with minimal changes.
 
 - **Dockerized Environment**: Scripts for building and running Docker containers that include the necessary dependencies.
 - **Streaming via WebSockets**: Simple client/server example for routing microphone audio to the remote inference machine and returning synthesized speech back to local speakers.
-- **Pipecat Integration**: Skeleton code for setting up Pipecat with the smallest available Ultravox model from Hugging Face.
-- **TTS Service**: Example local service using [ultravox](https://github.com/rhasspy/ultravox) weights.
+- **Pipecat Integration**: Example pipeline using Ultravox for speech-to-text
+  and built-in language generation, plus OpenAI TTS for speech synthesis.
 
 For full design details see [docs/pipeline_design.md](docs/pipeline_design.md).
 See [docs/ultravox_setup.md](docs/ultravox_setup.md) for instructions on running
@@ -53,17 +53,18 @@ docker run --gpus all -p 8000:8000 -it voice-pipeline
 
 2. Audio is sent to `pipecat_pipeline.py` running remotely inside the Docker
    container (e.g. on Cerebrium).
-3. The pipeline runs STT via `UltravoxSTTService`, your chosen language model,
-   and a TTS engine.
+3. The pipeline runs STT and language generation via `UltravoxSTTService`
+   and converts the reply to speech with a TTS engine.
 
 4. The audio is streamed back to your machine and played through your speakers.
 
 ## Notes
 
 
-This repository only includes minimal skeleton code and documentation. You will
-need to fill in the details for STT, LM, and TTS models. When testing on
-Cerebrium (or another cloud GPU), run the Docker container and expose the
-websocket port. The local `websocket_client.py` connects to that port to send
-microphone audio and play back responses.
+This repository now includes a basic working pipeline. Speech and language
+understanding are handled entirely by the Ultravox model. The reply is then
+converted to speech using OpenAI TTS. When testing on Cerebrium (or another
+cloud GPU), run the Docker container and expose the websocket port. The local
+`websocket_client.py` connects to that port to send microphone audio and play
+back responses.
 

@@ -27,6 +27,9 @@ stt = UltravoxSTTService(
 )
 
 pipeline = Pipeline(stt)
+# UltravoxSTTService performs both speech recognition and
+# language generation. Pair it with a TTS engine for a
+# full voice assistant pipeline.
 ```
 
 ## Cloud Deployment

@@ -254,14 +254,14 @@ async def websocket_endpoint(ws: WebSocket):
         log.info("🌐 client disconnected")
 
 # ── local dev entry-point ─────────────────────────────────────────────────
-async def _dev():
+async def run_server(host: str = "0.0.0.0", port: int = 8000) -> None:
     config = uvicorn.Config(
-        app, 
-        host="0.0.0.0", 
-        port=8000,
+        app,
+        host=host,
+        port=port,
         log_level="info" if os.getenv("DEBUG", "false").lower() == "false" else "debug"
     )
     await uvicorn.Server(config).serve()
 
 if __name__ == "__main__":
-    asyncio.run(_dev())
+    asyncio.run(run_server())

@@ -50,6 +50,8 @@ python setup_piper_server.py
 
 ### **4. Test the Setup**
 
+> **Note on Piper TTS**: The pipeline uses a custom Piper TTS service that runs Piper directly via subprocess (no HTTP server needed). If you prefer the official Pipecat Piper service, you'll need to run a Piper HTTP server and modify the import in `src/pipecat_pipeline.py`.
+
 ```bash
 # Run all tests
 python run_tests.py
@@ -62,31 +64,65 @@ python run_tests.py docker  # Test Docker build
 python src/main.py
 
 # In another terminal, run the client
-python simple_client.py         # Simple raw audio client (recommended)
-# or try these alternatives:
-python local_client_pipecat.py  # Pipecat protocol client
-python local_client.py          # Legacy client
+python local_client.py          # Raw audio streaming client
+
+# Note: By default, the server uses protobuf serialization. To use the raw audio client:
+# Set USE_PROTOBUF=false in your .env file or export USE_PROTOBUF=false
 ```
 
-## 🔧 **What Was Fixed**
+## 🔧 **Enhanced Pipeline Features**
 
-### **❌ Previous Issues:**
-1. **Incorrect Ultravox Usage**: Direct model access instead of proper Pipecat pipeline
-2. **Custom Piper Implementation**: Reinventing the wheel instead of using official service
-3. **Pipeline Structure**: Not following Pipecat's frame-based architecture
-4. **WebSocket Handling**: Manual audio processing instead of transport abstraction
+### **✅ Off-the-Shelf Pipecat Components:**
 
-### **✅ Fixed Implementation:**
+The pipeline now uses many built-in Pipecat components for better performance and reduced errors:
+
+1. **Context Aggregators**: Proper conversation state management
+2. **ProtobufFrameSerializer**: Efficient frame serialization
+3. **SileroVADAnalyzer**: Voice Activity Detection (optional)
+4. **FrameLogger**: Debug frame flow (optional)
+5. **FrameProcessorMetrics**: Performance metrics collection
+6. **NoiseReduceFilter**: Audio noise reduction (optional)
+
+### **🎚️ Configurable Options:**
+
+Enable features via environment variables:
+
+```bash
+# Enable Voice Activity Detection
+ENABLE_VAD=true
+
+# Enable noise reduction
+ENABLE_NOISE_REDUCTION=true
+
+# Enable debug frame logging
+DEBUG_FRAMES=true
+
+# Enable performance metrics
+ENABLE_METRICS=true
+ENABLE_USAGE_METRICS=true
+
+# Debug mode
+DEBUG=true
+
+# Protocol selection (set to false for raw audio clients)
+USE_PROTOBUF=true
+```
+
+### **📦 Pipeline Structure:**
 
 ```python
-# Proper Pipecat pipeline structure
+# Enhanced pipeline with optional components
 pipeline = Pipeline([
-    transport.input(),           # WebSocket audio input
-    context_aggregator.user(),   # Context management
-    ultravox_stt_service,        # Ultravox handles STT + LLM
-    piper_tts_service,          # Official Piper TTS service
-    context_aggregator.assistant(), # Context management
-    transport.output(),          # WebSocket audio output
+    transport.input(),              # WebSocket input
+    NoiseReduceFilter(),           # Optional noise reduction
+    FrameLogger("input"),          # Optional debug logging
+    context_aggregator.user(),     # User context management
+    ultravox_stt_service,          # Ultravox (STT + LLM)
+    context_aggregator.assistant(), # Assistant context management
+    FrameProcessorMetrics(),       # Optional metrics
+    piper_tts_service,             # Piper TTS
+    FrameLogger("output"),         # Optional debug logging
+    transport.output(),            # WebSocket output
 ])
 ```
 

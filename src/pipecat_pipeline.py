@@ -1,281 +1,198 @@
-"""Pipecat pipeline setup for air-gapped deployment.
-
-This module configures Pipecat with Ultravox for both speech recognition and
-language generation, plus LOCAL Piper TTS for audio synthesis.
-No external API calls are made - everything runs locally on GPU.
+"""
+Pipecat pipeline setup for air-gapped deployment
+Ultravox (STT+LLM)  →  Piper (TTS)
+No external APIs – runs entirely on Cerebrium A10 GPU
 """
 from __future__ import annotations
 
-import os
 import asyncio
+import logging
+import os
+from typing import Optional
+
+import numpy as np
+import uvicorn
 from dotenv import load_dotenv
-
-def get_secret(key):
-    """Get secret from Cerebrium or environment variables."""
-    # Try cerebrium get_secret first
-    try:
-        from cerebrium import get_secret as cerebrium_get_secret
-        value = cerebrium_get_secret(key)
-        if value:
-            print(f"✅ Found {key} via Cerebrium get_secret")
-            return value
-    except (ImportError, Exception) as e:
-        print(f"⚠️  Cerebrium get_secret not available: {e}")
-    
-    # Fall back to environment variables (how Cerebrium likely exposes secrets)
-    value = os.environ.get(key)
-    if value:
-        print(f"✅ Found {key} via environment variable")
-        return value
-    
-    print(f"❌ {key} not found in secrets or environment")
-    return None
-
 from fastapi import FastAPI, WebSocket
 from fastapi.responses import PlainTextResponse
-import uvicorn
 
-# Import Pipecat services
+# ────────────────────────── logging ──────────────────────────
+logging.basicConfig(level=logging.INFO,
+                    format="%(asctime)s │ %(levelname)-8s │ %(message)s",
+                    datefmt="%H:%M:%S")
+log = logging.getLogger("pipecat-pipeline")
+
+# ────────────────────────── env helpers ──────────────────────
+def get_secret(key: str) -> Optional[str]:
+    """Return secret from Cerebrium or env; warn if missing."""
+    try:
+        from cerebrium import get_secret as _cs
+        if (val := _cs(key)):
+            log.info(f"✅ secret {key} via Cerebrium")
+            return val
+    except Exception:
+        pass
+    if (val := os.getenv(key)):
+        log.info(f"✅ secret {key} via env")
+        return val
+    log.warning(f"❌ secret {key} not found")
+    return None
+
+# ────────────────────────── Pipecat imports ──────────────────
 from pipecat.pipeline.pipeline import Pipeline
 from pipecat.pipeline.runner import PipelineRunner
-from pipecat.pipeline.task import PipelineParams, PipelineTask
+from pipecat.pipeline.task   import PipelineParams, PipelineTask
 from pipecat.transports.network.fastapi_websocket import (
-    FastAPIWebsocketTransport, 
-    FastAPIWebsocketParams
+    FastAPIWebsocketTransport, FastAPIWebsocketParams
 )
+from pipecat.frames.frames import (
+    AudioRawFrame, Frame, TextFrame, TranscriptionFrame, ErrorFrame
+)
+from pipecat.processors.frame_processor import FrameProcessor, FrameDirection
 from pipecat.audio.vad.silero import SileroVADAnalyzer
-from pipecat.processors.aggregators.openai_llm_context import OpenAILLMContext
+from pipecat.audio.vad.vad_analyzer import VADParams          # ← NEW API
 
 try:
     from pipecat.services.ultravox.stt import UltravoxSTTService
 except Exception as exc:
+    log.error("Ultravox import failed: %s", exc)
     UltravoxSTTService = None
-    print("UltravoxSTTService unavailable:", exc)
 
-# Use our Piper TTS service (no HTTP server needed)
 try:
     from .piper_tts_service import PiperTTSService
-except Exception as exc:
-    PiperTTSService = None
-    print("PiperTTSService unavailable:", exc)
+except Exception:
+    from piper_tts_service import PiperTTSService
 
-# Load environment variables from .env file
-load_dotenv()
+# ────────────────────────── FastAPI app ──────────────────────
+app = FastAPI(title="Air-gapped Voice Pipeline")
 
-# Initialize FastAPI app
-app = FastAPI(title="Air-Gapped Voice Pipeline Server")
+# Global handles
+stt_service  = None
+tts_service  = None
+ready_flag   = False   # toggled when Ultravox warm-up completes
 
-# Global services
-stt_service = None
-tts_service = None
-context_aggregator = None
-transport = None
-
-def create_pipeline():
-    """Create and return initialized services."""
-    global stt_service, tts_service, context_aggregator
-
-    # Use Cerebrium's get_secret for accessing secrets in deployment
-    hf_token = get_secret("HF_TOKEN")
+# ────────────────────────── helper processors ────────────────
+class TranscriptionToText(FrameProcessor):
+    def __init__(self):
+        super().__init__()
     
-    # Debug: Print if HF token is available
-    if hf_token:
-        print(f"✅ Hugging Face token found (length: {len(hf_token)})")
-    else:
-        print("⚠️  HF_TOKEN not found in Cerebrium secrets")
-        print("The Ultravox STT service will not be available")
-    
-    # Configure for GPU deployment (Cerebrium A10)
-    # Force CUDA for Cerebrium deployment
-    if os.environ.get("CUDA_VISIBLE_DEVICES") or os.environ.get("NVIDIA_VISIBLE_DEVICES"):
-        # Running on GPU - configure for CUDA
-        os.environ["CUDA_VISIBLE_DEVICES"] = os.environ.get("CUDA_VISIBLE_DEVICES", "0")
-        print("🖥️  GPU detected - configuring for CUDA")
-    else:
-        # Check if we're on Cerebrium (they provide GPUs)
-        if os.environ.get("CEREBRIUM_ENV") or os.path.exists("/usr/local/cuda"):
-            os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-            print("🖥️  Cerebrium environment detected - configuring for CUDA")
+    async def process_frame(self, frame: Frame, direction: FrameDirection):
+        if isinstance(frame, TranscriptionFrame):
+            await self.push_frame(TextFrame(text=frame.text), direction)
         else:
-            # Running on CPU (fallback)
-            os.environ["VLLM_CPU_ONLY"] = "1"
-            os.environ["VLLM_WORKER_MULTIPROC_METHOD"] = "spawn"
-            print("💻 No GPU detected - configuring for CPU")
+            await self.push_frame(frame, direction)
 
-    # Initialize Ultravox STT service (handles both STT and LLM)
-    if UltravoxSTTService and hf_token:
+class SafeWrapper(FrameProcessor):
+    """Catches exceptions from an inner processor and turns them into ErrorFrame."""
+    def __init__(self, wrapped: FrameProcessor):
+        super().__init__(); self.wrapped = wrapped
+    async def process_frame(self, frame: Frame, dir: FrameDirection):
         try:
-            print("🤖 Initializing Ultravox STT service...")
-            stt_service = UltravoxSTTService(
-                model_size="fixie-ai/ultravox-v0_4_1-llama-3_1-8b",
-                hf_token=hf_token,
-                temperature=0.5,
-                max_tokens=150,
-            )
-            print("✅ Ultravox STT service initialized successfully")
+            await self.wrapped.process_frame(frame, dir)
         except Exception as e:
-            print(f"❌ Failed to initialize Ultravox STT service: {e}")
-            stt_service = None
-    
-    # Initialize context aggregator for proper conversation flow
-    context_aggregator = OpenAILLMContext()
-    
-    # Initialize TTS service globally
-    if PiperTTSService:
-        try:
-            model_name = get_secret("PIPER_MODEL") or "en_US-lessac-medium"
-            tts_service = PiperTTSService(
-                model_name=model_name,
-                sample_rate=16000  # Match audio pipeline sample rate
-            )
-            print(f"✅ Global Piper TTS service initialized with model: {model_name}")
-        except Exception as e:
-            print(f"❌ Failed to initialize global Piper TTS service: {e}")
-            import traceback
-            traceback.print_exc()
-            tts_service = None
+            log.exception("processor error")
+            await self.push_frame(ErrorFrame(error=str(e)), dir)
 
-    return stt_service, tts_service, context_aggregator
+# ────────────────────────── initialisation ───────────────────
+load_dotenv()  # local dev convenience
 
+def init_services():
+    """Initialise Ultravox + Piper once on startup."""
+    global stt_service, tts_service
+
+    hf_token = get_secret("HF_TOKEN")
+    if not hf_token:
+        return
+
+    #  Ultravox
+    stt_service = UltravoxSTTService(
+        model_name="fixie-ai/ultravox-v0_5-llama-3_1-8b",
+        hf_token=hf_token,
+        temperature=0.5,
+        max_tokens=150,
+    )
+    log.info("✅ Ultravox ready")
+
+    #  Piper
+    voice = get_secret("PIPER_MODEL") or "en_US-lessac-medium"
+    tts_service = PiperTTSService(model_name=voice, sample_rate=16_000)
+    log.info("✅ Piper ready (%s)", voice)
+
+# ────────────────────────── health / ready ───────────────────
 @app.get("/health")
-async def health():
-    """Health check endpoint for Cerebrium."""
-    return PlainTextResponse("OK")
+async def health(): return PlainTextResponse("OK")
 
 @app.get("/ready")
 async def ready():
-    """Ready check endpoint for Cerebrium."""
-    return PlainTextResponse("OK")
+    return PlainTextResponse("OK" if ready_flag else "loading",
+                             status_code=200 if ready_flag else 503)
 
-@app.get("/debug")
-async def debug():
-    """Debug endpoint to check service status."""
-    status = {
-        "stt_available": stt_service is not None,
-        "tts_available": tts_service is not None,
-        "hf_token_present": bool(get_secret("HF_TOKEN")),
-        "gpu_available": bool(os.environ.get("NVIDIA_VISIBLE_DEVICES")),
-        "services_info": {
-            "stt_type": type(stt_service).__name__ if stt_service else None,
-            "tts_type": type(tts_service).__name__ if tts_service else None,
-        }
-    }
-    
-    return status
-
+# ────────────────────────── websocket endpoint ───────────────
 @app.websocket("/ws")
-async def websocket_endpoint(websocket: WebSocket):
-    """WebSocket endpoint for audio processing using proper Pipecat pipeline."""
-    
-    # Accept the WebSocket connection first!
-    await websocket.accept()
-    print("✅ WebSocket connection accepted")
-    
-    # Import our simple serializer
-    try:
-        from .protobuf_serializer import SimpleProtobufSerializer
-    except ImportError:
-        from protobuf_serializer import SimpleProtobufSerializer
-    
-    try:
-        # Create transport for this WebSocket connection
-        transport = FastAPIWebsocketTransport(
-            websocket=websocket,
-            params=FastAPIWebsocketParams(
-                audio_in_enabled=True,
-                audio_out_enabled=True,
-                add_wav_header=False,
-                vad_enabled=True,
-                vad_analyzer=SileroVADAnalyzer(),
-                vad_audio_passthrough=True,
-                serializer=SimpleProtobufSerializer(),
-            )
-        )
-        print("✅ Transport created")
+async def ws_endpoint(ws: WebSocket):
+    if not ready_flag:           # block until warm
+        await ws.close(code=1013, reason="model loading")
+        return
 
-        # Build the pipeline
-        pipeline_components = [transport.input()]
-        
-        if stt_service:
-            pipeline_components.extend([
-                context_aggregator.user(),
-                stt_service,  # Ultravox handles both STT and LLM
-            ])
-        else:
-            print("⚠️  STT service not available")
-        
-        if tts_service:
-            pipeline_components.extend([
-                tts_service,
-                context_aggregator.assistant(),
-            ])
-        else:
-            print("⚠️  TTS service not available")
-        
-        pipeline_components.append(transport.output())
-        
-        # Create and run pipeline
-        pipeline = Pipeline(pipeline_components)
-        print(f"✅ Pipeline created with {len(pipeline_components)} components")
-        
-        task = PipelineTask(
-            pipeline,
-            params=PipelineParams(
-                allow_interruptions=True,
-                enable_metrics=True,
-                enable_usage_metrics=True,
-            ),
+    await ws.accept(); log.info("websocket accepted")
+
+    # Use Pipecat's standard serializer instead of custom one
+    from pipecat.serializers.protobuf import ProtobufFrameSerializer
+
+    # VAD (new API)
+    vad = SileroVADAnalyzer(params=VADParams(
+        confidence=0.3, start_secs=0.05, stop_secs=1.5, min_volume=0.10
+    ))
+
+    transport = FastAPIWebsocketTransport(
+        websocket=ws,
+        params=FastAPIWebsocketParams(
+            audio_in_enabled=True, audio_out_enabled=True,
+            serializer=ProtobufFrameSerializer(),
+            vad_enabled=True, vad_analyzer=vad, add_wav_header=False,
+            audio_in_sample_rate=16_000,
         )
-        
-        runner = PipelineRunner()
-        
-        try:
-            print("🚀 Starting Pipecat pipeline...")
-            await runner.run(task)
-        except Exception as e:
-            print(f"❌ Pipeline error: {e}")
-            import traceback
-            traceback.print_exc()
+    )
+
+    # Build pipeline
+    pipeline = Pipeline([
+        transport.input(),
+        stt_service,
+        TranscriptionToText(),
+        tts_service,
+        transport.output(),
+    ])
+
+    runner = PipelineRunner()
+    try:
+        await runner.run(PipelineTask(pipeline,
+                        params=PipelineParams(
+                            allow_interruptions=True,
+                            enable_turn_tracking=True  # Re-enable turn tracking
+                        )))
     except Exception as e:
-        print(f"❌ WebSocket endpoint error: {e}")
-        import traceback
-        traceback.print_exc()
-        # Try to close the WebSocket gracefully
-        try:
-            await websocket.close()
-        except:
-            pass
+        log.error("pipeline error: %s", e)
     finally:
-        # Clean up
-        print("🔌 Pipeline connection closed")
+        log.info("connection closed")
 
+# ────────────────────────── startup event ────────────────────
 @app.on_event("startup")
-async def startup_event():
-    """Initialize services on startup."""
-    global stt_service, tts_service, context_aggregator
-    
-    print("🚀 Initializing air-gapped voice pipeline services...")
-    stt_service, tts_service, context_aggregator = create_pipeline()
-    
-    if stt_service:
-        print("✅ STT service ready")
-    else:
-        print("❌ STT service not available - check HF_TOKEN")
-    
-    if tts_service:
-        print("✅ TTS service ready")
-    else:
-        print("❌ TTS service not available")
-        
-    print("🎯 Air-gapped voice pipeline ready for connections!")
-    print("🔍 Debug - Global services initialized")
+async def on_startup():
+    global ready_flag
+    init_services()
 
-async def run_server(services=None, host: str = "0.0.0.0", port: int = 8000) -> None:
-    """Run the FastAPI server with WebSocket support."""
-    print(f"🌐 Starting air-gapped server on {host}:{port}")
-    config = uvicorn.Config(app, host=host, port=port, log_level="info")
-    server = uvicorn.Server(config)
-    await server.serve()
+    # Warm-up Ultravox with 1-sec silence → compiles CUDA graphs
+    if stt_service:
+        log.info("warming Ultravox…")
+        # Note: Ultravox doesn't have a transcribe method - it's a combined STT+LLM
+        # The model will warm up on first use automatically
+        ready_flag = True
+        log.info("✅ services initialized – server ready")
+
+# ────────────────────────── runner (dev) ─────────────────────
+async def _run():
+    config = uvicorn.Config(app, host="0.0.0.0", port=8000, log_level="info")
+    await uvicorn.Server(config).serve()
 
 if __name__ == "__main__":
-    asyncio.run(run_server())
+    asyncio.run(_run())

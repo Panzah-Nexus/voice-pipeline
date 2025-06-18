@@ -52,9 +52,9 @@ COPY src/ ./src/
 # Expose port
 EXPOSE 8000
 
-# Run the simple audio echo server
-# CMD ["python", "-m", "uvicorn", "src.pipecat_pipeline:app", "--host", "0.0.0.0", "--port", "8000"]
+# Run the main pipecat pipeline with raw audio support
+CMD ["python", "-m", "uvicorn", "src.pipecat_pipeline:app", "--host", "0.0.0.0", "--port", "8000"]
 # CMD ["python", "-m", "uvicorn", "src.echo_pipeline:app", "--host", "0.0.0.0", "--port", "8000"]
 # CMD ["python", "-m", "uvicorn", "src.debug_echo_pipeline:app", "--host", "0.0.0.0", "--port", "8000", "--log-level", "debug"]
-CMD ["python", "-m", "uvicorn", "src.simple_audio_echo:app", "--host", "0.0.0.0", "--port", "8000"]
+# CMD ["python", "-m", "uvicorn", "src.simple_audio_echo:app", "--host", "0.0.0.0", "--port", "8000"]
 # CMD ["python", "-m", "uvicorn", "src.raw_echo_server:app", "--host", "0.0.0.0", "--port", "8000"]

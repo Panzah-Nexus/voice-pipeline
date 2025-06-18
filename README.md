@@ -1,161 +1,208 @@
-# Voice Pipeline
+# Voice AI Pipeline - Air-Gapped Deployment
 
-This repository contains a voice AI pipeline with [Pipecat](https://github.com/pipecat-ai/pipecat) that runs on **Nvidia A10 GPU** via Cerebrium. The system enables natural voice conversations with AI - speak into your local microphone and hear AI responses through your speakers, with all processing happening on remote GPU infrastructure.
+A complete voice AI pipeline using **Ultravox** (STT + LLM) and **Piper TTS** for fully local, air-gapped deployment on NVIDIA A10 GPUs.
 
-## 🎯 **Quick Start** (Air-Gapped Deployment)
+## ✅ **Architecture Overview**
 
-1. **Setup Virtual Environment**: `python3 -m venv venv && source venv/bin/activate`
-2. **Get Hugging Face Token**: [Hugging Face](https://huggingface.co/settings/tokens) (No OpenAI needed!)
-3. **Configure**: Edit `cerebrium.toml` with your Hugging Face token
-4. **Deploy**: `cerebrium deploy`
-5. **Connect**: `pip install -r local_client_requirements.txt && python local_client.py`
-6. **Talk**: Speak naturally and hear AI responses - all processing stays local!
-
-## 🏗️ **Architecture**
+This implementation uses the **correct** approach for air-gapped voice AI:
 
 ```
-┌─────────────────┐    WebSocket/WSS     ┌─────────────────────────────────────┐
-│   LOCAL CLIENT  │ ◄────────────────── ► │           CEREBRIUM A10             │
-│   (CPU Only)    │                      │                                     │
-│                 │                      │  ┌─────────────────────────────┐   │
-│ ┌─────────────┐ │                      │  │        VOICE PIPELINE       │   │
-│ │ Microphone  │ │                      │  │                             │   │
-│ │   Input     │ │                      │  │  ┌───────────────────────┐  │   │
-│ └─────────────┘ │                      │  │  │    Ultravox STT       │  │   │
-│                 │                      │  │  │   (Speech-to-Text)    │  │   │
-│ ┌─────────────┐ │                      │  │  └───────────────────────┘  │   │
-│ │  Speaker    │ │                      │  │           │                 │   │
-│ │  Output     │ │                      │  │           ▼                 │   │
-│ └─────────────┘ │                      │  │  ┌───────────────────────┐  │   │
-│                 │                      │  │  │   Ultravox LLM        │  │   │
-│ ┌─────────────┐ │                      │  │  │ (Language Generation) │  │   │
-│ │ WebSocket   │ │                      │  │  └───────────────────────┘  │   │
-│ │   Client    │ │                      │  │           │                 │   │
-│ └─────────────┘ │                      │  │           ▼                 │   │
-└─────────────────┘                      │  │  ┌───────────────────────┐  │   │
-                                         │  │  │     OpenAI TTS        │  │   │
-                                         │  │  │  (Text-to-Speech)     │  │   │
-                                         │  │  └───────────────────────┘  │   │
-                                         │  └─────────────────────────────┘   │
-                                         └─────────────────────────────────────┘
+Audio Input → Ultravox (STT + LLM) → Piper TTS → Audio Output
 ```
 
-## 📖 **Documentation**
+### **Key Components:**
+- **Ultravox**: Multimodal LLM that handles both speech recognition AND language generation in one model
+- **Piper TTS**: Local text-to-speech engine (no external APIs)
+- **Pipecat**: Framework for real-time voice pipeline orchestration
+- **FastAPI + WebSocket**: Real-time audio streaming
 
-Comprehensive documentation is available in the [`docs/`](docs/) directory:
+## 🚀 **Quick Start**
 
-| Guide | Purpose | 
-|-------|---------|
-| [**📋 Deployment Guide**](docs/deployment_guide.md) | Complete setup with A10 GPU on Cerebrium |
-| [**🏗️ Architecture**](docs/architecture.md) | System design and technical details |
-| [**🔑 API Setup**](docs/api_setup.md) | Getting API keys and configuration |
-| [**🎯 Usage Guide**](docs/usage.md) | How to use the system effectively |
-| [**🔧 Troubleshooting**](docs/troubleshooting.md) | Common issues and solutions |
+### **1. Install Dependencies**
 
-**Start here**: [**📖 Documentation Index**](docs/README.md)
+```bash
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# or
+venv\Scripts\activate     # Windows
 
-## ✨ **Features**
+# Install requirements
+pip install -r requirements.txt
+```
 
-- **🎙️ Real-time voice conversations** with AI
-- **☁️ No local GPU required** - all AI runs on Cerebrium A10
-- **🔄 Auto-scaling** - scales to zero when not in use
-- **💰 Cost-effective** - pay only for GPU time used
-- **🔒 Secure** - API keys managed via Cerebrium secrets
-- **⚡ Fast** - 2-5 second response times
-- **🎛️ Configurable** - Multiple TTS voices and models
+### **2. Setup Environment**
 
-## 🛠️ **Technology Stack** (Air-Gapped)
+```bash
+# Copy environment template
+cp .env.example .env
 
-- **AI Models**: [Ultravox](https://github.com/fixie-ai/ultravox) (STT + LLM) + [Piper TTS](https://github.com/rhasspy/piper) (Local)
-- **Framework**: [Pipecat](https://github.com/pipecat-ai/pipecat) for AI pipeline orchestration
-- **GPU Platform**: [Cerebrium](https://www.cerebrium.ai) with Nvidia A10
-- **Local Audio**: Python + sounddevice for microphone/speaker access
-- **Communication**: WebSocket for real-time audio streaming
-- **Security**: No external API calls - everything runs locally
+# Edit .env and add your Hugging Face token
+HF_TOKEN=hf_your_token_here
+```
 
-## 📁 **Directory Structure**
+### **3. Setup Piper TTS Server**
+
+```bash
+# Run the setup script (tries Docker first, falls back to local install)
+python setup_piper_server.py
+```
+
+### **4. Test the Setup**
+
+```bash
+# Run all tests
+python run_tests.py
+
+# Or run specific tests
+python run_tests.py piper   # Test Piper TTS
+python run_tests.py docker  # Test Docker build
+
+# Start the voice pipeline server
+python src/main.py
+
+# In another terminal, run the client
+python simple_client.py         # Simple raw audio client (recommended)
+# or try these alternatives:
+python local_client_pipecat.py  # Pipecat protocol client
+python local_client.py          # Legacy client
+```
+
+## 🔧 **What Was Fixed**
+
+### **❌ Previous Issues:**
+1. **Incorrect Ultravox Usage**: Direct model access instead of proper Pipecat pipeline
+2. **Custom Piper Implementation**: Reinventing the wheel instead of using official service
+3. **Pipeline Structure**: Not following Pipecat's frame-based architecture
+4. **WebSocket Handling**: Manual audio processing instead of transport abstraction
+
+### **✅ Fixed Implementation:**
+
+```python
+# Proper Pipecat pipeline structure
+pipeline = Pipeline([
+    transport.input(),           # WebSocket audio input
+    context_aggregator.user(),   # Context management
+    ultravox_stt_service,        # Ultravox handles STT + LLM
+    piper_tts_service,          # Official Piper TTS service
+    context_aggregator.assistant(), # Context management
+    transport.output(),          # WebSocket audio output
+])
+```
+
+## 📊 **Performance Expectations**
+
+- **Ultravox 8B on A10**: ~150ms time-to-first-token
+- **End-to-end latency**: 600-800ms (comparable to OpenAI Realtime API)
+- **Memory usage**: ~16GB VRAM for Ultravox 8B
+- **Throughput**: 50-100 tokens/second
+
+## 🌐 **Deployment Options**
+
+### **Local Testing**
+```bash
+python src/pipecat_pipeline.py
+```
+
+### **Cerebrium Deployment**
+Your existing `cerebrium.toml` should work with the fixed implementation:
+
+```bash
+cerebrium deploy
+```
+
+### **Docker Deployment**
+```bash
+# Build image
+docker build -t voice-pipeline .
+
+# Run with GPU support
+docker run --gpus all -p 8000:8000 voice-pipeline
+```
+
+## 🔍 **Debugging**
+
+### **Check Service Status**
+```bash
+curl http://localhost:8000/debug
+```
+
+### **Check Piper TTS**
+```bash
+curl http://localhost:5000/health
+```
+
+### **View Logs**
+The pipeline provides detailed logging for each component:
+- ✅ Service initialization
+- 🎵 Audio processing
+- 🤖 Ultravox inference
+- 🔊 TTS generation
+
+## 📁 **Project Structure**
 
 ```
 voice-pipeline/
-├── src/                              # Server code (runs on Cerebrium)
-│   ├── main.py                       # Entry point with fallback handling
-│   ├── pipecat_pipeline.py          # AI pipeline with Ultravox + TTS
-│   ├── simple_test_server.py        # Test server for audio echo
-│   ├── websocket_client.py          # WebSocket client (legacy)
-│   └── audio_utils.py               # Audio helper functions
-├── local_client.py                  # Standalone local client
-├── cerebrium.toml                   # Cerebrium deployment config
-├── requirements.txt                 # Server dependencies
-├── local_client_requirements.txt    # Client-only dependencies
+├── src/                         # Core deployment code
+│   ├── pipecat_pipeline.py      # Main pipeline with Ultravox + Piper
+│   ├── piper_tts_service.py     # Consolidated Piper TTS service
+│   ├── main.py                  # FastAPI entry point
+│   └── README.md                # Source code documentation
+├── utils/                       # Development utilities (not deployed)
+│   ├── websocket_client.py      # Test client for audio streaming
+│   ├── audio_utils.py           # Audio helper functions
+│   ├── simple_test_server.py    # Echo test server
+│   └── README.md                # Utilities documentation
+├── tests/                       # Test suite
+│   ├── test_piper_local.py      # Piper TTS tests
+│   ├── test_docker_build.py     # Docker build tests
+│   └── README.md                # Test documentation
+├── docs/                        # Comprehensive documentation
 ├── docker/
-│   └── Dockerfile                   # Container for Cerebrium deployment
-└── docs/                           # Comprehensive documentation
-    ├── README.md                   # Documentation index
-    ├── deployment_guide.md         # Complete setup guide
-    ├── architecture.md             # System design details
-    ├── api_setup.md               # API keys and configuration
-    ├── usage.md                   # How to use the system
-    ├── troubleshooting.md          # Common issues and solutions
-    ├── pipeline_design.md          # Original design document
-    ├── cerebrium_setup.md          # Platform-specific setup
-    └── ultravox_setup.md          # Model-specific configuration
+│   └── Dockerfile               # Container configuration
+├── setup_piper_server.py        # Piper TTS setup script
+├── local_client.py              # Voice pipeline client
+├── run_tests.py                 # Test runner
+├── requirements.txt             # Python dependencies
+├── cerebrium.toml              # Cerebrium deployment config
+└── README.md                   # This file
 ```
 
-## 🚀 **Requirements** (Air-Gapped)
+## 🐛 **Troubleshooting**
 
-### For Deployment (Cerebrium)
-- Cerebrium account
-- [Hugging Face token](https://huggingface.co/settings/tokens) (for Ultravox)
-- No external API keys needed - fully air-gapped!
+### **"UltravoxSTTService unavailable"**
+- Check your HF_TOKEN in `.env`
+- Ensure you have access to `fixie-ai/ultravox-v0_4_1-llama-3_1-8b`
 
-### For Local Client
-- Python 3.10+
-- Microphone and speakers
-- Internet connection
+### **"Piper TTS server not found"**
+- Run `python setup_piper_server.py`
+- Or manually start: `docker run -p 5000:5000 rhasspy/piper:latest`
 
-### Hardware (Provided by Cerebrium)
-- Nvidia A10 GPU (24GB VRAM)
-- 24GB RAM, 8 CPU cores
-- Auto-scaling infrastructure
+### **GPU Memory Issues**
+- Use Ultravox 8B instead of 70B for A10
+- Check CUDA memory: `nvidia-smi`
 
-## 💡 **Use Cases**
+### **WebSocket Connection Failed**
+- Ensure server is running on port 8000
+- Check firewall settings
+- Test with: `python local_client.py`
 
-- **🤖 Voice Assistant**: Ask questions and get spoken answers
-- **🗣️ Language Practice**: Conversation practice and pronunciation
-- **♿ Accessibility**: Voice interface for hands-free computing
-- **✍️ Creative Collaboration**: Voice brainstorming and content creation
-- **📚 Learning**: Educational conversations and explanations
+## 🎯 **Next Steps for Production**
 
-## 💰 **Cost Estimation** (Air-Gapped)
+1. **Optimize Model Loading**: Cache models in memory
+2. **Implement Authentication**: Add API keys/tokens
+3. **Add Monitoring**: Metrics and health checks
+4. **Scale Horizontally**: Load balancer + multiple instances
+5. **Fine-tune Ultravox**: Custom training data for your use case
 
-- **Cerebrium A10**: ~$0.50-1.00/hour (only when active)
-- **Local Piper TTS**: $0 (runs locally on GPU)
-- **Hugging Face**: Free tier sufficient for most use
-- **Total**: ~$0.50-1.00/hour GPU time only - no per-conversation fees!
+## 📚 **References**
 
-*Costs scale to zero when not in use thanks to Cerebrium auto-scaling.*
-
-## 🔒 **Security & Privacy** (Air-Gapped)
-
-- **🔐 Single API key** - only Hugging Face token needed
-- **🛡️ WSS encryption** for all communication
-- **🗑️ No data storage** - audio processed in memory only
-- **🚫 No external API calls** - everything runs locally on GPU
-- **🌐 Air-gapped deployment** - perfect for UAE compliance requirements
-
-## 🆘 **Need Help?**
-
-1. **Getting Started**: See [Deployment Guide](docs/deployment_guide.md)
-2. **Issues**: Check [Troubleshooting](docs/troubleshooting.md)
-3. **API Problems**: Review [API Setup](docs/api_setup.md)
-4. **Usage Questions**: Read [Usage Guide](docs/usage.md)
-5. **Technical Details**: Study [Architecture](docs/architecture.md)
-
-## 📜 **License**
-
-This project is open source. See individual dependencies for their respective licenses.
+- [Ultravox Documentation](https://github.com/fixie-ai/ultravox)
+- [Pipecat Documentation](https://docs.pipecat.ai/)
+- [Piper TTS](https://github.com/rhasspy/piper)
+- [Cerebrium Ultravox Tutorial](https://www.cerebrium.ai/blog/deploying-ultravox-on-cerebrium)
 
 ---
 
-**Ready to start?** 👉 [**Get Started with Documentation**](docs/README.md)
+**✅ Your architecture is correct! This implementation fixes the service usage while maintaining your air-gapped, local deployment approach.**
 

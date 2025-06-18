@@ -1,51 +1,60 @@
-# Use Python 3.10 with CUDA support for A10 GPU air-gapped deployment
-FROM python:3.10-slim
+# Use NVIDIA CUDA base image for A10 GPU
+FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
 
-# Install system dependencies including CUDA toolkit essentials and audio libraries
+# Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    dumb-init \
+    python3.10 python3.10-dev python3-pip \
+    gcc g++ build-essential \
+    curl wget \
     ffmpeg \
-    ca-certificates \
-    wget \
-    gnupg \
-    software-properties-common \
-    alsa-utils \
-    libasound2-dev \
-    portaudio19-dev \
-    espeak-ng \
+    libsndfile1 \
     && rm -rf /var/lib/apt/lists/*
 
-# Update CA certificates
-RUN update-ca-certificates
+# Set Python 3.10 as default
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1 && \
+    update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
+
+# Upgrade pip
+RUN pip install --upgrade pip setuptools wheel
 
 # Set working directory
 WORKDIR /app
 
-# Set environment variables for GPU and air-gapped deployment
+# Set environment variables
 ENV CUDA_VISIBLE_DEVICES=0
-ENV NVIDIA_VISIBLE_DEVICES=all
-ENV NVIDIA_DRIVER_CAPABILITIES=compute,utility
 ENV PYTHONPATH=/app
-ENV PIPER_MODEL=en_US-lessac-medium
-ENV PIPER_SAMPLE_RATE=22050
 
-# Copy requirements first for better caching
+# Copy and install requirements
 COPY requirements.txt .
-
-# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Install additional ONNX runtime for GPU acceleration
-RUN pip install --no-cache-dir onnxruntime-gpu
+# Download and install Piper binary
+RUN mkdir -p /usr/local/bin && \
+    cd /tmp && \
+    wget https://github.com/rhasspy/piper/releases/download/2023.11.14-2/piper_linux_x86_64.tar.gz && \
+    tar -xzf piper_linux_x86_64.tar.gz && \
+    # The tar file extracts to a 'piper' directory with the binary inside
+    cp piper/piper /usr/local/bin/piper && \
+    chmod +x /usr/local/bin/piper && \
+    rm -rf /tmp/piper*
 
 # Create directory for Piper models
-RUN mkdir -p /root/.local/share/piper/models
+RUN mkdir -p /models
+
+# Download default Piper voice model
+RUN cd /models && \
+    wget https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/en_US-lessac-medium.onnx && \
+    wget https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/en_US-lessac-medium.onnx.json
 
 # Copy source code
 COPY src/ ./src/
 
-# Expose port (required by Cerebrium)
+# Expose port
 EXPOSE 8000
 
-# Use dumb-init for proper signal handling
-CMD ["dumb-init", "--", "python", "-m", "src.main"]
+# Run the simple audio echo server
+# CMD ["python", "-m", "uvicorn", "src.pipecat_pipeline:app", "--host", "0.0.0.0", "--port", "8000"]
+# CMD ["python", "-m", "uvicorn", "src.echo_pipeline:app", "--host", "0.0.0.0", "--port", "8000"]
+# CMD ["python", "-m", "uvicorn", "src.debug_echo_pipeline:app", "--host", "0.0.0.0", "--port", "8000", "--log-level", "debug"]
+CMD ["python", "-m", "uvicorn", "src.simple_audio_echo:app", "--host", "0.0.0.0", "--port", "8000"]
+# CMD ["python", "-m", "uvicorn", "src.raw_echo_server:app", "--host", "0.0.0.0", "--port", "8000"]

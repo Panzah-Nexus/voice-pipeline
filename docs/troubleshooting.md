@@ -1,6 +1,6 @@
 # Troubleshooting Guide
 
-This guide helps you diagnose and fix common issues with the voice pipeline.
+This guide helps you diagnose and fix common issues with the air-gapped voice pipeline.
 
 ## 🔍 Quick Diagnostics
 
@@ -21,6 +21,9 @@ python -c "import websockets; print('WebSocket library available')"
 
 # 5. Verify environment variables
 echo $WS_SERVER
+
+# 6. Check service status (NEW)
+curl https://your-deployment-id.cerebrium.app/debug
 ```
 
 ## 🐍 Virtual Environment Issues
@@ -146,7 +149,7 @@ cerebrium list
 cerebrium deploy
 
 # Check logs for deployment issues:
-cerebrium logs voice-pipeline
+cerebrium logs voice-pipeline-airgapped
 ```
 
 #### C. Network/Firewall Issues
@@ -207,31 +210,32 @@ PermissionError: Microphone access denied
 - **Windows**: Settings → Privacy → Microphone → Allow apps to access microphone
 - **Linux**: Check PulseAudio/ALSA permissions
 
-### 8. AI Service Errors
+### 8. AI Service Errors (Air-Gapped Specific)
 ```
 ❌ Failed to initialize Ultravox STT service: Failed to infer device type
-❌ STT service not available - check HUGGING_FACE_TOKEN
+❌ STT service not available - check HF_TOKEN
+❌ Piper TTS service not available
 ```
 
 **Solutions:**
 
-#### A. Verify API Keys
+#### A. Verify Hugging Face Token (Model Downloads Only)
 ```bash
 # Check Hugging Face token
-curl -H "Authorization: Bearer $HUGGING_FACE_TOKEN" \
+curl -H "Authorization: Bearer $HF_TOKEN" \
      https://huggingface.co/api/whoami
 
-# Check OpenAI key
-curl -H "Authorization: Bearer $OPENAI_API_KEY" \
-     https://api.openai.com/v1/models
+# Check model access
+curl -H "Authorization: Bearer $HF_TOKEN" \
+     https://huggingface.co/api/models/fixie-ai/ultravox-v0_4_1-llama-3_1-8b
 ```
 
 #### B. Update Cerebrium Secrets (Air-Gapped)
 ```toml
 # Edit cerebrium.toml
 [cerebrium.secrets]
-HUGGING_FACE_TOKEN = "hf_your_real_token_here"
-# NO OpenAI key needed - air-gapped deployment!
+HF_TOKEN = "hf_your_real_token_here"
+# NO external API keys needed!
 PIPER_MODEL = "en_US-lessac-medium"
 PIPER_SAMPLE_RATE = "22050"
 ```
@@ -241,10 +245,21 @@ PIPER_SAMPLE_RATE = "22050"
 cerebrium deploy
 ```
 
+#### D. Check Piper TTS Status
+```bash
+# Check if Piper models are loaded
+curl https://your-deployment-id.cerebrium.app/debug
+
+# Should show:
+# "tts_available": true,
+# "tts_type": "PiperTTSService"
+```
+
 ### 9. GPU/Memory Issues
 ```
 RuntimeError: CUDA out of memory
 RuntimeError: Failed to infer device type
+torch.cuda.OutOfMemoryError: CUDA out of memory
 ```
 
 **Solutions:**
@@ -252,16 +267,17 @@ RuntimeError: Failed to infer device type
 #### A. Check GPU Configuration
 ```bash
 # View deployment logs
-cerebrium logs voice-pipeline
+cerebrium logs voice-pipeline-airgapped
 
 # Look for GPU initialization messages
+# Should see: "🖥️  GPU detected - configuring for CUDA"
 ```
 
-#### B. Reduce Model Size
+#### B. Use Appropriate Model Size
 ```python
-# In src/pipecat_pipeline.py, try smaller model:
+# In src/pipecat_pipeline.py, using 8B model (recommended for A10):
 stt_service = UltravoxSTTService(
-    model_size="300m",  # Instead of "1b"
+    model_size="fixie-ai/ultravox-v0_4_1-llama-3_1-8b",  # 8B model
     # ... other params
 )
 ```
@@ -270,7 +286,7 @@ stt_service = UltravoxSTTService(
 ```toml
 # In cerebrium.toml
 [cerebrium.scaling]
-max_concurrency = 1  # Reduce from 5
+max_concurrency = 3  # Reduce from 5 for 8B model
 ```
 
 ### 10. WebSocket Disconnection Issues
@@ -294,7 +310,7 @@ python local_client.py
 cerebrium deploy
 
 # Or check logs for specific errors
-cerebrium logs voice-pipeline
+cerebrium logs voice-pipeline-airgapped
 ```
 
 ### 11. Slow Response Times
@@ -305,18 +321,53 @@ cerebrium logs voice-pipeline
 **Causes & Solutions:**
 
 #### A. Cold Start Delay
-- **First request**: 30-60 seconds normal
+- **First request**: 30-60 seconds normal (model loading)
 - **Solution**: Wait patiently or send test request to warm up
 
 #### B. Model Loading Time
-- **GPU memory allocation**: Can take 10-30 seconds
-- **Solution**: Increase timeout in client
+- **Ultravox 8B**: Takes 20-40 seconds to load
+- **Piper TTS**: Takes 5-10 seconds to initialize
+- **Solution**: Increase timeout in client or use warm instances
 
 #### C. Network Latency
 ```bash
 # Test network speed to deployment
 ping your-deployment-id.cerebrium.app
 curl -w "@curl-format.txt" -o /dev/null https://your-deployment-id.cerebrium.app/health
+```
+
+### 12. Air-Gapped Specific Issues
+
+#### No Internet Access Error
+```
+❌ Cannot download models during runtime
+❌ Model files not found
+```
+
+**Solution**: Models are downloaded during deployment, not runtime
+```bash
+# Redeploy to ensure models are cached
+cerebrium deploy
+
+# Check deployment logs for model download
+cerebrium logs voice-pipeline-airgapped | grep "Downloading"
+```
+
+#### Piper TTS Not Working
+```
+❌ Piper TTS service initialization failed
+❌ No audio output
+```
+
+**Solutions**:
+```bash
+# Check if Piper models are available
+curl https://your-deployment-id.cerebrium.app/debug
+
+# Verify Piper configuration in cerebrium.toml
+[cerebrium.secrets]
+PIPER_MODEL = "en_US-lessac-medium"
+PIPER_SAMPLE_RATE = "22050"
 ```
 
 ## 🛠️ Advanced Debugging
@@ -386,18 +437,15 @@ sd.play(audio, samplerate=16000)
 sd.wait()
 ```
 
-#### 4. Test API Keys
+#### 4. Test Model Access (HF Token)
 ```bash
-# Test Hugging Face
-curl -H "Authorization: Bearer hf_your_token" \
-     "https://huggingface.co/fixie-ai/ultravox-v0_3" 
+# Test Hugging Face token
+curl -H "Authorization: Bearer $HF_TOKEN" \
+     "https://huggingface.co/api/whoami"
 
-# Test OpenAI
-curl -H "Authorization: Bearer sk_your_key" \
-     "https://api.openai.com/v1/audio/speech" \
-     -H "Content-Type: application/json" \
-     -d '{"model": "tts-1", "input": "test", "voice": "nova"}' \
-     --output test.mp3
+# Test Ultravox model access
+curl -H "Authorization: Bearer $HF_TOKEN" \
+     "https://huggingface.co/api/models/fixie-ai/ultravox-v0_4_1-llama-3_1-8b"
 ```
 
 ### Monitor Resource Usage
@@ -405,13 +453,13 @@ curl -H "Authorization: Bearer sk_your_key" \
 #### Check Cerebrium Metrics
 ```bash
 # View real-time logs
-cerebrium logs voice-pipeline --follow
+cerebrium logs voice-pipeline-airgapped --follow
 
 # Check deployment status
 cerebrium list
 
 # View detailed deployment info
-cerebrium describe voice-pipeline
+cerebrium describe voice-pipeline-airgapped
 ```
 
 #### Local Resource Monitoring
@@ -438,7 +486,7 @@ which python
 pip list > pip_packages.txt
 
 # 2. Cerebrium deployment logs
-cerebrium logs voice-pipeline > cerebrium.log
+cerebrium logs voice-pipeline-airgapped > cerebrium.log
 
 # 3. Local client output (with venv activated)
 source venv/bin/activate
@@ -449,6 +497,9 @@ python -c "import sys, platform; print(f'Python: {sys.version}'); print(f'Platfo
 
 # 5. Audio device info
 python -c "import sounddevice as sd; print(sd.query_devices())" > audio_devices.txt
+
+# 6. Service status (NEW)
+curl https://your-deployment-id.cerebrium.app/debug > service_status.json
 ```
 
 ### Common Log Patterns
@@ -459,7 +510,8 @@ Virtual env: /path/to/voice-pipeline/venv    # ✅ venv activated
 ✅ Connected to voice pipeline!
 🤖 Processing your speech...
 🔊 Playing AI response...
-✅ Response sent to client
+✅ Ultravox STT service initialized successfully
+✅ Local Piper TTS service initialized
 ```
 
 #### Error Patterns
@@ -467,7 +519,8 @@ Virtual env: /path/to/voice-pipeline/venv    # ✅ venv activated
 Virtual env:                                 # ❌ venv not activated
 ❌ Cannot connect to wss://...               # Connection issue
 ⚠️ Microphone error:                        # Audio device issue  
-❌ Failed to initialize Ultravox:            # API key/GPU issue
+❌ Failed to initialize Ultravox:            # HF token/GPU issue
+❌ Could not initialize Piper TTS:           # TTS model issue
 ⏰ No response from server:                  # Timeout issue
 ERROR: Exception in ASGI:                   # Server-side error
 ModuleNotFoundError: No module named:       # Dependencies issue
@@ -477,7 +530,7 @@ ModuleNotFoundError: No module named:       # Dependencies issue
 
 1. **GitHub Issues**: Create issue with logs and system info
 2. **Cerebrium Support**: For deployment-specific issues
-3. **Community Discord**: For general troubleshooting
+3. **Pipecat Discord**: For framework-related questions
 4. **Documentation**: Check other docs files for specific topics
 
 ## 🔄 Recovery Procedures
@@ -498,35 +551,46 @@ pip install -r local_client_requirements.txt
 
 # 4. Clean environment
 unset WS_SERVER
+unset HF_TOKEN
 
-# 5. Redeploy
+# 5. Redeploy server (if needed)
 cerebrium deploy
 
-# 6. Get new URL and test
-export WS_SERVER="wss://new-deployment-id.cerebrium.app/ws"
-curl -I https://new-deployment-id.cerebrium.app/health
+# 6. Set fresh environment
+export WS_SERVER="wss://your-deployment-id.cerebrium.app/ws"
 
-# 7. Restart client
+# 7. Test connection
 python local_client.py
 ```
 
-### Rollback Deployment
+### Air-Gapped Deployment Recovery
 ```bash
-# If new deployment has issues
-cerebrium rollback voice-pipeline
+# 1. Check model availability
+cerebrium logs voice-pipeline-airgapped | grep -E "(Downloading|Loading|model)"
 
-# Or deploy previous version
-git checkout previous-commit
-cerebrium deploy
+# 2. Force model re-download
+cerebrium deploy --force
+
+# 3. Verify all services
+curl https://your-deployment-id.cerebrium.app/debug
+
+# Should see:
+# "stt_available": true,
+# "tts_available": true,
+# "hf_token_present": true,
+# "gpu_available": true
 ```
 
-## ✅ Prevention Tips
+## 🎯 Performance Optimization
 
-1. **Always Use Virtual Environment**: Never install packages globally
-2. **Verify Environment**: Check `$VIRTUAL_ENV` before running commands
-3. **Correct Dependencies**: Use `local_client_requirements.txt` for client
-4. **Regular Testing**: Test health endpoint daily
-5. **Monitor Logs**: Check `cerebrium logs` for warnings
-6. **Update Dependencies**: Keep requirements.txt current
-7. **Backup Configuration**: Version control cerebrium.toml
-8. **Test Audio**: Verify microphone/speakers before each session 
+### For Faster Response Times
+1. **Use warm instances**: Set `min_replicas = 1` in cerebrium.toml
+2. **Optimize model loading**: Models are cached after first load
+3. **Reduce audio buffer**: Lower `CHUNKS_PER_REQUEST` in client
+4. **Use appropriate model**: 8B model is optimal for A10 GPU
+
+### For Better Reliability
+1. **Monitor GPU memory**: Stay within A10's 24GB limit
+2. **Handle timeouts gracefully**: Increase client timeout for cold starts
+3. **Use connection retry logic**: Add exponential backoff
+4. **Check service health**: Regular health endpoint checks 

@@ -1,18 +1,19 @@
-pipecat-ai[ultravox]
-fastapi
-uvicorn[standard]
-websockets
-python-dotenv
-numpy
-sounddevice
-torch
-torchaudio
+# Core essentials
+fastapi==0.115.5
+uvicorn[standard]==0.24.0
+python-dotenv==1.0.0
 
-# Local Piper TTS for air-gapped deployment
-piper-tts
-onnxruntime-gpu
+# Pipecat with required features (will install correct torch version)
+pipecat-ai[silero,ultravox]==0.0.71
 
-# Audio processing
-librosa
+# Additional dependencies
+librosa==0.10.1
+requests>=2.31.0
+websockets>=12.0
+numpy>=1.26.4
+scipy>=1.11.4
+
+# For GPU support with Piper models (optional but recommended)
+# onnxruntime-gpu>=1.16.3
 
 

@@ -8,7 +8,7 @@ import websockets
 import signal
 import sys
 
-from . import audio_utils
+import audio_utils
 
 WS_SERVER = os.environ.get("WS_SERVER", "ws://localhost:8000/ws")
 

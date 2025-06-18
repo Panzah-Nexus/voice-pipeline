@@ -1,6 +1,6 @@
 # 📖 Voice Pipeline Documentation
 
-Welcome to the complete documentation for the **Voice AI Pipeline** running on **Nvidia A10 GPU** via Cerebrium. This system enables natural voice conversations with AI using your local microphone and speakers, with all AI processing happening on remote GPU infrastructure.
+Welcome to the complete documentation for the **Air-Gapped Voice AI Pipeline** running on **Nvidia A10 GPU** via Cerebrium. This system enables natural voice conversations with AI using your local microphone and speakers, with all AI processing happening on dedicated GPU infrastructure without external API dependencies.
 
 ## 🚀 Quick Start Guide
 
@@ -20,14 +20,13 @@ pip install -r local_client_requirements.txt
 python -c "import websockets, sounddevice, numpy; print('✅ Ready for voice pipeline')"
 ```
 
-### Step 2: Get API Keys 🔑
-- [**Hugging Face Token**](https://huggingface.co/settings/tokens) - For Ultravox models
-- [**OpenAI API Key**](https://platform.openai.com/api-keys) - For text-to-speech
+### Step 2: Get Required Tokens 🔑
+- [**Hugging Face Token**](https://huggingface.co/settings/tokens) - For downloading Ultravox models
 
 ### Step 3: Deploy & Connect 🚀
 ```bash
 # Configure and deploy
-nano cerebrium.toml  # Add your API keys
+nano cerebrium.toml  # Add your HF token
 cerebrium deploy
 
 # Start voice session (with venv active)
@@ -93,7 +92,9 @@ voice-check() {
 | [**🎯 Usage Guide**](usage.md) | **Daily operation** | Daily workflow with venv activation |
 | [**🔧 Troubleshooting**](troubleshooting.md) | **Problem solving** | Venv issues are #1 most common problem |
 | [**🏗️ Architecture**](architecture.md) | **Understanding system** | Why local vs remote dependencies differ |
-| [**🔑 API Setup**](api_setup.md) | **Configuration** | API keys go in Cerebrium, not venv |
+| [**🔑 API Setup**](api_setup.md) | **Configuration** | Only HF token needed for model access |
+| [**🤖 Ultravox Setup**](ultravox_setup.md) | **STT+LLM Model** | Combined speech and language processing |
+| [**🔊 Piper Setup**](piper_setup.md) | **TTS System** | Local neural text-to-speech |
 
 ### Start Here Based on Your Goal
 
@@ -104,7 +105,7 @@ voice-check() {
 
 #### 🏗️ "I want to understand how it works" 
 1. **[Architecture](architecture.md)** - System design and data flow
-2. **[API Setup](api_setup.md)** - Configuration and keys
+2. **[API Setup](api_setup.md)** - Configuration and tokens
 3. **[Deployment Guide](deployment_guide.md)** - Technical implementation
 
 #### 🔧 "I'm having problems"
@@ -116,22 +117,23 @@ voice-check() {
 
 ```
 LOCAL MACHINE (CPU Only)           CEREBRIUM CLOUD (A10 GPU)
-┌─────────────────────────┐       ┌─────────────────────────────┐
-│  🐍 Virtual Environment │       │     🐳 Docker Container     │
-│  ┌─────────────────────┐│       │  ┌─────────────────────────┐│
-│  │   Dependencies:     ││  WSS  │  │      Dependencies:      ││
-│  │   • websockets      ││◄─────►│  │   • pipecat-ai[ultravox]││
-│  │   • sounddevice     ││       │  │   • torch               ││
-│  │   • numpy           ││       │  │   • transformers        ││
-│  └─────────────────────┘│       │  │   • fastapi + uvicorn   ││
-│                         │       │  └─────────────────────────┘│
-│  🎙️ Microphone Input    │       │                            │
-│  🔊 Speaker Output      │       │  🤖 Ultravox STT+LLM       │
-│  📡 WebSocket Client    │       │  🔊 OpenAI TTS             │
-└─────────────────────────┘       └─────────────────────────────┘
+┌─────────────────────────┐       ┌─────────────────────────────────────┐
+│  🐍 Virtual Environment │       │     🐳 Docker Container             │
+│  ┌─────────────────────┐│       │  ┌─────────────────────────────────┐│
+│  │   Dependencies:     ││  WSS  │  │      Dependencies:              ││
+│  │   • websockets      ││◄─────►│  │   • pipecat-ai[ultravox]        ││
+│  │   • sounddevice     ││       │  │   • torch                       ││
+│  │   • numpy           ││       │  │   • transformers                ││
+│  └─────────────────────┘│       │  │   • piper-tts                   ││
+│                         │       │  │   • onnxruntime-gpu             ││
+│  🎙️ Microphone Input    │       │  └─────────────────────────────────┘│
+│  🔊 Speaker Output      │       │                                     │
+│  📡 WebSocket Client    │       │  🤖 Ultravox (STT+LLM Combined)     │
+└─────────────────────────┘       │  🔊 Piper TTS (Local GPU)           │
+                                  └─────────────────────────────────────┘
 ```
 
-**Key Point**: Local environment stays lightweight, GPU-heavy processing happens remotely.
+**Key Point**: Local environment stays lightweight, all AI processing happens on GPU with no external API calls.
 
 ## ⚡ Most Common Issues (All Virtual Environment Related!)
 
@@ -197,10 +199,9 @@ python local_client.py                   # Runs without import errors
 |-----------|------|-------|
 | **Local Client** | $0 | Just uses your computer |
 | **Cerebrium A10** | ~$0.50-1.00/hour | Only when processing |
-| **OpenAI TTS** | ~$0.01-0.05/conversation | Per audio generated |
-| **Hugging Face** | $0 | Free tier sufficient |
+| **Hugging Face** | $0 | Free tier sufficient for model downloads |
 
-**Total**: ~$0.10-0.20 per conversation with auto-scaling to zero cost when idle.
+**Total**: ~$0.50-1.00 per hour of usage with auto-scaling to zero cost when idle.
 
 ## 🎓 Advanced Topics
 

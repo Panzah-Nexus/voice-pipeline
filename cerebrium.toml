@@ -3,10 +3,11 @@ name = "voice-pipeline-airgapped"
 python_version = "3.11"
 include = ["./*", "src/main.py", "cerebrium.toml"]
 exclude = [".*", "venv", "__pycache__", "*.pyc", "node_modules"]
-docker_base_image_url = "nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04"
+# docker_base_image_url = "nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04"  # Commented out - using custom Dockerfile
 
 [cerebrium.runtime.custom]
 port = 8000
+entrypoint = "uvicorn src.pipecat_pipeline:app --host 0.0.0.0 --port 8000"
 healthcheck_endpoint = "/health"
 readycheck_endpoint = "/ready"
 dockerfile_path = "./docker/Dockerfile"
@@ -17,7 +18,7 @@ memory = 24.0
 compute = "AMPERE_A10"
 gpu_count = 1
 provider = "aws"
-region = "us-east-1"
+region = "eu-west-2"
 
 [cerebrium.scaling]
 min_replicas = 0
@@ -30,13 +31,13 @@ HF_TOKEN = "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"
 PIPER_MODEL = "en_US-lessac-medium"
 PIPER_SAMPLE_RATE = "22050"
 
-[cerebrium.dependencies.pip]
-fastapi = "latest"
-uvicorn = "latest"
-websockets = "latest"
-numpy = "latest"
-"pipecat-ai[ultravox]" = "latest"
-piper-tts = "latest"
-onnxruntime-gpu = "latest"
-python-dotenv = "latest"
-cerebrium = "latest" 
+# Dependencies are installed in Dockerfile for better control
+# Minimal requirements - many packages are auto-installed as dependencies
+# [cerebrium.dependencies.pip]
+# fastapi = "0.115.5"
+# uvicorn = "0.24.0"
+# python-dotenv = "1.0.0"
+# "pipecat-ai[silero,ultravox]" = "0.0.71"
+# torch = "2.1.2"
+# torchaudio = "2.1.2"
+# librosa = "0.10.1" 

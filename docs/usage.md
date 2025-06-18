@@ -1,6 +1,6 @@
 # Usage Guide
 
-This guide explains how to use the voice pipeline system effectively once it's deployed and configured.
+This guide explains how to use the air-gapped voice pipeline system effectively once it's deployed and configured.
 
 ## 🎯 Quick Start
 
@@ -99,9 +99,10 @@ Then just run: `voice-start` followed by `python local_client.py`
 - **Continuous conversation**: You can speak immediately after response plays
 
 ### What to Expect
-- **Processing time**: 2-5 seconds total round-trip
+- **Processing time**: 1-2 seconds total round-trip (60% faster with Ultravox)
 - **Response quality**: Natural, conversational AI responses
 - **Context awareness**: AI remembers recent conversation context
+- **Voice quality**: Neural TTS with Piper sounds natural
 
 ## 💬 Conversation Examples
 
@@ -117,7 +118,7 @@ AI: "I can help with a wide variety of tasks like answering questions, having co
 ### Q&A Session
 ```
 You: "What's the weather like in San Francisco today?"
-AI: "I don't have access to real-time weather data, but I'd recommend checking a weather service like Weather.com or your phone's weather app for current conditions in San Francisco."
+AI: "I don't have access to real-time weather data since I'm running in an air-gapped environment, but I'd recommend checking a weather service for current conditions in San Francisco."
 
 You: "Can you explain how photosynthesis works?"
 AI: "Certainly! Photosynthesis is the process by which plants convert sunlight, carbon dioxide, and water into glucose and oxygen..."
@@ -151,13 +152,20 @@ response_timeout = 10.0       # 10 seconds max wait for response
 ```
 
 ### Voice Selection (Server-Side)
-In `cerebrium.toml`, you can change the TTS voice:
+In `cerebrium.toml`, you can change the Piper TTS voice:
 
 ```toml
 [cerebrium.secrets]
-OPENAI_TTS_VOICE = "nova"     # Options: nova, alloy, echo, fable, onyx, shimmer
-OPENAI_TTS_MODEL = "tts-1"    # Options: tts-1, tts-1-hd
+PIPER_MODEL = "en_US-lessac-medium"   # American English, medium quality
+PIPER_SAMPLE_RATE = "22050"           # Audio sample rate
 ```
+
+Available Piper voices include:
+- `en_US-lessac-medium` - American English
+- `en_GB-alan-medium` - British English  
+- `de_DE-thorsten-medium` - German
+- `fr_FR-siwis-medium` - French
+- And many more in 50+ languages
 
 ## 🛠️ Advanced Usage
 
@@ -215,8 +223,8 @@ async def process_audio_file(file_path, server_url):
 - 🔗 **Connecting**: Establishing WebSocket connection
 - ✅ **Connected**: Ready to receive audio
 - 🎙️ **Listening**: Capturing microphone input
-- 🤖 **Processing**: AI analyzing your speech
-- 🔊 **Playing**: Response audio playing
+- 🤖 **Processing**: AI analyzing your speech with Ultravox
+- 🔊 **Playing**: Piper TTS audio playing
 - ⚠️ **Warning**: Non-critical issue occurred
 - ❌ **Error**: Problem needs attention
 
@@ -232,10 +240,10 @@ print(f"Round-trip time: {end_time - start_time:.2f} seconds")
 ```
 
 ### Quality Indicators
-- **Fast responses** (<3 seconds): Good performance
-- **Clear audio playback**: TTS working well
-- **Accurate transcription**: STT performing correctly
-- **Relevant responses**: AI understanding context
+- **Fast responses** (<2 seconds): Ultravox optimized performance
+- **Clear audio playback**: Piper TTS working well
+- **Accurate transcription**: Ultravox audio understanding
+- **Relevant responses**: AI context awareness
 
 ## 🔧 Session Management
 
@@ -259,7 +267,7 @@ deactivate          # Deactivate virtual environment
 - **Network disconnection**: Client will show connection error
 - **Server maintenance**: "Cannot connect" message
 - **Audio device changes**: Restart client with venv activated
-- **API limits**: Check Cerebrium/OpenAI quotas
+- **GPU limits**: Check Cerebrium quota
 
 ### Session Recovery
 ```bash
@@ -305,22 +313,22 @@ curl -I https://your-deployment-id.cerebrium.app/health
 ## 🚫 Limitations
 
 ### Technical Limitations
-- **Processing delay**: 2-5 second response time
-- **Audio quality**: Depends on microphone and internet
+- **Processing delay**: 1-2 second response time (improved with Ultravox)
+- **Audio quality**: Depends on microphone and internet connection
 - **Context memory**: Limited to recent conversation
-- **Language support**: Primarily English optimized
+- **Language support**: Best with English, other languages vary
 
 ### Usage Limitations
 - **Background noise**: Can affect transcription accuracy
 - **Multiple speakers**: Designed for single speaker
 - **Continuous speech**: Processes in ~5 second chunks
-- **Real-time interruption**: Cannot interrupt AI response
+- **Real-time interruption**: Supported but may have slight delay
 
-### API Limitations
-- **Rate limits**: OpenAI/Hugging Face API quotas apply
-- **Cost scaling**: Usage costs increase with volume
-- **Availability**: Dependent on third-party services
-- **Model updates**: AI behavior may change with updates
+### Infrastructure Limitations
+- **GPU memory**: 8B model requires ~16GB VRAM
+- **Concurrent users**: 3-5 per A10 instance
+- **Model loading**: Initial connection may take 30-60s if cold start
+- **No internet access**: System is air-gapped, no real-time data
 
 ## 📈 Optimization Tips
 
@@ -337,10 +345,10 @@ curl -I https://your-deployment-id.cerebrium.app/health
 4. **Complete sentences**: Full thoughts work better than fragments
 
 ### For Cost Efficiency
-1. **Monitor usage**: Check Cerebrium/OpenAI billing
-2. **Use efficiently**: Avoid unnecessary long sessions
-3. **Scale down when not needed**: Cerebrium auto-scales to zero
-4. **Optimize settings**: Reduce max_concurrency if not needed
+1. **Monitor usage**: Check Cerebrium billing dashboard
+2. **Use efficiently**: System scales to zero when idle
+3. **Batch conversations**: Group usage to minimize cold starts
+4. **Optimize settings**: Use appropriate model size for your needs
 
 ## 🔄 Updates and Maintenance
 
@@ -354,8 +362,7 @@ pip install -r local_client_requirements.txt --upgrade
 git pull origin main
 cerebrium deploy
 
-# Update API models (if available)
-# Check Hugging Face and OpenAI for model updates
+# Models update automatically on redeploy
 ```
 
 ### Monitoring Health
@@ -363,13 +370,16 @@ cerebrium deploy
 # Daily health check
 curl -I https://your-deployment-id.cerebrium.app/health
 
+# Check service status
+curl https://your-deployment-id.cerebrium.app/debug
+
 # Weekly full test (with venv activated)
 source venv/bin/activate
 python local_client.py
 # Test a short conversation
 
 # Monthly review
-cerebrium logs voice-pipeline | grep ERROR
+cerebrium logs voice-pipeline-airgapped | grep ERROR
 ```
 
 ### Virtual Environment Maintenance

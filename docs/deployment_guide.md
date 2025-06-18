@@ -1,18 +1,18 @@
 # Voice Pipeline Deployment Guide
 
-This guide shows you how to deploy your voice AI pipeline with **Nvidia A10 GPU on Cerebrium** and connect it to your local devices (no local GPU required).
+This guide shows you how to deploy your air-gapped voice AI pipeline with **Nvidia A10 GPU on Cerebrium** and connect it to your local devices (no local GPU required).
 
 ## 🎯 Overview
 
 - **Local Device (CPU-only)**: Captures microphone → WebSocket client → Plays speakers
-- **Cerebrium (A10 GPU)**: WebSocket server → Ultravox STT → LLM → TTS → Response
+- **Cerebrium (A10 GPU)**: WebSocket server → Ultravox (STT+LLM) → Piper TTS → Response
+- **Air-Gapped**: No external API calls during operation
 
 ## 📋 Prerequisites
 
 - Python 3.10+ on your local machine
 - Cerebrium account
-- Hugging Face account (for Ultravox models)
-- OpenAI account (for TTS)
+- Hugging Face account (for model downloads only)
 - Microphone and speakers on local machine
 
 ## 🐍 Virtual Environment Setup
@@ -97,29 +97,25 @@ source venv/bin/activate
 pip install -r local_client_requirements.txt
 ```
 
-## Phase 1: API Keys Setup
+## Phase 1: Token Setup
 
 ### 1.1 Hugging Face Token
 1. Visit: https://huggingface.co/settings/tokens
 2. Create a token with "Read" access
 3. Copy the token (starts with `hf_`)
-
-### 1.2 OpenAI API Key
-1. Visit: https://platform.openai.com/api-keys
-2. Create an API key
-3. Copy the key (starts with `sk-`)
+4. This is only needed for initial model downloads
 
 ## Phase 2: Configure Cerebrium Deployment
 
 ### 2.1 Update Cerebrium Configuration
-Edit `cerebrium.toml` and replace the placeholder tokens:
+Edit `cerebrium.toml` and replace the placeholder token:
 
 ```toml
 [cerebrium.secrets]
-HUGGING_FACE_TOKEN = "hf_your_actual_token_here"
-OPENAI_API_KEY = "sk_your_actual_key_here"
-OPENAI_TTS_VOICE = "nova"
-OPENAI_TTS_MODEL = "tts-1"
+HF_TOKEN = "hf_your_actual_token_here"
+# Piper TTS configuration (optional)
+PIPER_MODEL = "en_US-lessac-medium"
+PIPER_SAMPLE_RATE = "22050"
 ```
 
 ### 2.2 Install Cerebrium CLI
@@ -160,6 +156,13 @@ curl -I https://your-deployment-id.cerebrium.app/health
 ```
 
 Should return: `200 OK`
+
+### 3.3 Initial Model Download
+On first deployment, the system will download:
+- **Ultravox Model**: ~8GB (combined STT+LLM)
+- **Piper TTS Models**: ~100MB per voice
+
+These are cached on Cerebrium's storage for subsequent deployments.
 
 ## Phase 4: Local Client Setup
 
@@ -235,12 +238,18 @@ Expected output:
 ### 6.1 View Deployment Logs
 ```bash
 # No venv needed for Cerebrium CLI commands
-cerebrium logs voice-pipeline
+cerebrium logs voice-pipeline-airgapped
 ```
 
 ### 6.2 Check Deployment Status
 ```bash
 cerebrium list
+```
+
+### 6.3 Debug Endpoint
+Check service status:
+```bash
+curl https://your-deployment-id.cerebrium.app/debug
 ```
 
 ## 🔧 Virtual Environment Troubleshooting
@@ -333,9 +342,9 @@ Then just run: `voice-pipeline` followed by `python local_client.py`
 ### Hardware Configuration (A10 GPU)
 ```toml
 [cerebrium.hardware]
-compute = "A10"        # Nvidia A10 GPU
-memory = "24Gi"        # 24GB RAM
-cpu = "8"              # 8 CPU cores
+compute = "AMPERE_A10"        # Nvidia A10 GPU
+memory = "24Gi"               # 24GB RAM
+cpu = "8"                     # 8 CPU cores
 ```
 
 ### Scaling Configuration
@@ -355,17 +364,26 @@ readycheck_endpoint = "/ready"     # Readiness check
 dockerfile_path = "./docker/Dockerfile"
 ```
 
+## Air-Gapped Benefits
+
+- **No External APIs**: All processing happens on Cerebrium GPU
+- **Data Privacy**: Audio never leaves your infrastructure
+- **Predictable Costs**: Only pay for GPU time, no per-request API fees
+- **Offline Capable**: Once deployed, no internet needed for AI processing
+
 ## Cost Optimization
 
 - **Scale to Zero**: Automatically scales down when not in use
-- **Pay per Use**: Only charged for active GPU time
-- **Efficient Batching**: Multiple conversations can share one instance
+- **Pay per Use**: Only charged for active GPU time (~$0.50-1.00/hour)
+- **No API Costs**: Ultravox and Piper run locally, no per-request charges
+- **Efficient Models**: 8B Ultravox model optimized for A10 GPU
 
 ## Security Notes
 
-- API keys are stored securely in Cerebrium secrets
+- HF token only used for initial model downloads
 - WebSocket connection uses WSS (secure WebSocket)
-- No sensitive data stored locally
+- All AI processing happens within your Cerebrium deployment
+- No audio data sent to external services
 
 ## Next Steps
 

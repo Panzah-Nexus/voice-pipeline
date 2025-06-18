@@ -8,9 +8,6 @@ from __future__ import annotations
 
 import os
 import asyncio
-import subprocess
-import tempfile
-from pathlib import Path
 from dotenv import load_dotenv
 
 def get_secret(key):
@@ -33,21 +30,34 @@ def get_secret(key):
     
     print(f"❌ {key} not found in secrets or environment")
     return None
-# from pipecat.pipeline.pipeline import Pipeline  # Not used in this file
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+
+from fastapi import FastAPI, WebSocket
 from fastapi.responses import PlainTextResponse
 import uvicorn
-import numpy as np
-import json
+
+# Import Pipecat services
+from pipecat.pipeline.pipeline import Pipeline
+from pipecat.pipeline.runner import PipelineRunner
+from pipecat.pipeline.task import PipelineParams, PipelineTask
+from pipecat.transports.network.fastapi_websocket import (
+    FastAPIWebsocketTransport, 
+    FastAPIWebsocketParams
+)
+from pipecat.audio.vad.silero import SileroVADAnalyzer
+from pipecat.processors.aggregators.openai_llm_context import OpenAILLMContext
 
 try:
     from pipecat.services.ultravox.stt import UltravoxSTTService
-except Exception as exc:  # pragma: no cover - optional dependency
+except Exception as exc:
     UltravoxSTTService = None
     print("UltravoxSTTService unavailable:", exc)
 
-# NO OPENAI IMPORTS - Air-gapped deployment
-print("🚫 OpenAI services disabled for air-gapped deployment")
+# Use our Piper TTS service (no HTTP server needed)
+try:
+    from .piper_tts_service import PiperTTSService
+except Exception as exc:
+    PiperTTSService = None
+    print("PiperTTSService unavailable:", exc)
 
 # Load environment variables from .env file
 load_dotenv()
@@ -58,107 +68,12 @@ app = FastAPI(title="Air-Gapped Voice Pipeline Server")
 # Global services
 stt_service = None
 tts_service = None
-
-class LocalPiperTTSService:
-    """Local Piper TTS service that runs on the same machine."""
-    
-    def __init__(self, model_name: str = "en_US-lessac-medium", sample_rate: int = 22050):
-        self.model_name = model_name
-        self.sample_rate = sample_rate
-        self.model_path = None
-        self._setup_piper_model()
-    
-    def _setup_piper_model(self):
-        """Download and setup Piper model for local use."""
-        try:
-            # Try to find piper binary
-            piper_cmd = subprocess.run(["which", "piper"], capture_output=True, text=True)
-            if piper_cmd.returncode != 0:
-                print("❌ Piper binary not found. Installing piper-tts...")
-                subprocess.run(["pip", "install", "piper-tts"], check=True)
-            
-            # Download model if not exists
-            model_dir = Path.home() / ".local" / "share" / "piper" / "models"
-            model_dir.mkdir(parents=True, exist_ok=True)
-            
-            self.model_path = model_dir / f"{self.model_name}.onnx"
-            self.config_path = model_dir / f"{self.model_name}.onnx.json"
-            
-            if not self.model_path.exists():
-                print(f"📥 Downloading Piper model: {self.model_name}")
-                # Use piper with automatic model download
-                cmd = [
-                    "python", "-m", "piper.download", self.model_name
-                ]
-                try:
-                    subprocess.run(cmd, check=True, capture_output=True)
-                    print(f"✅ Piper model {self.model_name} downloaded successfully")
-                except subprocess.CalledProcessError as e:
-                    print(f"⚠️  Model download failed, will use fallback: {e}")
-                    
-        except Exception as e:
-            print(f"⚠️  Piper setup warning: {e}")
-    
-    async def run_tts(self, text: str):
-        """Convert text to speech and yield audio frames."""
-        try:
-            # Use piper command line tool
-            with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as temp_file:
-                cmd = [
-                    "python", "-m", "piper",
-                    "--model", self.model_name,
-                    "--output_file", temp_file.name
-                ]
-                
-                # Run piper with text input
-                process = subprocess.Popen(
-                    cmd,
-                    stdin=subprocess.PIPE,
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE,
-                    text=True
-                )
-                
-                stdout, stderr = process.communicate(input=text)
-                
-                if process.returncode == 0:
-                    # Read the generated audio file
-                    with open(temp_file.name, 'rb') as f:
-                        audio_data = f.read()
-                    
-                    # Clean up temp file
-                    os.unlink(temp_file.name)
-                    
-                    # Yield audio in chunks
-                    chunk_size = 4096
-                    for i in range(0, len(audio_data), chunk_size):
-                        chunk = audio_data[i:i + chunk_size]
-                        # Create a simple frame-like object
-                        class AudioFrame:
-                            def __init__(self, audio):
-                                self.audio = audio
-                        
-                        yield AudioFrame(chunk)
-                        await asyncio.sleep(0.01)  # Small delay for streaming
-                else:
-                    print(f"❌ Piper TTS error: {stderr}")
-                    # Yield empty audio frame on error
-                    class AudioFrame:
-                        def __init__(self, audio):
-                            self.audio = audio
-                    yield AudioFrame(b"")
-                    
-        except Exception as e:
-            print(f"❌ Local Piper TTS error: {e}")
-            # Yield empty audio frame on error
-            class AudioFrame:
-                def __init__(self, audio):
-                    self.audio = audio
-            yield AudioFrame(b"")
+context_aggregator = None
+transport = None
 
 def create_pipeline():
-    """Create and return initialized STT and local TTS services."""
-    global stt_service, tts_service
+    """Create and return initialized services."""
+    global stt_service, tts_service, context_aggregator
 
     # Use Cerebrium's get_secret for accessing secrets in deployment
     hf_token = get_secret("HF_TOKEN")
@@ -171,18 +86,23 @@ def create_pipeline():
         print("The Ultravox STT service will not be available")
     
     # Configure for GPU deployment (Cerebrium A10)
-    if os.environ.get("NVIDIA_VISIBLE_DEVICES"):
+    # Force CUDA for Cerebrium deployment
+    if os.environ.get("CUDA_VISIBLE_DEVICES") or os.environ.get("NVIDIA_VISIBLE_DEVICES"):
         # Running on GPU - configure for CUDA
-        os.environ["VLLM_DEVICE"] = "cuda"
+        os.environ["CUDA_VISIBLE_DEVICES"] = os.environ.get("CUDA_VISIBLE_DEVICES", "0")
         print("🖥️  GPU detected - configuring for CUDA")
     else:
-        # Running on CPU (fallback)
-        os.environ["VLLM_DEVICE"] = "cpu"
-        os.environ["VLLM_CPU_ONLY"] = "1"
-        os.environ["VLLM_WORKER_MULTIPROC_METHOD"] = "spawn"
-        print("💻 No GPU detected - configuring for CPU")
+        # Check if we're on Cerebrium (they provide GPUs)
+        if os.environ.get("CEREBRIUM_ENV") or os.path.exists("/usr/local/cuda"):
+            os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+            print("🖥️  Cerebrium environment detected - configuring for CUDA")
+        else:
+            # Running on CPU (fallback)
+            os.environ["VLLM_CPU_ONLY"] = "1"
+            os.environ["VLLM_WORKER_MULTIPROC_METHOD"] = "spawn"
+            print("💻 No GPU detected - configuring for CPU")
 
-    # Initialize Ultravox STT service
+    # Initialize Ultravox STT service (handles both STT and LLM)
     if UltravoxSTTService and hf_token:
         try:
             print("🤖 Initializing Ultravox STT service...")
@@ -196,20 +116,26 @@ def create_pipeline():
         except Exception as e:
             print(f"❌ Failed to initialize Ultravox STT service: {e}")
             stt_service = None
+    
+    # Initialize context aggregator for proper conversation flow
+    context_aggregator = OpenAILLMContext()
+    
+    # Initialize TTS service globally
+    if PiperTTSService:
+        try:
+            model_name = get_secret("PIPER_MODEL") or "en_US-lessac-medium"
+            tts_service = PiperTTSService(
+                model_name=model_name,
+                sample_rate=16000  # Match audio pipeline sample rate
+            )
+            print(f"✅ Global Piper TTS service initialized with model: {model_name}")
+        except Exception as e:
+            print(f"❌ Failed to initialize global Piper TTS service: {e}")
+            import traceback
+            traceback.print_exc()
+            tts_service = None
 
-    # Initialize LOCAL Piper TTS service (no external API calls)
-    try:
-        print("🔊 Initializing LOCAL Piper TTS service...")
-        tts_service = LocalPiperTTSService(
-            model_name=get_secret("PIPER_MODEL") or "en_US-lessac-medium",
-            sample_rate=int(get_secret("PIPER_SAMPLE_RATE") or "22050")
-        )
-        print("✅ Local Piper TTS service initialized successfully")
-    except Exception as e:
-        print(f"❌ Failed to initialize Local Piper TTS service: {e}")
-        tts_service = None
-
-    return stt_service, tts_service
+    return stt_service, tts_service, context_aggregator
 
 @app.get("/health")
 async def health():
@@ -239,109 +165,110 @@ async def debug():
 
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
-    """WebSocket endpoint for audio processing."""
-    await websocket.accept()
-    print("👤 Client connected to WebSocket")
-    audio_buffer = bytearray()
+    """WebSocket endpoint for audio processing using proper Pipecat pipeline."""
     
-    # Use global services initialized at startup
-    print(f"🔍 Debug - Services available: STT={stt_service is not None}, TTS={tts_service is not None}")
+    # Accept the WebSocket connection first!
+    await websocket.accept()
+    print("✅ WebSocket connection accepted")
+    
+    # Import our simple serializer
+    try:
+        from .protobuf_serializer import SimpleProtobufSerializer
+    except ImportError:
+        from protobuf_serializer import SimpleProtobufSerializer
     
     try:
-        while True:
-            try:
-                message = await websocket.receive()
-                
-                if message["type"] == "websocket.receive":
-                    if "bytes" in message:
-                        # Accumulate audio data
-                        audio_buffer.extend(message["bytes"])
-                        
-                    elif "text" in message and message["text"] == "END":
-                        print(f"🎵 Processing audio buffer: {len(audio_buffer)} bytes")
-                        
-                        # Always echo the audio first for testing
-                        print("🔊 Echoing audio back to client...")
-                        try:
-                            await websocket.send_bytes(bytes(audio_buffer))
-                            print(f"✅ Echoed {len(audio_buffer)} bytes back to client")
-                        except Exception as e:
-                            print(f"❌ Echo failed: {e}")
-                        
-                        # Process accumulated audio with AI services if available
-                        if stt_service and tts_service:
-                            print("🤖 AI services available - processing...")
-                            # Convert audio buffer to numpy array
-                            audio = np.frombuffer(bytes(audio_buffer), dtype=np.int16).astype(np.float32) / 32768.0
-                            
-                            try:
-                                # Process with STT
-                                print("🎤 Running speech-to-text...")
-                                text_parts = []
-                                async for chunk in stt_service._model.generate(
-                                    messages=[{"role": "user", "content": "<|audio|>\n"}],
-                                    temperature=0.5,
-                                    max_tokens=150,
-                                    audio=audio,
-                                ):
-                                    data = json.loads(chunk)
-                                    delta = data.get("choices", [{}])[0].get("delta", {})
-                                    if "content" in delta:
-                                        text_parts.append(delta["content"])
-                                text = "".join(text_parts)
-                                print(f"📝 Transcribed: {text}")
+        # Create transport for this WebSocket connection
+        transport = FastAPIWebsocketTransport(
+            websocket=websocket,
+            params=FastAPIWebsocketParams(
+                audio_in_enabled=True,
+                audio_out_enabled=True,
+                add_wav_header=False,
+                vad_enabled=True,
+                vad_analyzer=SileroVADAnalyzer(),
+                vad_audio_passthrough=True,
+                serializer=SimpleProtobufSerializer(),
+            )
+        )
+        print("✅ Transport created")
 
-                                # Convert text to speech using LOCAL Piper TTS
-                                print("🔊 Converting to speech with local Piper TTS...")
-                                async for frame in tts_service.run_tts(text):
-                                    if hasattr(frame, "audio") and frame.audio:
-                                        await websocket.send_bytes(frame.audio)
-                                print("✅ AI response sent to client")
-                                
-                            except Exception as e:
-                                print(f"❌ Error processing audio with AI: {e}")
-                                await websocket.send_text(f"AI Error: {str(e)}")
-                        else:
-                            print("⚠️  AI services not available - only echo was sent")
-
-                        audio_buffer.clear()
-                        
-                elif message["type"] == "websocket.disconnect":
-                    print("👋 Client disconnected")
-                    break
-                    
-            except WebSocketDisconnect:
-                print("👋 WebSocket disconnected")
-                break
-            except Exception as e:
-                print(f"⚠️  Error in WebSocket loop: {e}")
-                break
-                    
+        # Build the pipeline
+        pipeline_components = [transport.input()]
+        
+        if stt_service:
+            pipeline_components.extend([
+                context_aggregator.user(),
+                stt_service,  # Ultravox handles both STT and LLM
+            ])
+        else:
+            print("⚠️  STT service not available")
+        
+        if tts_service:
+            pipeline_components.extend([
+                tts_service,
+                context_aggregator.assistant(),
+            ])
+        else:
+            print("⚠️  TTS service not available")
+        
+        pipeline_components.append(transport.output())
+        
+        # Create and run pipeline
+        pipeline = Pipeline(pipeline_components)
+        print(f"✅ Pipeline created with {len(pipeline_components)} components")
+        
+        task = PipelineTask(
+            pipeline,
+            params=PipelineParams(
+                allow_interruptions=True,
+                enable_metrics=True,
+                enable_usage_metrics=True,
+            ),
+        )
+        
+        runner = PipelineRunner()
+        
+        try:
+            print("🚀 Starting Pipecat pipeline...")
+            await runner.run(task)
+        except Exception as e:
+            print(f"❌ Pipeline error: {e}")
+            import traceback
+            traceback.print_exc()
     except Exception as e:
-        print(f"❌ WebSocket error: {e}")
+        print(f"❌ WebSocket endpoint error: {e}")
+        import traceback
+        traceback.print_exc()
+        # Try to close the WebSocket gracefully
+        try:
+            await websocket.close()
+        except:
+            pass
     finally:
-        print("🔌 WebSocket connection closed")
+        # Clean up
+        print("🔌 Pipeline connection closed")
 
 @app.on_event("startup")
 async def startup_event():
     """Initialize services on startup."""
-    global stt_service, tts_service
+    global stt_service, tts_service, context_aggregator
     
     print("🚀 Initializing air-gapped voice pipeline services...")
-    stt_service, tts_service = create_pipeline()
+    stt_service, tts_service, context_aggregator = create_pipeline()
     
     if stt_service:
         print("✅ STT service ready")
     else:
         print("❌ STT service not available - check HF_TOKEN")
-        
+    
     if tts_service:
-        print("✅ Local TTS service ready")
+        print("✅ TTS service ready")
     else:
-        print("❌ Local TTS service not available")
+        print("❌ TTS service not available")
         
     print("🎯 Air-gapped voice pipeline ready for connections!")
-    print(f"🔍 Debug - Global services set: STT={stt_service is not None}, TTS={tts_service is not None}")
+    print("🔍 Debug - Global services initialized")
 
 async def run_server(services=None, host: str = "0.0.0.0", port: int = 8000) -> None:
     """Run the FastAPI server with WebSocket support."""

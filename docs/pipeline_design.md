@@ -10,7 +10,7 @@ This document outlines the design goals for the voice pipeline. The main idea is
 2. **Pipecat**
    - Acts as the orchestration framework for STT, language model, and TTS components.
 
-   - We'll use the smallest Ultravox model from Hugging Face for STT and built-in language generation via `UltravoxSTTService`.
+   - We'll use the smallest Ultravox model from Hugging Face for both STT and TTS via `UltravoxSTTService`.
 
 3. **Docker**
    - The Docker image includes Python, PyTorch with CUDA, pipecat, and Ultravox dependencies.
@@ -30,8 +30,8 @@ This document outlines the design goals for the voice pipeline. The main idea is
 
 ## References
 
-- Pipecat documentation: <https://github.com/spidercat/pipecat>
-- Ultravox: <https://github.com/rhasspy/ultravox>
+- Pipecat documentation: <https://github.com/pipecat-ai/pipecat>
+- Ultravox: <https://github.com/fixie-ai/ultravox>
 - Ultravox STT docs: <https://docs.pipecat.ai/server/services/stt/ultravox>
 
 - Cerebrium: <https://www.cerebrium.ai>

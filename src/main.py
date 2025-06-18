@@ -8,10 +8,10 @@ def main() -> None:
     """Main entry point with fallback handling for air-gapped deployment."""
     
     # Check if we have required environment variables
-    hf_token = os.environ.get("HUGGING_FACE_TOKEN")
+    hf_token = os.environ.get("HF_TOKEN")
     
     if not hf_token:
-        print("⚠️  HUGGING_FACE_TOKEN not found in environment")
+        print("⚠️  HF_TOKEN not found in environment")
         print("   The Ultravox STT service will not be available")
         
     print("🔒 Air-gapped deployment - no external API calls")
@@ -30,12 +30,14 @@ def main() -> None:
         print("🔄 Falling back to simple echo server for testing...")
         
         try:
-            from .simple_test_server import run_server as run_test_server
+            # Import from utils instead of src
+            sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+            from utils.simple_test_server import run_server as run_test_server
             import asyncio
             asyncio.run(run_test_server())
         except Exception as e2:
             print(f"❌ Failed to start test server: {e2}")
-            print("💡 Try running: python -m src.simple_test_server")
+            print("💡 Try running: python -m utils.simple_test_server")
             sys.exit(1)
 
 if __name__ == "__main__":

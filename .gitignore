@@ -51,6 +51,11 @@ coverage.xml
 .pytest_cache/
 cover/
 
+# Test artifacts
+test_output.wav
+cerebrium_response.wav
+*.test.wav
+
 # Translations
 *.mo
 *.pot

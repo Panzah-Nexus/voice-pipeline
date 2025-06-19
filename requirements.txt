@@ -1,1 +1,5 @@
-
+pipecat-ai[ultravox,websocket]==0.0.71     # Python ≥3.10, verified 3.11:contentReference[oaicite:10]{index=10}
+piper-tts==1.2.0                           # pulls piper-phonemize 1.1.0 automatically
+soundfile==0.12.1
+fastapi
+uvicorn[standard]==0.29.0

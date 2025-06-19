@@ -1,0 +1,35 @@
+# cerebrium.toml  ── fully valid for CLI ≥ 1.40
+
+[cerebrium.deployment]                     # Top-level “deployment” block is mandatory :contentReference[oaicite:0]{index=0}
+name               = "voice-pipeline-airgapped"
+python_version     = "3.11"                # Matches the wheels we installed :contentReference[oaicite:1]{index=1}
+docker_base_image_url = "nvidia/cuda:12.3.1-runtime-ubuntu22.04"  # GPU-enabled base image :contentReference[oaicite:2]{index=2}
+include            = ["./*", "cerebrium.toml"]  # Ship all source + this file :contentReference[oaicite:3]{index=3}
+exclude            = [".git", ".venv", "__pycache__","venv"]
+# Optional: keep non-critical files out of the build context to speed things up
+
+[cerebrium.runtime.custom]                 # Custom ASGI server (FastAPI / Uvicorn) :contentReference[oaicite:4]{index=4}
+entrypoint          = ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
+port                = 8000
+healthcheck_endpoint = "/health"           # Fast 200-OK probe; implement in src/main.py if desired
+
+[cerebrium.hardware]                       # A10 spec exactly as you had :contentReference[oaicite:5]{index=5}
+compute   = "AMPERE_A10"
+gpu_count = 1
+cpu       = 8
+memory    = 24.0
+
+[cerebrium.scaling]                        # Sensible starting point :contentReference[oaicite:6]{index=6}
+min_replicas = 0
+max_replicas = 2
+cooldown     = 30          # seconds between scale events
+replica_concurrency = 3    # each pod can serve 3 websocket sessions
+
+# Use your existing requirements.txt so we don’t hand-edit long dependency lists
+[cerebrium.dependencies.paths]             # Point to the file instead of inline pins :contentReference[oaicite:7]{index=7}
+pip = "requirements.txt"
+
+# System packages needed for Piper’s audio back-end
+[cerebrium.dependencies.apt]               # Declarative APT section :contentReference[oaicite:8]{index=8}
+ffmpeg       = "latest"
+libsndfile1  = "latest"

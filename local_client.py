@@ -8,10 +8,7 @@ import asyncio
 import json
 import logging
 import os
-import struct
 import sys
-import time
-from typing import Optional
 
 import numpy as np
 import sounddevice as sd
@@ -189,7 +186,6 @@ def main():
     
     # Check audio devices
     try:
-        devices = sd.query_devices()
         logger.info(f"Default input device: {sd.query_devices(kind='input')['name']}")
         logger.info(f"Default output device: {sd.query_devices(kind='output')['name']}")
     except Exception as e:

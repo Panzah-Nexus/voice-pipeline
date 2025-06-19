@@ -2,26 +2,26 @@
 Air-gapped voice pipeline with enhanced Pipecat components
 Ultravox (STT + LLM) ▶ Piper (TTS)
 Everything runs locally on a Cerebrium A10.
+
+NOTE: This pipeline requires GPU resources to run efficiently.
+The Ultravox model is compute-intensive and performs best with GPU acceleration.
+Based on the official Pipecat Ultravox example.
 """
 
-import asyncio
 import os
 import logging
-from typing import Dict
 
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
-from fastapi.responses import JSONResponse
 
 from pipecat.pipeline.pipeline import Pipeline
 from pipecat.pipeline.runner import PipelineRunner
 from pipecat.pipeline.task import PipelineParams, PipelineTask
-from pipecat.frames.frames import AudioRawFrame, Frame, SystemFrame, TranscriptionFrame, TextFrame
-from pipecat.services.ultravox import UltravoxService
-from pipecat.transports.base_transport import TransportParams
-from pipecat.transports.websocket_server import WebsocketServerParams, WebsocketServerTransport
-from pipecat.vad.silero import SileroVADAnalyzer
+from pipecat.services.ultravox.stt import UltravoxSTTService
+from pipecat.transports.network.fastapi_websocket import FastAPIWebsocketParams, FastAPIWebsocketTransport
+from pipecat.audio.vad.silero import SileroVADAnalyzer
 
 from src.piper_tts_service import PiperTTSService
+from src.simple_serializer import SimpleFrameSerializer
 
 logger = logging.getLogger(__name__)
 
@@ -32,6 +32,21 @@ app = FastAPI(title="Voice Pipeline - Air-Gapped")
 HF_TOKEN = os.environ.get("HF_TOKEN", "")
 PIPER_MODEL = os.environ.get("PIPER_MODEL", "en_US-lessac-medium")
 SAMPLE_RATE = 16000
+
+# Initialize Ultravox processor globally for better performance
+# (model loading takes time, so we do it once)
+try:
+    logger.info("Initializing Ultravox model... This may take a moment.")
+    ultravox_processor = UltravoxSTTService(
+        model_name="fixie-ai/ultravox-v0_5-llama-3_1-8b",
+        hf_token=HF_TOKEN,
+        temperature=0.6,
+        max_tokens=150
+    )
+    logger.info("Ultravox model initialized successfully!")
+except Exception as e:
+    logger.error(f"Failed to initialize Ultravox model: {e}")
+    ultravox_processor = None
 
 
 @app.get("/")
@@ -75,33 +90,22 @@ async def debug():
 async def create_pipeline(websocket: WebSocket) -> tuple:
     """Create the Pipecat pipeline with Ultravox and Piper."""
     
+    # Check if Ultravox is initialized
+    if ultravox_processor is None:
+        raise RuntimeError("Ultravox model failed to initialize. Check your HF_TOKEN and internet connection.")
+    
     # Create transport
-    transport = WebsocketServerTransport(
+    transport = FastAPIWebsocketTransport(
         websocket=websocket,
-        params=WebsocketServerParams(
+        params=FastAPIWebsocketParams(
             audio_in_enabled=True,
             audio_out_enabled=True,
-            add_server_time_to_messages=True,
+            add_wav_header=False,
             vad_enabled=True,
             vad_analyzer=SileroVADAnalyzer(),
-            vad_start_s=0.2,
-            transcription_enabled=False  # Ultravox handles this internally
+            vad_audio_passthrough=True,
+            serializer=SimpleFrameSerializer()
         )
-    )
-    
-    # System prompt for the assistant
-    system_prompt = """You are a helpful voice assistant. Keep your responses concise and conversational.
-    You're running on an air-gapped system with no internet access. Be friendly and helpful."""
-    
-    # Create Ultravox service (combines STT + LLM)
-    # Using the 8B model for A10 GPU
-    ultravox = UltravoxService(
-        api_key=HF_TOKEN,
-        model="fixie-ai/ultravox-v0_4_1-llama-3_1-8b",
-        temperature=0.6,
-        max_tokens=150,
-        sample_rate=SAMPLE_RATE,
-        system_prompt=system_prompt
     )
     
     # Create Piper TTS service
@@ -113,7 +117,7 @@ async def create_pipeline(websocket: WebSocket) -> tuple:
     # Build the pipeline
     pipeline = Pipeline([
         transport.input(),
-        ultravox,  # Ultravox handles both STT and LLM in one
+        ultravox_processor,  # Use the pre-initialized Ultravox processor
         tts,
         transport.output()
     ])
@@ -151,7 +155,10 @@ async def websocket_endpoint(websocket: WebSocket):
         logger.info("WebSocket disconnected")
     except Exception as e:
         logger.error(f"Pipeline error: {e}", exc_info=True)
-        await websocket.close(code=1000, reason=str(e))
+        try:
+            await websocket.close(code=1000, reason=str(e))
+        except:
+            pass  # WebSocket might already be closed
     finally:
         logger.info("WebSocket connection closed")
 

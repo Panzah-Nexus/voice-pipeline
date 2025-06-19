@@ -7,7 +7,6 @@ for an HTTP server in the air-gapped environment.
 import asyncio
 import logging
 import os
-import subprocess
 import tempfile
 from typing import AsyncGenerator
 
@@ -104,7 +103,6 @@ class PiperTTSService(TTSService):
                     import wave
                     with wave.open(wav_path, 'rb') as wf:
                         # Get audio parameters
-                        channels = wf.getnchannels()
                         width = wf.getsampwidth()
                         framerate = wf.getframerate()
                         

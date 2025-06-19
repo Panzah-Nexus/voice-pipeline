@@ -24,7 +24,6 @@ region = "eu-west-2"
 min_replicas = 0        # Keep one replica warm to avoid cold starts
 max_replicas = 2
 cooldown = 300
-max_concurrency = 5
 response_grace_period = 900   # Keep long voice sessions alive (15 min)
 
 [cerebrium.secrets]

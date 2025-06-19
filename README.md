@@ -110,21 +110,6 @@ USE_PROTOBUF=true
 
 ### **📦 Pipeline Structure:**
 
-```python
-# Enhanced pipeline with optional components
-pipeline = Pipeline([
-    transport.input(),              # WebSocket input
-    NoiseReduceFilter(),           # Optional noise reduction
-    FrameLogger("input"),          # Optional debug logging
-    context_aggregator.user(),     # User context management
-    ultravox_stt_service,          # Ultravox (STT + LLM)
-    context_aggregator.assistant(), # Assistant context management
-    FrameProcessorMetrics(),       # Optional metrics
-    piper_tts_service,             # Piper TTS
-    FrameLogger("output"),         # Optional debug logging
-    transport.output(),            # WebSocket output
-])
-```
 
 ## 📊 **Performance Expectations**
 

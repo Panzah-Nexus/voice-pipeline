@@ -15,17 +15,6 @@ Ultravox is a breakthrough multimodal LLM that combines Speech-to-Text (STT) and
 
 In Pipecat, Ultravox is implemented as a specialized STT service that also handles the LLM functionality:
 
-```python
-from pipecat.services.ultravox.stt import UltravoxSTTService
-
-# Initialize Ultravox (combines STT + LLM)
-ultravox = UltravoxSTTService(
-    model_size="fixie-ai/ultravox-v0_4_1-llama-3_1-8b",
-    hf_token=os.environ.get("HF_TOKEN"),
-    temperature=0.5,
-    max_tokens=150,
-)
-```
 
 ## Pipeline Architecture
 
@@ -53,15 +42,7 @@ For Cerebrium A10 (24GB VRAM), the 8B model is recommended.
 
 The Ultravox service is configured in `src/pipecat_pipeline.py`:
 
-```python
-# Initialize Ultravox with optimal settings for A10
-stt_service = UltravoxSTTService(
-    model_size="fixie-ai/ultravox-v0_4_1-llama-3_1-8b",
-    hf_token=get_secret("HF_TOKEN"),  # Only for model download
-    temperature=0.5,  # Balance between creativity and accuracy
-    max_tokens=150,   # Reasonable response length
-)
-```
+
 
 ## Air-Gapped Benefits
 
@@ -109,16 +90,7 @@ cerebrium logs voice-pipeline-airgapped | grep "CUDA"
 
 Ultravox outputs text that's passed directly to Piper TTS:
 
-```python
-pipeline = Pipeline([
-    transport.input(),
-    context_aggregator.user(),
-    ultravox_service,  # Processes audio → text response
-    piper_tts,         # Converts text → audio
-    context_aggregator.assistant(),
-    transport.output(),
-])
-```
+
 
 This creates a fully air-gapped voice pipeline with no external dependencies during operation.
 

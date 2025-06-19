@@ -7,7 +7,7 @@ exclude = [".*", "venv", "__pycache__", "*.pyc", "node_modules"]
 
 [cerebrium.runtime.custom]
 port = 8000
-entrypoint = "uvicorn src.pipecat_pipeline:app --host 0.0.0.0 --port 8000"
+entrypoint = "python src/main.py"
 healthcheck_endpoint = "/health"
 readycheck_endpoint = "/ready"
 dockerfile_path = "./docker/Dockerfile"
@@ -22,9 +22,9 @@ region = "eu-west-2"
 
 [cerebrium.scaling]
 min_replicas = 0        # Keep one replica warm to avoid cold starts
-max_replicas = 1
-cooldown = 30
-scaling_buffer = 0      # Keep a spare idle pod
+max_replicas = 2
+cooldown = 300
+max_concurrency = 5
 response_grace_period = 900   # Keep long voice sessions alive (15 min)
 
 [cerebrium.secrets]
@@ -33,13 +33,3 @@ HF_TOKEN = "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"
 PIPER_MODEL = "en_US-lessac-medium"
 PIPER_SAMPLE_RATE = "22050"
 
-# Dependencies are installed in Dockerfile for better control
-# Minimal requirements - many packages are auto-installed as dependencies
-# [cerebrium.dependencies.pip]
-# fastapi = "0.115.5"
-# uvicorn = "0.24.0"
-# python-dotenv = "1.0.0"
-# "pipecat-ai[silero,ultravox]" = "0.0.71"
-# torch = "2.1.2"
-# torchaudio = "2.1.2"
-# librosa = "0.10.1" 

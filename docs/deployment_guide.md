@@ -60,11 +60,7 @@ which python
 # Activate venv
 source venv/bin/activate
 
-# Install lightweight client dependencies
-pip install -r local_client_requirements.txt
 
-# Verify installation
-python -c "import websockets, sounddevice, numpy; print('✅ Client dependencies ready')"
 ```
 
 **For Full Local Testing** (optional - if you want to test server locally):
@@ -218,20 +214,7 @@ export WS_SERVER="wss://your-deployment-id.cerebrium.app/ws"
 python local_client.py
 ```
 
-Expected output:
-```
-🎯 Voice Pipeline Local Client
-========================================
-🔗 Connecting to wss://your-deployment-id.cerebrium.app/ws
-✅ Connected to voice pipeline!
-🎙️ Speak into your microphone. Press Ctrl+C to stop.
-```
 
-### 5.2 Usage Flow
-1. **Speak for ~5 seconds** into your microphone
-2. System shows: `🤖 Processing your speech...`
-3. You hear: `🔊 Playing AI response...`
-4. Continue the conversation!
 
 ## Phase 6: Monitoring and Logs
 

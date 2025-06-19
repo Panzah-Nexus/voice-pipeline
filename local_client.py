@@ -5,191 +5,208 @@ Connects to Cerebrium deployment and streams raw audio.
 """
 
 import asyncio
-import os
-import sys
 import json
+import logging
+import os
+import struct
+import sys
+import time
+from typing import Optional
+
 import numpy as np
 import sounddevice as sd
 import websockets
-import aiohttp
-from typing import Optional
-import logging
-import struct
 
-# Configuration
-WS_SERVER = os.environ.get("WS_SERVER", "wss://api.cortex.cerebrium.ai/v4/p-468ff80b/voice-pipeline-airgapped/ws")
-SAMPLE_RATE = 16000
-CHANNELS = 1
-CHUNK_DURATION = 0.02  # 20ms chunks
-CHUNK_SIZE = int(SAMPLE_RATE * CHUNK_DURATION)
-
-# Setup logging
+# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
 
-class RawAudioClient:
-    def __init__(self):
-        self.websocket: Optional[websockets.WebSocketClientProtocol] = None
-        self.running = False
-        self.audio_queue = asyncio.Queue(maxsize=100)
-        
-    async def check_health(self) -> bool:
-        """Check if the server is healthy."""
-        health_url = WS_SERVER.replace("wss://", "https://").replace("/ws", "/health")
-        try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(health_url, timeout=5) as response:
-                    if response.status == 200:
-                        logger.info("✅ Server health check passed")
-                        return True
-                    else:
-                        logger.error(f"❌ Server returned status {response.status}")
-                        return False
-        except Exception as e:
-            logger.error(f"❌ Health check failed: {e}")
-            return False
+# Audio configuration
+SAMPLE_RATE = 16000
+CHANNELS = 1
+CHUNK_DURATION = 0.1  # 100ms chunks
+CHUNK_SIZE = int(SAMPLE_RATE * CHUNK_DURATION)
+DTYPE = np.int16
+
+
+class VoicePipelineClient:
+    """WebSocket client for voice pipeline."""
     
-    def audio_callback(self, indata, frames, time, status):
+    def __init__(self, ws_url: str):
+        self.ws_url = ws_url
+        self.websocket = None
+        self.audio_queue = asyncio.Queue()
+        self.is_running = False
+        self.output_stream = None
+        
+    async def connect(self):
+        """Connect to WebSocket server."""
+        logger.info(f"Connecting to {self.ws_url}")
+        self.websocket = await websockets.connect(self.ws_url)
+        logger.info("Connected to voice pipeline!")
+        
+    async def disconnect(self):
+        """Disconnect from WebSocket server."""
+        if self.websocket:
+            await self.websocket.close()
+            logger.info("Disconnected from voice pipeline")
+            
+    def audio_callback(self, indata, frames, time_info, status):
         """Callback for audio input stream."""
         if status:
-            logger.warning(f"Audio status: {status}")
+            logger.warning(f"Audio input status: {status}")
         
-        # Convert to 16-bit PCM
-        audio_data = (indata * 32767).astype(np.int16).tobytes()
-        
-        # Put in queue without blocking
+        # Put audio data in queue
         try:
-            self.audio_queue.put_nowait(audio_data)
+            self.audio_queue.put_nowait(indata.copy())
         except asyncio.QueueFull:
-            pass  # Drop frame if queue is full
-    
-    async def send_audio_task(self):
-        """Send audio frames to the server."""
-        logger.info("🎤 Starting audio sender...")
+            logger.warning("Audio queue full, dropping frame")
+            
+    async def send_audio(self):
+        """Send audio from microphone to server."""
+        logger.info("Starting audio capture...")
         
-        while self.running:
-            try:
-                # Get audio from queue
-                audio_data = await asyncio.wait_for(self.audio_queue.get(), timeout=0.1)
-                
-                # Send raw audio bytes
-                await self.websocket.send(audio_data)
-                
-            except asyncio.TimeoutError:
-                continue
-            except Exception as e:
-                if self.running:
-                    logger.error(f"Send error: {e}")
-                break
-    
-    async def receive_audio_task(self):
-        """Receive and play audio from the server."""
-        logger.info("🔊 Starting audio receiver...")
-        
-        while self.running:
-            try:
-                # Receive data
-                data = await self.websocket.recv()
-                
-                if isinstance(data, bytes) and len(data) > 0:
-                    # Assume it's raw audio and play it
-                    try:
-                        audio_array = np.frombuffer(data, dtype=np.int16)
-                        audio_float = audio_array.astype(np.float32) / 32767.0
-                        sd.play(audio_float, SAMPLE_RATE)
-                    except Exception as e:
-                        logger.debug(f"Audio playback error: {e}")
-                        
-                elif isinstance(data, str):
-                    # Log text messages
-                    logger.info(f"📝 Server message: {data}")
+        # Open microphone stream
+        with sd.InputStream(
+            samplerate=SAMPLE_RATE,
+            channels=CHANNELS,
+            dtype=DTYPE,
+            callback=self.audio_callback,
+            blocksize=CHUNK_SIZE
+        ):
+            while self.is_running:
+                try:
+                    # Get audio from queue
+                    audio_data = await self.audio_queue.get()
                     
-            except websockets.exceptions.ConnectionClosed:
-                logger.warning("Connection closed")
-                break
-            except Exception as e:
-                if self.running:
-                    logger.error(f"Receive error: {e}")
-                break
-    
-    async def run(self):
-        """Run the voice client."""
-        # Optional health check
-        await self.check_health()
+                    # Prepare message
+                    message = {
+                        "type": "audio",
+                        "data": audio_data.tobytes().hex(),
+                        "sample_rate": SAMPLE_RATE,
+                        "channels": CHANNELS
+                    }
+                    
+                    # Send to server
+                    await self.websocket.send(json.dumps(message))
+                    
+                except Exception as e:
+                    logger.error(f"Error sending audio: {e}")
+                    break
+                    
+    async def receive_audio(self):
+        """Receive and play audio from server."""
+        logger.info("Ready to receive audio...")
         
-        logger.info(f"🔌 Connecting to {WS_SERVER}...")
+        # Open speaker stream
+        self.output_stream = sd.OutputStream(
+            samplerate=SAMPLE_RATE,
+            channels=CHANNELS,
+            dtype=DTYPE
+        )
+        self.output_stream.start()
         
         try:
-            async with websockets.connect(WS_SERVER) as websocket:
-                self.websocket = websocket
-                self.running = True
-                
-                logger.info("✅ Connected! Start speaking...")
-                logger.info("Press Ctrl+C to stop\n")
-                
-                # Start audio input stream
-                stream = sd.InputStream(
-                    channels=CHANNELS,
-                    samplerate=SAMPLE_RATE,
-                    callback=self.audio_callback,
-                    blocksize=CHUNK_SIZE,
-                    dtype='float32'
-                )
-                
-                with stream:
-                    # Run send and receive tasks
-                    tasks = [
-                        asyncio.create_task(self.send_audio_task()),
-                        asyncio.create_task(self.receive_audio_task()),
-                    ]
+            while self.is_running:
+                try:
+                    # Receive message
+                    message = await self.websocket.recv()
                     
-                    try:
-                        await asyncio.gather(*tasks)
-                    except KeyboardInterrupt:
-                        logger.info("\n👋 Shutting down...")
+                    # Parse message
+                    if isinstance(message, str):
+                        data = json.loads(message)
                         
-        except websockets.exceptions.InvalidStatusCode as e:
-            logger.error(f"❌ Connection failed: {e}")
-            logger.error("The server might be expecting a different protocol.")
-        except Exception as e:
-            logger.error(f"❌ Error: {e}")
+                        if data.get("type") == "audio":
+                            # Decode audio data
+                            audio_bytes = bytes.fromhex(data["data"])
+                            audio_data = np.frombuffer(audio_bytes, dtype=DTYPE)
+                            
+                            # Play audio
+                            self.output_stream.write(audio_data)
+                            
+                        elif data.get("type") == "transcript":
+                            logger.info(f"Transcript: {data.get('text', '')}")
+                            
+                        elif data.get("type") == "message":
+                            logger.info(f"Message: {data.get('message', '')}")
+                            
+                    else:
+                        # Binary message (raw audio)
+                        audio_data = np.frombuffer(message, dtype=DTYPE)
+                        self.output_stream.write(audio_data)
+                        
+                except websockets.exceptions.ConnectionClosed:
+                    logger.info("Connection closed by server")
+                    break
+                except Exception as e:
+                    logger.error(f"Error receiving audio: {e}")
+                    
         finally:
-            self.running = False
-            logger.info("Client stopped")
+            if self.output_stream:
+                self.output_stream.stop()
+                self.output_stream.close()
+                
+    async def run(self):
+        """Run the voice pipeline client."""
+        try:
+            await self.connect()
+            self.is_running = True
+            
+            # Start send and receive tasks
+            send_task = asyncio.create_task(self.send_audio())
+            receive_task = asyncio.create_task(self.receive_audio())
+            
+            # Wait for tasks
+            await asyncio.gather(send_task, receive_task)
+            
+        except KeyboardInterrupt:
+            logger.info("Interrupted by user")
+        except Exception as e:
+            logger.error(f"Client error: {e}")
+        finally:
+            self.is_running = False
+            await self.disconnect()
+
 
 def main():
     """Main entry point."""
-    print("🎯 Raw Audio Voice Pipeline Client")
+    print("🎯 Voice Pipeline Local Client")
     print("=" * 40)
     
-    if WS_SERVER.startswith("ws://localhost"):
-        print("⚠️  Using localhost server. For Cerebrium deployment, set:")
-        print("   export WS_SERVER='wss://api.cortex.cerebrium.ai/v4/p-468ff80b/voice-pipeline-airgapped/ws'")
-        print()
-    else:
-        print(f"🌐 Server: {WS_SERVER}")
-        print()
-    
-    # List audio devices
-    print("🎤 Available Audio Devices:")
-    print("-" * 50)
-    devices = sd.query_devices()
-    for i, device in enumerate(devices):
-        if device['max_input_channels'] > 0:
-            print(f"  [{i}] {device['name']} (inputs: {device['max_input_channels']})")
+    # Get WebSocket URL
+    ws_url = os.environ.get("WS_SERVER")
+    if not ws_url:
+        print("❌ Error: WS_SERVER environment variable not set!")
+        print("Please set: export WS_SERVER='wss://your-deployment.cerebrium.app/ws'")
+        sys.exit(1)
+        
+    print(f"🔗 Server: {ws_url}")
+    print("🎙️ Speak into your microphone. Press Ctrl+C to stop.")
     print()
     
+    # Check audio devices
     try:
-        client = RawAudioClient()
+        devices = sd.query_devices()
+        logger.info(f"Default input device: {sd.query_devices(kind='input')['name']}")
+        logger.info(f"Default output device: {sd.query_devices(kind='output')['name']}")
+    except Exception as e:
+        logger.error(f"Audio device error: {e}")
+        print("❌ Error: Could not access audio devices!")
+        print("Make sure you have a microphone and speakers connected.")
+        sys.exit(1)
+    
+    # Create and run client
+    client = VoicePipelineClient(ws_url)
+    
+    try:
         asyncio.run(client.run())
     except KeyboardInterrupt:
         print("\n👋 Goodbye!")
-    except Exception as e:
-        logger.error(f"❌ Unexpected error: {e}")
-        sys.exit(1)
+
 
 if __name__ == "__main__":
-    main() 
+    main()
+

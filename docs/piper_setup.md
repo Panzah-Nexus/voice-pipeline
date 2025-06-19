@@ -15,43 +15,10 @@ Piper is a fast, local neural text-to-speech system that:
 
 Piper is integrated as a TTS service in the Pipecat framework:
 
-```python
-from pipecat.services.piper.tts import PiperTTSService
-import aiohttp
-
-# Initialize Piper TTS
-async def create_piper_tts():
-    session = aiohttp.ClientSession()
-    
-    tts_service = PiperTTSService(
-        base_url="http://localhost:5000/api/tts",  # Local Piper server
-        aiohttp_session=session,
-        sample_rate=22050
-    )
-    return tts_service
-```
 
 ## Running Piper Server
 
-### Option 1: Docker (Recommended)
-```bash
-# Start Piper TTS server locally
-docker run -d \
-  --name piper-tts \
-  -p 5000:5000 \
-  -v piper-models:/models \
-  rhasspy/piper:latest \
-  --model en_US-lessac-medium
-```
 
-### Option 2: Python Package
-```bash
-# Install Piper
-pip install piper-tts
-
-# Run server
-piper --model en_US-lessac-medium.onnx --http-server 5000
-```
 
 ## Available Voices
 
@@ -83,15 +50,7 @@ PIPER_SAMPLE_RATE = "22050"          # Audio quality
 
 Piper receives text from Ultravox and generates audio:
 
-```python
-# In the Pipecat pipeline
-pipeline = Pipeline([
-    transport.input(),           # Audio from user
-    ultravox_service,           # Audio → Text response
-    piper_tts,                  # Text → Audio
-    transport.output(),         # Audio to user
-])
-```
+
 
 ## Performance Optimization
 
@@ -111,26 +70,7 @@ Piper automatically uses GPU when available:
 - High models: ~200MB
 - Low models: ~50MB
 
-## Troubleshooting
 
-### Piper Server Not Found
-```bash
-# Check if Piper is running
-curl http://localhost:5000/health
-
-# If not, start the server:
-docker run -p 5000:5000 rhasspy/piper:latest
-```
-
-### Voice Model Issues
-```bash
-# List available models
-curl http://localhost:5000/models
-
-# Download specific model
-curl -o en_US-amy-medium.onnx \
-  https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/amy/medium/en_US-amy-medium.onnx
-```
 
 ### Audio Quality Issues
 - Increase sample rate to 44100 for higher quality
@@ -146,30 +86,8 @@ For fully air-gapped operation:
 3. **No Internet**: Once deployed, no external connections needed
 4. **Data Privacy**: All synthesis happens on your infrastructure
 
-## Advanced Configuration
 
-### Custom Voices
-```python
-# Use different voice per response
-tts_service = PiperTTSService(
-    voice_id="en_GB-jenny_dioco-medium",  # British female
-    speed=1.1,  # Slightly faster
-    pause_ms=500,  # Pause between sentences
-)
-```
 
-### Multi-language Support
-```python
-# Switch languages dynamically
-voices = {
-    "en": "en_US-amy-medium",
-    "es": "es_ES-davefx-medium",
-    "fr": "fr_FR-siwis-medium",
-}
-
-# Select based on detected language
-tts_service.set_voice(voices[detected_lang])
-```
 
 ## Comparison with Cloud TTS
 

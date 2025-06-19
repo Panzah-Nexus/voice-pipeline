@@ -66,22 +66,6 @@ pip install requirements.txt      # Wrong file (too heavy)
 pip install -g websockets         # Global install (conflicts)
 ```
 
-### Daily Commands
-```bash
-# Start voice session
-voice-start() {
-    cd /path/to/voice-pipeline
-    source venv/bin/activate
-    export WS_SERVER="wss://your-deployment-id.cerebrium.app/ws"
-    python local_client.py
-}
-
-# Quick troubleshoot
-voice-check() {
-    echo "Virtual env: $VIRTUAL_ENV"
-    which python
-    python -c "import websockets, sounddevice; print('✅ Dependencies OK')"
-}
 ```
 
 ## 📚 Complete Documentation
@@ -125,11 +109,11 @@ LOCAL MACHINE (CPU Only)           CEREBRIUM CLOUD (A10 GPU)
 │  │   • sounddevice     ││       │  │   • torch                       ││
 │  │   • numpy           ││       │  │   • transformers                ││
 │  └─────────────────────┘│       │  │   • piper-tts                   ││
-│                         │       │  │   • onnxruntime-gpu             ││
+│                         │       │  │                                 ││
 │  🎙️ Microphone Input    │       │  └─────────────────────────────────┘│
 │  🔊 Speaker Output      │       │                                     │
 │  📡 WebSocket Client    │       │  🤖 Ultravox (STT+LLM Combined)     │
-└─────────────────────────┘       │  🔊 Piper TTS (Local GPU)           │
+└─────────────────────────┘       │  🔊 Piper TTS                       │
                                   └─────────────────────────────────────┘
 ```
 
@@ -266,20 +250,6 @@ source venv/bin/activate
 pip install -r local_client_requirements.txt --upgrade
 ```
 
-### System Updates
-```bash
-# Update local client code
-git pull origin main
-
-# Update server deployment
-cerebrium deploy
-
-# Test with updated environment
-source venv/bin/activate
-python local_client.py
-```
-
----
 
 ## 🎯 Ready to Start?
 

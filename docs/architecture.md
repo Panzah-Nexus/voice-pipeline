@@ -11,10 +11,10 @@ The voice pipeline consists of two main components:
 ## Architecture Diagram
 
 ```
-┌─────────────────┐    WebSocket/WSS     ┌─────────────────────────────────────┐
-│   LOCAL CLIENT  │ ◄────────────────── ► │           CEREBRIUM A10             │
-│   (CPU Only)    │                      │          AIR-GAPPED                 │
-│                 │                      │                                     │
+┌─────────────────┐    WebSocket/WSS     ┌────────────────────────────────────┐
+│   LOCAL CLIENT  │ ◄────────────────── ►│           CEREBRIUM A10            │
+│   (CPU Only)    │                      │          AIR-GAPPED                │
+│                 │                      │                                    │
 │ ┌─────────────┐ │                      │  ┌─────────────────────────────┐   │
 │ │ Microphone  │ │                      │  │    PIPECAT FRAMEWORK        │   │
 │ │   Input     │ │                      │  │                             │   │
@@ -33,7 +33,7 @@ The voice pipeline consists of two main components:
                                          │  │  │  - 50+ Languages      │  │   │
                                          │  │  └───────────────────────┘  │   │
                                          │  └─────────────────────────────┘   │
-                                         └─────────────────────────────────────┘
+                                         └────────────────────────────────────┘
 ```
 
 ## Data Flow

@@ -1,19 +1,17 @@
-# Core essentials
-fastapi==0.115.5
+# Core Pipecat framework with Ultravox support
+pipecat-ai[ultravox]==0.0.40
+
+# FastAPI for WebSocket server
+fastapi==0.104.1
 uvicorn[standard]==0.24.0
-python-dotenv==1.0.0
 
-# Pipecat with required features (will install correct torch version)
-pipecat-ai[silero,ultravox]==0.0.71
-
-# Additional dependencies
+# Audio processing
+numpy==1.24.3
+scipy==1.11.4
 librosa==0.10.1
-requests>=2.31.0
-websockets>=12.0
-numpy>=1.26.4
-scipy>=1.11.4
 
-# For GPU support with Piper models (optional but recommended)
-# onnxruntime-gpu>=1.16.3
+# Async support
+websockets==12.0
 
-
+# For Piper TTS subprocess
+aiofiles==23.2.1

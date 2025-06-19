@@ -27,11 +27,3 @@ Consolidated Pipecat-compatible TTS service that:
 2. **Simplified TTS**: We use a direct subprocess approach instead of the official Pipecat Piper service to avoid HTTP server complexity
 3. **Cerebrium Deployment**: Models are pre-downloaded during container build for fast startup
 
-## Removed Files
-
-The following files were removed during cleanup:
-- `local_piper_tts.py` - Redundant wrapper, functionality merged into `piper_tts_service.py`
-- `piper_service.py` - Lower-level implementation, merged into `piper_tts_service.py`
-- `debug_websocket_handler.py` - Unused debugging code
-
-Test utilities have been moved to the `utils/` directory. 

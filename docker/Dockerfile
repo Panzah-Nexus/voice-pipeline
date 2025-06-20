@@ -1,14 +1,22 @@
 # Use NVIDIA CUDA base image for A10 GPU
 FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
 
-# Install system dependencies
+# Install system dependencies including SSH server
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3.10 python3.10-dev python3-pip \
     gcc g++ build-essential \
     curl wget \
     ffmpeg \
     libsndfile1 \
+    openssh-server \
+    git \
     && rm -rf /var/lib/apt/lists/*
+
+# Configure SSH
+RUN mkdir /var/run/sshd
+RUN echo 'root:runpod' | chpasswd
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' /etc/pam.d/sshd
 
 # Set Python 3.10 as default
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1 && \
@@ -50,8 +58,19 @@ RUN cd /models && \
 # Copy source code
 COPY src/ ./src/
 
-# Expose port
-EXPOSE 8000
+# Create startup script that starts SSH and the app
+RUN cat > /app/start.sh << 'EOF'
+#!/bin/bash
+# Start SSH daemon
+service ssh start
+# Start the voice pipeline server
+exec python src/main.py
+EOF
 
-# Start the voice pipeline server using main.py
-CMD ["python", "src/main.py"]
+RUN chmod +x /app/start.sh
+
+# Expose ports
+EXPOSE 22 8000
+
+# Start both SSH and the app
+CMD ["/app/start.sh"]

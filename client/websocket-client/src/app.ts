@@ -139,7 +139,7 @@ class WebsocketClientApp {
         transport,
         params: {
           // The baseURL and endpoint of your bot server that the client will connect to
-          baseUrl: 'https://oxavcaqh64pgs2-8000.proxy.runpod.net',
+          baseUrl: 'https://apn469bupvpxvs-8000.proxy.runpod.net',
           endpoints: { connect: '/connect' },
         },
         enableMic: true,
@@ -176,7 +176,7 @@ class WebsocketClientApp {
       this.log('Initializing devices...');
       await this.rtviClient.initDevices();
 
-      this.log('Connecting to bot at: https://oxavcaqh64pgs2-8000.proxy.runpod.net/connect');
+      this.log('Connecting to bot at: https://apn469bupvpxvs-8000.proxy.runpod.net/connect');
       await this.rtviClient.connect();
 
       const timeTaken = Date.now() - startTime;

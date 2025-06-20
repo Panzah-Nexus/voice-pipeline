@@ -1,37 +1,24 @@
 """
-Air-gapped Pipecat pipeline with RTVI compatibility for Runpod deployment
-=========================================================================
-This script provides an RTVI-compatible WebSocket server that works with
+Air-gapped Pipecat bot with RTVI compatibility for Runpod deployment
+====================================================================
+This module provides the run_bot function that works with
 the standard Pipecat web clients, while running completely air-gapped models:
 
 * **UltravoxSTTService** – combined STT + LLM (local)
 * **PiperTTSService**   – offline TTS (local)
 
 All AI processing happens on Runpod GPU infrastructure without external API calls.
-
-Run directly:
-```bash
-python src/pipecat_pipeline.py  # uvicorn starts on 0.0.0.0:8000
-```
 """
-
-from __future__ import annotations
 
 import os
 import sys
-import logging
-from contextlib import asynccontextmanager
 
 from loguru import logger
-
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Request
-from fastapi.middleware.cors import CORSMiddleware
 
 from pipecat.audio.vad.silero import SileroVADAnalyzer
 from pipecat.pipeline.pipeline import Pipeline
 from pipecat.pipeline.runner import PipelineRunner
 from pipecat.pipeline.task import PipelineParams, PipelineTask
-from pipecat.processors.aggregators.openai_llm_context import OpenAILLMContext
 from pipecat.processors.frameworks.rtvi import RTVIConfig, RTVIObserver, RTVIProcessor
 from pipecat.serializers.protobuf import ProtobufFrameSerializer
 from pipecat.transports.network.fastapi_websocket import (
@@ -51,7 +38,7 @@ except ImportError:
 # Initialisation & configuration
 # ---------------------------------------------------------------------------
 # Configure loguru logger
-logger.remove()
+logger.remove(0)
 logger.add(sys.stderr, level="DEBUG")
 
 # Configuration from environment variables
@@ -80,12 +67,6 @@ try:
 except Exception as e:
     logger.error(f"Could not initialise Ultravox. Check HF_TOKEN and GPU: {e}")
     ULTRAVOX = None  # we fail later with a clearer message
-
-
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    """Handles FastAPI startup and shutdown."""
-    yield  # Run app
 
 
 async def run_bot(websocket_client):
@@ -151,60 +132,3 @@ async def run_bot(websocket_client):
     # ---------- Runner ----------
     runner = PipelineRunner(handle_sigint=False)
     await runner.run(task)
-
-
-# ---------------------------------------------------------------------------
-# FastAPI app
-# ---------------------------------------------------------------------------
-app = FastAPI(title="Voice Pipeline - Air-gapped", lifespan=lifespan)
-
-# Allow cross-origin requests from the browser-based WebSocket client
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-
-@app.get("/")
-async def root():
-    """Root endpoint with basic info."""
-    return {
-        "service": "Voice Pipeline - Air-gapped",
-        "status": "ready",
-        "components": {
-            "stt_llm": "Ultravox v0.5 (Llama-3-8B)",
-            "tts": PIPER_MODEL,
-            "framework": "Pipecat + RTVI"
-        }
-    }
-
-
-@app.post("/connect")
-async def bot_connect(request: Request):
-    """Connect endpoint - returns WebSocket connection details."""
-    # For Runpod deployment, use the provided URL
-    ws_url = "wss://oxavcaqh64pgs2-8000.proxy.runpod.net/ws"
-    logger.info(f"Connect request - returning WebSocket URL: {ws_url}")
-    return {"ws_url": ws_url}
-
-
-@app.websocket("/ws")
-async def websocket_endpoint(websocket: WebSocket):
-    """WebSocket endpoint for RTVI-compatible voice pipeline."""
-    await websocket.accept()
-    logger.info("WebSocket connection accepted")
-    try:
-        await run_bot(websocket)
-    except WebSocketDisconnect:
-        logger.info("WebSocket disconnected by client.")
-    except Exception as e:
-        logger.error(f"Exception in run_bot: {e}", exc_info=True)
-
-
-# ---------------------------------------------------------------------------
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("src.pipecat_pipeline:app", host="0.0.0.0", port=8000, reload=False)

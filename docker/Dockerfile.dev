@@ -1,8 +1,17 @@
 # Development Dockerfile for fast iteration
 FROM mlbra2006/voice-pipeline-airgapped:latest
 
-# Install git for code updates
-RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+# Install git and SSH server for development access
+RUN apt-get update && apt-get install -y \
+    git \
+    openssh-server \
+    && rm -rf /var/lib/apt/lists/*
+
+# Configure SSH
+RUN mkdir /var/run/sshd
+RUN echo 'root:runpod' | chpasswd
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' /etc/pam.d/sshd
 
 # Remove the baked-in source code
 RUN rm -rf /app/src/
@@ -10,20 +19,39 @@ RUN rm -rf /app/src/
 # Create startup script for development
 RUN cat > /app/dev_start.sh << 'EOF'
 #!/bin/bash
+set -e
 
-# Option 1: Clone/update from git (if you push changes)
+# Start SSH daemon
+service ssh start
+
+echo "🔧 Development mode starting..."
+
+# Check if we have git credentials
+if [ -z "$GIT_TOKEN" ] || [ -z "$GIT_USER" ] || [ -z "$GIT_REPO" ]; then
+    echo "❌ Missing git credentials. Please set:"
+    echo "   GIT_USER=your_github_username"
+    echo "   GIT_TOKEN=your_personal_access_token"
+    echo "   GIT_REPO=your_repo_name (e.g., voice-pipeline)"
+    exit 1
+fi
+
+# Construct the authenticated git URL
+GIT_URL="https://${GIT_USER}:${GIT_TOKEN}@github.com/${GIT_USER}/${GIT_REPO}.git"
+
+# Clone or update source code
 if [ ! -d "/app/voice-pipeline-src" ]; then
     echo "🔄 Cloning latest source code..."
-    git clone https://github.com/YOUR_REPO/voice-pipeline.git /app/voice-pipeline-src
+    git clone "$GIT_URL" /app/voice-pipeline-src
 else
     echo "🔄 Updating source code..."
     cd /app/voice-pipeline-src && git pull
 fi
 
-# Copy to working directory
+# Copy source to working directory
+echo "📁 Copying source code..."
 cp -r /app/voice-pipeline-src/src /app/
 
-# Option 2: Check for volume-mounted source (for local development)
+# Option for volume-mounted source (local development)
 if [ -d "/workspace/src" ]; then
     echo "📁 Using volume-mounted source code..."
     cp -r /workspace/src /app/
@@ -34,6 +62,9 @@ cd /app && python src/main.py
 EOF
 
 RUN chmod +x /app/dev_start.sh
+
+# Expose SSH port
+EXPOSE 22 8000
 
 # Default command for development
 CMD ["/app/dev_start.sh"] 

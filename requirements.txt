@@ -1,10 +1,14 @@
-# Core Pipecat framework with Ultravox support
-pipecat-ai[ultravox,websocket,silero]==0.0.71
+# Core Pipecat with Ultravox + WebSocket server + Silero VAD
+pipecat-ai[ultravox,websocket,silero]
 
-# FastAPI for WebSocket server
-uvicorn[standard]==0.29.0
+# Kokoro (PyTorch build, ≈ 0.5.2 or newer auto-discovers weights in $KOKORO_HOME)
+kokoro>=0.9.4
 
+# FastAPI / Uvicorn
+uvicorn[standard]
 
-# For Piper TTS subprocess
-aiofiles==23.2.1
+# Audio helpers
+soundfile>=0.12.1
 
+# Optional GPU-side 8-bit quantisation (saves VRAM if you need it)
+bitsandbytes

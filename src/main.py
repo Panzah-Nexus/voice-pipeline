@@ -58,7 +58,7 @@ async def root():
         "status": "ready",
         "components": {
             "stt_llm": "Ultravox v0.5 (Llama-3-8B)",
-            "tts": "en_US-lessac-medium",
+            "tts": os.getenv("KOKORO_VOICE_ID", "af_sarah"),
             "framework": "Pipecat + RTVI"
         }
     }

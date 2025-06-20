@@ -1,11 +1,10 @@
 """
 Air-gapped Pipecat bot with RTVI compatibility for Runpod deployment
 ====================================================================
-This module provides the run_bot function that works with
-the standard Pipecat web clients, while running completely air-gapped models:
+This module wires together:
 
 * **UltravoxSTTService** – combined STT + LLM (local)
-* **PiperTTSService**   – offline TTS (local)
+* **KokoroTTSService**   – offline TTS (local)
 
 All AI processing happens on Runpod GPU infrastructure without external API calls.
 """
@@ -28,11 +27,8 @@ from pipecat.transports.network.fastapi_websocket import (
 
 from pipecat.services.ultravox.stt import UltravoxSTTService
 
-# Import PiperTTSService - handle both direct run and import from main.py
-try:
-    from src.piper_tts_service import PiperTTSService
-except ImportError:
-    from piper_tts_service import PiperTTSService
+# Kokoro TTS service (preferred over Piper)
+from src.kokoro_tts_service import KokoroTTSService
 
 # ---------------------------------------------------------------------------
 # Initialisation & configuration
@@ -43,8 +39,10 @@ logger.add(sys.stderr, level="DEBUG")
 
 # Configuration from environment variables
 HF_TOKEN: str = os.getenv("HF_TOKEN", "")
-PIPER_MODEL: str = os.getenv("PIPER_MODEL", "en_US-lessac-medium")
-SAMPLE_RATE: int = 16_000
+KOKORO_MODEL_PATH: str = os.getenv("KOKORO_MODEL_PATH", "/models/kokoro/model_fp16.onnx")
+KOKORO_VOICES_PATH: str = os.getenv("KOKORO_VOICES_PATH", "/models/kokoro/voices-v1.0.bin")
+KOKORO_VOICE_ID: str = os.getenv("KOKORO_VOICE_ID", "af_sarah")
+SAMPLE_RATE: int = int(os.getenv("KOKORO_SAMPLE_RATE", "24000"))
 
 SYSTEM_INSTRUCTION: str = (
     "You are an AI assistant running entirely on local infrastructure. "
@@ -90,13 +88,18 @@ async def run_bot(websocket_client):
         ),
     )
 
-    # 2️⃣ Local TTS (Piper)
-    tts = PiperTTSService(model=PIPER_MODEL, sample_rate=SAMPLE_RATE)
+    # 2️⃣ Local TTS (Kokoro)
+    tts = KokoroTTSService(
+        model_path=KOKORO_MODEL_PATH,
+        voices_path=KOKORO_VOICES_PATH,
+        voice_id=KOKORO_VOICE_ID,
+        sample_rate=SAMPLE_RATE,
+    )
 
     # 3️⃣ RTVI signalling layer – required for Pipecat web client
     rtvi = RTVIProcessor(config=RTVIConfig(config=[]))
 
-    # 4️⃣ Assemble minimalist pipeline: User audio -> Ultravox -> Piper -> output
+    # 4️⃣ Assemble minimalist pipeline: User audio -> Ultravox -> Kokoro -> output
     pipeline = Pipeline(
         [
             ws_transport.input(),

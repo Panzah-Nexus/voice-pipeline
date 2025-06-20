@@ -77,11 +77,22 @@ async def websocket_endpoint(websocket: WebSocket):
 @app.post("/connect")
 async def bot_connect(request: Request) -> Dict[Any, Any]:
     """Connect endpoint - returns WebSocket connection details."""
-    # Dynamically determine the WebSocket URL from the request
-    host = request.headers.get("host", "localhost:8000")
-    scheme = "wss" if request.url.scheme == "https" else "ws"
-    ws_url = f"{scheme}://{host}/ws"
+    # Check if we're running on Runpod by looking for proxy headers
+    x_forwarded_host = request.headers.get("x-forwarded-host")
+    x_forwarded_proto = request.headers.get("x-forwarded-proto")
+    
+    if x_forwarded_host and "proxy.runpod.net" in x_forwarded_host:
+        # We're on Runpod, use the forwarded host
+        scheme = "wss" if x_forwarded_proto == "https" else "wss"  # Always use wss for Runpod
+        ws_url = f"{scheme}://{x_forwarded_host}/ws"
+    else:
+        # Local development or other deployment
+        host = request.headers.get("host", "localhost:8000")
+        scheme = "wss" if request.url.scheme == "https" else "ws"
+        ws_url = f"{scheme}://{host}/ws"
+    
     logging.info(f"Connect request - returning WebSocket URL: {ws_url}")
+    logging.info(f"Request headers: x-forwarded-host={x_forwarded_host}, x-forwarded-proto={x_forwarded_proto}")
     return {"ws_url": ws_url}
 
 

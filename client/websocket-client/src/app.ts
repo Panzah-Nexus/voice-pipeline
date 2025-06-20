@@ -123,6 +123,11 @@ class WebsocketClientApp {
       if (oldTrack?.id === track.id) return;
     }
     this.botAudio.srcObject = new MediaStream([track]);
+    
+    // Ensure audio plays immediately
+    this.botAudio.play().catch(error => {
+      this.log(`Audio autoplay blocked: ${error.message}`);
+    });
   }
 
   /**
@@ -154,7 +159,7 @@ class WebsocketClientApp {
             this.updateStatus('Disconnected');
             if (this.connectBtn) this.connectBtn.disabled = false;
             if (this.disconnectBtn) this.disconnectBtn.disabled = true;
-            this.log('Client disconnected');
+            this.log('Client disconnected - you can reconnect anytime');
           },
           onBotReady: (data) => {
             this.log(`Bot ready: ${JSON.stringify(data)}`);

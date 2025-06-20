@@ -48,8 +48,8 @@ SAMPLE_RATE: int = 16_000
 
 SYSTEM_INSTRUCTION: str = (
     "You are an AI assistant running entirely on local infrastructure. "
-    "Greet the user warmly and keep responses concise – no more than two "
-    "sentences. Avoid special characters so the TTS remains clear."
+    "When the user first connects, greet them warmly with 'Hello! I'm your AI assistant. How can I help you today?' "
+    "Keep all responses concise – no more than two sentences. Avoid special characters so the TTS remains clear."
 )
 
 # ---------------------------------------------------------------------------
@@ -62,6 +62,7 @@ try:
         hf_token=HF_TOKEN,
         temperature=0.6,
         max_tokens=150,
+        system_instruction=SYSTEM_INSTRUCTION,
     )
     logger.info("Ultravox model initialized successfully!")
 except Exception as e:
@@ -117,8 +118,7 @@ async def run_bot(websocket_client):
     async def on_client_ready(rtvi):
         logger.info("Pipecat client ready.")
         await rtvi.set_bot_ready()
-        # Send an initial greeting via TTS once pipeline ready
-        await tts.say("Hello! I'm your AI assistant. How can I help you today?")
+        # Pipeline is ready - initial greeting will happen when user speaks
 
     @ws_transport.event_handler("on_client_connected")
     async def on_client_connected(transport, client):

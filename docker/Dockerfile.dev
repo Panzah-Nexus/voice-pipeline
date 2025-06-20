@@ -1,0 +1,39 @@
+# Development Dockerfile for fast iteration
+FROM mlbra2006/voice-pipeline-airgapped:latest
+
+# Install git for code updates
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+
+# Remove the baked-in source code
+RUN rm -rf /app/src/
+
+# Create startup script for development
+RUN cat > /app/dev_start.sh << 'EOF'
+#!/bin/bash
+
+# Option 1: Clone/update from git (if you push changes)
+if [ ! -d "/app/voice-pipeline-src" ]; then
+    echo "🔄 Cloning latest source code..."
+    git clone https://github.com/YOUR_REPO/voice-pipeline.git /app/voice-pipeline-src
+else
+    echo "🔄 Updating source code..."
+    cd /app/voice-pipeline-src && git pull
+fi
+
+# Copy to working directory
+cp -r /app/voice-pipeline-src/src /app/
+
+# Option 2: Check for volume-mounted source (for local development)
+if [ -d "/workspace/src" ]; then
+    echo "📁 Using volume-mounted source code..."
+    cp -r /workspace/src /app/
+fi
+
+echo "🚀 Starting voice pipeline..."
+cd /app && python src/main.py
+EOF
+
+RUN chmod +x /app/dev_start.sh
+
+# Default command for development
+CMD ["/app/dev_start.sh"] 

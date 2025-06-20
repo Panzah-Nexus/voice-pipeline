@@ -3,7 +3,11 @@
 import os
 import sys
 import logging
+import tracemalloc
 from pathlib import Path
+
+# Enable tracemalloc for debugging
+tracemalloc.start()
 
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent.parent))

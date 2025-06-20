@@ -1,168 +1,210 @@
 """
-Air-gapped voice pipeline with enhanced Pipecat components
-Ultravox (STT + LLM) ▶ Piper (TTS)
-Everything runs locally on a Cerebrium A10.
+Air-gapped Pipecat pipeline with RTVI compatibility for Runpod deployment
+=========================================================================
+This script provides an RTVI-compatible WebSocket server that works with
+the standard Pipecat web clients, while running completely air-gapped models:
 
-NOTE: This pipeline requires GPU resources to run efficiently.
-The Ultravox model is compute-intensive and performs best with GPU acceleration.
-Based on the official Pipecat Ultravox example.
+* **UltravoxSTTService** – combined STT + LLM (local)
+* **PiperTTSService**   – offline TTS (local)
+
+All AI processing happens on Runpod GPU infrastructure without external API calls.
+
+Run directly:
+```bash
+python src/pipecat_pipeline.py  # uvicorn starts on 0.0.0.0:8000
+```
 """
 
+from __future__ import annotations
+
 import os
+import sys
 import logging
+from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+from loguru import logger
 
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Request
+from fastapi.middleware.cors import CORSMiddleware
+
+from pipecat.audio.vad.silero import SileroVADAnalyzer
 from pipecat.pipeline.pipeline import Pipeline
 from pipecat.pipeline.runner import PipelineRunner
 from pipecat.pipeline.task import PipelineParams, PipelineTask
+from pipecat.processors.aggregators.openai_llm_context import OpenAILLMContext
+from pipecat.processors.frameworks.rtvi import RTVIConfig, RTVIObserver, RTVIProcessor
+from pipecat.serializers.protobuf import ProtobufFrameSerializer
+from pipecat.transports.network.fastapi_websocket import (
+    FastAPIWebsocketParams,
+    FastAPIWebsocketTransport,
+)
+
 from pipecat.services.ultravox.stt import UltravoxSTTService
-from pipecat.transports.network.fastapi_websocket import FastAPIWebsocketParams, FastAPIWebsocketTransport
-from pipecat.audio.vad.silero import SileroVADAnalyzer
 
-from src.piper_tts_service import PiperTTSService
-from src.simple_serializer import SimpleFrameSerializer
-
-logger = logging.getLogger(__name__)
-
-# Create FastAPI app
-app = FastAPI(title="Voice Pipeline - Air-Gapped")
-
-# Configuration from environment
-HF_TOKEN = os.environ.get("HF_TOKEN", "")
-PIPER_MODEL = os.environ.get("PIPER_MODEL", "en_US-lessac-medium")
-SAMPLE_RATE = 16000
-
-# Initialize Ultravox processor globally for better performance
-# (model loading takes time, so we do it once)
+# Import PiperTTSService - handle both direct run and import from main.py
 try:
-    logger.info("Initializing Ultravox model... This may take a moment.")
-    ultravox_processor = UltravoxSTTService(
+    from src.piper_tts_service import PiperTTSService
+except ImportError:
+    from piper_tts_service import PiperTTSService
+
+# ---------------------------------------------------------------------------
+# Initialisation & configuration
+# ---------------------------------------------------------------------------
+# Configure loguru logger
+logger.remove()
+logger.add(sys.stderr, level="DEBUG")
+
+# Configuration from environment variables
+HF_TOKEN: str = os.getenv("HF_TOKEN", "")
+PIPER_MODEL: str = os.getenv("PIPER_MODEL", "en_US-lessac-medium")
+SAMPLE_RATE: int = 16_000
+
+SYSTEM_INSTRUCTION: str = (
+    "You are an AI assistant running entirely on local infrastructure. "
+    "Greet the user warmly and keep responses concise – no more than two "
+    "sentences. Avoid special characters so the TTS remains clear."
+)
+
+# ---------------------------------------------------------------------------
+# Model services – loaded once at startup
+# ---------------------------------------------------------------------------
+logger.info("Loading UltravoxSTTService... this can take a while on first run.")
+try:
+    ULTRAVOX = UltravoxSTTService(
         model_name="fixie-ai/ultravox-v0_5-llama-3_1-8b",
         hf_token=HF_TOKEN,
         temperature=0.6,
-        max_tokens=150
+        max_tokens=150,
     )
     logger.info("Ultravox model initialized successfully!")
 except Exception as e:
-    logger.error(f"Failed to initialize Ultravox model: {e}")
-    ultravox_processor = None
+    logger.error(f"Could not initialise Ultravox. Check HF_TOKEN and GPU: {e}")
+    ULTRAVOX = None  # we fail later with a clearer message
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Handles FastAPI startup and shutdown."""
+    yield  # Run app
+
+
+async def run_bot(websocket_client):
+    """Entry-point used by Pipecat example clients."""
+    
+    if ULTRAVOX is None:
+        raise RuntimeError(
+            "Ultravox failed to initialise at startup – server cannot serve requests."
+        )
+
+    # 1️⃣ WebSocket transport – identical params to reference example
+    ws_transport = FastAPIWebsocketTransport(
+        websocket=websocket_client,
+        params=FastAPIWebsocketParams(
+            audio_in_enabled=True,
+            audio_out_enabled=True,
+            add_wav_header=False,
+            vad_analyzer=SileroVADAnalyzer(),
+            serializer=ProtobufFrameSerializer(),
+        ),
+    )
+
+    # 2️⃣ Local TTS (Piper)
+    tts = PiperTTSService(model=PIPER_MODEL, sample_rate=SAMPLE_RATE)
+
+    # 3️⃣ RTVI signalling layer – required for Pipecat web client
+    rtvi = RTVIProcessor(config=RTVIConfig(config=[]))
+
+    # 4️⃣ Assemble minimalist pipeline: User audio -> Ultravox -> Piper -> output
+    pipeline = Pipeline(
+        [
+            ws_transport.input(),
+            rtvi,
+            ULTRAVOX,  # Combined STT+LLM
+            tts,       # TTS
+            ws_transport.output(),
+        ]
+    )
+
+    task = PipelineTask(
+        pipeline,
+        params=PipelineParams(enable_metrics=True, enable_usage_metrics=True),
+        observers=[RTVIObserver(rtvi)],
+    )
+
+    # ---------- Event handlers ----------
+    @rtvi.event_handler("on_client_ready")
+    async def on_client_ready(rtvi):
+        logger.info("Pipecat client ready.")
+        await rtvi.set_bot_ready()
+        # Send an initial greeting via TTS once pipeline ready
+        await tts.say("Hello! I'm your AI assistant. How can I help you today?")
+
+    @ws_transport.event_handler("on_client_connected")
+    async def on_client_connected(transport, client):
+        logger.info("Pipecat Client connected")
+
+    @ws_transport.event_handler("on_client_disconnected")
+    async def on_client_disconnected(transport, client):
+        logger.info("Pipecat Client disconnected")
+        await task.cancel()
+
+    # ---------- Runner ----------
+    runner = PipelineRunner(handle_sigint=False)
+    await runner.run(task)
+
+
+# ---------------------------------------------------------------------------
+# FastAPI app
+# ---------------------------------------------------------------------------
+app = FastAPI(title="Voice Pipeline - Air-gapped", lifespan=lifespan)
+
+# Allow cross-origin requests from the browser-based WebSocket client
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
 async def root():
     """Root endpoint with basic info."""
     return {
-        "service": "Voice Pipeline - Air-Gapped",
+        "service": "Voice Pipeline - Air-gapped",
         "status": "ready",
         "components": {
-            "stt_llm": "Ultravox (combined STT+LLM)",
-            "tts": "Piper TTS (local)",
-            "framework": "Pipecat"
+            "stt_llm": "Ultravox v0.5 (Llama-3-8B)",
+            "tts": PIPER_MODEL,
+            "framework": "Pipecat + RTVI"
         }
     }
 
 
-@app.get("/health")
-async def health():
-    """Health check endpoint."""
-    return {"status": "healthy"}
-
-
-@app.get("/ready")
-async def ready():
-    """Readiness check endpoint."""
-    return {"status": "ready"}
-
-
-@app.get("/debug")
-async def debug():
-    """Debug endpoint with system info."""
-    import torch
-    return {
-        "cuda_available": torch.cuda.is_available(),
-        "cuda_device": torch.cuda.get_device_name(0) if torch.cuda.is_available() else None,
-        "hf_token_set": bool(HF_TOKEN),
-        "piper_model": PIPER_MODEL
-    }
-
-
-async def create_pipeline(websocket: WebSocket) -> tuple:
-    """Create the Pipecat pipeline with Ultravox and Piper."""
-    
-    # Check if Ultravox is initialized
-    if ultravox_processor is None:
-        raise RuntimeError("Ultravox model failed to initialize. Check your HF_TOKEN and internet connection.")
-    
-    # Create transport
-    transport = FastAPIWebsocketTransport(
-        websocket=websocket,
-        params=FastAPIWebsocketParams(
-            audio_in_enabled=True,
-            audio_out_enabled=True,
-            add_wav_header=False,
-            vad_enabled=True,
-            vad_analyzer=SileroVADAnalyzer(),
-            vad_audio_passthrough=True,
-            serializer=SimpleFrameSerializer()
-        )
-    )
-    
-    # Create Piper TTS service
-    tts = PiperTTSService(
-        model=PIPER_MODEL,
-        sample_rate=SAMPLE_RATE
-    )
-    
-    # Build the pipeline
-    pipeline = Pipeline([
-        transport.input(),
-        ultravox_processor,  # Use the pre-initialized Ultravox processor
-        tts,
-        transport.output()
-    ])
-    
-    # Create runner
-    runner = PipelineRunner()
-    
-    # Create task
-    task = PipelineTask(
-        pipeline,
-        params=PipelineParams(
-            allow_interruptions=True,
-            enable_metrics=False,
-            enable_usage_metrics=False
-        )
-    )
-    
-    return runner, task
+@app.post("/connect")
+async def bot_connect(request: Request):
+    """Connect endpoint - returns WebSocket connection details."""
+    # For Runpod deployment, use the provided URL
+    ws_url = "wss://oxavcaqh64pgs2-8000.proxy.runpod.net/ws"
+    logger.info(f"Connect request - returning WebSocket URL: {ws_url}")
+    return {"ws_url": ws_url}
 
 
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
-    """WebSocket endpoint for voice pipeline."""
+    """WebSocket endpoint for RTVI-compatible voice pipeline."""
     await websocket.accept()
     logger.info("WebSocket connection accepted")
-    
     try:
-        # Create and run pipeline
-        runner, task = await create_pipeline(websocket)
-        
-        # Run the pipeline
-        await runner.run(task)
-        
+        await run_bot(websocket)
     except WebSocketDisconnect:
-        logger.info("WebSocket disconnected")
+        logger.info("WebSocket disconnected by client.")
     except Exception as e:
-        logger.error(f"Pipeline error: {e}", exc_info=True)
-        try:
-            await websocket.close(code=1000, reason=str(e))
-        except:
-            pass  # WebSocket might already be closed
-    finally:
-        logger.info("WebSocket connection closed")
+        logger.error(f"Exception in run_bot: {e}", exc_info=True)
 
 
+# ---------------------------------------------------------------------------
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run("src.pipecat_pipeline:app", host="0.0.0.0", port=8000, reload=False)

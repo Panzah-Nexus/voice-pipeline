@@ -1,5 +1,5 @@
 # Core Pipecat framework with Ultravox support
-pipecat-ai[ultravox,websocket]==0.0.71
+pipecat-ai[ultravox,websocket,silero]==0.0.71
 
 # FastAPI for WebSocket server
 uvicorn[standard]==0.29.0

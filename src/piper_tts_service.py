@@ -14,7 +14,12 @@ import numpy as np
 from scipy import signal
 
 from pipecat.frames.frames import AudioRawFrame, Frame, ErrorFrame
-from pipecat.services.ai_services import TTSService
+# Pipecat v0.0.70+ moves base service classes to dedicated modules.
+# Fallback to the old path for older versions to avoid breaking deployments.
+try:
+    from pipecat.services.tts_service import TTSService  # New path (≥0.0.70)
+except ModuleNotFoundError:  # pragma: no cover
+    from pipecat.services.ai_services import TTSService  # Back-compat for ≤0.0.69
 from pipecat.transcriptions.language import Language
 
 logger = logging.getLogger(__name__)

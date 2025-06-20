@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """
-Simple raw audio client for voice pipeline.
-Connects to Cerebrium deployment and streams raw audio.
+Voice pipeline client using Pipecat ProtobufFrameSerializer.
+Connects to Cerebrium deployment and streams audio.
 """
 
 import asyncio
-import json
 import logging
 import os
 import sys
@@ -13,6 +12,9 @@ import sys
 import numpy as np
 import sounddevice as sd
 import websockets
+
+# Simple binary serializer implementation for client
+import struct
 
 # Configure logging
 logging.basicConfig(
@@ -24,13 +26,13 @@ logger = logging.getLogger(__name__)
 # Audio configuration
 SAMPLE_RATE = 16000
 CHANNELS = 1
-CHUNK_DURATION = 0.1  # 100ms chunks
+CHUNK_DURATION = 0.02  # 20ms chunks
 CHUNK_SIZE = int(SAMPLE_RATE * CHUNK_DURATION)
 DTYPE = np.int16
 
 
 class VoicePipelineClient:
-    """WebSocket client for voice pipeline."""
+    """WebSocket client for voice pipeline using simple binary format."""
     
     def __init__(self, ws_url: str):
         self.ws_url = ws_url
@@ -79,16 +81,19 @@ class VoicePipelineClient:
                     # Get audio from queue
                     audio_data = await self.audio_queue.get()
                     
-                    # Prepare message
-                    message = {
-                        "type": "audio",
-                        "data": audio_data.tobytes().hex(),
-                        "sample_rate": SAMPLE_RATE,
-                        "channels": CHANNELS
-                    }
+                    # Create binary audio frame using our simple format
+                    # Format: type_id(4), sample_rate(4), channels(4), length(4), audio_data
+                    audio_bytes = audio_data.tobytes()
+                    header = struct.pack(
+                        '>IIII',  # Big-endian, 4 unsigned ints
+                        1,  # AUDIO_RAW_FRAME_ID
+                        SAMPLE_RATE,
+                        CHANNELS,
+                        len(audio_bytes)
+                    )
                     
-                    # Send to server
-                    await self.websocket.send(json.dumps(message))
+                    serialized = header + audio_bytes
+                    await self.websocket.send(serialized)
                     
                 except Exception as e:
                     logger.error(f"Error sending audio: {e}")
@@ -109,37 +114,34 @@ class VoicePipelineClient:
         try:
             while self.is_running:
                 try:
-                    # Receive message
+                    # Receive message (binary)
                     message = await self.websocket.recv()
                     
-                    # Parse message
-                    if isinstance(message, str):
-                        data = json.loads(message)
-                        
-                        if data.get("type") == "audio":
-                            # Decode audio data
-                            audio_bytes = bytes.fromhex(data["data"])
-                            audio_data = np.frombuffer(audio_bytes, dtype=DTYPE)
+                    # Deserialize binary audio frame
+                    if len(message) >= 16:  # Minimum header size
+                        try:
+                            # Unpack header
+                            frame_type, sample_rate, num_channels, audio_length = struct.unpack('>IIII', message[:16])
                             
-                            # Play audio
-                            self.output_stream.write(audio_data)
-                            
-                        elif data.get("type") == "transcript":
-                            logger.info(f"Transcript: {data.get('text', '')}")
-                            
-                        elif data.get("type") == "message":
-                            logger.info(f"Message: {data.get('message', '')}")
-                            
+                            if frame_type == 1 and len(message) >= 16 + audio_length:  # AudioRawFrame
+                                # Extract audio data
+                                audio_bytes = message[16:16 + audio_length]
+                                
+                                # Convert to numpy array and play
+                                audio_data = np.frombuffer(audio_bytes, dtype=DTYPE)
+                                self.output_stream.write(audio_data)
+                            else:
+                                logger.debug(f"Received non-audio frame or incomplete data")
+                        except Exception as e:
+                            logger.error(f"Error processing received audio: {e}")
                     else:
-                        # Binary message (raw audio)
-                        audio_data = np.frombuffer(message, dtype=DTYPE)
-                        self.output_stream.write(audio_data)
+                        logger.debug(f"Received message too small: {len(message)} bytes")
                         
                 except websockets.exceptions.ConnectionClosed:
                     logger.info("Connection closed by server")
                     break
                 except Exception as e:
-                    logger.error(f"Error receiving audio: {e}")
+                    logger.error(f"Error receiving: {e}")
                     
         finally:
             if self.output_stream:
@@ -170,17 +172,25 @@ class VoicePipelineClient:
 
 def main():
     """Main entry point."""
+    # Enable tracemalloc for debugging
+    import tracemalloc
+    tracemalloc.start()
+    
     print("🎯 Voice Pipeline Local Client")
     print("=" * 40)
     
-    # Get WebSocket URL
-    ws_url = os.environ.get("WS_SERVER")
-    if not ws_url:
-        print("❌ Error: WS_SERVER environment variable not set!")
-        print("Please set: export WS_SERVER='wss://your-deployment.cerebrium.app/ws'")
-        sys.exit(1)
+    # Default URL for your deployment
+    DEFAULT_WS_URL = "wss://api.cortex.cerebrium.ai/v4/p-468ff80b/voice-pipeline-airgapped/ws"
+    
+    # Get WebSocket URL (use environment variable or default)
+    ws_url = os.environ.get("WS_SERVER", DEFAULT_WS_URL)
+    if ws_url == DEFAULT_WS_URL:
+        print(f"📌 Using default server URL")
+    else:
+        print(f"📌 Using custom server from WS_SERVER env var")
         
     print(f"🔗 Server: {ws_url}")
+    print(f"📡 Using simple binary audio serializer")
     print("🎙️ Speak into your microphone. Press Ctrl+C to stop.")
     print()
     

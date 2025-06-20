@@ -1,0 +1,73 @@
+# Python virtual environment
+venv/
+.venv/
+env/
+.env/
+
+# Client-side code (not needed in server container)
+client/
+node_modules/
+
+# Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.pytest_cache/
+
+# Development files
+.git/
+.gitignore
+.dockerignore
+*.md
+docs/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Jupyter notebooks
+*.ipynb
+.ipynb_checkpoints/
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Database files
+*.db
+*.sqlite
+
+# RunPod deployment files (not needed in container)
+runpod_deploy.py
+build_and_deploy.sh
+RUNPOD_DEPLOYMENT_GUIDE.md
+MIGRATION_SUMMARY.md
+requirements_runpod.txt
+
+# Cerebrium files (not needed in container)
+cerebrium.toml 

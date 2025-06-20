@@ -4,14 +4,7 @@
  * SPDX-License-Identifier: BSD 2-Clause License
  */
 
-/**
- * RTVI Client Implementation
- *
- * This client connects to an RTVI-compatible bot server using WebSocket.
- *
- * Requirements:
- * - A running RTVI bot server (defaults to http://localhost:7860)
- */
+
 
 import {
   RTVIClient,
@@ -146,7 +139,7 @@ class WebsocketClientApp {
         transport,
         params: {
           // The baseURL and endpoint of your bot server that the client will connect to
-          baseUrl: 'https://api.cortex.cerebrium.ai/v4/p-468ff80b/voice-pipeline-airgapped',
+          baseUrl: 'https://oxavcaqh64pgs2-8000.proxy.runpod.net',
           endpoints: { connect: '/connect' },
         },
         enableMic: true,
@@ -183,7 +176,7 @@ class WebsocketClientApp {
       this.log('Initializing devices...');
       await this.rtviClient.initDevices();
 
-      this.log('Connecting to bot at: https://api.cortex.cerebrium.ai/v4/p-468ff80b/voice-pipeline-airgapped/connect');
+      this.log('Connecting to bot at: https://oxavcaqh64pgs2-8000.proxy.runpod.net/connect');
       await this.rtviClient.connect();
 
       const timeTaken = Date.now() - startTime;

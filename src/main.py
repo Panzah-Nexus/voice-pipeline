@@ -77,8 +77,10 @@ async def websocket_endpoint(websocket: WebSocket):
 @app.post("/connect")
 async def bot_connect(request: Request) -> Dict[Any, Any]:
     """Connect endpoint - returns WebSocket connection details."""
-    # For Runpod deployment, use the provided URL
-    ws_url = "wss://apn469bupvpxvs-8000.proxy.runpod.net/ws"
+    # Dynamically determine the WebSocket URL from the request
+    host = request.headers.get("host", "localhost:8000")
+    scheme = "wss" if request.url.scheme == "https" else "ws"
+    ws_url = f"{scheme}://{host}/ws"
     logging.info(f"Connect request - returning WebSocket URL: {ws_url}")
     return {"ws_url": ws_url}
 

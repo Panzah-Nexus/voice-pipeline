@@ -40,11 +40,11 @@ GIT_URL="https://${GIT_USER}:${GIT_TOKEN}@github.com/${GIT_USER}/${GIT_REPO}.git
 
 # Clone or update source code
 if [ ! -d "/app/voice-pipeline-src" ]; then
-    echo "🔄 Cloning latest source code..."
-    git clone "$GIT_URL" /app/voice-pipeline-src
+    echo "🔄 Cloning latest source code from cursor_oneshot branch..."
+    git clone -b cursor_oneshot "$GIT_URL" /app/voice-pipeline-src
 else
     echo "🔄 Updating source code..."
-    cd /app/voice-pipeline-src && git pull
+    cd /app/voice-pipeline-src && git pull origin cursor_oneshot
 fi
 
 # Copy source to working directory

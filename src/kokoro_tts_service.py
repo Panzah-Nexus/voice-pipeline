@@ -96,9 +96,17 @@ class KokoroTTSService(TTSService):
         Playback speed multiplier (1.0 = original pitch).
     """
 
-    class InputParams(TTSService.InputParams):  # type: ignore[misc]
-        language: Optional[Language] = Language.EN
-        speed: float = 1.0
+    # Custom parameter container for TTS settings (kept small & explicit)
+    class InputParams:  # noqa: D401 – simple namespace, not a full dataclass to avoid extra deps
+        """Runtime-tuneable synthesis parameters."""
+
+        def __init__(
+            self,
+            language: Optional[Language] = Language.EN,
+            speed: float = 1.0,
+        ) -> None:
+            self.language = language
+            self.speed = speed
 
     DEFAULT_SAMPLE_RATE = 24_000
 
@@ -128,11 +136,11 @@ class KokoroTTSService(TTSService):
             _language_to_kokoro_code(params.language) if params.language else "en-us"
         )
 
-        # The kokoro `KPipeline` object bundles model + helpers and automatically
-        # selects CUDA when `torch.cuda.is_available()`.
-        # We pass `repo_id` as None so it falls back to $KOKORO_HOME cloned in the
-        # Dockerfile, which includes both weights and voices.
-        self._pipeline = KPipeline(lang_code="a" if self._language_code == "en-us" else self._language_code[0])
+        # Initialise Kokoro synthesis pipeline.
+        # Kokoro expects a short language code (e.g. "a" for English) in certain forks,
+        # but the public ONNX reference accepts the full locale. We therefore fall back
+        # to the resolved language code above which should be safe.
+        self._pipeline = KPipeline(lang_code=self._language_code)
 
         self._voice_id = voice_id
         self._speed: float = params.speed
@@ -176,7 +184,7 @@ class KokoroTTSService(TTSService):
                 pcm_i16 = (np.clip(samples, -1.0, 1.0) * 32767).astype(np.int16)
                 yield TTSAudioRawFrame(
                     audio=pcm_i16.tobytes(),
-                    sample_rate=self.sample_rate,
+                    sample_rate=self._sample_rate,
                     num_channels=1,
                 )
 

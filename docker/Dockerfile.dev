@@ -2,16 +2,7 @@
 FROM mlbra2006/voice-pipeline-airgapped:uvfix
 
 # Install git and SSH server for development access
-RUN apt-get update && apt-get install -y \
-    git \
-    openssh-server \
-    && rm -rf /var/lib/apt/lists/*
 
-# Configure SSH
-RUN mkdir /var/run/sshd
-RUN echo 'root:runpod' | chpasswd
-RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-RUN sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' /etc/pam.d/sshd
 
 # Remove the baked-in source code
 RUN rm -rf /app/src/

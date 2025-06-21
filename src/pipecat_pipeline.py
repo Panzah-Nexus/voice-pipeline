@@ -126,9 +126,11 @@ async def run_bot(websocket_client):
     from pipecat.processors.aggregators.llm_response import (
         LLMUserContextAggregator, LLMAssistantContextAggregator,
     )
-    chat_history: list[str] = []
-    user_ctx = LLMUserContextAggregator(chat_history)
-    bot_ctx  = LLMAssistantContextAggregator(chat_history)
+    
+    # Create proper context object for conversation memory
+    context = OpenAILLMContext()
+    user_ctx = LLMUserContextAggregator(context)
+    bot_ctx  = LLMAssistantContextAggregator(context)
 
     # 4️⃣ Pipeline: audio → Ultravox → Kokoro
     pipeline = Pipeline(

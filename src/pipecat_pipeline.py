@@ -33,8 +33,13 @@ from src.kokoro_tts_service import KokoroTTSService
 # ---------------------------------------------------------------------------
 # Initialisation & configuration
 # ---------------------------------------------------------------------------
-# Configure loguru logger
-logger.remove(0)
+# Configure loguru logger (id=0 might have been removed by upstream Pipecat)
+try:
+    logger.remove(0)
+except ValueError:
+    # Either already removed or replaced by another module – proceed silently
+    pass
+
 logger.add(sys.stderr, level="DEBUG")
 
 # Configuration from environment variables

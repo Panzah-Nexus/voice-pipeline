@@ -75,7 +75,7 @@ def _language_to_kokoro_code(language: Language) -> Optional[str]:
 
 
 class KokoroTTSService(TTSService):
-    """Text-to-Speech service powered by Kokoro-ONNX.
+    """GPU Text-to-Speech service powered by **Kokoro-PyTorch**.
 
     Parameters
     ----------
@@ -113,8 +113,8 @@ class KokoroTTSService(TTSService):
     def __init__(
         self,
         *,
-        model_path: str,
-        voices_path: str,
+        model_path: str | None = None,   # optional in PyTorch build
+        voices_path: str | None = None,
         voice_id: str = "af_sarah",
         sample_rate: Optional[int] = None,
         params: Optional["KokoroTTSService.InputParams"] = None,
@@ -124,12 +124,7 @@ class KokoroTTSService(TTSService):
 
         params = params or self.InputParams()
 
-        logger.info(
-            "Initialising Kokoro TTS (model='{}', voices='{}', voice='{}')",
-            model_path,
-            voices_path,
-            voice_id,
-        )
+        logger.info("Initialising Kokoro TTS (voice='%s')", voice_id)
 
         # Initialise Kokoro pipeline (automatically loads GPU weights if available)
         self._language_code: str = (
@@ -137,19 +132,13 @@ class KokoroTTSService(TTSService):
         )
 
         # Kokoro offers both a native PyTorch and an ONNX inference backend. The
-        # GPU-accelerated PyTorch path is preferred here.  If the caller passes
-        # a *.onnx file we deliberately ignore it (to avoid pulling the ONNX
-        # runtime and clashing with the kokoro_onnx wheel).
-
-        model_path_arg = None
-        if model_path and not model_path.lower().endswith(".onnx"):
-            model_path_arg = model_path
+        # GPU-accelerated PyTorch path is preferred here.
 
         try:
             self._pipeline = KPipeline(
                 lang_code=self._language_code,
-                model_path=model_path_arg,
-                voices_path=voices_path if voices_path else None,
+                model_path=model_path,
+                voices_path=voices_path,
                 repo_id=None,  # Use local cache / $KOKORO_HOME if set
             )
         except TypeError:

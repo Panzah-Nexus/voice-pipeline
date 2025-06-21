@@ -14,7 +14,19 @@ import sys
 
 from loguru import logger
 
+# --- VAD --------------------------------------------------------------
+# Tune Silero so it fires sooner and streams shorter chunks
 from pipecat.audio.vad.silero import SileroVADAnalyzer
+from pipecat.audio.vad.vad_analyzer import VADParams
+
+FAST_VAD = SileroVADAnalyzer(
+    params=VADParams(
+        min_silence_ms=200,      # default 500
+        speech_pad_ms=120,       # default 400 – keeps a bit of context
+        window_ms=160,           # 10 × 16-kHz frames
+    )
+)
+
 from pipecat.pipeline.pipeline import Pipeline
 from pipecat.pipeline.runner import PipelineRunner
 from pipecat.pipeline.task import PipelineParams, PipelineTask
@@ -57,7 +69,7 @@ logger.add(sys.stderr, level="DEBUG")
 HF_TOKEN: str = os.getenv("HF_TOKEN", "")
 KOKORO_MODEL_PATH: str = os.getenv("KOKORO_MODEL_PATH", "/models/kokoro/model_fp16.onnx")
 KOKORO_VOICES_PATH: str = os.getenv("KOKORO_VOICES_PATH", "/models/kokoro/voices-v1.0.bin")
-KOKORO_VOICE_ID: str = os.getenv("KOKORO_VOICE_ID", "af_sarah")
+KOKORO_VOICE_ID: str = os.getenv("KOKORO_VOICE_ID", "af_bella")
 SAMPLE_RATE: int = int(os.getenv("KOKORO_SAMPLE_RATE", "24000"))
 
 SYSTEM_INSTRUCTION: str = (
@@ -94,7 +106,7 @@ async def run_bot(websocket_client):
             audio_in_enabled=True,
             audio_out_enabled=True,
             add_wav_header=False,
-            vad_analyzer=SileroVADAnalyzer(),
+            vad_analyzer=FAST_VAD,
             serializer=ProtobufFrameSerializer(),
         ),
     )
@@ -110,13 +122,23 @@ async def run_bot(websocket_client):
     # 3️⃣ RTVI signalling layer – required for Pipecat web client
     rtvi = RTVIProcessor(config=RTVIConfig(config=[]))
 
-    # 4️⃣ Assemble minimalist pipeline: User audio -> Ultravox -> Kokoro -> output
+    # ---- Context memory (last 10 messages) ----------------------------
+    from pipecat.processors.aggregators.llm_response import (
+        LLMUserContextAggregator, LLMAssistantContextAggregator,
+    )
+    chat_history: list[str] = []
+    user_ctx = LLMUserContextAggregator(chat_history)
+    bot_ctx  = LLMAssistantContextAggregator(chat_history)
+
+    # 4️⃣ Pipeline: audio → Ultravox → Kokoro
     pipeline = Pipeline(
         [
             ws_transport.input(),
             rtvi,
-            ultravox_processor,  # Combined STT+LLM
-            tts,                 # TTS
+            user_ctx,              # add user transcription to history
+            ultravox_processor,    # Combined STT+LLM
+            bot_ctx,               # add assistant reply to history
+            tts,
             ws_transport.output(),
         ]
     )

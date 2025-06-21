@@ -4,7 +4,14 @@
  * SPDX-License-Identifier: BSD 2-Clause License
  */
 
-
+/**
+ * RTVI Client Implementation
+ *
+ * This client connects to an RTVI-compatible bot server using WebSocket.
+ *
+ * Requirements:
+ * - A running RTVI bot server (defaults to http://localhost:7860)
+ */
 
 import {
   RTVIClient,
@@ -123,11 +130,6 @@ class WebsocketClientApp {
       if (oldTrack?.id === track.id) return;
     }
     this.botAudio.srcObject = new MediaStream([track]);
-    
-    // Ensure audio plays immediately
-    this.botAudio.play().catch(error => {
-      this.log(`Audio autoplay blocked: ${error.message}`);
-    });
   }
 
   /**
@@ -144,7 +146,7 @@ class WebsocketClientApp {
         transport,
         params: {
           // The baseURL and endpoint of your bot server that the client will connect to
-          baseUrl: 'https://6j4g1bm86swnfj-8000.proxy.runpod.net/',
+          baseUrl: 'https://wlugc3aef909a9-8000.proxy.runpod.net',
           endpoints: { connect: '/connect' },
         },
         enableMic: true,
@@ -159,7 +161,7 @@ class WebsocketClientApp {
             this.updateStatus('Disconnected');
             if (this.connectBtn) this.connectBtn.disabled = false;
             if (this.disconnectBtn) this.disconnectBtn.disabled = true;
-            this.log('Client disconnected - you can reconnect anytime');
+            this.log('Client disconnected');
           },
           onBotReady: (data) => {
             this.log(`Bot ready: ${JSON.stringify(data)}`);
@@ -181,7 +183,7 @@ class WebsocketClientApp {
       this.log('Initializing devices...');
       await this.rtviClient.initDevices();
 
-      this.log('Connecting to bot at: https://od4i1xsnp7lvzh-8000.proxy.runpod.net/connect');
+      this.log('Connecting to bot...');
       await this.rtviClient.connect();
 
       const timeTaken = Date.now() - startTime;

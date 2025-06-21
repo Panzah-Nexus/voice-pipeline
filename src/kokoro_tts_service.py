@@ -136,11 +136,26 @@ class KokoroTTSService(TTSService):
             _language_to_kokoro_code(params.language) if params.language else "en-us"
         )
 
-        # Initialise Kokoro synthesis pipeline.
-        # Kokoro expects a short language code (e.g. "a" for English) in certain forks,
-        # but the public ONNX reference accepts the full locale. We therefore fall back
-        # to the resolved language code above which should be safe.
-        self._pipeline = KPipeline(lang_code=self._language_code)
+        # Kokoro offers both a native PyTorch and an ONNX inference backend. The
+        # GPU-accelerated PyTorch path is preferred here.  If the caller passes
+        # a *.onnx file we deliberately ignore it (to avoid pulling the ONNX
+        # runtime and clashing with the kokoro_onnx wheel).
+
+        model_path_arg = None
+        if model_path and not model_path.lower().endswith(".onnx"):
+            model_path_arg = model_path
+
+        try:
+            self._pipeline = KPipeline(
+                lang_code=self._language_code,
+                model_path=model_path_arg,
+                voices_path=voices_path if voices_path else None,
+                repo_id=None,  # Use local cache / $KOKORO_HOME if set
+            )
+        except TypeError:
+            # Older kokoro versions didn't expose model_path/voices_path –
+            # retry with minimal kwargs for compatibility.
+            self._pipeline = KPipeline(lang_code=self._language_code)
 
         self._voice_id = voice_id
         self._speed: float = params.speed

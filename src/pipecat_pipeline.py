@@ -94,18 +94,27 @@ def _get_ultravox():
     cheap while avoiding re-using the same FrameProcessor across pipelines.
     """
 
-    # Ensure global model is ready (should already be by module import)
-    if _ultravox_singleton is None:
-        _init_ultravox_once()
+    # Some internal state becomes inactive after `.cancel()`.  Creating a new
+    # service object is cheap after the initial weights are in GPU memory, so
+    # we simply spin up a fresh instance for each WebSocket session.
 
-    # Ensure we start every call with a clean internal buffer
-    if hasattr(_ultravox_singleton, "reset"):
-        try:
-            _ultravox_singleton.reset()
-        except Exception as exc:  # pragma: no cover – defensive
-            logger.warning("Ultravox reset() failed: %s", exc)
-
-    return _ultravox_singleton
+    try:
+        return UltravoxSTTService(
+            model_name="fixie-ai/ultravox-v0_5-llama-3_1-8b",
+            hf_token=HF_TOKEN,
+            temperature=0.6,
+            max_tokens=150,
+            system_instruction=SYSTEM_INSTRUCTION,
+        )
+    except Exception as exc:
+        logger.error("Failed to create per-session Ultravox instance: %s", exc)
+        # Fallback – attempt to reuse the singleton after reset
+        if hasattr(_ultravox_singleton, "reset"):
+            try:
+                _ultravox_singleton.reset()
+            except Exception:
+                pass
+        return _ultravox_singleton
 
 
 async def run_bot(websocket_client):

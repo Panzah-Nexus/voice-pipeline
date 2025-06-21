@@ -149,6 +149,13 @@ class KokoroTTSService(TTSService):
         self._speed: float = params.speed
 
         logger.info("Kokoro pipeline initialised successfully (backend=PyTorch)")
+        
+        # Log GPU availability for performance monitoring
+        if torch.cuda.is_available():
+            logger.info(f"🔥 GPU acceleration enabled: {torch.cuda.get_device_name(0)}")
+            logger.info(f"🔥 GPU memory: {torch.cuda.get_device_properties(0).total_memory / 1e9:.1f}GB")
+        else:
+            logger.warning("⚠️  No GPU detected - TTS will run on CPU (slower)")
 
     # ---------------------------------------------------------------------
     # Public helpers
@@ -181,7 +188,7 @@ class KokoroTTSService(TTSService):
                         text,
                         voice=self._voice_id,
                         speed=self._speed,
-                        split_pattern=None,
+                        split_pattern=r'[.!?]',  # Split only on sentence endings for fewer, larger chunks
                     )):
                         # Convert torch.Tensor → numpy → int16
                         if isinstance(audio, torch.Tensor):
@@ -217,10 +224,10 @@ class KokoroTTSService(TTSService):
                             
                         # Get chunk from queue (non-blocking with timeout)
                         try:
-                            chunk_type, chunk_num, chunk_data = chunk_queue.get(timeout=0.1)
+                            chunk_type, chunk_num, chunk_data = chunk_queue.get(timeout=0.01)
                         except queue.Empty:
                             # Give other tasks a chance and check cancellation
-                            await asyncio.sleep(0.01)
+                            await asyncio.sleep(0.001)
                             continue
                         
                         if chunk_type == 'chunk':

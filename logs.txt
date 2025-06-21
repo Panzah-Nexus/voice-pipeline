@@ -10626,3 +10626,513 @@
 2025-06-21T18:53:14.780917454Z INFO 06-21 18:53:14 async_llm_engine.py:179] Finished request 1750531993.6535397.
 2025-06-21T18:53:14.819380043Z 2025-06-21 18:53:14.818 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxSTTService#0 processing time: 1.166045904159546
 2025-06-21T18:53:18.813062610Z 2025-06-21 18:53:18.812 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:410 - Bot stopped speaking
+2025-06-21T18:58:18.816546619Z [32m18:58:18[0m | [36m            task:679[0m | [33m[1m WARNING[0m | [33m[1mIdle pipeline detected, cancelling pipeline task...[0m
+2025-06-21T18:58:18.816684861Z 2025-06-21 18:58:18.816 | WARNING  | pipecat.pipeline.task:_idle_timeout_detected:679 - Idle pipeline detected, cancelling pipeline task...
+2025-06-21T19:08:29.441445589Z ==========
+2025-06-21T19:08:29.441467420Z == CUDA ==
+2025-06-21T19:08:29.441660888Z ==========
+2025-06-21T19:08:29.447852223Z CUDA Version 11.8.0
+2025-06-21T19:08:29.450073391Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T19:08:29.452501581Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T19:08:29.452507823Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T19:08:29.452513483Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T19:08:29.452525126Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T19:08:29.495553614Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T19:08:29.514417370Z    ...done.
+2025-06-21T19:08:29.514899045Z 🔧 Development mode starting...
+2025-06-21T19:08:29.515018872Z 🔄 Updating source code...
+2025-06-21T19:08:30.513417269Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T19:08:30.513454891Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T19:08:30.514445412Z    0a94bfa..4779418  cursor_oneshot -> origin/cursor_oneshot
+2025-06-21T19:08:30.553524060Z Updating 0a94bfa..4779418
+2025-06-21T19:08:30.553548296Z Fast-forward
+2025-06-21T19:08:30.574790529Z  logs.txt                  | 2127 ++++++++++++++++++++++++++++++++++++++++++++-
+2025-06-21T19:08:30.574805357Z  src/kokoro_tts_service.py |  107 ++-
+2025-06-21T19:08:30.574810446Z  src/pipecat_pipeline.py   |   69 +-
+2025-06-21T19:08:30.574815406Z  3 files changed, 2268 insertions(+), 35 deletions(-)
+2025-06-21T19:08:30.576668113Z 📁 Copying source code...
+2025-06-21T19:08:30.582524313Z 🚀 Starting voice pipeline...
+2025-06-21T19:08:31.052491118Z 2025-06-21 19:08:31.052 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T19:08:32.714230218Z 2025-06-21 19:08:32.713 | DEBUG    | pipecat.audio.vad.silero:__init__:111 - Loading Silero VAD model...
+2025-06-21T19:08:32.778172155Z 2025-06-21 19:08:32.777 | DEBUG    | pipecat.audio.vad.silero:__init__:133 - Loaded Silero VAD
+2025-06-21T19:08:50.677805811Z [32m19:08:50[0m | [36mpipecat_pipeline:88[0m | [1m    INFO[0m | [1mLoading UltravoxSTTService... this can take a while on first run.[0m
+2025-06-21T19:08:50.677840497Z 2025-06-21 19:08:50.677 | INFO     | src.pipecat_pipeline:<module>:88 - Loading UltravoxSTTService... this can take a while on first run.
+2025-06-21T19:08:50.914359465Z Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+2025-06-21T19:08:50.914385034Z 2025-06-21 19:08:50,914 - huggingface_hub._login - WARNING - Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+2025-06-21T19:08:51.001676173Z INFO 06-21 19:08:51 __init__.py:207] Automatically detected platform cuda.
+2025-06-21T19:08:58.354886478Z INFO 06-21 19:08:58 config.py:549] This model supports multiple tasks: {'generate', 'score', 'reward', 'embed', 'classify'}. Defaulting to 'generate'.
+2025-06-21T19:08:58.360297522Z INFO 06-21 19:08:58 llm_engine.py:234] Initializing a V0 LLM engine (v0.7.3) with config: model='fixie-ai/ultravox-v0_5-llama-3_1-8b', speculative_config=None, tokenizer='fixie-ai/ultravox-v0_5-llama-3_1-8b', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=0, served_model_name=fixie-ai/ultravox-v0_5-llama-3_1-8b, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=False, chunked_prefill_enabled=False, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"splitting_ops":[],"compile_sizes":[],"cudagraph_capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":256}, use_cached_outputs=False,
+2025-06-21T19:09:04.722026523Z INFO 06-21 19:09:04 cuda.py:229] Using Flash Attention backend.
+2025-06-21T19:09:05.083429018Z INFO 06-21 19:09:05 model_runner.py:1110] Starting to load model fixie-ai/ultravox-v0_5-llama-3_1-8b...
+2025-06-21T19:09:05.275522004Z INFO 06-21 19:09:05 config.py:3054] cudagraph sizes specified by model runner [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256] is overridden by config [256, 128, 2, 1, 4, 136, 8, 144, 16, 152, 24, 160, 32, 168, 40, 176, 48, 184, 56, 192, 64, 200, 72, 208, 80, 216, 88, 120, 224, 96, 232, 104, 240, 112, 248]
+2025-06-21T19:09:05.793850443Z INFO 06-21 19:09:05 weight_utils.py:254] Using model weights format ['*.safetensors']
+2025-06-21T19:09:06.067174243Z INFO 06-21 19:09:06 weight_utils.py:304] No model.safetensors.index.json found in remote.
+2025-06-21T19:09:06.068553572Z Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+2025-06-21T19:09:06.323971533Z Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  3.92it/s]
+2025-06-21T19:09:06.324197682Z Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  3.91it/s]
+2025-06-21T19:09:06.596118338Z INFO 06-21 19:09:06 weight_utils.py:254] Using model weights format ['*.safetensors']
+2025-06-21T19:09:06.952352519Z Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+2025-06-21T19:09:07.146275670Z Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:00,  5.16it/s]
+2025-06-21T19:09:07.723141183Z Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:00<00:00,  2.39it/s]
+2025-06-21T19:09:08.506267343Z Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  1.71it/s]
+2025-06-21T19:09:09.278962328Z Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.52it/s]
+2025-06-21T19:09:09.279190782Z Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.72it/s]
+2025-06-21T19:09:09.764504846Z INFO 06-21 19:09:09 model_runner.py:1115] Loading model weights took 16.2698 GB
+2025-06-21T19:09:23.264683757Z INFO 06-21 19:09:23 worker.py:267] Memory profiling takes 13.29 seconds
+2025-06-21T19:09:23.264733662Z INFO 06-21 19:09:23 worker.py:267] the current vLLM instance can use total_gpu_memory (22.06GiB) x gpu_memory_utilization (0.90) = 19.85GiB
+2025-06-21T19:09:23.264740315Z INFO 06-21 19:09:23 worker.py:267] model weights take 16.27GiB; non_torch_memory takes 0.05GiB; PyTorch activation peak memory takes 1.95GiB; the rest of the memory reserved for KV Cache is 1.59GiB.
+2025-06-21T19:09:23.501072528Z INFO 06-21 19:09:23 executor_base.py:111] # cuda blocks: 813, # CPU blocks: 2048
+2025-06-21T19:09:23.501103176Z INFO 06-21 19:09:23 executor_base.py:116] Maximum concurrency for 8192 tokens per request: 1.59x
+2025-06-21T19:09:27.019603786Z INFO 06-21 19:09:27 model_runner.py:1434] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI. If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+2025-06-21T19:09:47.717962907Z Capturing CUDA graph shapes:   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graph shapes:   3%|▎         | 1/35 [00:00<00:21,  1.59it/s]Capturing CUDA graph shapes:   6%|▌         | 2/35 [00:01<00:20,  1.61it/s]Capturing CUDA graph shapes:   9%|▊         | 3/35 [00:01<00:19,  1.62it/s]Capturing CUDA graph shapes:  11%|█▏        | 4/35 [00:02<00:19,  1.62it/s]Capturing CUDA graph shapes:  14%|█▍        | 5/35 [00:03<00:18,  1.62it/s]Capturing CUDA graph shapes:  17%|█▋        | 6/35 [00:03<00:17,  1.62it/s]Capturing CUDA graph shapes:  20%|██        | 7/35 [00:04<00:17,  1.63it/s]Capturing CUDA graph shapes:  23%|██▎       | 8/35 [00:04<00:16,  1.63it/s]Capturing CUDA graph shapes:  26%|██▌       | 9/35 [00:05<00:15,  1.64it/s]Capturing CUDA graph shapes:  29%|██▊       | 10/35 [00:06<00:15,  1.64it/s]Capturing CUDA graph shapes:  31%|███▏      | 11/35 [00:06<00:14,  1.65it/s]Capturing CUDA graph shapes:  34%|███▍      | 12/35 [00:07<00:13,  1.65it/s]Capturing CUDA graph shapes:  37%|███▋      | 13/35 [00:07<00:13,  1.66it/s]Capturing CUDA graph shapes:  40%|████      | 14/35 [00:08<00:12,  1.66it/s]Capturing CUDA graph shapes:  43%|████▎     | 15/35 [00:09<00:12,  1.66it/s]Capturing CUDA graph shapes:  46%|████▌     | 16/35 [00:09<00:11,  1.66it/s]Capturing CUDA graph shapes:  49%|████▊     | 17/35 [00:10<00:10,  1.68it/s]Capturing CUDA graph shapes:  51%|█████▏    | 18/35 [00:10<00:10,  1.68it/s]Capturing CUDA graph shapes:  54%|█████▍    | 19/35 [00:11<00:09,  1.69it/s]Capturing CUDA graph shapes:  57%|█████▋    | 20/35 [00:12<00:08,  1.69it/s]Capturing CUDA graph shapes:  60%|██████    | 21/35 [00:12<00:08,  1.70it/s]Capturing CUDA graph shapes:  63%|██████▎   | 22/35 [00:13<00:07,  1.70it/s]Capturing CUDA graph shapes:  66%|██████▌   | 23/35 [00:13<00:07,  1.71it/s]Capturing CUDA graph shapes:  69%|██████▊   | 24/35 [00:14<00:06,  1.71it/s]Capturing CUDA graph shapes:  71%|███████▏  | 25/35 [00:15<00:05,  1.72it/s]Capturing CUDA graph shapes:  74%|███████▍  | 26/35 [00:15<00:05,  1.72it/s]Capturing CUDA graph shapes:  77%|███████▋  | 27/35 [00:16<00:04,  1.73it/s]Capturing CUDA graph shapes:  80%|████████  | 28/35 [00:16<00:04,  1.73it/s]Capturing CUDA graph shapes:  83%|████████▎ | 29/35 [00:17<00:03,  1.74it/s]Capturing CUDA graph shapes:  86%|████████▌ | 30/35 [00:17<00:02,  1.74it/s]Capturing CUDA graph shapes:  89%|████████▊ | 31/35 [00:18<00:02,  1.75it/s]Capturing CUDA graph shapes:  91%|█████████▏| 32/35 [00:19<00:01,  1.76it/s]Capturing CUDA graph shapes:  94%|█████████▍| 33/35 [00:19<00:01,  1.76it/s]Capturing CUDA graph shapes:  97%|█████████▋| 34/35 [00:20<00:00,  1.77it/s]Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:20<00:00,  1.77it/s]Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:20<00:00,  1.69it/s]
+2025-06-21T19:09:47.718259119Z INFO 06-21 19:09:47 model_runner.py:1562] Graph capturing finished in 21 secs, took 0.26 GiB
+2025-06-21T19:09:47.719245853Z INFO 06-21 19:09:47 llm_engine.py:436] init engine (profile, create kv cache, warmup model) took 37.95 seconds
+2025-06-21T19:09:48.501237379Z [32m19:09:48[0m | [36m             stt:223[0m | [1m    INFO[0m | [1mInitialized UltravoxSTTService with model: fixie-ai/ultravox-v0_5-llama-3_1-8b[0m
+2025-06-21T19:09:48.501308965Z 2025-06-21 19:09:48.500 | INFO     | pipecat.services.ultravox.stt:__init__:223 - Initialized UltravoxSTTService with model: fixie-ai/ultravox-v0_5-llama-3_1-8b
+2025-06-21T19:09:48.501328672Z [32m19:09:48[0m | [36mpipecat_pipeline:96[0m | [1m    INFO[0m | [1mUltravox model initialized successfully![0m
+2025-06-21T19:09:48.501334934Z 2025-06-21 19:09:48.501 | INFO     | src.pipecat_pipeline:<module>:96 - Ultravox model initialized successfully!
+2025-06-21T19:09:48.505259856Z 2025-06-21 19:09:48,505 - root - INFO - Starting voice pipeline server on 0.0.0.0:8000
+2025-06-21T19:09:48.531233172Z INFO:     Started server process [75]
+2025-06-21T19:09:48.531267096Z INFO:     Waiting for application startup.
+2025-06-21T19:09:48.531605128Z INFO:     Application startup complete.
+2025-06-21T19:09:48.532089598Z INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2025-06-21T19:12:05.353557791Z INFO:     100.64.0.36:40484 - "OPTIONS /connect HTTP/1.1" 200 OK
+2025-06-21T19:12:05.477973098Z 2025-06-21 19:12:05,477 - root - INFO - Connect request - returning WebSocket URL: wss://wlugc3aef909a9-8000.proxy.runpod.net/ws
+2025-06-21T19:12:05.478014847Z 2025-06-21 19:12:05,477 - root - INFO - Request headers: x-forwarded-host=wlugc3aef909a9-8000.proxy.runpod.net, x-forwarded-proto=https
+2025-06-21T19:12:05.478742348Z INFO:     100.64.0.36:40484 - "POST /connect HTTP/1.1" 200 OK
+2025-06-21T19:12:05.688759778Z INFO:     100.64.0.36:40500 - "WebSocket /ws" [accepted]
+2025-06-21T19:12:05.689284564Z [32m19:12:05[0m | [36mpipecat_pipeline:102[0m | [1m    INFO[0m | [1mStarting bot[0m
+2025-06-21T19:12:05.689298881Z 2025-06-21 19:12:05.688 | INFO     | src.pipecat_pipeline:run_bot:102 - Starting bot
+2025-06-21T19:12:05.690367621Z [32m19:12:05[0m | [36mkokoro_tts_service:130[0m | [1m    INFO[0m | [1mInitialising Kokoro TTS (model='/models/kokoro/model_fp16.onnx', voices='/models/kokoro/voices-v1.0.bin', voice='af_bella')[0m
+2025-06-21T19:12:05.690389863Z 2025-06-21 19:12:05.689 | INFO     | src.kokoro_tts_service:__init__:130 - Initialising Kokoro TTS (model='/models/kokoro/model_fp16.onnx', voices='/models/kokoro/voices-v1.0.bin', voice='af_bella')
+2025-06-21T19:12:05.923295570Z /usr/local/lib/python3.10/dist-packages/torch/nn/modules/rnn.py:123: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.2 and num_layers=1
+2025-06-21T19:12:05.923318584Z   warnings.warn(
+2025-06-21T19:12:05.976005300Z /usr/local/lib/python3.10/dist-packages/torch/nn/utils/weight_norm.py:143: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+2025-06-21T19:12:05.976027903Z   WeightNorm.apply(module, name, dim)
+2025-06-21T19:12:12.526272909Z [32m19:12:12[0m | [36mkokoro_tts_service:151[0m | [1m    INFO[0m | [1mKokoro pipeline initialised successfully (backend=PyTorch)[0m
+2025-06-21T19:12:12.526323756Z 2025-06-21 19:12:12.525 | INFO     | src.kokoro_tts_service:__init__:151 - Kokoro pipeline initialised successfully (backend=PyTorch)
+2025-06-21T19:12:12.526744485Z 2025-06-21 19:12:12.526 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking PipelineSource#0 -> FastAPIWebsocketInputTransport#0
+2025-06-21T19:12:12.526804920Z 2025-06-21 19:12:12.526 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking FastAPIWebsocketInputTransport#0 -> RTVIProcessor#0
+2025-06-21T19:12:12.526887817Z 2025-06-21 19:12:12.526 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking RTVIProcessor#0 -> UltravoxSTTService#0
+2025-06-21T19:12:12.526941799Z 2025-06-21 19:12:12.526 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking UltravoxSTTService#0 -> KokoroTTSService#0
+2025-06-21T19:12:12.527066005Z 2025-06-21 19:12:12.526 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking KokoroTTSService#0 -> FastAPIWebsocketOutputTransport#0
+2025-06-21T19:12:12.527083408Z 2025-06-21 19:12:12.526 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking FastAPIWebsocketOutputTransport#0 -> PipelineSink#0
+2025-06-21T19:12:12.527524937Z 2025-06-21 19:12:12.527 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking PipelineTaskSource#0 -> Pipeline#0
+2025-06-21T19:12:12.527653861Z 2025-06-21 19:12:12.527 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking Pipeline#0 -> PipelineTaskSink#0
+2025-06-21T19:12:12.527827271Z [32m19:12:12[0m | [36m     base_object:55[0m | [33m[1m WARNING[0m | [33m[1mEvent handler on_interruption_start not registered[0m
+2025-06-21T19:12:12.527842640Z 2025-06-21 19:12:12.527 | WARNING  | pipecat.utils.base_object:add_event_handler:55 - Event handler on_interruption_start not registered
+2025-06-21T19:12:12.527858510Z [32m19:12:12[0m | [36m     base_object:55[0m | [33m[1m WARNING[0m | [33m[1mEvent handler on_interruption_end not registered[0m
+2025-06-21T19:12:12.527877406Z 2025-06-21 19:12:12.527 | WARNING  | pipecat.utils.base_object:add_event_handler:55 - Event handler on_interruption_end not registered
+2025-06-21T19:12:12.528026188Z [32m19:12:12[0m | [36m     base_object:55[0m | [33m[1m WARNING[0m | [33m[1mEvent handler on_user_started_speaking not registered[0m
+2025-06-21T19:12:12.528041618Z 2025-06-21 19:12:12.527 | WARNING  | pipecat.utils.base_object:add_event_handler:55 - Event handler on_user_started_speaking not registered
+2025-06-21T19:12:12.528102233Z [32m19:12:12[0m | [36m     base_object:55[0m | [33m[1m WARNING[0m | [33m[1mEvent handler on_user_stopped_speaking not registered[0m
+2025-06-21T19:12:12.528109066Z 2025-06-21 19:12:12.527 | WARNING  | pipecat.utils.base_object:add_event_handler:55 - Event handler on_user_stopped_speaking not registered
+2025-06-21T19:12:12.528222571Z [32m19:12:12[0m | [36m     base_object:55[0m | [33m[1m WARNING[0m | [33m[1mEvent handler on_bot_started_speaking not registered[0m
+2025-06-21T19:12:12.528238341Z 2025-06-21 19:12:12.528 | WARNING  | pipecat.utils.base_object:add_event_handler:55 - Event handler on_bot_started_speaking not registered
+2025-06-21T19:12:12.528358469Z [32m19:12:12[0m | [36m     base_object:55[0m | [33m[1m WARNING[0m | [33m[1mEvent handler on_bot_stopped_speaking not registered[0m
+2025-06-21T19:12:12.528365573Z 2025-06-21 19:12:12.528 | WARNING  | pipecat.utils.base_object:add_event_handler:55 - Event handler on_bot_stopped_speaking not registered
+2025-06-21T19:12:12.528550955Z 2025-06-21 19:12:12.528 | DEBUG    | pipecat.pipeline.runner:run:38 - Runner PipelineRunner#0 started running PipelineTask#0
+2025-06-21T19:12:12.529428210Z INFO:     connection open
+2025-06-21T19:12:12.532198921Z [32m19:12:12[0m | [36m             stt:232[0m | [1m    INFO[0m | [1mWarming up Ultravox model with silent audio...[0m
+2025-06-21T19:12:12.532220713Z 2025-06-21 19:12:12.531 | INFO     | pipecat.services.ultravox.stt:_warm_up_model:232 - Warming up Ultravox model with silent audio...
+2025-06-21T19:12:12.532331233Z [32m19:12:12[0m | [36m             stt:272[0m | [1m    INFO[0m | [1mGenerated 1s of silent audio (16000 samples)[0m
+2025-06-21T19:12:12.532339268Z 2025-06-21 19:12:12.532 | INFO     | pipecat.services.ultravox.stt:_generate_silent_audio:272 - Generated 1s of silent audio (16000 samples)
+2025-06-21T19:12:12.598648569Z WebSocket connection accepted
+2025-06-21T19:12:12.598670871Z WARNING: Defaulting repo_id to hexgrad/Kokoro-82M. Pass repo_id='hexgrad/Kokoro-82M' to suppress this warning.
+2025-06-21T19:12:12.598677414Z INFO 06-21 19:12:12 async_llm_engine.py:211] Added request 1750533132.5981846.
+2025-06-21T19:12:18.879107122Z INFO 06-21 19:12:18 metrics.py:455] Avg prompt throughput: 0.3 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.4%, CPU KV cache usage: 0.0%.
+2025-06-21T19:12:21.900788753Z INFO 06-21 19:12:21 async_llm_engine.py:179] Finished request 1750533132.5981846.
+2025-06-21T19:12:21.960340333Z [32m19:12:21[0m | [36m             stt:252[0m | [1m    INFO[0m | [1mModel warm-up completed successfully[0m
+2025-06-21T19:12:21.960387934Z 2025-06-21 19:12:21.959 | INFO     | pipecat.services.ultravox.stt:_warm_up_model:252 - Model warm-up completed successfully
+2025-06-21T19:12:21.960690799Z [32m19:12:21[0m | [36m             stt:294[0m | [1m    INFO[0m | [1mUltravoxSTTService started[0m
+2025-06-21T19:12:21.960714494Z 2025-06-21 19:12:21.960 | INFO     | pipecat.services.ultravox.stt:start:294 - UltravoxSTTService started
+2025-06-21T19:12:21.962792449Z 2025-06-21 19:12:21.962 | DEBUG    | pipecat.audio.vad.vad_analyzer:set_params:74 - Setting VAD params to: confidence=0.7 start_secs=0.2 stop_secs=0.8 min_volume=0.6
+2025-06-21T19:12:21.968843989Z [32m19:12:21[0m | [36mpipecat_pipeline:159[0m | [1m    INFO[0m | [1mClient connected[0m
+2025-06-21T19:12:21.968865189Z 2025-06-21 19:12:21.968 | INFO     | src.pipecat_pipeline:on_client_connected:159 - Client connected
+2025-06-21T19:12:21.969380518Z 2025-06-21 19:12:21.969 | DEBUG    | pipecat.serializers.protobuf:deserialize:106 - ProtobufFrameSerializer: Transport message TransportMessageUrgentFrame#1(message: {'label': 'rtvi-ai', 'type': 'client-ready', 'data': {}, 'id': '1cd42cef'})
+2025-06-21T19:12:21.974275272Z 2025-06-21 19:12:21.973 | DEBUG    | pipecat.processors.frameworks.rtvi:_handle_client_ready:844 - Received client-ready
+2025-06-21T19:12:21.978086167Z [32m19:12:21[0m | [36mpipecat_pipeline:153[0m | [1m    INFO[0m | [1mPipecat client ready.[0m
+2025-06-21T19:12:21.978107939Z 2025-06-21 19:12:21.977 | INFO     | src.pipecat_pipeline:on_client_ready:153 - Pipecat client ready.
+2025-06-21T19:12:22.531426754Z [32m19:12:22[0m | [36mpipecat_pipeline:201[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-21T19:12:22.531708068Z 2025-06-21 19:12:22.531 | INFO     | src.pipecat_pipeline:log_metrics:201 - 📊 === PERFORMANCE METRICS ===
+2025-06-21T19:12:22.531750509Z [32m19:12:22[0m | [36mpipecat_pipeline:212[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-21T19:12:22.531768293Z 2025-06-21 19:12:22.531 | INFO     | src.pipecat_pipeline:log_metrics:212 - 📊 ========================
+2025-06-21T19:12:22.537273245Z 2025-06-21 19:12:22.536 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-21T19:12:22.537574366Z [32m19:12:22[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-21T19:12:22.537588233Z 2025-06-21 19:12:22.537 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-21T19:12:22.545546052Z [32m19:12:22[0m | [36m        protobuf:64[0m | [33m[1m WARNING[0m | [33m[1mFrame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable[0m
+2025-06-21T19:12:22.545573234Z 2025-06-21 19:12:22.545 | WARNING  | pipecat.serializers.protobuf:serialize:64 - Frame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable
+2025-06-21T19:12:22.700151351Z 2025-06-21 19:12:22.699 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-21T19:12:22.700408700Z [32m19:12:22[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-21T19:12:22.700422686Z 2025-06-21 19:12:22.700 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-21T19:12:22.701112827Z [32m19:12:22[0m | [36m             stt:405[0m | [1m    INFO[0m | [1mGenerating text from audio using model...[0m
+2025-06-21T19:12:22.701135039Z 2025-06-21 19:12:22.700 | INFO     | pipecat.services.ultravox.stt:_process_audio_buffer:405 - Generating text from audio using model...
+2025-06-21T19:12:22.702112795Z INFO 06-21 19:12:22 async_llm_engine.py:211] Added request 1750533142.7016542.
+2025-06-21T19:12:22.847306394Z 2025-06-21 19:12:22.846 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxSTTService#0 TTFB: 0.14579415321350098
+2025-06-21T19:12:22.988738611Z [32m19:12:22[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:12:22.988760462Z 2025-06-21 19:12:22.988 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:12:23.280508284Z 2025-06-21 19:12:23,280 - phonemizer - WARNING - words count mismatch on 100.0% of the lines (1/1)
+2025-06-21T19:12:23.880794335Z INFO 06-21 19:12:23 metrics.py:455] Avg prompt throughput: 8.2 tokens/s, Avg generation throughput: 12.0 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.5%, CPU KV cache usage: 0.0%.
+2025-06-21T19:12:24.090667411Z 2025-06-21 19:12:24.090 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:12:24.091131773Z [32m19:12:24[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:12:24.091145749Z 2025-06-21 19:12:24.090 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:12:24.098285756Z 2025-06-21 19:12:24.097 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:395 - Bot started speaking
+2025-06-21T19:12:24.751261179Z [32m19:12:24[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:12:24.751291176Z 2025-06-21 19:12:24.750 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:12:24.802398964Z 2025-06-21 19:12:24,801 - phonemizer - WARNING - words count mismatch on 100.0% of the lines (1/1)
+2025-06-21T19:12:25.681353934Z 2025-06-21 19:12:25.680 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:12:25.681855156Z [32m19:12:25[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:12:25.681905471Z 2025-06-21 19:12:25.681 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:12:25.742732383Z [32m19:12:25[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:12:25.743055146Z 2025-06-21 19:12:25.742 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:12:25.756404142Z 2025-06-21 19:12:25,755 - phonemizer - WARNING - words count mismatch on 100.0% of the lines (1/1)
+2025-06-21T19:12:25.863861070Z INFO 06-21 19:12:25 async_llm_engine.py:179] Finished request 1750533142.7016542.
+2025-06-21T19:12:25.959284160Z 2025-06-21 19:12:25.958 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxSTTService#0 processing time: 3.2577006816864014
+2025-06-21T19:12:26.009139640Z 2025-06-21 19:12:26.008 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:12:26.009921465Z [32m19:12:26[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:12:26.010015513Z 2025-06-21 19:12:26.009 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:12:28.815687016Z 2025-06-21 19:12:28.815 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-21T19:12:28.816102835Z [32m19:12:28[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-21T19:12:28.816121641Z 2025-06-21 19:12:28.815 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-21T19:12:28.830807335Z 2025-06-21 19:12:28.830 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:410 - Bot stopped speaking
+2025-06-21T19:12:28.831406322Z [32m19:12:28[0m | [36m        protobuf:64[0m | [33m[1m WARNING[0m | [33m[1mFrame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable[0m
+2025-06-21T19:12:28.831423134Z 2025-06-21 19:12:28.831 | WARNING  | pipecat.serializers.protobuf:serialize:64 - Frame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable
+2025-06-21T19:12:29.396003612Z 2025-06-21 19:12:29.395 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-21T19:12:29.396299303Z [32m19:12:29[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-21T19:12:29.396352684Z 2025-06-21 19:12:29.395 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-21T19:12:29.398598128Z [32m19:12:29[0m | [36m             stt:405[0m | [1m    INFO[0m | [1mGenerating text from audio using model...[0m
+2025-06-21T19:12:29.398638845Z 2025-06-21 19:12:29.397 | INFO     | pipecat.services.ultravox.stt:_process_audio_buffer:405 - Generating text from audio using model...
+2025-06-21T19:12:29.399519237Z INFO 06-21 19:12:29 async_llm_engine.py:211] Added request 1750533149.398883.
+2025-06-21T19:12:29.576453822Z INFO 06-21 19:12:29 metrics.py:455] Avg prompt throughput: 8.6 tokens/s, Avg generation throughput: 3.7 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.5%, CPU KV cache usage: 0.0%.
+2025-06-21T19:12:29.584817221Z 2025-06-21 19:12:29.584 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxSTTService#0 TTFB: 0.18625593185424805
+2025-06-21T19:12:30.231184177Z [32m19:12:30[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:12:30.231316669Z 2025-06-21 19:12:30.230 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:12:30.888436170Z 2025-06-21 19:12:30.887 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:12:30.888987116Z [32m19:12:30[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:12:30.889020139Z 2025-06-21 19:12:30.888 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:12:30.906733842Z 2025-06-21 19:12:30.906 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:395 - Bot started speaking
+2025-06-21T19:12:31.300586189Z INFO 06-21 19:12:31 async_llm_engine.py:179] Finished request 1750533149.398883.
+2025-06-21T19:12:31.307994856Z 2025-06-21 19:12:31.307 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxSTTService#0 processing time: 1.9093868732452393
+2025-06-21T19:12:31.321628802Z [32m19:12:31[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:12:31.321662206Z 2025-06-21 19:12:31.321 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:12:31.576927447Z 2025-06-21 19:12:31.576 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:12:31.577206667Z [32m19:12:31[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:12:31.577220754Z 2025-06-21 19:12:31.576 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:12:31.937914683Z 2025-06-21 19:12:31.937 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-21T19:12:31.938281559Z [32m19:12:31[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-21T19:12:31.938333759Z 2025-06-21 19:12:31.937 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-21T19:12:31.954024080Z 2025-06-21 19:12:31.953 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:410 - Bot stopped speaking
+2025-06-21T19:12:31.954606656Z [32m19:12:31[0m | [36m        protobuf:64[0m | [33m[1m WARNING[0m | [33m[1mFrame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable[0m
+2025-06-21T19:12:31.954666610Z 2025-06-21 19:12:31.954 | WARNING  | pipecat.serializers.protobuf:serialize:64 - Frame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable
+2025-06-21T19:12:32.287486825Z 2025-06-21 19:12:32.287 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-21T19:12:32.287960013Z [32m19:12:32[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-21T19:12:32.287981905Z 2025-06-21 19:12:32.287 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-21T19:12:32.289143480Z [32m19:12:32[0m | [36m             stt:405[0m | [1m    INFO[0m | [1mGenerating text from audio using model...[0m
+2025-06-21T19:12:32.289180130Z 2025-06-21 19:12:32.288 | INFO     | pipecat.services.ultravox.stt:_process_audio_buffer:405 - Generating text from audio using model...
+2025-06-21T19:12:32.290479978Z INFO 06-21 19:12:32 async_llm_engine.py:211] Added request 1750533152.2898986.
+2025-06-21T19:12:32.426550204Z 2025-06-21 19:12:32.426 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxSTTService#0 TTFB: 0.13689374923706055
+2025-06-21T19:12:32.533810078Z [32m19:12:32[0m | [36mpipecat_pipeline:201[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-21T19:12:32.533842850Z 2025-06-21 19:12:32.533 | INFO     | src.pipecat_pipeline:log_metrics:201 - 📊 === PERFORMANCE METRICS ===
+2025-06-21T19:12:32.534237710Z [32m19:12:32[0m | [36mpipecat_pipeline:212[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-21T19:12:32.534251917Z 2025-06-21 19:12:32.533 | INFO     | src.pipecat_pipeline:log_metrics:212 - 📊 ========================
+2025-06-21T19:12:32.813786138Z [32m19:12:32[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:12:32.813811867Z 2025-06-21 19:12:32.813 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:12:33.111024484Z 2025-06-21 19:12:33.110 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:12:33.111417210Z [32m19:12:33[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:12:33.111431808Z 2025-06-21 19:12:33.111 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:12:33.118225216Z 2025-06-21 19:12:33.117 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:395 - Bot started speaking
+2025-06-21T19:12:34.570262115Z [32m19:12:34[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:12:34.570303975Z 2025-06-21 19:12:34.569 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:12:34.683200411Z INFO 06-21 19:12:34 metrics.py:455] Avg prompt throughput: 8.4 tokens/s, Avg generation throughput: 11.0 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.6%, CPU KV cache usage: 0.0%.
+2025-06-21T19:12:35.109506167Z 2025-06-21 19:12:35.109 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:12:35.109870328Z [32m19:12:35[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:12:35.109892260Z 2025-06-21 19:12:35.109 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:12:35.951516681Z [32m19:12:35[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:12:35.951556817Z 2025-06-21 19:12:35.951 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:12:36.292909833Z 2025-06-21 19:12:36.292 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:12:36.293238928Z [32m19:12:36[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:12:36.293255159Z 2025-06-21 19:12:36.292 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:12:37.657692343Z [32m19:12:37[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:12:37.657723502Z 2025-06-21 19:12:37.657 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:12:37.967021515Z 2025-06-21 19:12:37.966 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:12:37.967057383Z [32m19:12:37[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:12:37.967102910Z 2025-06-21 19:12:37.966 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:12:39.724270841Z INFO 06-21 19:12:39 metrics.py:455] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 14.5 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 1.2%, CPU KV cache usage: 0.0%.
+2025-06-21T19:12:39.736208617Z [32m19:12:39[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:12:39.736235338Z 2025-06-21 19:12:39.735 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:12:40.257825861Z 2025-06-21 19:12:40.257 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:12:40.258292817Z [32m19:12:40[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:12:40.258316562Z 2025-06-21 19:12:40.258 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:12:41.164160597Z [32m19:12:41[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:12:41.164194992Z 2025-06-21 19:12:41.163 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:12:41.720441346Z 2025-06-21 19:12:41.720 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:12:41.720739001Z [32m19:12:41[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:12:41.720761564Z 2025-06-21 19:12:41.720 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:12:42.535375830Z [32m19:12:42[0m | [36mpipecat_pipeline:201[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-21T19:12:42.535401379Z 2025-06-21 19:12:42.534 | INFO     | src.pipecat_pipeline:log_metrics:201 - 📊 === PERFORMANCE METRICS ===
+2025-06-21T19:12:42.535702370Z [32m19:12:42[0m | [36mpipecat_pipeline:212[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-21T19:12:42.535725294Z 2025-06-21 19:12:42.535 | INFO     | src.pipecat_pipeline:log_metrics:212 - 📊 ========================
+2025-06-21T19:12:42.731568370Z [32m19:12:42[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:12:42.731591023Z 2025-06-21 19:12:42.731 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:12:43.069624767Z INFO 06-21 19:12:43 async_llm_engine.py:179] Finished request 1750533152.2898986.
+2025-06-21T19:12:43.139396202Z 2025-06-21 19:12:43.139 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:12:43.139821400Z [32m19:12:43[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:12:43.139854352Z 2025-06-21 19:12:43.139 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:12:43.141288715Z 2025-06-21 19:12:43.140 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxSTTService#0 processing time: 10.851775169372559
+2025-06-21T19:12:43.166021335Z [32m19:12:43[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:12:43.166045471Z 2025-06-21 19:12:43.165 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:12:43.296735372Z 2025-06-21 19:12:43.296 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:12:43.296898792Z [32m19:12:43[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:12:43.296906326Z 2025-06-21 19:12:43.296 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:12:43.743450399Z 2025-06-21 19:12:43.743 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-21T19:12:43.743778251Z [32m19:12:43[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-21T19:12:43.743800343Z 2025-06-21 19:12:43.743 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-21T19:12:43.755878175Z 2025-06-21 19:12:43.755 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:410 - Bot stopped speaking
+2025-06-21T19:12:43.756688794Z [32m19:12:43[0m | [36m        protobuf:64[0m | [33m[1m WARNING[0m | [33m[1mFrame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable[0m
+2025-06-21T19:12:43.756711688Z 2025-06-21 19:12:43.756 | WARNING  | pipecat.serializers.protobuf:serialize:64 - Frame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable
+2025-06-21T19:12:43.988338447Z 2025-06-21 19:12:43.988 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-21T19:12:43.988584163Z [32m19:12:43[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-21T19:12:43.988598370Z 2025-06-21 19:12:43.988 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-21T19:12:43.989405543Z [32m19:12:43[0m | [36m             stt:405[0m | [1m    INFO[0m | [1mGenerating text from audio using model...[0m
+2025-06-21T19:12:43.989427645Z 2025-06-21 19:12:43.989 | INFO     | pipecat.services.ultravox.stt:_process_audio_buffer:405 - Generating text from audio using model...
+2025-06-21T19:12:43.990386095Z INFO 06-21 19:12:43 async_llm_engine.py:211] Added request 1750533163.9899266.
+2025-06-21T19:12:44.136199050Z 2025-06-21 19:12:44.135 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxSTTService#0 TTFB: 0.14640069007873535
+2025-06-21T19:12:44.746226147Z INFO 06-21 19:12:44 metrics.py:455] Avg prompt throughput: 8.8 tokens/s, Avg generation throughput: 10.8 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.5%, CPU KV cache usage: 0.0%.
+2025-06-21T19:12:45.007646185Z [32m19:12:45[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:12:45.007686702Z 2025-06-21 19:12:45.007 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:12:45.530011118Z 2025-06-21 19:12:45.529 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:12:45.530347246Z [32m19:12:45[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:12:45.530361864Z 2025-06-21 19:12:45.529 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:12:45.543755484Z 2025-06-21 19:12:45.543 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:395 - Bot started speaking
+2025-06-21T19:12:45.835101773Z [32m19:12:45[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:12:45.835124195Z 2025-06-21 19:12:45.834 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:12:46.246981147Z 2025-06-21 19:12:46.246 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:12:46.247351480Z [32m19:12:46[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:12:46.247365818Z 2025-06-21 19:12:46.246 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:12:46.763691103Z [32m19:12:46[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:12:46.763752119Z 2025-06-21 19:12:46.763 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:12:46.877026012Z INFO 06-21 19:12:46 async_llm_engine.py:179] Finished request 1750533163.9899266.
+2025-06-21T19:12:46.976480065Z 2025-06-21 19:12:46.976 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxSTTService#0 processing time: 2.9867029190063477
+2025-06-21T19:12:47.031114540Z 2025-06-21 19:12:47.030 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:12:47.031537723Z [32m19:12:47[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:12:47.031565826Z 2025-06-21 19:12:47.031 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:12:47.792661818Z 2025-06-21 19:12:47.792 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-21T19:12:47.792998607Z [32m19:12:47[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-21T19:12:47.793012744Z 2025-06-21 19:12:47.792 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-21T19:12:47.806679283Z 2025-06-21 19:12:47.806 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:410 - Bot stopped speaking
+2025-06-21T19:12:47.807383390Z [32m19:12:47[0m | [36m        protobuf:64[0m | [33m[1m WARNING[0m | [33m[1mFrame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable[0m
+2025-06-21T19:12:47.807397536Z 2025-06-21 19:12:47.807 | WARNING  | pipecat.serializers.protobuf:serialize:64 - Frame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable
+2025-06-21T19:12:48.056517089Z 2025-06-21 19:12:48.056 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-21T19:12:48.056773346Z [32m19:12:48[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-21T19:12:48.056797902Z 2025-06-21 19:12:48.056 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-21T19:12:48.057579727Z [32m19:12:48[0m | [36m             stt:405[0m | [1m    INFO[0m | [1mGenerating text from audio using model...[0m
+2025-06-21T19:12:48.057593984Z 2025-06-21 19:12:48.057 | INFO     | pipecat.services.ultravox.stt:_process_audio_buffer:405 - Generating text from audio using model...
+2025-06-21T19:12:48.058560769Z INFO 06-21 19:12:48 async_llm_engine.py:211] Added request 1750533168.058105.
+2025-06-21T19:12:48.182519099Z 2025-06-21 19:12:48.182 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxSTTService#0 TTFB: 0.1245737075805664
+2025-06-21T19:12:48.707590391Z [32m19:12:48[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:12:48.707659993Z 2025-06-21 19:12:48.707 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:12:49.109223160Z 2025-06-21 19:12:49.108 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:12:49.109605656Z [32m19:12:49[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:12:49.109674377Z 2025-06-21 19:12:49.109 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:12:49.119221404Z 2025-06-21 19:12:49.118 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:395 - Bot started speaking
+2025-06-21T19:12:49.387548446Z [32m19:12:49[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:12:49.387571029Z 2025-06-21 19:12:49.387 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:12:49.501915714Z INFO 06-21 19:12:49 async_llm_engine.py:179] Finished request 1750533168.058105.
+2025-06-21T19:12:49.600480379Z 2025-06-21 19:12:49.600 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxSTTService#0 processing time: 1.542527675628662
+2025-06-21T19:12:49.693145933Z 2025-06-21 19:12:49.692 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:12:49.693500326Z [32m19:12:49[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:12:49.693514463Z 2025-06-21 19:12:49.693 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:12:49.937087174Z 2025-06-21 19:12:49.936 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-21T19:12:49.937410187Z [32m19:12:49[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-21T19:12:49.937424404Z 2025-06-21 19:12:49.937 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-21T19:12:49.949444617Z 2025-06-21 19:12:49.949 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:410 - Bot stopped speaking
+2025-06-21T19:12:49.950236280Z [32m19:12:49[0m | [36m        protobuf:64[0m | [33m[1m WARNING[0m | [33m[1mFrame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable[0m
+2025-06-21T19:12:49.950258362Z 2025-06-21 19:12:49.949 | WARNING  | pipecat.serializers.protobuf:serialize:64 - Frame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable
+2025-06-21T19:12:50.101192811Z 2025-06-21 19:12:50.100 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-21T19:12:50.101427186Z [32m19:12:50[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-21T19:12:50.101444028Z 2025-06-21 19:12:50.101 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-21T19:12:50.102083873Z [32m19:12:50[0m | [36m             stt:405[0m | [1m    INFO[0m | [1mGenerating text from audio using model...[0m
+2025-06-21T19:12:50.102100454Z 2025-06-21 19:12:50.101 | INFO     | pipecat.services.ultravox.stt:_process_audio_buffer:405 - Generating text from audio using model...
+2025-06-21T19:12:50.103049666Z INFO 06-21 19:12:50 async_llm_engine.py:211] Added request 1750533170.1026535.
+2025-06-21T19:12:50.219525719Z INFO 06-21 19:12:50 metrics.py:455] Avg prompt throughput: 15.5 tokens/s, Avg generation throughput: 8.2 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.4%, CPU KV cache usage: 0.0%.
+2025-06-21T19:12:50.221275922Z 2025-06-21 19:12:50.220 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxSTTService#0 TTFB: 0.11870980262756348
+2025-06-21T19:12:50.349670164Z [32m19:12:50[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:12:50.349692707Z 2025-06-21 19:12:50.349 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:12:50.410287779Z 2025-06-21 19:12:50,409 - phonemizer - WARNING - words count mismatch on 100.0% of the lines (1/1)
+2025-06-21T19:12:50.872109438Z 2025-06-21 19:12:50.871 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:12:50.872670534Z [32m19:12:50[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:12:50.872692796Z 2025-06-21 19:12:50.872 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:12:50.880745446Z 2025-06-21 19:12:50.880 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:395 - Bot started speaking
+2025-06-21T19:12:51.212562035Z [32m19:12:51[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:12:51.212670050Z 2025-06-21 19:12:51.212 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:12:51.269178483Z 2025-06-21 19:12:51,268 - phonemizer - WARNING - words count mismatch on 100.0% of the lines (1/1)
+2025-06-21T19:12:51.948511070Z 2025-06-21 19:12:51.948 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:12:51.948921189Z [32m19:12:51[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:12:51.948946507Z 2025-06-21 19:12:51.948 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:12:52.056390040Z [32m19:12:52[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:12:52.056438972Z 2025-06-21 19:12:52.055 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:12:52.119273607Z 2025-06-21 19:12:52,118 - phonemizer - WARNING - words count mismatch on 100.0% of the lines (1/1)
+2025-06-21T19:12:52.172146316Z INFO 06-21 19:12:52 async_llm_engine.py:179] Finished request 1750533170.1026535.
+2025-06-21T19:12:52.269488499Z 2025-06-21 19:12:52.269 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxSTTService#0 processing time: 2.167011260986328
+2025-06-21T19:12:52.381315284Z 2025-06-21 19:12:52.380 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:12:52.381691258Z [32m19:12:52[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:12:52.381715494Z 2025-06-21 19:12:52.381 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:12:52.538465826Z [32m19:12:52[0m | [36mpipecat_pipeline:201[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-21T19:12:52.538738023Z 2025-06-21 19:12:52.538 | INFO     | src.pipecat_pipeline:log_metrics:201 - 📊 === PERFORMANCE METRICS ===
+2025-06-21T19:12:52.538806873Z [32m19:12:52[0m | [36mpipecat_pipeline:212[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-21T19:12:52.538862118Z 2025-06-21 19:12:52.538 | INFO     | src.pipecat_pipeline:log_metrics:212 - 📊 ========================
+2025-06-21T19:13:02.103221217Z 2025-06-21 19:13:02.102 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-21T19:13:02.103518611Z [32m19:13:02[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-21T19:13:02.103542026Z 2025-06-21 19:13:02.103 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-21T19:13:02.114281176Z 2025-06-21 19:13:02.113 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:410 - Bot stopped speaking
+2025-06-21T19:13:02.115208737Z [32m19:13:02[0m | [36m        protobuf:64[0m | [33m[1m WARNING[0m | [33m[1mFrame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable[0m
+2025-06-21T19:13:02.115230889Z 2025-06-21 19:13:02.114 | WARNING  | pipecat.serializers.protobuf:serialize:64 - Frame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable
+2025-06-21T19:13:02.541723951Z [32m19:13:02[0m | [36mpipecat_pipeline:201[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-21T19:13:02.541746714Z 2025-06-21 19:13:02.541 | INFO     | src.pipecat_pipeline:log_metrics:201 - 📊 === PERFORMANCE METRICS ===
+2025-06-21T19:13:02.541997550Z [32m19:13:02[0m | [36mpipecat_pipeline:212[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-21T19:13:02.542011928Z 2025-06-21 19:13:02.541 | INFO     | src.pipecat_pipeline:log_metrics:212 - 📊 ========================
+2025-06-21T19:13:02.939362396Z 2025-06-21 19:13:02.939 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-21T19:13:02.939677484Z [32m19:13:02[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-21T19:13:02.939710186Z 2025-06-21 19:13:02.939 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-21T19:13:02.940530444Z [32m19:13:02[0m | [36m             stt:405[0m | [1m    INFO[0m | [1mGenerating text from audio using model...[0m
+2025-06-21T19:13:02.940544701Z 2025-06-21 19:13:02.940 | INFO     | pipecat.services.ultravox.stt:_process_audio_buffer:405 - Generating text from audio using model...
+2025-06-21T19:13:02.941673144Z INFO 06-21 19:13:02 async_llm_engine.py:211] Added request 1750533182.941145.
+2025-06-21T19:13:03.090686876Z INFO 06-21 19:13:03 metrics.py:455] Avg prompt throughput: 3.2 tokens/s, Avg generation throughput: 1.7 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.4%, CPU KV cache usage: 0.0%.
+2025-06-21T19:13:03.092070863Z 2025-06-21 19:13:03.091 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxSTTService#0 TTFB: 0.15113234519958496
+2025-06-21T19:13:03.223828822Z [32m19:13:03[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:13:03.223851535Z 2025-06-21 19:13:03.223 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:13:03.277326398Z 2025-06-21 19:13:03,277 - phonemizer - WARNING - words count mismatch on 100.0% of the lines (1/1)
+2025-06-21T19:13:03.506451367Z 2025-06-21 19:13:03.506 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:13:03.506841758Z [32m19:13:03[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:13:03.506865042Z 2025-06-21 19:13:03.506 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:13:03.516731005Z 2025-06-21 19:13:03.516 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:395 - Bot started speaking
+2025-06-21T19:13:03.917729289Z [32m19:13:03[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:13:03.917752984Z 2025-06-21 19:13:03.917 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:13:03.966678980Z 2025-06-21 19:13:03,966 - phonemizer - WARNING - words count mismatch on 100.0% of the lines (1/1)
+2025-06-21T19:13:04.455313048Z 2025-06-21 19:13:04.454 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:13:04.455693721Z [32m19:13:04[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:13:04.455718037Z 2025-06-21 19:13:04.455 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:13:05.196842278Z [32m19:13:05[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:13:05.196877034Z 2025-06-21 19:13:05.196 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:13:05.264252620Z 2025-06-21 19:13:05,263 - phonemizer - WARNING - words count mismatch on 100.0% of the lines (1/1)
+2025-06-21T19:13:05.991114722Z INFO 06-21 19:13:05 async_llm_engine.py:179] Finished request 1750533182.941145.
+2025-06-21T19:13:06.089472694Z 2025-06-21 19:13:06.089 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxSTTService#0 processing time: 3.14848256111145
+2025-06-21T19:13:06.122934037Z 2025-06-21 19:13:06.122 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:13:06.123712254Z [32m19:13:06[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:13:06.123920590Z 2025-06-21 19:13:06.123 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:13:06.125102033Z [32m19:13:06[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:13:06.125112703Z 2025-06-21 19:13:06.124 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:13:06.140012784Z 2025-06-21 19:13:06,139 - phonemizer - WARNING - words count mismatch on 100.0% of the lines (1/1)
+2025-06-21T19:13:06.454674893Z 2025-06-21 19:13:06.454 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:13:06.455017774Z [32m19:13:06[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:13:06.455033233Z 2025-06-21 19:13:06.454 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:13:07.136464826Z 2025-06-21 19:13:07.136 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-21T19:13:07.136946761Z [32m19:13:07[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-21T19:13:07.136968732Z 2025-06-21 19:13:07.136 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-21T19:13:07.151504642Z 2025-06-21 19:13:07.151 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:410 - Bot stopped speaking
+2025-06-21T19:13:07.151907817Z [32m19:13:07[0m | [36m        protobuf:64[0m | [33m[1m WARNING[0m | [33m[1mFrame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable[0m
+2025-06-21T19:13:07.151929919Z 2025-06-21 19:13:07.151 | WARNING  | pipecat.serializers.protobuf:serialize:64 - Frame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable
+2025-06-21T19:13:07.347951655Z 2025-06-21 19:13:07.347 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-21T19:13:07.348313382Z [32m19:13:07[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-21T19:13:07.348327609Z 2025-06-21 19:13:07.347 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-21T19:13:07.349162755Z [32m19:13:07[0m | [36m             stt:405[0m | [1m    INFO[0m | [1mGenerating text from audio using model...[0m
+2025-06-21T19:13:07.349184656Z 2025-06-21 19:13:07.348 | INFO     | pipecat.services.ultravox.stt:_process_audio_buffer:405 - Generating text from audio using model...
+2025-06-21T19:13:07.350592770Z INFO 06-21 19:13:07 async_llm_engine.py:211] Added request 1750533187.349963.
+2025-06-21T19:13:07.486681892Z 2025-06-21 19:13:07.486 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxSTTService#0 TTFB: 0.13688039779663086
+2025-06-21T19:13:07.615171966Z [32m19:13:07[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:13:07.615205750Z 2025-06-21 19:13:07.614 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:13:07.671449881Z 2025-06-21 19:13:07,671 - phonemizer - WARNING - words count mismatch on 100.0% of the lines (1/1)
+2025-06-21T19:13:08.027311174Z 2025-06-21 19:13:08.026 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:13:08.027865857Z [32m19:13:08[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:13:08.027965616Z 2025-06-21 19:13:08.027 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:13:08.040261162Z 2025-06-21 19:13:08.039 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:395 - Bot started speaking
+2025-06-21T19:13:08.121139195Z INFO 06-21 19:13:08 metrics.py:455] Avg prompt throughput: 8.0 tokens/s, Avg generation throughput: 8.3 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.4%, CPU KV cache usage: 0.0%.
+2025-06-21T19:13:08.891142128Z [32m19:13:08[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:13:08.891572926Z 2025-06-21 19:13:08.890 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:13:08.950424156Z 2025-06-21 19:13:08,950 - phonemizer - WARNING - words count mismatch on 100.0% of the lines (1/1)
+2025-06-21T19:13:09.351885861Z 2025-06-21 19:13:09.351 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:13:09.352506690Z [32m19:13:09[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:13:09.352886531Z 2025-06-21 19:13:09.352 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:13:09.812260593Z [32m19:13:09[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-21T19:13:09.812287815Z 2025-06-21 19:13:09.811 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-21T19:13:09.864250687Z 2025-06-21 19:13:09,863 - phonemizer - WARNING - words count mismatch on 100.0% of the lines (1/1)
+2025-06-21T19:13:09.931485966Z INFO 06-21 19:13:09 async_llm_engine.py:179] Finished request 1750533187.349963.
+2025-06-21T19:13:10.030663535Z 2025-06-21 19:13:10.030 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxSTTService#0 processing time: 2.6809611320495605
+2025-06-21T19:13:10.217836940Z 2025-06-21 19:13:10.217 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-21T19:13:10.218225458Z [32m19:13:10[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-21T19:13:10.218239966Z 2025-06-21 19:13:10.217 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-21T19:13:12.542982749Z [32m19:13:12[0m | [36mpipecat_pipeline:201[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-21T19:13:12.543016704Z 2025-06-21 19:13:12.542 | INFO     | src.pipecat_pipeline:log_metrics:201 - 📊 === PERFORMANCE METRICS ===
+2025-06-21T19:13:12.543580314Z [32m19:13:12[0m | [36mpipecat_pipeline:212[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-21T19:13:12.543594942Z 2025-06-21 19:13:12.542 | INFO     | src.pipecat_pipeline:log_metrics:212 - 📊 ========================
+2025-06-21T19:13:15.147976265Z [32m19:13:15[0m | [36mfastapi_websocket:300[0m | [31m[1m   ERROR[0m | [31m[1mFastAPIWebsocketOutputTransport#0 exception sending data: WebSocketDisconnect ()[0m
+2025-06-21T19:13:15.148002765Z 2025-06-21 19:13:15.147 | ERROR    | pipecat.transports.network.fastapi_websocket:_write_frame:300 - FastAPIWebsocketOutputTransport#0 exception sending data: WebSocketDisconnect ()
+2025-06-21T19:13:15.148352670Z INFO:     connection closed
+2025-06-21T19:13:15.148654663Z [32m19:13:15[0m | [36mpipecat_pipeline:163[0m | [1m    INFO[0m | [1mClient disconnected[0m
+2025-06-21T19:13:15.148689669Z 2025-06-21 19:13:15.148 | INFO     | src.pipecat_pipeline:on_client_disconnected:163 - Client disconnected
+2025-06-21T19:13:15.148876925Z 2025-06-21 19:13:15.148 | DEBUG    | pipecat.pipeline.task:_cancel:419 - Canceling pipeline task PipelineTask#0
+2025-06-21T19:13:15.151706067Z [32m19:13:15[0m | [36m             stt:315[0m | [1m    INFO[0m | [1mUltravoxSTTService cancelled[0m
+2025-06-21T19:13:15.151732737Z 2025-06-21 19:13:15.151 | INFO     | pipecat.services.ultravox.stt:cancel:315 - UltravoxSTTService cancelled
+2025-06-21T19:13:15.153481328Z [32m19:13:15[0m | [36m        protobuf:64[0m | [33m[1m WARNING[0m | [33m[1mFrame type <class 'pipecat.frames.frames.CancelFrame'> is not serializable[0m
+2025-06-21T19:13:15.153552803Z 2025-06-21 19:13:15.153 | WARNING  | pipecat.serializers.protobuf:serialize:64 - Frame type <class 'pipecat.frames.frames.CancelFrame'> is not serializable
+2025-06-21T19:13:15.156040857Z 2025-06-21 19:13:15.155 | DEBUG    | pipecat.pipeline.runner:run:55 - Runner PipelineRunner#0 finished running PipelineTask#0
+2025-06-21T19:13:22.544239504Z [32m19:13:22[0m | [36mpipecat_pipeline:201[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-21T19:13:22.544286904Z 2025-06-21 19:13:22.543 | INFO     | src.pipecat_pipeline:log_metrics:201 - 📊 === PERFORMANCE METRICS ===
+2025-06-21T19:13:22.544457799Z [32m19:13:22[0m | [36mpipecat_pipeline:212[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-21T19:13:22.544484509Z 2025-06-21 19:13:22.544 | INFO     | src.pipecat_pipeline:log_metrics:212 - 📊 ========================
+2025-06-21T19:13:32.545784427Z [32m19:13:32[0m | [36mpipecat_pipeline:201[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-21T19:13:32.545825394Z 2025-06-21 19:13:32.545 | INFO     | src.pipecat_pipeline:log_metrics:201 - 📊 === PERFORMANCE METRICS ===
+2025-06-21T19:13:32.545830664Z [32m19:13:32[0m | [36mpipecat_pipeline:212[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-21T19:13:32.545844701Z 2025-06-21 19:13:32.545 | INFO     | src.pipecat_pipeline:log_metrics:212 - 📊 ========================
+2025-06-21T19:13:42.546793369Z [32m19:13:42[0m | [36mpipecat_pipeline:201[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-21T19:13:42.546842803Z 2025-06-21 19:13:42.546 | INFO     | src.pipecat_pipeline:log_metrics:201 - 📊 === PERFORMANCE METRICS ===
+2025-06-21T19:13:42.546988820Z [32m19:13:42[0m | [36mpipecat_pipeline:212[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-21T19:13:42.547021762Z 2025-06-21 19:13:42.546 | INFO     | src.pipecat_pipeline:log_metrics:212 - 📊 ========================
+2025-06-21T19:13:52.548169967Z [32m19:13:52[0m | [36mpipecat_pipeline:201[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-21T19:13:52.548220193Z 2025-06-21 19:13:52.547 | INFO     | src.pipecat_pipeline:log_metrics:201 - 📊 === PERFORMANCE METRICS ===
+2025-06-21T19:13:52.548437355Z [32m19:13:52[0m | [36mpipecat_pipeline:212[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-21T19:13:52.548451592Z 2025-06-21 19:13:52.548 | INFO     | src.pipecat_pipeline:log_metrics:212 - 📊 ========================
+2025-06-21T19:14:02.549838801Z [32m19:14:02[0m | [36mpipecat_pipeline:201[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-21T19:14:02.549872084Z 2025-06-21 19:14:02.549 | INFO     | src.pipecat_pipeline:log_metrics:201 - 📊 === PERFORMANCE METRICS ===
+2025-06-21T19:14:02.550531776Z [32m19:14:02[0m | [36mpipecat_pipeline:212[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-21T19:14:02.550539822Z 2025-06-21 19:14:02.549 | INFO     | src.pipecat_pipeline:log_metrics:212 - 📊 ========================
+2025-06-21T19:14:12.550831130Z [32m19:14:12[0m | [36mpipecat_pipeline:201[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-21T19:14:12.550877698Z 2025-06-21 19:14:12.550 | INFO     | src.pipecat_pipeline:log_metrics:201 - 📊 === PERFORMANCE METRICS ===
+2025-06-21T19:14:12.551086515Z [32m19:14:12[0m | [36mpipecat_pipeline:212[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-21T19:14:12.551109228Z 2025-06-21 19:14:12.550 | INFO     | src.pipecat_pipeline:log_metrics:212 - 📊 ========================
+2025-06-21T19:14:22.551789304Z [32m19:14:22[0m | [36mpipecat_pipeline:201[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-21T19:14:22.551834109Z 2025-06-21 19:14:22.551 | INFO     | src.pipecat_pipeline:log_metrics:201 - 📊 === PERFORMANCE METRICS ===
+2025-06-21T19:14:22.552049828Z [32m19:14:22[0m | [36mpipecat_pipeline:212[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-21T19:14:22.552075026Z 2025-06-21 19:14:22.551 | INFO     | src.pipecat_pipeline:log_metrics:212 - 📊 ========================
+2025-06-21T19:14:32.553237057Z [32m19:14:32[0m | [36mpipecat_pipeline:201[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-21T19:14:32.553288545Z 2025-06-21 19:14:32.552 | INFO     | src.pipecat_pipeline:log_metrics:201 - 📊 === PERFORMANCE METRICS ===
+2025-06-21T19:14:32.553477293Z [32m19:14:32[0m | [36mpipecat_pipeline:212[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-21T19:14:32.553499075Z 2025-06-21 19:14:32.553 | INFO     | src.pipecat_pipeline:log_metrics:212 - 📊 ========================
+2025-06-21T19:14:42.554417574Z [32m19:14:42[0m | [36mpipecat_pipeline:201[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-21T19:14:42.554464743Z 2025-06-21 19:14:42.553 | INFO     | src.pipecat_pipeline:log_metrics:201 - 📊 === PERFORMANCE METRICS ===
+2025-06-21T19:14:42.554673159Z [32m19:14:42[0m | [36mpipecat_pipeline:212[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-21T19:14:42.554715489Z 2025-06-21 19:14:42.554 | INFO     | src.pipecat_pipeline:log_metrics:212 - 📊 ========================
+2025-06-21T19:14:52.556235650Z [32m19:14:52[0m | [36mpipecat_pipeline:201[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-21T19:14:52.556290374Z 2025-06-21 19:14:52.555 | INFO     | src.pipecat_pipeline:log_metrics:201 - 📊 === PERFORMANCE METRICS ===
+2025-06-21T19:14:52.556865687Z [32m19:14:52[0m | [36mpipecat_pipeline:212[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-21T19:14:52.556892177Z 2025-06-21 19:14:52.556 | INFO     | src.pipecat_pipeline:log_metrics:212 - 📊 ========================
+2025-06-21T19:15:02.557940182Z [32m19:15:02[0m | [36mpipecat_pipeline:201[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-21T19:15:02.558000085Z 2025-06-21 19:15:02.557 | INFO     | src.pipecat_pipeline:log_metrics:201 - 📊 === PERFORMANCE METRICS ===
+2025-06-21T19:15:02.558222628Z [32m19:15:02[0m | [36mpipecat_pipeline:212[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-21T19:15:02.558244660Z 2025-06-21 19:15:02.557 | INFO     | src.pipecat_pipeline:log_metrics:212 - 📊 ========================
+2025-06-21T19:15:12.559143712Z [32m19:15:12[0m | [36mpipecat_pipeline:201[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-21T19:15:12.559191202Z 2025-06-21 19:15:12.558 | INFO     | src.pipecat_pipeline:log_metrics:201 - 📊 === PERFORMANCE METRICS ===
+2025-06-21T19:15:12.559399848Z [32m19:15:12[0m | [36mpipecat_pipeline:212[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-21T19:15:12.559423122Z 2025-06-21 19:15:12.559 | INFO     | src.pipecat_pipeline:log_metrics:212 - 📊 ========================
+2025-06-21T19:15:22.560963362Z [32m19:15:22[0m | [36mpipecat_pipeline:201[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-21T19:15:22.561011242Z 2025-06-21 19:15:22.560 | INFO     | src.pipecat_pipeline:log_metrics:201 - 📊 === PERFORMANCE METRICS ===
+2025-06-21T19:15:22.561178550Z [32m19:15:22[0m | [36mpipecat_pipeline:212[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-21T19:15:22.561201644Z 2025-06-21 19:15:22.560 | INFO     | src.pipecat_pipeline:log_metrics:212 - 📊 ========================
+2025-06-21T19:15:32.563004772Z [32m19:15:32[0m | [36mpipecat_pipeline:201[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-21T19:15:32.563044137Z 2025-06-21 19:15:32.562 | INFO     | src.pipecat_pipeline:log_metrics:201 - 📊 === PERFORMANCE METRICS ===
+2025-06-21T19:15:32.563239889Z [32m19:15:32[0m | [36mpipecat_pipeline:212[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-21T19:15:32.563265247Z 2025-06-21 19:15:32.562 | INFO     | src.pipecat_pipeline:log_metrics:212 - 📊 ========================
+2025-06-21T19:15:42.564602441Z [32m19:15:42[0m | [36mpipecat_pipeline:201[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-21T19:15:42.564689356Z 2025-06-21 19:15:42.563 | INFO     | src.pipecat_pipeline:log_metrics:201 - 📊 === PERFORMANCE METRICS ===
+2025-06-21T19:15:42.565080168Z [32m19:15:42[0m | [36mpipecat_pipeline:212[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-21T19:15:42.565117529Z 2025-06-21 19:15:42.564 | INFO     | src.pipecat_pipeline:log_metrics:212 - 📊 ========================

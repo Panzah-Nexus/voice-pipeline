@@ -21,9 +21,9 @@ from pipecat.audio.vad.vad_analyzer import VADParams
 
 FAST_VAD = SileroVADAnalyzer(
     params=VADParams(
-        min_silence_ms=200,      # default 500
-        speech_pad_ms=120,       # default 400 – keeps a bit of context
-        window_ms=160,           # 10 × 16-kHz frames
+        min_silence_ms=100,      # Even faster - was 200ms
+        speech_pad_ms=50,        # Minimal padding - was 120ms
+        window_ms=160,           # Keep same
     )
 )
 
@@ -74,12 +74,6 @@ KOKORO_VOICES_PATH: str = os.getenv("KOKORO_VOICES_PATH", "/models/kokoro/voices
 KOKORO_VOICE_ID: str = os.getenv("KOKORO_VOICE_ID", "af_bella")
 SAMPLE_RATE: int = int(os.getenv("KOKORO_SAMPLE_RATE", "24000"))
 
-SYSTEM_INSTRUCTION: str = (
-    "You are an AI assistant running entirely on local infrastructure. "
-    "When the user first connects, greet them warmly with 'Hello! I'm your AI assistant. How can I help you today?' "
-    "Keep all responses concise – no more than two sentences. Avoid special characters so the TTS remains clear."
-)
-
 # ---------------------------------------------------------------------------
 # Initialize Ultravox processor once at module level
 # ---------------------------------------------------------------------------
@@ -89,9 +83,12 @@ logger.info("Loading UltravoxSTTService... this can take a while on first run.")
 ultravox_processor = UltravoxSTTService(
     model_name="fixie-ai/ultravox-v0_5-llama-3_1-8b",
     hf_token=HF_TOKEN,
-    temperature=0.6,
-    max_tokens=150,
-    system_instruction=SYSTEM_INSTRUCTION,
+    temperature=0.3,  # Lower temperature = faster inference
+    max_tokens=30,    # Much shorter responses = much faster
+    system_instruction=(
+        "You are a fast AI assistant. Give very short responses, maximum 1-2 sentences. "
+        "Be helpful but extremely concise."
+    ),
 )
 logger.info("Ultravox model initialized successfully!")
 
@@ -191,11 +188,11 @@ async def run_bot(websocket_client):
 
     # ---------- Metrics monitoring ----------
     async def log_metrics():
-        """Log performance metrics every 10 seconds"""
+        """Log performance metrics every 5 seconds"""
         import asyncio
         while True:
             try:
-                await asyncio.sleep(10)
+                await asyncio.sleep(5)  # More frequent - was 10 seconds
                 # Get metrics from the task
                 if hasattr(task, '_pipeline') and hasattr(task._pipeline, '_processors'):
                     logger.info("📊 === PERFORMANCE METRICS ===")

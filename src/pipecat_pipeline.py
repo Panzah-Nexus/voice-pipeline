@@ -24,6 +24,11 @@ from pipecat.transports.network.fastapi_websocket import (
     FastAPIWebsocketParams,
     FastAPIWebsocketTransport,
 )
+from pipecat.processors.metrics.frame_processor_metrics import (
+    FrameProcessorMetrics,
+)
+from pipecat.frames.frames import UserTranscriptFrame, BotTranscriptFrame, Frame
+from pipecat.services.openai.context import OpenAILLMContext
 
 from pipecat.services.ultravox.stt import UltravoxSTTService
 
@@ -164,6 +169,72 @@ async def run_bot(websocket_client):
         params=PipelineParams(enable_metrics=True, enable_usage_metrics=True),
         observers=[RTVIObserver(rtvi)],
     )
+
+    # ---------------------------------------------------------------------
+    # Metrics logger
+    # ---------------------------------------------------------------------
+
+    class LatencyLogger(FrameProcessorMetrics):
+        """Logs TTFB / processing-time for STT and TTS."""
+
+        async def handle_metrics(self, metrics):  # type: ignore[override]
+            if metrics.name in {"UltravoxSTTService", "KokoroTTSService"}:
+                logger.info(
+                    "[METRICS] %s: TTFB %.0f ms, processing %.0f ms",
+                    metrics.name,
+                    metrics.time_to_first_byte * 1000,
+                    metrics.processing_time * 1000,
+                )
+
+    # Append our logger so it streams into loguru
+    latency_logger = LatencyLogger()
+    pipeline.observers.append(latency_logger)
+
+    # ---------------------------------------------------------------------
+    #   Conversational context / chat history
+    # ---------------------------------------------------------------------
+
+    chat_history: list[tuple[str, str]] = []  # (role, text)
+
+    SYSTEM_PROMPT = (
+        "You are an AI assistant running entirely on local infrastructure. "
+        "Keep responses under two sentences. Avoid special characters."
+    )
+
+    def build_context(history: list[tuple[str, str]]) -> OpenAILLMContext:
+        ctx = OpenAILLMContext(system_instruction=SYSTEM_PROMPT)
+        for role, text in history[-20:]:  # keep last 20 turns
+            if role == "user":
+                ctx.add_user_message(text)
+            else:
+                ctx.add_assistant_message(text)
+        return ctx
+
+    class HistoryObserver:
+        """Maintains chat history and feeds it back into Ultravox.
+
+        We append only *final* transcripts so that cancelled / interrupted
+        generations are not recorded.  After a bot reply is finalised we push
+        the updated context into Ultravox for the next user turn.
+        """
+
+        async def __call__(self, frame: Frame):  # type: ignore[override]
+            nonlocal chat_history
+
+            if isinstance(frame, UserTranscriptFrame) and frame.final:
+                chat_history.append(("user", frame.text))
+
+            elif isinstance(frame, BotTranscriptFrame) and frame.final:
+                chat_history.append(("assistant", frame.text))
+
+                # Push context to Ultravox – ignore errors silently
+                try:
+                    await ULTRAVOX.set_context(build_context(chat_history))
+                except Exception as exc:  # pragma: no cover – debug aid
+                    logger.warning("Could not set Ultravox context: %s", exc)
+
+    # Inject the observer right after RTVI so it sees transcript frames.
+    pipeline.observers.append(HistoryObserver())
 
     # ---------- Event handlers ----------
     @rtvi.event_handler("on_client_ready")

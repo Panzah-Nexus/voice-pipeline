@@ -5241,3 +5241,237 @@
 2025-06-21T14:25:34.814675669Z 2025-06-21 14:25:34.814 | ERROR    | pipecat.services.ultravox.stt:_process_audio_buffer:436 - Error generating text from model: Background loop has errored already.
 2025-06-21T14:25:34.821941795Z [32m14:25:34[0m | [36m            task:580[0m | [33m[1m WARNING[0m | [33m[1mSomething went wrong: ErrorFrame#1(error: Error generating text: Background loop has errored already., fatal: False)[0m
 2025-06-21T14:25:34.821967334Z 2025-06-21 14:25:34.821 | WARNING  | pipecat.pipeline.task:_process_up_queue:580 - Something went wrong: ErrorFrame#1(error: Error generating text: Background loop has errored already., fatal: False)
+2025-06-21T14:29:59.408281579Z [32m14:29:59[0m | [36m            task:679[0m | [33m[1m WARNING[0m | [33m[1mIdle pipeline detected, cancelling pipeline task...[0m
+2025-06-21T14:29:59.408332396Z 2025-06-21 14:29:59.407 | WARNING  | pipecat.pipeline.task:_idle_timeout_detected:679 - Idle pipeline detected, cancelling pipeline task...
+2025-06-21T14:29:59.408553396Z 2025-06-21 14:29:59.408 | DEBUG    | pipecat.pipeline.task:_cancel:419 - Canceling pipeline task PipelineTask#0
+2025-06-21T14:29:59.411423215Z [32m14:29:59[0m | [36m             stt:315[0m | [1m    INFO[0m | [1mUltravoxSTTService cancelled[0m
+2025-06-21T14:29:59.411446288Z 2025-06-21 14:29:59.411 | INFO     | pipecat.services.ultravox.stt:cancel:315 - UltravoxSTTService cancelled
+2025-06-21T14:29:59.413678166Z [32m14:29:59[0m | [36m        protobuf:64[0m | [33m[1m WARNING[0m | [33m[1mFrame type <class 'pipecat.frames.frames.CancelFrame'> is not serializable[0m
+2025-06-21T14:29:59.413700709Z 2025-06-21 14:29:59.413 | WARNING  | pipecat.serializers.protobuf:serialize:64 - Frame type <class 'pipecat.frames.frames.CancelFrame'> is not serializable
+2025-06-21T14:29:59.516557192Z INFO:     connection closed
+2025-06-21T14:29:59.516857863Z [32m14:29:59[0m | [36mpipecat_pipeline:179[0m | [1m    INFO[0m | [1mPipecat Client disconnected[0m
+2025-06-21T14:29:59.516883692Z 2025-06-21 14:29:59.516 | INFO     | src.pipecat_pipeline:on_client_disconnected:179 - Pipecat Client disconnected
+2025-06-21T14:29:59.518991254Z 2025-06-21 14:29:59.518 | DEBUG    | pipecat.pipeline.runner:run:55 - Runner PipelineRunner#0 finished running PipelineTask#0
+2025-06-21T14:31:48.980189541Z ==========
+2025-06-21T14:31:48.980230899Z == CUDA ==
+2025-06-21T14:31:48.980367950Z ==========
+2025-06-21T14:31:48.985838106Z CUDA Version 11.8.0
+2025-06-21T14:31:48.987804810Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:31:48.990095409Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:31:48.990101240Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:31:48.990108684Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:31:48.990119675Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:31:49.038894384Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:31:49.057432742Z    ...done.
+2025-06-21T14:31:49.057886734Z 🔧 Development mode starting...
+2025-06-21T14:31:49.058014948Z 🔄 Updating source code...
+2025-06-21T14:31:50.015903221Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:31:50.015958226Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:31:50.016957583Z    3efdcf3..8cbc58b  cursor_oneshot -> origin/cursor_oneshot
+2025-06-21T14:31:50.043703245Z Updating 3efdcf3..8cbc58b
+2025-06-21T14:31:50.043726189Z Fast-forward
+2025-06-21T14:31:50.057500312Z  logs.txt                | 245 +++++++++++++++++++++++++++++++++++++++++++++++-
+2025-06-21T14:31:50.057523275Z  src/pipecat_pipeline.py |  54 +++++------
+2025-06-21T14:31:50.057529678Z  2 files changed, 269 insertions(+), 30 deletions(-)
+2025-06-21T14:31:50.059411360Z 📁 Copying source code...
+2025-06-21T14:31:50.063665718Z 🚀 Starting voice pipeline...
+2025-06-21T14:31:50.531881891Z 2025-06-21 14:31:50.531 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:32:09.813376345Z [32m14:32:09[0m | [36mpipecat_pipeline:70[0m | [1m    INFO[0m | [1mLoading UltravoxSTTService... this can take a while on first run.[0m
+2025-06-21T14:32:09.813419086Z 2025-06-21 14:32:09.812 | INFO     | src.pipecat_pipeline:_init_ultravox_once:70 - Loading UltravoxSTTService... this can take a while on first run.
+2025-06-21T14:32:10.176186683Z Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+2025-06-21T14:32:10.176220828Z 2025-06-21 14:32:10,175 - huggingface_hub._login - WARNING - Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+2025-06-21T14:32:10.263797841Z INFO 06-21 14:32:10 __init__.py:207] Automatically detected platform cuda.
+2025-06-21T14:32:17.489217313Z INFO 06-21 14:32:17 config.py:549] This model supports multiple tasks: {'embed', 'generate', 'reward', 'classify', 'score'}. Defaulting to 'generate'.
+2025-06-21T14:32:17.494538857Z INFO 06-21 14:32:17 llm_engine.py:234] Initializing a V0 LLM engine (v0.7.3) with config: model='fixie-ai/ultravox-v0_5-llama-3_1-8b', speculative_config=None, tokenizer='fixie-ai/ultravox-v0_5-llama-3_1-8b', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=0, served_model_name=fixie-ai/ultravox-v0_5-llama-3_1-8b, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=False, chunked_prefill_enabled=False, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"splitting_ops":[],"compile_sizes":[],"cudagraph_capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":256}, use_cached_outputs=False,
+2025-06-21T14:32:23.907319110Z INFO 06-21 14:32:23 cuda.py:229] Using Flash Attention backend.
+2025-06-21T14:32:24.268967642Z INFO 06-21 14:32:24 model_runner.py:1110] Starting to load model fixie-ai/ultravox-v0_5-llama-3_1-8b...
+2025-06-21T14:32:24.465352188Z INFO 06-21 14:32:24 config.py:3054] cudagraph sizes specified by model runner [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256] is overridden by config [256, 128, 2, 1, 4, 136, 8, 144, 16, 152, 24, 160, 32, 168, 40, 176, 48, 184, 56, 192, 64, 200, 72, 208, 80, 216, 88, 120, 224, 96, 232, 104, 240, 112, 248]
+2025-06-21T14:32:24.952448578Z INFO 06-21 14:32:24 weight_utils.py:254] Using model weights format ['*.safetensors']
+2025-06-21T14:32:25.268479727Z INFO 06-21 14:32:25 weight_utils.py:304] No model.safetensors.index.json found in remote.
+2025-06-21T14:32:25.269891958Z Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+2025-06-21T14:32:25.525492567Z Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  3.92it/s]
+2025-06-21T14:32:25.525744025Z Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  3.91it/s]
+2025-06-21T14:32:25.799473986Z INFO 06-21 14:32:25 weight_utils.py:254] Using model weights format ['*.safetensors']
+2025-06-21T14:32:26.152190870Z Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+2025-06-21T14:32:26.346234791Z Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:00,  5.16it/s]
+2025-06-21T14:32:26.928240626Z Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:00<00:00,  2.37it/s]
+2025-06-21T14:32:27.722928822Z Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  1.69it/s]
+2025-06-21T14:32:28.500183927Z Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.50it/s]
+2025-06-21T14:32:28.500403915Z Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.70it/s]
+2025-06-21T14:32:28.986754159Z INFO 06-21 14:32:28 model_runner.py:1115] Loading model weights took 16.2698 GB
+2025-06-21T14:32:42.670813707Z INFO 06-21 14:32:42 worker.py:267] Memory profiling takes 13.47 seconds
+2025-06-21T14:32:42.670854855Z INFO 06-21 14:32:42 worker.py:267] the current vLLM instance can use total_gpu_memory (22.06GiB) x gpu_memory_utilization (0.90) = 19.85GiB
+2025-06-21T14:32:42.670861528Z INFO 06-21 14:32:42 worker.py:267] model weights take 16.27GiB; non_torch_memory takes 0.05GiB; PyTorch activation peak memory takes 1.95GiB; the rest of the memory reserved for KV Cache is 1.59GiB.
+2025-06-21T14:32:42.880455384Z INFO 06-21 14:32:42 executor_base.py:111] # cuda blocks: 813, # CPU blocks: 2048
+2025-06-21T14:32:42.880477176Z INFO 06-21 14:32:42 executor_base.py:116] Maximum concurrency for 8192 tokens per request: 1.59x
+2025-06-21T14:32:46.367829636Z INFO 06-21 14:32:46 model_runner.py:1434] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI. If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+2025-06-21T14:33:07.090339057Z Capturing CUDA graph shapes:   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graph shapes:   3%|▎         | 1/35 [00:00<00:21,  1.60it/s]Capturing CUDA graph shapes:   6%|▌         | 2/35 [00:01<00:20,  1.61it/s]Capturing CUDA graph shapes:   9%|▊         | 3/35 [00:01<00:19,  1.62it/s]Capturing CUDA graph shapes:  11%|█▏        | 4/35 [00:02<00:19,  1.62it/s]Capturing CUDA graph shapes:  14%|█▍        | 5/35 [00:03<00:18,  1.62it/s]Capturing CUDA graph shapes:  17%|█▋        | 6/35 [00:03<00:17,  1.62it/s]Capturing CUDA graph shapes:  20%|██        | 7/35 [00:04<00:17,  1.63it/s]Capturing CUDA graph shapes:  23%|██▎       | 8/35 [00:04<00:16,  1.63it/s]Capturing CUDA graph shapes:  26%|██▌       | 9/35 [00:05<00:15,  1.64it/s]Capturing CUDA graph shapes:  29%|██▊       | 10/35 [00:06<00:15,  1.64it/s]Capturing CUDA graph shapes:  31%|███▏      | 11/35 [00:06<00:14,  1.65it/s]Capturing CUDA graph shapes:  34%|███▍      | 12/35 [00:07<00:13,  1.65it/s]Capturing CUDA graph shapes:  37%|███▋      | 13/35 [00:07<00:13,  1.66it/s]Capturing CUDA graph shapes:  40%|████      | 14/35 [00:08<00:12,  1.66it/s]Capturing CUDA graph shapes:  43%|████▎     | 15/35 [00:09<00:12,  1.66it/s]Capturing CUDA graph shapes:  46%|████▌     | 16/35 [00:09<00:11,  1.65it/s]Capturing CUDA graph shapes:  49%|████▊     | 17/35 [00:10<00:10,  1.66it/s]Capturing CUDA graph shapes:  51%|█████▏    | 18/35 [00:10<00:10,  1.67it/s]Capturing CUDA graph shapes:  54%|█████▍    | 19/35 [00:11<00:09,  1.68it/s]Capturing CUDA graph shapes:  57%|█████▋    | 20/35 [00:12<00:08,  1.69it/s]Capturing CUDA graph shapes:  60%|██████    | 21/35 [00:12<00:08,  1.70it/s]Capturing CUDA graph shapes:  63%|██████▎   | 22/35 [00:13<00:07,  1.70it/s]Capturing CUDA graph shapes:  66%|██████▌   | 23/35 [00:13<00:07,  1.71it/s]Capturing CUDA graph shapes:  69%|██████▊   | 24/35 [00:14<00:06,  1.71it/s]Capturing CUDA graph shapes:  71%|███████▏  | 25/35 [00:15<00:05,  1.72it/s]Capturing CUDA graph shapes:  74%|███████▍  | 26/35 [00:15<00:05,  1.72it/s]Capturing CUDA graph shapes:  77%|███████▋  | 27/35 [00:16<00:04,  1.73it/s]Capturing CUDA graph shapes:  80%|████████  | 28/35 [00:16<00:04,  1.73it/s]Capturing CUDA graph shapes:  83%|████████▎ | 29/35 [00:17<00:03,  1.74it/s]Capturing CUDA graph shapes:  86%|████████▌ | 30/35 [00:17<00:02,  1.74it/s]Capturing CUDA graph shapes:  89%|████████▊ | 31/35 [00:18<00:02,  1.75it/s]Capturing CUDA graph shapes:  91%|█████████▏| 32/35 [00:19<00:01,  1.76it/s]Capturing CUDA graph shapes:  94%|█████████▍| 33/35 [00:19<00:01,  1.76it/s]Capturing CUDA graph shapes:  97%|█████████▋| 34/35 [00:20<00:00,  1.76it/s]Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:20<00:00,  1.76it/s]Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:20<00:00,  1.69it/s]
+2025-06-21T14:33:07.090682940Z INFO 06-21 14:33:07 model_runner.py:1562] Graph capturing finished in 21 secs, took 0.26 GiB
+2025-06-21T14:33:07.091678300Z INFO 06-21 14:33:07 llm_engine.py:436] init engine (profile, create kv cache, warmup model) took 38.10 seconds
+2025-06-21T14:33:07.886109457Z [32m14:33:07[0m | [36m             stt:223[0m | [1m    INFO[0m | [1mInitialized UltravoxSTTService with model: fixie-ai/ultravox-v0_5-llama-3_1-8b[0m
+2025-06-21T14:33:07.886150906Z 2025-06-21 14:33:07.885 | INFO     | pipecat.services.ultravox.stt:__init__:223 - Initialized UltravoxSTTService with model: fixie-ai/ultravox-v0_5-llama-3_1-8b
+2025-06-21T14:33:07.886167557Z [32m14:33:07[0m | [36mpipecat_pipeline:79[0m | [1m    INFO[0m | [1mUltravox model initialized successfully![0m
+2025-06-21T14:33:07.886173629Z 2025-06-21 14:33:07.886 | INFO     | src.pipecat_pipeline:_init_ultravox_once:79 - Ultravox model initialized successfully!
+2025-06-21T14:33:07.890070718Z 2025-06-21 14:33:07,889 - root - INFO - Starting voice pipeline server on 0.0.0.0:8000
+2025-06-21T14:33:07.915180825Z INFO:     Started server process [75]
+2025-06-21T14:33:07.915222043Z INFO:     Waiting for application startup.
+2025-06-21T14:33:07.915573000Z INFO:     Application startup complete.
+2025-06-21T14:33:07.916023936Z INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2025-06-21T14:36:24.168871180Z INFO:     100.64.0.31:54550 - "OPTIONS /connect HTTP/1.1" 200 OK
+2025-06-21T14:36:24.286472250Z 2025-06-21 14:36:24,286 - root - INFO - Connect request - returning WebSocket URL: wss://wlugc3aef909a9-8000.proxy.runpod.net/ws
+2025-06-21T14:36:24.286536001Z 2025-06-21 14:36:24,286 - root - INFO - Request headers: x-forwarded-host=wlugc3aef909a9-8000.proxy.runpod.net, x-forwarded-proto=https
+2025-06-21T14:36:24.287185875Z INFO:     100.64.0.31:54550 - "POST /connect HTTP/1.1" 200 OK
+2025-06-21T14:36:24.714931075Z INFO:     100.64.0.36:57342 - "WebSocket /ws" [accepted]
+2025-06-21T14:36:24.715541183Z 2025-06-21 14:36:24.715 | DEBUG    | pipecat.audio.vad.silero:__init__:111 - Loading Silero VAD model...
+2025-06-21T14:36:24.805651947Z 2025-06-21 14:36:24.805 | DEBUG    | pipecat.audio.vad.silero:__init__:133 - Loaded Silero VAD
+2025-06-21T14:36:24.806282744Z [32m14:36:24[0m | [36mkokoro_tts_service:127[0m | [1m    INFO[0m | [1mInitialising Kokoro TTS (model='/models/kokoro/model_fp16.onnx', voices='/models/kokoro/voices-v1.0.bin', voice='af_sarah')[0m
+2025-06-21T14:36:24.806296681Z 2025-06-21 14:36:24.806 | INFO     | src.kokoro_tts_service:__init__:127 - Initialising Kokoro TTS (model='/models/kokoro/model_fp16.onnx', voices='/models/kokoro/voices-v1.0.bin', voice='af_sarah')
+2025-06-21T14:36:25.000283414Z /usr/local/lib/python3.10/dist-packages/torch/nn/modules/rnn.py:123: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.2 and num_layers=1
+2025-06-21T14:36:25.000328369Z   warnings.warn(
+2025-06-21T14:36:25.051764651Z /usr/local/lib/python3.10/dist-packages/torch/nn/utils/weight_norm.py:143: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+2025-06-21T14:36:25.051804176Z   WeightNorm.apply(module, name, dim)
+2025-06-21T14:36:31.150665371Z [32m14:36:31[0m | [36mkokoro_tts_service:163[0m | [1m    INFO[0m | [1mKokoro pipeline initialised successfully (backend=PyTorch)[0m
+2025-06-21T14:36:31.150704655Z 2025-06-21 14:36:31.150 | INFO     | src.kokoro_tts_service:__init__:163 - Kokoro pipeline initialised successfully (backend=PyTorch)
+2025-06-21T14:36:31.151138749Z 2025-06-21 14:36:31.150 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking PipelineSource#0 -> FastAPIWebsocketInputTransport#0
+2025-06-21T14:36:31.151153457Z 2025-06-21 14:36:31.151 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking FastAPIWebsocketInputTransport#0 -> RTVIProcessor#0
+2025-06-21T14:36:31.151309874Z 2025-06-21 14:36:31.151 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking RTVIProcessor#0 -> UltravoxSTTService#0
+2025-06-21T14:36:31.151323991Z 2025-06-21 14:36:31.151 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking UltravoxSTTService#0 -> KokoroTTSService#0
+2025-06-21T14:36:31.151392251Z 2025-06-21 14:36:31.151 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking KokoroTTSService#0 -> FastAPIWebsocketOutputTransport#0
+2025-06-21T14:36:31.151475549Z 2025-06-21 14:36:31.151 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking FastAPIWebsocketOutputTransport#0 -> PipelineSink#0
+2025-06-21T14:36:31.151905125Z 2025-06-21 14:36:31.151 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking PipelineTaskSource#0 -> Pipeline#0
+2025-06-21T14:36:31.151939229Z 2025-06-21 14:36:31.151 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking Pipeline#0 -> PipelineTaskSink#0
+2025-06-21T14:36:31.152223820Z 2025-06-21 14:36:31.152 | DEBUG    | pipecat.pipeline.runner:run:38 - Runner PipelineRunner#0 started running PipelineTask#0
+2025-06-21T14:36:31.153136953Z INFO:     connection open
+2025-06-21T14:36:31.155816341Z [32m14:36:31[0m | [36m             stt:232[0m | [1m    INFO[0m | [1mWarming up Ultravox model with silent audio...[0m
+2025-06-21T14:36:31.155866766Z 2025-06-21 14:36:31.155 | INFO     | pipecat.services.ultravox.stt:_warm_up_model:232 - Warming up Ultravox model with silent audio...
+2025-06-21T14:36:31.156053501Z [32m14:36:31[0m | [36m             stt:272[0m | [1m    INFO[0m | [1mGenerated 1s of silent audio (16000 samples)[0m
+2025-06-21T14:36:31.156071706Z 2025-06-21 14:36:31.155 | INFO     | pipecat.services.ultravox.stt:_generate_silent_audio:272 - Generated 1s of silent audio (16000 samples)
+2025-06-21T14:36:31.221946332Z WebSocket connection accepted
+2025-06-21T14:36:31.221970908Z WARNING: Defaulting repo_id to hexgrad/Kokoro-82M. Pass repo_id='hexgrad/Kokoro-82M' to suppress this warning.
+2025-06-21T14:36:31.221977872Z INFO 06-21 14:36:31 async_llm_engine.py:211] Added request 1750516591.22142.
+2025-06-21T14:36:37.416966123Z INFO 06-21 14:36:37 metrics.py:455] Avg prompt throughput: 0.2 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.4%, CPU KV cache usage: 0.0%.
+2025-06-21T14:36:40.430042775Z INFO 06-21 14:36:40 async_llm_engine.py:179] Finished request 1750516591.22142.
+2025-06-21T14:36:40.433365223Z [32m14:36:40[0m | [36m             stt:252[0m | [1m    INFO[0m | [1mModel warm-up completed successfully[0m
+2025-06-21T14:36:40.433397304Z 2025-06-21 14:36:40.432 | INFO     | pipecat.services.ultravox.stt:_warm_up_model:252 - Model warm-up completed successfully
+2025-06-21T14:36:40.433595490Z [32m14:36:40[0m | [36m             stt:294[0m | [1m    INFO[0m | [1mUltravoxSTTService started[0m
+2025-06-21T14:36:40.433658841Z 2025-06-21 14:36:40.433 | INFO     | pipecat.services.ultravox.stt:start:294 - UltravoxSTTService started
+2025-06-21T14:36:40.435751183Z 2025-06-21 14:36:40.435 | DEBUG    | pipecat.audio.vad.vad_analyzer:set_params:74 - Setting VAD params to: confidence=0.7 start_secs=0.2 stop_secs=0.8 min_volume=0.6
+2025-06-21T14:36:40.441512542Z [32m14:36:40[0m | [36mpipecat_pipeline:177[0m | [1m    INFO[0m | [1mPipecat Client connected[0m
+2025-06-21T14:36:40.441536999Z 2025-06-21 14:36:40.441 | INFO     | src.pipecat_pipeline:on_client_connected:177 - Pipecat Client connected
+2025-06-21T14:36:40.442012311Z 2025-06-21 14:36:40.441 | DEBUG    | pipecat.serializers.protobuf:deserialize:106 - ProtobufFrameSerializer: Transport message TransportMessageUrgentFrame#1(message: {'label': 'rtvi-ai', 'type': 'client-ready', 'data': {}, 'id': 'ca9f1aee'})
+2025-06-21T14:36:40.445988040Z 2025-06-21 14:36:40.445 | DEBUG    | pipecat.processors.frameworks.rtvi:_handle_client_ready:844 - Received client-ready
+2025-06-21T14:36:40.449641787Z [32m14:36:40[0m | [36mpipecat_pipeline:171[0m | [1m    INFO[0m | [1mPipecat client ready.[0m
+2025-06-21T14:36:40.449655353Z 2025-06-21 14:36:40.449 | INFO     | src.pipecat_pipeline:on_client_ready:171 - Pipecat client ready.
+2025-06-21T14:37:27.751238992Z 2025-06-21 14:37:27.750 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-21T14:37:27.751832639Z [32m14:37:27[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-21T14:37:27.751857767Z 2025-06-21 14:37:27.751 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-21T14:37:33.922691716Z 2025-06-21 14:37:33.922 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-21T14:37:33.923022344Z [32m14:37:33[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-21T14:37:33.923042562Z 2025-06-21 14:37:33.922 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-21T14:37:33.926332499Z [32m14:37:33[0m | [36m             stt:405[0m | [1m    INFO[0m | [1mGenerating text from audio using model...[0m
+2025-06-21T14:37:33.926354510Z 2025-06-21 14:37:33.925 | INFO     | pipecat.services.ultravox.stt:_process_audio_buffer:405 - Generating text from audio using model...
+2025-06-21T14:37:33.927501558Z INFO 06-21 14:37:33 async_llm_engine.py:211] Added request 1750516653.9270058.
+2025-06-21T14:37:34.079134574Z INFO 06-21 14:37:34 metrics.py:455] Avg prompt throughput: 1.3 tokens/s, Avg generation throughput: 0.9 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.6%, CPU KV cache usage: 0.0%.
+2025-06-21T14:37:34.080115006Z 2025-06-21 14:37:34.079 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxSTTService#0 TTFB: 0.15336108207702637
+2025-06-21T14:37:35.134693786Z 2025-06-21 14:37:35.134 | DEBUG    | src.kokoro_tts_service:run_tts:182 - Kokoro generating for: %s
+2025-06-21T14:37:35.543812370Z 2025-06-21 14:37:35.543 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:395 - Bot started speaking
+2025-06-21T14:37:36.482538770Z 2025-06-21 14:37:36.482 | DEBUG    | src.kokoro_tts_service:run_tts:182 - Kokoro generating for: %s
+2025-06-21T14:37:36.695036109Z INFO 06-21 14:37:36 async_llm_engine.py:179] Finished request 1750516653.9270058.
+2025-06-21T14:37:36.695334816Z 2025-06-21 14:37:36.695 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxSTTService#0 processing time: 2.7687010765075684
+2025-06-21T14:37:36.874302352Z 2025-06-21 14:37:36.873 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-21T14:37:36.874325947Z [32m14:37:36[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-21T14:37:36.874332099Z 2025-06-21 14:37:36.873 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-21T14:37:37.225480685Z 2025-06-21 14:37:37.225 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-21T14:37:37.225854515Z [32m14:37:37[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-21T14:37:37.225876597Z 2025-06-21 14:37:37.225 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-21T14:37:37.226756768Z [32m14:37:37[0m | [36m             stt:405[0m | [1m    INFO[0m | [1mGenerating text from audio using model...[0m
+2025-06-21T14:37:37.226778940Z 2025-06-21 14:37:37.226 | INFO     | pipecat.services.ultravox.stt:_process_audio_buffer:405 - Generating text from audio using model...
+2025-06-21T14:37:37.227656246Z INFO 06-21 14:37:37 async_llm_engine.py:211] Added request 1750516657.2272387.
+2025-06-21T14:37:37.372588068Z 2025-06-21 14:37:37.372 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxSTTService#0 TTFB: 0.14536786079406738
+2025-06-21T14:37:37.573857959Z 2025-06-21 14:37:37.573 | DEBUG    | src.kokoro_tts_service:run_tts:182 - Kokoro generating for: %s
+2025-06-21T14:37:37.627570223Z 2025-06-21 14:37:37,627 - phonemizer - WARNING - words count mismatch on 100.0% of the lines (1/1)
+2025-06-21T14:37:37.768392402Z INFO 06-21 14:37:37 async_llm_engine.py:179] Finished request 1750516657.2272387.
+2025-06-21T14:37:37.796584290Z 2025-06-21 14:37:37.796 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxSTTService#0 processing time: 0.5695316791534424
+2025-06-21T14:37:48.996711324Z 2025-06-21 14:37:48.995 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-21T14:37:48.996754435Z [32m14:37:48[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-21T14:37:48.996761379Z 2025-06-21 14:37:48.996 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-21T14:37:50.568753712Z 2025-06-21 14:37:50.568 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-21T14:37:50.569018224Z [32m14:37:50[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-21T14:37:50.569034976Z 2025-06-21 14:37:50.568 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-21T14:37:50.570296020Z [32m14:37:50[0m | [36m             stt:405[0m | [1m    INFO[0m | [1mGenerating text from audio using model...[0m
+2025-06-21T14:37:50.570331678Z 2025-06-21 14:37:50.569 | INFO     | pipecat.services.ultravox.stt:_process_audio_buffer:405 - Generating text from audio using model...
+2025-06-21T14:37:50.571412330Z INFO 06-21 14:37:50 async_llm_engine.py:211] Added request 1750516670.5709076.
+2025-06-21T14:37:50.730507234Z INFO 06-21 14:37:50 metrics.py:455] Avg prompt throughput: 5.6 tokens/s, Avg generation throughput: 2.4 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.4%, CPU KV cache usage: 0.0%.
+2025-06-21T14:37:50.740051706Z 2025-06-21 14:37:50.739 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxSTTService#0 TTFB: 0.16923999786376953
+2025-06-21T14:37:51.178135636Z 2025-06-21 14:37:51.177 | DEBUG    | src.kokoro_tts_service:run_tts:182 - Kokoro generating for: %s
+2025-06-21T14:37:52.739108778Z 2025-06-21 14:37:52.738 | DEBUG    | src.kokoro_tts_service:run_tts:182 - Kokoro generating for: %s
+2025-06-21T14:37:54.518101233Z 2025-06-21 14:37:54.517 | DEBUG    | src.kokoro_tts_service:run_tts:182 - Kokoro generating for: %s
+2025-06-21T14:37:55.753535233Z INFO 06-21 14:37:55 metrics.py:455] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 14.7 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 1.0%, CPU KV cache usage: 0.0%.
+2025-06-21T14:37:55.896544354Z 2025-06-21 14:37:55.896 | DEBUG    | src.kokoro_tts_service:run_tts:182 - Kokoro generating for: %s
+2025-06-21T14:37:56.093747163Z INFO 06-21 14:37:56 async_llm_engine.py:179] Finished request 1750516670.5709076.
+2025-06-21T14:37:56.094177019Z 2025-06-21 14:37:56.093 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxSTTService#0 processing time: 5.523552894592285
+2025-06-21T14:38:15.243695000Z 2025-06-21 14:38:15.243 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:410 - Bot stopped speaking
+2025-06-21T14:38:16.161038201Z 2025-06-21 14:38:16.160 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-21T14:38:16.161265011Z [32m14:38:16[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-21T14:38:16.161274519Z 2025-06-21 14:38:16.160 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-21T14:38:18.944848444Z 2025-06-21 14:38:18.944 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-21T14:38:18.945158433Z [32m14:38:18[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-21T14:38:18.945175445Z 2025-06-21 14:38:18.944 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-21T14:38:18.946660705Z [32m14:38:18[0m | [36m             stt:405[0m | [1m    INFO[0m | [1mGenerating text from audio using model...[0m
+2025-06-21T14:38:18.946682406Z 2025-06-21 14:38:18.946 | INFO     | pipecat.services.ultravox.stt:_process_audio_buffer:405 - Generating text from audio using model...
+2025-06-21T14:38:18.947745635Z INFO 06-21 14:38:18 async_llm_engine.py:211] Added request 1750516698.9472647.
+2025-06-21T14:38:19.098929719Z INFO 06-21 14:38:19 metrics.py:455] Avg prompt throughput: 2.3 tokens/s, Avg generation throughput: 0.2 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.5%, CPU KV cache usage: 0.0%.
+2025-06-21T14:38:19.108927862Z 2025-06-21 14:38:19.108 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxSTTService#0 TTFB: 0.16153192520141602
+2025-06-21T14:38:19.351434029Z 2025-06-21 14:38:19.351 | DEBUG    | src.kokoro_tts_service:run_tts:182 - Kokoro generating for: %s
+2025-06-21T14:38:19.551325132Z 2025-06-21 14:38:19.551 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:395 - Bot started speaking
+2025-06-21T14:38:19.557300898Z INFO 06-21 14:38:19 async_llm_engine.py:179] Finished request 1750516698.9472647.
+2025-06-21T14:38:19.571921609Z 2025-06-21 14:38:19.571 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxSTTService#0 processing time: 0.6249041557312012
+2025-06-21T14:38:22.188669481Z 2025-06-21 14:38:22.188 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:410 - Bot stopped speaking
+2025-06-21T14:38:25.184400949Z 2025-06-21 14:38:25.184 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-21T14:38:25.184744382Z [32m14:38:25[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-21T14:38:25.184771774Z 2025-06-21 14:38:25.184 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-21T14:38:27.714804439Z 2025-06-21 14:38:27.714 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-21T14:38:27.715090843Z [32m14:38:27[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-21T14:38:27.715118085Z 2025-06-21 14:38:27.714 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-21T14:38:27.716987685Z [32m14:38:27[0m | [36m             stt:405[0m | [1m    INFO[0m | [1mGenerating text from audio using model...[0m
+2025-06-21T14:38:27.717021018Z 2025-06-21 14:38:27.716 | INFO     | pipecat.services.ultravox.stt:_process_audio_buffer:405 - Generating text from audio using model...
+2025-06-21T14:38:27.718043229Z INFO 06-21 14:38:27 async_llm_engine.py:211] Added request 1750516707.7175546.
+2025-06-21T14:38:27.873819011Z INFO 06-21 14:38:27 metrics.py:455] Avg prompt throughput: 5.8 tokens/s, Avg generation throughput: 0.7 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.5%, CPU KV cache usage: 0.0%.
+2025-06-21T14:38:27.891790483Z 2025-06-21 14:38:27.891 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxSTTService#0 TTFB: 0.17435073852539062
+2025-06-21T14:38:28.001106512Z 2025-06-21 14:38:28.000 | DEBUG    | src.kokoro_tts_service:run_tts:182 - Kokoro generating for: %s
+2025-06-21T14:38:28.190200424Z 2025-06-21 14:38:28.189 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:395 - Bot started speaking
+2025-06-21T14:38:28.197191929Z INFO 06-21 14:38:28 async_llm_engine.py:179] Finished request 1750516707.7175546.
+2025-06-21T14:38:28.211507710Z 2025-06-21 14:38:28.211 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxSTTService#0 processing time: 0.49428534507751465
+2025-06-21T14:38:30.227239032Z 2025-06-21 14:38:30.226 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:410 - Bot stopped speaking
+2025-06-21T14:38:31.872942130Z 2025-06-21 14:38:31.872 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-21T14:38:31.873214577Z [32m14:38:31[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-21T14:38:31.873227051Z 2025-06-21 14:38:31.872 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-21T14:38:34.340727918Z 2025-06-21 14:38:34.340 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-21T14:38:34.341062523Z [32m14:38:34[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-21T14:38:34.341076700Z 2025-06-21 14:38:34.340 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-21T14:38:34.342396846Z [32m14:38:34[0m | [36m             stt:405[0m | [1m    INFO[0m | [1mGenerating text from audio using model...[0m
+2025-06-21T14:38:34.342422705Z 2025-06-21 14:38:34.342 | INFO     | pipecat.services.ultravox.stt:_process_audio_buffer:405 - Generating text from audio using model...
+2025-06-21T14:38:34.343504259Z INFO 06-21 14:38:34 async_llm_engine.py:211] Added request 1750516714.343016.
+2025-06-21T14:38:34.498176485Z INFO 06-21 14:38:34 metrics.py:455] Avg prompt throughput: 7.7 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.5%, CPU KV cache usage: 0.0%.
+2025-06-21T14:38:34.546565161Z 2025-06-21 14:38:34.546 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxSTTService#0 TTFB: 0.20375561714172363
+2025-06-21T14:38:34.627072541Z 2025-06-21 14:38:34.626 | DEBUG    | src.kokoro_tts_service:run_tts:182 - Kokoro generating for: %s
+2025-06-21T14:38:34.789531802Z 2025-06-21 14:38:34.789 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:395 - Bot started speaking
+2025-06-21T14:38:34.795251221Z INFO 06-21 14:38:34 async_llm_engine.py:179] Finished request 1750516714.343016.
+2025-06-21T14:38:34.806213425Z 2025-06-21 14:38:34.805 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxSTTService#0 processing time: 0.4636082649230957
+2025-06-21T14:38:36.826589255Z 2025-06-21 14:38:36.826 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:410 - Bot stopped speaking
+2025-06-21T14:39:10.047417048Z 2025-06-21 14:39:10.046 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-21T14:39:10.047700897Z [32m14:39:10[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-21T14:39:10.047729301Z 2025-06-21 14:39:10.047 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-21T14:39:12.449759628Z 2025-06-21 14:39:12.449 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-21T14:39:12.450101688Z [32m14:39:12[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-21T14:39:12.450116265Z 2025-06-21 14:39:12.449 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-21T14:39:12.451366599Z [32m14:39:12[0m | [36m             stt:405[0m | [1m    INFO[0m | [1mGenerating text from audio using model...[0m
+2025-06-21T14:39:12.451390715Z 2025-06-21 14:39:12.451 | INFO     | pipecat.services.ultravox.stt:_process_audio_buffer:405 - Generating text from audio using model...
+2025-06-21T14:39:12.452426442Z INFO 06-21 14:39:12 async_llm_engine.py:211] Added request 1750516752.4519532.
+2025-06-21T14:39:12.600978748Z INFO 06-21 14:39:12 metrics.py:455] Avg prompt throughput: 1.3 tokens/s, Avg generation throughput: 0.1 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.5%, CPU KV cache usage: 0.0%.
+2025-06-21T14:39:12.604683793Z 2025-06-21 14:39:12.604 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxSTTService#0 TTFB: 0.1528637409210205
+2025-06-21T14:39:12.789679474Z 2025-06-21 14:39:12.789 | DEBUG    | src.kokoro_tts_service:run_tts:182 - Kokoro generating for: %s
+2025-06-21T14:39:12.988450120Z 2025-06-21 14:39:12.988 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:395 - Bot started speaking
+2025-06-21T14:39:12.995061023Z INFO 06-21 14:39:12 async_llm_engine.py:179] Finished request 1750516752.4519532.
+2025-06-21T14:39:13.014325470Z 2025-06-21 14:39:13.014 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxSTTService#0 processing time: 0.5627424716949463
+2025-06-21T14:39:15.106554257Z 2025-06-21 14:39:15.106 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:410 - Bot stopped speaking

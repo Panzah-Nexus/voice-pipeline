@@ -197,6 +197,26 @@ async def run_bot(websocket_client):
     pipeline.observers.append(latency_logger)
 
     # ---------------------------------------------------------------------
+    #   Low-level frame logger (debugging only – can be removed later)
+    # ---------------------------------------------------------------------
+
+    class FrameLogger:
+        async def __call__(self, frame: Frame):  # type: ignore[override]
+            name = frame.__class__.__name__
+            if name in {
+                "InputAudioRawFrame",
+                "TranscriptionFrame",
+                "TTSTextFrame",
+                "TTSAudioRawFrame",
+            }:
+                if hasattr(frame, "text"):
+                    logger.debug("[FRAME] %s — %s", name, getattr(frame, "text")[:80])
+                else:
+                    logger.debug("[FRAME] %s", name)
+
+    pipeline.observers.append(FrameLogger())
+
+    # ---------------------------------------------------------------------
     #   Conversational context / chat history
     # ---------------------------------------------------------------------
 

@@ -5533,3 +5533,820 @@
 2025-06-21T14:51:07.560655430Z 📁 Copying source code...
 2025-06-21T14:51:07.566412591Z 🚀 Starting voice pipeline...
 2025-06-21T14:51:08.046088031Z 2025-06-21 14:51:08.045 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:51:11.685537899Z Traceback (most recent call last):
+2025-06-21T14:51:11.685579818Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:51:11.685586411Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:51:11.685591681Z   File "/app/src/pipecat_pipeline.py", line 30, in <module>
+2025-06-21T14:51:11.685597612Z     from pipecat.frames.frames import UserTranscriptFrame, BotTranscriptFrame, Frame
+2025-06-21T14:51:11.685603543Z ImportError: cannot import name 'UserTranscriptFrame' from 'pipecat.frames.frames' (/usr/local/lib/python3.10/dist-packages/pipecat/frames/frames.py)
+2025-06-21T14:51:23.325305187Z ==========
+2025-06-21T14:51:23.325341406Z == CUDA ==
+2025-06-21T14:51:23.325471513Z ==========
+2025-06-21T14:51:23.331506101Z CUDA Version 11.8.0
+2025-06-21T14:51:23.333781522Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:51:23.335957152Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:51:23.336007999Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:51:23.336021284Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:51:23.336042304Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:51:23.384895321Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:51:23.404534771Z    ...done.
+2025-06-21T14:51:23.405011396Z 🔧 Development mode starting...
+2025-06-21T14:51:23.405198030Z 🔄 Updating source code...
+2025-06-21T14:51:24.114837253Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:51:24.114882519Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:51:24.132324175Z Already up to date.
+2025-06-21T14:51:24.134107772Z 📁 Copying source code...
+2025-06-21T14:51:24.139837210Z 🚀 Starting voice pipeline...
+2025-06-21T14:51:24.620517799Z 2025-06-21 14:51:24.620 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:51:28.242192748Z Traceback (most recent call last):
+2025-06-21T14:51:28.242244396Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:51:28.242250908Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:51:28.242256749Z   File "/app/src/pipecat_pipeline.py", line 30, in <module>
+2025-06-21T14:51:28.242262600Z     from pipecat.frames.frames import UserTranscriptFrame, BotTranscriptFrame, Frame
+2025-06-21T14:51:28.242268582Z ImportError: cannot import name 'UserTranscriptFrame' from 'pipecat.frames.frames' (/usr/local/lib/python3.10/dist-packages/pipecat/frames/frames.py)
+2025-06-21T14:51:39.909243840Z ==========
+2025-06-21T14:51:39.909269469Z == CUDA ==
+2025-06-21T14:51:39.909389607Z ==========
+2025-06-21T14:51:39.915825296Z CUDA Version 11.8.0
+2025-06-21T14:51:39.918193212Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:51:39.920384864Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:51:39.920411464Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:51:39.920417706Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:51:39.920428567Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:51:39.968010310Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:51:39.987352555Z    ...done.
+2025-06-21T14:51:39.987877973Z 🔧 Development mode starting...
+2025-06-21T14:51:39.988078033Z 🔄 Updating source code...
+2025-06-21T14:51:40.719514933Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:51:40.719577902Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:51:40.737502275Z Already up to date.
+2025-06-21T14:51:40.739220347Z 📁 Copying source code...
+2025-06-21T14:51:40.745430489Z 🚀 Starting voice pipeline...
+2025-06-21T14:51:41.224225337Z 2025-06-21 14:51:41.223 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:51:44.794312395Z Traceback (most recent call last):
+2025-06-21T14:51:44.794357330Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:51:44.794363171Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:51:44.794368642Z   File "/app/src/pipecat_pipeline.py", line 30, in <module>
+2025-06-21T14:51:44.794374363Z     from pipecat.frames.frames import UserTranscriptFrame, BotTranscriptFrame, Frame
+2025-06-21T14:51:44.794380174Z ImportError: cannot import name 'UserTranscriptFrame' from 'pipecat.frames.frames' (/usr/local/lib/python3.10/dist-packages/pipecat/frames/frames.py)
+2025-06-21T14:51:56.468769429Z ==========
+2025-06-21T14:51:56.468798425Z == CUDA ==
+2025-06-21T14:51:56.468914926Z ==========
+2025-06-21T14:51:56.475459782Z CUDA Version 11.8.0
+2025-06-21T14:51:56.477732718Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:51:56.479805674Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:51:56.479839959Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:51:56.479847053Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:51:56.479867291Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:51:56.529235326Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:51:56.548924049Z    ...done.
+2025-06-21T14:51:56.549437995Z 🔧 Development mode starting...
+2025-06-21T14:51:56.549646671Z 🔄 Updating source code...
+2025-06-21T14:51:57.283808816Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:51:57.283857708Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:51:57.301600607Z Already up to date.
+2025-06-21T14:51:57.303326604Z 📁 Copying source code...
+2025-06-21T14:51:57.309135734Z 🚀 Starting voice pipeline...
+2025-06-21T14:51:57.785767936Z 2025-06-21 14:51:57.785 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:52:01.398526935Z Traceback (most recent call last):
+2025-06-21T14:52:01.398573233Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:52:01.398579776Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:52:01.398585406Z   File "/app/src/pipecat_pipeline.py", line 30, in <module>
+2025-06-21T14:52:01.398591007Z     from pipecat.frames.frames import UserTranscriptFrame, BotTranscriptFrame, Frame
+2025-06-21T14:52:01.398596878Z ImportError: cannot import name 'UserTranscriptFrame' from 'pipecat.frames.frames' (/usr/local/lib/python3.10/dist-packages/pipecat/frames/frames.py)
+2025-06-21T14:52:13.064425490Z ==========
+2025-06-21T14:52:13.064444776Z == CUDA ==
+2025-06-21T14:52:13.064572880Z ==========
+2025-06-21T14:52:13.070960478Z CUDA Version 11.8.0
+2025-06-21T14:52:13.073340597Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:52:13.075761644Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:52:13.075768206Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:52:13.075773757Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:52:13.075784878Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:52:13.125722655Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:52:13.145250362Z    ...done.
+2025-06-21T14:52:13.145765881Z 🔧 Development mode starting...
+2025-06-21T14:52:13.145975880Z 🔄 Updating source code...
+2025-06-21T14:52:13.866860745Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:52:13.866905329Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:52:13.884885448Z Already up to date.
+2025-06-21T14:52:13.886416615Z 📁 Copying source code...
+2025-06-21T14:52:13.892524142Z 🚀 Starting voice pipeline...
+2025-06-21T14:52:14.371881839Z 2025-06-21 14:52:14.371 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:52:17.964939942Z Traceback (most recent call last):
+2025-06-21T14:52:17.964989746Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:52:17.964995928Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:52:17.965001559Z   File "/app/src/pipecat_pipeline.py", line 30, in <module>
+2025-06-21T14:52:17.965008402Z     from pipecat.frames.frames import UserTranscriptFrame, BotTranscriptFrame, Frame
+2025-06-21T14:52:17.965015225Z ImportError: cannot import name 'UserTranscriptFrame' from 'pipecat.frames.frames' (/usr/local/lib/python3.10/dist-packages/pipecat/frames/frames.py)
+2025-06-21T14:52:29.602392325Z ==========
+2025-06-21T14:52:29.602399218Z == CUDA ==
+2025-06-21T14:52:29.602408586Z ==========
+2025-06-21T14:52:29.608190023Z CUDA Version 11.8.0
+2025-06-21T14:52:29.610406191Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:52:29.612787232Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:52:29.612792983Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:52:29.612798503Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:52:29.612809214Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:52:29.656774020Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:52:29.676030031Z    ...done.
+2025-06-21T14:52:29.676527736Z 🔧 Development mode starting...
+2025-06-21T14:52:29.676704963Z 🔄 Updating source code...
+2025-06-21T14:52:30.398724141Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:52:30.398774787Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:52:30.415251973Z Already up to date.
+2025-06-21T14:52:30.416990323Z 📁 Copying source code...
+2025-06-21T14:52:30.423157443Z 🚀 Starting voice pipeline...
+2025-06-21T14:52:30.902708397Z 2025-06-21 14:52:30.902 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:52:34.528665936Z Traceback (most recent call last):
+2025-06-21T14:52:34.528714148Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:52:34.528720139Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:52:34.528725439Z   File "/app/src/pipecat_pipeline.py", line 30, in <module>
+2025-06-21T14:52:34.528731320Z     from pipecat.frames.frames import UserTranscriptFrame, BotTranscriptFrame, Frame
+2025-06-21T14:52:34.528752951Z ImportError: cannot import name 'UserTranscriptFrame' from 'pipecat.frames.frames' (/usr/local/lib/python3.10/dist-packages/pipecat/frames/frames.py)
+2025-06-21T14:52:46.184938223Z ==========
+2025-06-21T14:52:46.184964914Z == CUDA ==
+2025-06-21T14:52:46.185080584Z ==========
+2025-06-21T14:52:46.191579072Z CUDA Version 11.8.0
+2025-06-21T14:52:46.193584019Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:52:46.196055141Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:52:46.196060852Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:52:46.196066623Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:52:46.196077183Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:52:46.245959414Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:52:46.265333610Z    ...done.
+2025-06-21T14:52:46.265833309Z 🔧 Development mode starting...
+2025-06-21T14:52:46.265996939Z 🔄 Updating source code...
+2025-06-21T14:52:46.972753880Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:52:46.972799096Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:52:46.989809734Z Already up to date.
+2025-06-21T14:52:46.991468022Z 📁 Copying source code...
+2025-06-21T14:52:46.997395607Z 🚀 Starting voice pipeline...
+2025-06-21T14:52:47.477972589Z 2025-06-21 14:52:47.477 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:52:51.081483199Z Traceback (most recent call last):
+2025-06-21T14:52:51.081518746Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:52:51.081524998Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:52:51.081530318Z   File "/app/src/pipecat_pipeline.py", line 30, in <module>
+2025-06-21T14:52:51.081535668Z     from pipecat.frames.frames import UserTranscriptFrame, BotTranscriptFrame, Frame
+2025-06-21T14:52:51.081541459Z ImportError: cannot import name 'UserTranscriptFrame' from 'pipecat.frames.frames' (/usr/local/lib/python3.10/dist-packages/pipecat/frames/frames.py)
+2025-06-21T14:53:02.774063193Z ==========
+2025-06-21T14:53:02.774086818Z == CUDA ==
+2025-06-21T14:53:02.774223758Z ==========
+2025-06-21T14:53:02.780569757Z CUDA Version 11.8.0
+2025-06-21T14:53:02.782824047Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:53:02.785266214Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:53:02.785272646Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:53:02.785278287Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:53:02.785289679Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:53:02.834455690Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:53:02.844674643Z    ...done.
+2025-06-21T14:53:02.845014899Z 🔧 Development mode starting...
+2025-06-21T14:53:02.845190242Z 🔄 Updating source code...
+2025-06-21T14:53:03.554389990Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:53:03.554437581Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:53:03.572124904Z Already up to date.
+2025-06-21T14:53:03.573527006Z 📁 Copying source code...
+2025-06-21T14:53:03.576652590Z 🚀 Starting voice pipeline...
+2025-06-21T14:53:04.055541698Z 2025-06-21 14:53:04.055 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:53:07.648247172Z Traceback (most recent call last):
+2025-06-21T14:53:07.648290544Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:53:07.648296455Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:53:07.648301825Z   File "/app/src/pipecat_pipeline.py", line 30, in <module>
+2025-06-21T14:53:07.648307887Z     from pipecat.frames.frames import UserTranscriptFrame, BotTranscriptFrame, Frame
+2025-06-21T14:53:07.648313578Z ImportError: cannot import name 'UserTranscriptFrame' from 'pipecat.frames.frames' (/usr/local/lib/python3.10/dist-packages/pipecat/frames/frames.py)
+2025-06-21T14:53:11.197769103Z ==========
+2025-06-21T14:53:11.197834247Z == CUDA ==
+2025-06-21T14:53:11.197955377Z ==========
+2025-06-21T14:53:11.204496747Z CUDA Version 11.8.0
+2025-06-21T14:53:11.206444715Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:53:11.208832249Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:53:11.208848279Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:53:11.208858699Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:53:11.208881432Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:53:11.259452141Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:53:11.276791373Z    ...done.
+2025-06-21T14:53:11.277270262Z 🔧 Development mode starting...
+2025-06-21T14:53:11.277464611Z 🔄 Updating source code...
+2025-06-21T14:53:11.982701405Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:53:11.982735590Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:53:12.000712312Z Already up to date.
+2025-06-21T14:53:12.002440934Z 📁 Copying source code...
+2025-06-21T14:53:12.008283277Z 🚀 Starting voice pipeline...
+2025-06-21T14:53:12.488977562Z 2025-06-21 14:53:12.488 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:53:16.145593082Z Traceback (most recent call last):
+2025-06-21T14:53:16.145656943Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:53:16.145662984Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:53:16.145668445Z   File "/app/src/pipecat_pipeline.py", line 30, in <module>
+2025-06-21T14:53:16.145674266Z     from pipecat.frames.frames import UserTranscriptFrame, BotTranscriptFrame, Frame
+2025-06-21T14:53:16.145680007Z ImportError: cannot import name 'UserTranscriptFrame' from 'pipecat.frames.frames' (/usr/local/lib/python3.10/dist-packages/pipecat/frames/frames.py)
+2025-06-21T14:53:27.703100033Z ==========
+2025-06-21T14:53:27.703127725Z == CUDA ==
+2025-06-21T14:53:27.703289092Z ==========
+2025-06-21T14:53:27.709211487Z CUDA Version 11.8.0
+2025-06-21T14:53:27.711465566Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:53:27.713748501Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:53:27.713751627Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:53:27.713754402Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:53:27.713759632Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:53:27.763421766Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:53:27.781170656Z    ...done.
+2025-06-21T14:53:27.781672048Z 🔧 Development mode starting...
+2025-06-21T14:53:27.781881676Z 🔄 Updating source code...
+2025-06-21T14:53:28.528784571Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:53:28.528830638Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:53:28.547801028Z Already up to date.
+2025-06-21T14:53:28.549479515Z 📁 Copying source code...
+2025-06-21T14:53:28.555491109Z 🚀 Starting voice pipeline...
+2025-06-21T14:53:29.032173666Z 2025-06-21 14:53:29.031 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:53:32.657163158Z Traceback (most recent call last):
+2025-06-21T14:53:32.657209596Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:53:32.657215798Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:53:32.657221178Z   File "/app/src/pipecat_pipeline.py", line 30, in <module>
+2025-06-21T14:53:32.657226999Z     from pipecat.frames.frames import UserTranscriptFrame, BotTranscriptFrame, Frame
+2025-06-21T14:53:32.657233331Z ImportError: cannot import name 'UserTranscriptFrame' from 'pipecat.frames.frames' (/usr/local/lib/python3.10/dist-packages/pipecat/frames/frames.py)
+2025-06-21T14:53:44.222376902Z ==========
+2025-06-21T14:53:44.222410987Z == CUDA ==
+2025-06-21T14:53:44.222436806Z ==========
+2025-06-21T14:53:44.228856254Z CUDA Version 11.8.0
+2025-06-21T14:53:44.230882121Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:53:44.233320962Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:53:44.233335359Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:53:44.233343554Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:53:44.233371037Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:53:44.274793966Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:53:44.285087701Z    ...done.
+2025-06-21T14:53:44.285476389Z 🔧 Development mode starting...
+2025-06-21T14:53:44.285634459Z 🔄 Updating source code...
+2025-06-21T14:53:45.015152626Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:53:45.015194235Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:53:45.028750695Z Already up to date.
+2025-06-21T14:53:45.030019754Z 📁 Copying source code...
+2025-06-21T14:53:45.032945790Z 🚀 Starting voice pipeline...
+2025-06-21T14:53:45.507828430Z 2025-06-21 14:53:45.507 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:53:49.112872832Z Traceback (most recent call last):
+2025-06-21T14:53:49.112918358Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:53:49.112924430Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:53:49.112929780Z   File "/app/src/pipecat_pipeline.py", line 30, in <module>
+2025-06-21T14:53:49.112935822Z     from pipecat.frames.frames import UserTranscriptFrame, BotTranscriptFrame, Frame
+2025-06-21T14:53:49.112942124Z ImportError: cannot import name 'UserTranscriptFrame' from 'pipecat.frames.frames' (/usr/local/lib/python3.10/dist-packages/pipecat/frames/frames.py)
+2025-06-21T14:54:00.752362474Z ==========
+2025-06-21T14:54:00.752422688Z == CUDA ==
+2025-06-21T14:54:00.752539149Z ==========
+2025-06-21T14:54:00.758661804Z CUDA Version 11.8.0
+2025-06-21T14:54:00.761113359Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:54:00.763414208Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:54:00.763420550Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:54:00.763426551Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:54:00.763437853Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:54:00.813833830Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:54:00.833665484Z    ...done.
+2025-06-21T14:54:00.834197314Z 🔧 Development mode starting...
+2025-06-21T14:54:00.834392334Z 🔄 Updating source code...
+2025-06-21T14:54:01.538987810Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:54:01.539040150Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:54:01.556873670Z Already up to date.
+2025-06-21T14:54:01.558513313Z 📁 Copying source code...
+2025-06-21T14:54:01.564287156Z 🚀 Starting voice pipeline...
+2025-06-21T14:54:02.040849495Z 2025-06-21 14:54:02.040 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:54:05.632957765Z Traceback (most recent call last):
+2025-06-21T14:54:05.632997290Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:54:05.633003342Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:54:05.633008963Z   File "/app/src/pipecat_pipeline.py", line 30, in <module>
+2025-06-21T14:54:05.633014854Z     from pipecat.frames.frames import UserTranscriptFrame, BotTranscriptFrame, Frame
+2025-06-21T14:54:05.633020354Z ImportError: cannot import name 'UserTranscriptFrame' from 'pipecat.frames.frames' (/usr/local/lib/python3.10/dist-packages/pipecat/frames/frames.py)
+2025-06-21T14:54:17.306863814Z ==========
+2025-06-21T14:54:17.306906194Z == CUDA ==
+2025-06-21T14:54:17.307022896Z ==========
+2025-06-21T14:54:17.312712649Z CUDA Version 11.8.0
+2025-06-21T14:54:17.315075726Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:54:17.317173268Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:54:17.317213324Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:54:17.317228163Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:54:17.317241127Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:54:17.364765211Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:54:17.383861149Z    ...done.
+2025-06-21T14:54:17.384363242Z 🔧 Development mode starting...
+2025-06-21T14:54:17.384531010Z 🔄 Updating source code...
+2025-06-21T14:54:18.090893021Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:54:18.090937365Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:54:18.109405731Z Already up to date.
+2025-06-21T14:54:18.111109496Z 📁 Copying source code...
+2025-06-21T14:54:18.117152600Z 🚀 Starting voice pipeline...
+2025-06-21T14:54:18.591908890Z 2025-06-21 14:54:18.591 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:54:22.207511724Z Traceback (most recent call last):
+2025-06-21T14:54:22.207544917Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:54:22.207550838Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:54:22.207556960Z   File "/app/src/pipecat_pipeline.py", line 30, in <module>
+2025-06-21T14:54:22.207562761Z     from pipecat.frames.frames import UserTranscriptFrame, BotTranscriptFrame, Frame
+2025-06-21T14:54:22.207568582Z ImportError: cannot import name 'UserTranscriptFrame' from 'pipecat.frames.frames' (/usr/local/lib/python3.10/dist-packages/pipecat/frames/frames.py)
+2025-06-21T14:54:33.890081996Z ==========
+2025-06-21T14:54:33.890089089Z == CUDA ==
+2025-06-21T14:54:33.890096183Z ==========
+2025-06-21T14:54:33.896335941Z CUDA Version 11.8.0
+2025-06-21T14:54:33.898869361Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:54:33.901232678Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:54:33.901251965Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:54:33.901257595Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:54:33.901268957Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:54:33.943698148Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:54:33.961995620Z    ...done.
+2025-06-21T14:54:33.962476943Z 🔧 Development mode starting...
+2025-06-21T14:54:33.962725846Z 🔄 Updating source code...
+2025-06-21T14:54:34.659543855Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:54:34.659588170Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:54:34.676025349Z Already up to date.
+2025-06-21T14:54:34.677465784Z 📁 Copying source code...
+2025-06-21T14:54:34.683547091Z 🚀 Starting voice pipeline...
+2025-06-21T14:54:35.160545535Z 2025-06-21 14:54:35.159 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:54:38.720816699Z Traceback (most recent call last):
+2025-06-21T14:54:38.720862365Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:54:38.720869108Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:54:38.720874478Z   File "/app/src/pipecat_pipeline.py", line 30, in <module>
+2025-06-21T14:54:38.720880289Z     from pipecat.frames.frames import UserTranscriptFrame, BotTranscriptFrame, Frame
+2025-06-21T14:54:38.720886070Z ImportError: cannot import name 'UserTranscriptFrame' from 'pipecat.frames.frames' (/usr/local/lib/python3.10/dist-packages/pipecat/frames/frames.py)
+2025-06-21T14:54:50.419587501Z ==========
+2025-06-21T14:54:50.419630603Z == CUDA ==
+2025-06-21T14:54:50.419782792Z ==========
+2025-06-21T14:54:50.426133560Z CUDA Version 11.8.0
+2025-06-21T14:54:50.428506045Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:54:50.430939245Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:54:50.430957129Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:54:50.430968651Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:54:50.430992766Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:54:50.480085920Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:54:50.499369845Z    ...done.
+2025-06-21T14:54:50.499815641Z 🔧 Development mode starting...
+2025-06-21T14:54:50.499981737Z 🔄 Updating source code...
+2025-06-21T14:54:51.250857256Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:54:51.250899146Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:54:51.268846813Z Already up to date.
+2025-06-21T14:54:51.270502687Z 📁 Copying source code...
+2025-06-21T14:54:51.276082912Z 🚀 Starting voice pipeline...
+2025-06-21T14:54:51.756192865Z 2025-06-21 14:54:51.755 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:54:55.336984831Z Traceback (most recent call last):
+2025-06-21T14:54:55.337022202Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:54:55.337025519Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:54:55.337028504Z   File "/app/src/pipecat_pipeline.py", line 30, in <module>
+2025-06-21T14:54:55.337032692Z     from pipecat.frames.frames import UserTranscriptFrame, BotTranscriptFrame, Frame
+2025-06-21T14:54:55.337036169Z ImportError: cannot import name 'UserTranscriptFrame' from 'pipecat.frames.frames' (/usr/local/lib/python3.10/dist-packages/pipecat/frames/frames.py)
+2025-06-21T14:55:06.962480715Z ==========
+2025-06-21T14:55:06.962530440Z == CUDA ==
+2025-06-21T14:55:06.962675856Z ==========
+2025-06-21T14:55:06.968830051Z CUDA Version 11.8.0
+2025-06-21T14:55:06.971108738Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:55:06.973433542Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:55:06.973439613Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:55:06.973445444Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:55:06.973456375Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:55:07.023554126Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:55:07.042993066Z    ...done.
+2025-06-21T14:55:07.043484188Z 🔧 Development mode starting...
+2025-06-21T14:55:07.043694247Z 🔄 Updating source code...
+2025-06-21T14:55:07.756504351Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:55:07.756548975Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:55:07.769454419Z Already up to date.
+2025-06-21T14:55:07.770870568Z 📁 Copying source code...
+2025-06-21T14:55:07.774165133Z 🚀 Starting voice pipeline...
+2025-06-21T14:55:08.243786681Z 2025-06-21 14:55:08.243 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:55:11.904302481Z Traceback (most recent call last):
+2025-06-21T14:55:11.904338950Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:55:11.904344812Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:55:11.904349671Z   File "/app/src/pipecat_pipeline.py", line 30, in <module>
+2025-06-21T14:55:11.904354861Z     from pipecat.frames.frames import UserTranscriptFrame, BotTranscriptFrame, Frame
+2025-06-21T14:55:11.904364128Z ImportError: cannot import name 'UserTranscriptFrame' from 'pipecat.frames.frames' (/usr/local/lib/python3.10/dist-packages/pipecat/frames/frames.py)
+2025-06-21T14:55:23.617026056Z ==========
+2025-06-21T14:55:23.617068196Z == CUDA ==
+2025-06-21T14:55:23.617194666Z ==========
+2025-06-21T14:55:23.622520208Z CUDA Version 11.8.0
+2025-06-21T14:55:23.624889937Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:55:23.626375037Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:55:23.626381168Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:55:23.626386809Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:55:23.626398111Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:55:23.674465347Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:55:23.685060293Z    ...done.
+2025-06-21T14:55:23.685493887Z 🔧 Development mode starting...
+2025-06-21T14:55:23.685699247Z 🔄 Updating source code...
+2025-06-21T14:55:24.716815774Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:55:24.716869446Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:55:24.717928877Z    4818715..2bc523b  cursor_oneshot -> origin/cursor_oneshot
+2025-06-21T14:55:24.764434238Z Updating 4818715..2bc523b
+2025-06-21T14:55:24.764458825Z Fast-forward
+2025-06-21T14:55:24.779831142Z  logs.txt                | 60 ++++++++++++++++++++++++++++++++++++++++++++++++-
+2025-06-21T14:55:24.779854006Z  src/pipecat_pipeline.py | 33 ++++++++++++++++++---------
+2025-06-21T14:55:24.779860368Z  2 files changed, 81 insertions(+), 12 deletions(-)
+2025-06-21T14:55:24.781732322Z 📁 Copying source code...
+2025-06-21T14:55:24.787818398Z 🚀 Starting voice pipeline...
+2025-06-21T14:55:25.268524392Z 2025-06-21 14:55:25.268 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:55:29.010051088Z /app/src/pipecat_pipeline.py:35: DeprecationWarning: Module `pipecat.services.openai` is deprecated, use `pipecat.services.openai.[image,llm,stt,tts]` instead.
+2025-06-21T14:55:29.010077769Z   from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:55:29.010495782Z Traceback (most recent call last):
+2025-06-21T14:55:29.010510240Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:55:29.010516091Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:55:29.010521511Z   File "/app/src/pipecat_pipeline.py", line 35, in <module>
+2025-06-21T14:55:29.010527392Z     from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:55:29.010532833Z ModuleNotFoundError: No module named 'pipecat.services.openai.context'
+2025-06-21T14:55:32.582746401Z ==========
+2025-06-21T14:55:32.582788581Z == CUDA ==
+2025-06-21T14:55:32.582918418Z ==========
+2025-06-21T14:55:32.589302409Z CUDA Version 11.8.0
+2025-06-21T14:55:32.591574814Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:55:32.594100119Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:55:32.594106791Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:55:32.594112663Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:55:32.594124084Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:55:32.644397279Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:55:32.663587015Z    ...done.
+2025-06-21T14:55:32.664093296Z 🔧 Development mode starting...
+2025-06-21T14:55:32.664294819Z 🔄 Updating source code...
+2025-06-21T14:55:33.405982433Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:55:33.406034361Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:55:33.424276618Z Already up to date.
+2025-06-21T14:55:33.425936119Z 📁 Copying source code...
+2025-06-21T14:55:33.431884604Z 🚀 Starting voice pipeline...
+2025-06-21T14:55:33.917596122Z 2025-06-21 14:55:33.917 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:55:37.640774810Z /app/src/pipecat_pipeline.py:35: DeprecationWarning: Module `pipecat.services.openai` is deprecated, use `pipecat.services.openai.[image,llm,stt,tts]` instead.
+2025-06-21T14:55:37.640817702Z   from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:55:37.641203645Z Traceback (most recent call last):
+2025-06-21T14:55:37.641218353Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:55:37.641224114Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:55:37.641229524Z   File "/app/src/pipecat_pipeline.py", line 35, in <module>
+2025-06-21T14:55:37.641235956Z     from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:55:37.641242248Z ModuleNotFoundError: No module named 'pipecat.services.openai.context'
+2025-06-21T14:55:40.157010908Z ==========
+2025-06-21T14:55:40.157049722Z == CUDA ==
+2025-06-21T14:55:40.157161835Z ==========
+2025-06-21T14:55:40.163925617Z CUDA Version 11.8.0
+2025-06-21T14:55:40.166335142Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:55:40.168876407Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:55:40.168883230Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:55:40.168888771Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:55:40.168899671Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:55:40.220208733Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:55:40.239301695Z    ...done.
+2025-06-21T14:55:40.239816983Z 🔧 Development mode starting...
+2025-06-21T14:55:40.240013526Z 🔄 Updating source code...
+2025-06-21T14:55:41.003000802Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:55:41.003039636Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:55:41.021918712Z Already up to date.
+2025-06-21T14:55:41.023687120Z 📁 Copying source code...
+2025-06-21T14:55:41.029308092Z 🚀 Starting voice pipeline...
+2025-06-21T14:55:41.509996122Z 2025-06-21 14:55:41.509 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:55:45.360352666Z /app/src/pipecat_pipeline.py:35: DeprecationWarning: Module `pipecat.services.openai` is deprecated, use `pipecat.services.openai.[image,llm,stt,tts]` instead.
+2025-06-21T14:55:45.360397591Z   from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:55:45.360797741Z Traceback (most recent call last):
+2025-06-21T14:55:45.360842846Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:55:45.360849309Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:55:45.360854739Z   File "/app/src/pipecat_pipeline.py", line 35, in <module>
+2025-06-21T14:55:45.360860740Z     from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:55:45.360866050Z ModuleNotFoundError: No module named 'pipecat.services.openai.context'
+2025-06-21T14:55:47.122018889Z ==========
+2025-06-21T14:55:47.122055459Z == CUDA ==
+2025-06-21T14:55:47.122226814Z ==========
+2025-06-21T14:55:47.128440302Z CUDA Version 11.8.0
+2025-06-21T14:55:47.130717556Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:55:47.133089940Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:55:47.133107433Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:55:47.133121760Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:55:47.133140887Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:55:47.185278361Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:55:47.204980670Z    ...done.
+2025-06-21T14:55:47.205484046Z 🔧 Development mode starting...
+2025-06-21T14:55:47.205681521Z 🔄 Updating source code...
+2025-06-21T14:55:47.885665948Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:55:47.885709280Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:55:47.904419366Z Already up to date.
+2025-06-21T14:55:47.906169318Z 📁 Copying source code...
+2025-06-21T14:55:47.912354752Z 🚀 Starting voice pipeline...
+2025-06-21T14:55:48.388775650Z 2025-06-21 14:55:48.388 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:55:52.193795492Z /app/src/pipecat_pipeline.py:35: DeprecationWarning: Module `pipecat.services.openai` is deprecated, use `pipecat.services.openai.[image,llm,stt,tts]` instead.
+2025-06-21T14:55:52.193836169Z   from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:55:52.194230979Z Traceback (most recent call last):
+2025-06-21T14:55:52.194244795Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:55:52.194250045Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:55:52.194254864Z   File "/app/src/pipecat_pipeline.py", line 35, in <module>
+2025-06-21T14:55:52.194259824Z     from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:55:52.194264633Z ModuleNotFoundError: No module named 'pipecat.services.openai.context'
+2025-06-21T14:56:03.710844907Z ==========
+2025-06-21T14:56:03.710903248Z == CUDA ==
+2025-06-21T14:56:03.711022334Z ==========
+2025-06-21T14:56:03.717157733Z CUDA Version 11.8.0
+2025-06-21T14:56:03.719391324Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:56:03.721621599Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:56:03.721630766Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:56:03.721636297Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:56:03.721646817Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:56:03.772057913Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:56:03.789362460Z    ...done.
+2025-06-21T14:56:03.789855876Z 🔧 Development mode starting...
+2025-06-21T14:56:03.790060004Z 🔄 Updating source code...
+2025-06-21T14:56:04.530944703Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:56:04.530986513Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:56:04.548826265Z Already up to date.
+2025-06-21T14:56:04.550354527Z 📁 Copying source code...
+2025-06-21T14:56:04.555334022Z 🚀 Starting voice pipeline...
+2025-06-21T14:56:05.030954771Z 2025-06-21 14:56:05.030 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:56:08.735936338Z /app/src/pipecat_pipeline.py:35: DeprecationWarning: Module `pipecat.services.openai` is deprecated, use `pipecat.services.openai.[image,llm,stt,tts]` instead.
+2025-06-21T14:56:08.735972146Z   from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:56:08.736388026Z Traceback (most recent call last):
+2025-06-21T14:56:08.736405789Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:56:08.736414055Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:56:08.736419445Z   File "/app/src/pipecat_pipeline.py", line 35, in <module>
+2025-06-21T14:56:08.736425036Z     from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:56:08.736430546Z ModuleNotFoundError: No module named 'pipecat.services.openai.context'
+2025-06-21T14:56:20.211171550Z ==========
+2025-06-21T14:56:20.211235932Z == CUDA ==
+2025-06-21T14:56:20.211354046Z ==========
+2025-06-21T14:56:20.217659388Z CUDA Version 11.8.0
+2025-06-21T14:56:20.220126723Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:56:20.222660824Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:56:20.222677797Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:56:20.222685712Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:56:20.222711631Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:56:20.272695776Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:56:20.291916491Z    ...done.
+2025-06-21T14:56:20.292403496Z 🔧 Development mode starting...
+2025-06-21T14:56:20.292588778Z 🔄 Updating source code...
+2025-06-21T14:56:20.995014845Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:56:20.995067034Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:56:21.014040570Z Already up to date.
+2025-06-21T14:56:21.015749655Z 📁 Copying source code...
+2025-06-21T14:56:21.021609190Z 🚀 Starting voice pipeline...
+2025-06-21T14:56:21.501576271Z 2025-06-21 14:56:21.501 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:56:25.267687296Z /app/src/pipecat_pipeline.py:35: DeprecationWarning: Module `pipecat.services.openai` is deprecated, use `pipecat.services.openai.[image,llm,stt,tts]` instead.
+2025-06-21T14:56:25.267729577Z   from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:56:25.268187356Z Traceback (most recent call last):
+2025-06-21T14:56:25.268201823Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:56:25.268210179Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:56:25.268215620Z   File "/app/src/pipecat_pipeline.py", line 35, in <module>
+2025-06-21T14:56:25.268221401Z     from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:56:25.268226751Z ModuleNotFoundError: No module named 'pipecat.services.openai.context'
+2025-06-21T14:56:36.821867392Z ==========
+2025-06-21T14:56:36.821907007Z == CUDA ==
+2025-06-21T14:56:36.822020773Z ==========
+2025-06-21T14:56:36.828253357Z CUDA Version 11.8.0
+2025-06-21T14:56:36.830389974Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:56:36.832795922Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:56:36.832802825Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:56:36.832808596Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:56:36.832820289Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:56:36.883133229Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:56:36.902911472Z    ...done.
+2025-06-21T14:56:36.903395651Z 🔧 Development mode starting...
+2025-06-21T14:56:36.903595861Z 🔄 Updating source code...
+2025-06-21T14:56:37.608209923Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:56:37.608254828Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:56:37.625503569Z Already up to date.
+2025-06-21T14:56:37.627201673Z 📁 Copying source code...
+2025-06-21T14:56:37.632927194Z 🚀 Starting voice pipeline...
+2025-06-21T14:56:38.106678734Z 2025-06-21 14:56:38.106 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:56:41.831526341Z /app/src/pipecat_pipeline.py:35: DeprecationWarning: Module `pipecat.services.openai` is deprecated, use `pipecat.services.openai.[image,llm,stt,tts]` instead.
+2025-06-21T14:56:41.831569633Z   from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:56:41.831980734Z Traceback (most recent call last):
+2025-06-21T14:56:41.832024978Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:56:41.832031130Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:56:41.832036570Z   File "/app/src/pipecat_pipeline.py", line 35, in <module>
+2025-06-21T14:56:41.832042672Z     from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:56:41.832048132Z ModuleNotFoundError: No module named 'pipecat.services.openai.context'
+2025-06-21T14:56:53.312239404Z ==========
+2025-06-21T14:56:53.312272116Z == CUDA ==
+2025-06-21T14:56:53.312444623Z ==========
+2025-06-21T14:56:53.318931730Z CUDA Version 11.8.0
+2025-06-21T14:56:53.321343109Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:56:53.323826574Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:56:53.323845100Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:56:53.323853425Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:56:53.323880587Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:56:53.374454703Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:56:53.393751051Z    ...done.
+2025-06-21T14:56:53.394246291Z 🔧 Development mode starting...
+2025-06-21T14:56:53.394423748Z 🔄 Updating source code...
+2025-06-21T14:56:54.094116236Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:56:54.094189034Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:56:54.112666047Z Already up to date.
+2025-06-21T14:56:54.114305339Z 📁 Copying source code...
+2025-06-21T14:56:54.120044366Z 🚀 Starting voice pipeline...
+2025-06-21T14:56:54.599928329Z 2025-06-21 14:56:54.599 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:56:58.378831853Z /app/src/pipecat_pipeline.py:35: DeprecationWarning: Module `pipecat.services.openai` is deprecated, use `pipecat.services.openai.[image,llm,stt,tts]` instead.
+2025-06-21T14:56:58.378877841Z   from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:56:58.379298179Z Traceback (most recent call last):
+2025-06-21T14:56:58.379326923Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:56:58.379332734Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:56:58.379338515Z   File "/app/src/pipecat_pipeline.py", line 35, in <module>
+2025-06-21T14:56:58.379344617Z     from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:56:58.379350378Z ModuleNotFoundError: No module named 'pipecat.services.openai.context'
+2025-06-21T14:57:09.847911778Z ==========
+2025-06-21T14:57:09.847930734Z == CUDA ==
+2025-06-21T14:57:09.848046704Z ==========
+2025-06-21T14:57:09.854600588Z CUDA Version 11.8.0
+2025-06-21T14:57:09.856734319Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:57:09.859092938Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:57:09.859100071Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:57:09.859105562Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:57:09.859117104Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:57:09.909419674Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:57:09.927327135Z    ...done.
+2025-06-21T14:57:09.927859816Z 🔧 Development mode starting...
+2025-06-21T14:57:09.928056941Z 🔄 Updating source code...
+2025-06-21T14:57:10.645826942Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:57:10.645871156Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:57:10.662768499Z Already up to date.
+2025-06-21T14:57:10.664335394Z 📁 Copying source code...
+2025-06-21T14:57:10.669409248Z 🚀 Starting voice pipeline...
+2025-06-21T14:57:11.149883582Z 2025-06-21 14:57:11.149 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:57:14.886821426Z /app/src/pipecat_pipeline.py:35: DeprecationWarning: Module `pipecat.services.openai` is deprecated, use `pipecat.services.openai.[image,llm,stt,tts]` instead.
+2025-06-21T14:57:14.886857123Z   from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:57:14.887280848Z Traceback (most recent call last):
+2025-06-21T14:57:14.887295676Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:57:14.887301567Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:57:14.887307088Z   File "/app/src/pipecat_pipeline.py", line 35, in <module>
+2025-06-21T14:57:14.887313099Z     from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:57:14.887318499Z ModuleNotFoundError: No module named 'pipecat.services.openai.context'
+2025-06-21T14:57:26.404237727Z ==========
+2025-06-21T14:57:26.404250702Z == CUDA ==
+2025-06-21T14:57:26.404381710Z ==========
+2025-06-21T14:57:26.410274759Z CUDA Version 11.8.0
+2025-06-21T14:57:26.412682351Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:57:26.414947862Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:57:26.414977809Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:57:26.414991555Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:57:26.415010601Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:57:26.463437490Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:57:26.481869467Z    ...done.
+2025-06-21T14:57:26.482363115Z 🔧 Development mode starting...
+2025-06-21T14:57:26.482556853Z 🔄 Updating source code...
+2025-06-21T14:57:27.181199436Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:57:27.181241887Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:57:27.199082521Z Already up to date.
+2025-06-21T14:57:27.200714179Z 📁 Copying source code...
+2025-06-21T14:57:27.206692020Z 🚀 Starting voice pipeline...
+2025-06-21T14:57:27.674037656Z 2025-06-21 14:57:27.673 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:57:31.473927387Z /app/src/pipecat_pipeline.py:35: DeprecationWarning: Module `pipecat.services.openai` is deprecated, use `pipecat.services.openai.[image,llm,stt,tts]` instead.
+2025-06-21T14:57:31.473975428Z   from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:57:31.474363445Z Traceback (most recent call last):
+2025-06-21T14:57:31.474380618Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:57:31.474387821Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:57:31.474394414Z   File "/app/src/pipecat_pipeline.py", line 35, in <module>
+2025-06-21T14:57:31.474401217Z     from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:57:31.474407819Z ModuleNotFoundError: No module named 'pipecat.services.openai.context'
+2025-06-21T14:57:42.974549271Z ==========
+2025-06-21T14:57:42.974606660Z == CUDA ==
+2025-06-21T14:57:42.974756665Z ==========
+2025-06-21T14:57:42.981280361Z CUDA Version 11.8.0
+2025-06-21T14:57:42.983765901Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:57:42.986299351Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:57:42.986305733Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:57:42.986311514Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:57:42.986322505Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:57:43.026154034Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:57:43.045383625Z    ...done.
+2025-06-21T14:57:43.045836084Z 🔧 Development mode starting...
+2025-06-21T14:57:43.046012369Z 🔄 Updating source code...
+2025-06-21T14:57:43.820376516Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:57:43.820425039Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:57:43.838938531Z Already up to date.
+2025-06-21T14:57:43.840636515Z 📁 Copying source code...
+2025-06-21T14:57:43.846425777Z 🚀 Starting voice pipeline...
+2025-06-21T14:57:44.324681558Z 2025-06-21 14:57:44.324 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:57:48.123252165Z /app/src/pipecat_pipeline.py:35: DeprecationWarning: Module `pipecat.services.openai` is deprecated, use `pipecat.services.openai.[image,llm,stt,tts]` instead.
+2025-06-21T14:57:48.123287913Z   from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:57:48.123725163Z Traceback (most recent call last):
+2025-06-21T14:57:48.123732256Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:57:48.123734731Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:57:48.123747065Z   File "/app/src/pipecat_pipeline.py", line 35, in <module>
+2025-06-21T14:57:48.123750201Z     from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:57:48.123752755Z ModuleNotFoundError: No module named 'pipecat.services.openai.context'
+2025-06-21T14:58:00.511646927Z ==========
+2025-06-21T14:58:00.511672666Z == CUDA ==
+2025-06-21T14:58:00.511719335Z ==========
+2025-06-21T14:58:00.516692287Z CUDA Version 11.8.0
+2025-06-21T14:58:00.518213746Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:58:00.519510037Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:58:00.519516018Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:58:00.519521980Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:58:00.519533241Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:58:00.566111620Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:58:00.576282201Z    ...done.
+2025-06-21T14:58:00.576737836Z 🔧 Development mode starting...
+2025-06-21T14:58:00.576926645Z 🔄 Updating source code...
+2025-06-21T14:58:01.306583386Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:58:01.306635665Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:58:01.324238488Z Already up to date.
+2025-06-21T14:58:01.325510503Z 📁 Copying source code...
+2025-06-21T14:58:01.331528720Z 🚀 Starting voice pipeline...
+2025-06-21T14:58:01.805902050Z 2025-06-21 14:58:01.805 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:58:05.622470149Z /app/src/pipecat_pipeline.py:35: DeprecationWarning: Module `pipecat.services.openai` is deprecated, use `pipecat.services.openai.[image,llm,stt,tts]` instead.
+2025-06-21T14:58:05.622510385Z   from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:58:05.622857805Z Traceback (most recent call last):
+2025-06-21T14:58:05.622879436Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:58:05.622885397Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:58:05.622890867Z   File "/app/src/pipecat_pipeline.py", line 35, in <module>
+2025-06-21T14:58:05.622896829Z     from pipecat.services.openai.context import OpenAILLMContext
+2025-06-21T14:58:05.622902199Z ModuleNotFoundError: No module named 'pipecat.services.openai.context'
+2025-06-21T14:58:17.030991750Z ==========
+2025-06-21T14:58:17.031034291Z == CUDA ==
+2025-06-21T14:58:17.031135122Z ==========
+2025-06-21T14:58:17.037226428Z CUDA Version 11.8.0
+2025-06-21T14:58:17.039588873Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:58:17.042154966Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:58:17.042171196Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:58:17.042184762Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:58:17.042213226Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:58:17.085955420Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:58:17.096594852Z    ...done.
+2025-06-21T14:58:17.097028375Z 🔧 Development mode starting...
+2025-06-21T14:58:17.097087046Z 🔄 Updating source code...
+2025-06-21T14:58:18.049579629Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:58:18.049607311Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:58:18.050744941Z    2bc523b..ae1db79  cursor_oneshot -> origin/cursor_oneshot
+2025-06-21T14:58:18.092272420Z Updating 2bc523b..ae1db79
+2025-06-21T14:58:18.092309080Z Fast-forward
+2025-06-21T14:58:18.098077963Z  src/pipecat_pipeline.py | 4 +++-
+2025-06-21T14:58:18.098100717Z  1 file changed, 3 insertions(+), 1 deletion(-)
+2025-06-21T14:58:18.100070537Z 📁 Copying source code...
+2025-06-21T14:58:18.105207490Z 🚀 Starting voice pipeline...
+2025-06-21T14:58:18.584567148Z 2025-06-21 14:58:18.584 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:58:22.905469344Z ==========
+2025-06-21T14:58:22.905485555Z == CUDA ==
+2025-06-21T14:58:22.905692938Z ==========
+2025-06-21T14:58:22.911700545Z CUDA Version 11.8.0
+2025-06-21T14:58:22.914018556Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:58:22.916161605Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:58:22.916167507Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:58:22.916173097Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:58:22.916184339Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:58:22.958758274Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:58:22.977656286Z    ...done.
+2025-06-21T14:58:22.978139003Z 🔧 Development mode starting...
+2025-06-21T14:58:22.978266074Z 🔄 Updating source code...
+2025-06-21T14:58:23.679723984Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:58:23.679774860Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:58:23.697338679Z Already up to date.
+2025-06-21T14:58:23.699022145Z 📁 Copying source code...
+2025-06-21T14:58:23.704555101Z 🚀 Starting voice pipeline...
+2025-06-21T14:58:24.171390298Z 2025-06-21 14:58:24.171 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:58:43.640537478Z [32m14:58:43[0m | [36mpipecat_pipeline:81[0m | [1m    INFO[0m | [1mLoading UltravoxSTTService... this can take a while on first run.[0m
+2025-06-21T14:58:43.640577584Z 2025-06-21 14:58:43.640 | INFO     | src.pipecat_pipeline:_init_ultravox_once:81 - Loading UltravoxSTTService... this can take a while on first run.
+2025-06-21T14:58:43.871002615Z Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+2025-06-21T14:58:43.871029516Z 2025-06-21 14:58:43,870 - huggingface_hub._login - WARNING - Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+2025-06-21T14:58:43.958663248Z INFO 06-21 14:58:43 __init__.py:207] Automatically detected platform cuda.
+2025-06-21T14:58:51.407225622Z INFO 06-21 14:58:51 config.py:549] This model supports multiple tasks: {'reward', 'generate', 'score', 'embed', 'classify'}. Defaulting to 'generate'.
+2025-06-21T14:58:51.414428308Z INFO 06-21 14:58:51 llm_engine.py:234] Initializing a V0 LLM engine (v0.7.3) with config: model='fixie-ai/ultravox-v0_5-llama-3_1-8b', speculative_config=None, tokenizer='fixie-ai/ultravox-v0_5-llama-3_1-8b', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=0, served_model_name=fixie-ai/ultravox-v0_5-llama-3_1-8b, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=False, chunked_prefill_enabled=False, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"splitting_ops":[],"compile_sizes":[],"cudagraph_capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":256}, use_cached_outputs=False,
+2025-06-21T14:58:57.869095106Z INFO 06-21 14:58:57 cuda.py:229] Using Flash Attention backend.
+2025-06-21T14:58:58.231219968Z INFO 06-21 14:58:58 model_runner.py:1110] Starting to load model fixie-ai/ultravox-v0_5-llama-3_1-8b...
+2025-06-21T14:58:58.423212788Z INFO 06-21 14:58:58 config.py:3054] cudagraph sizes specified by model runner [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256] is overridden by config [256, 128, 2, 1, 4, 136, 8, 144, 16, 152, 24, 160, 32, 168, 40, 176, 48, 184, 56, 192, 64, 200, 72, 208, 80, 216, 88, 120, 224, 96, 232, 104, 240, 112, 248]
+2025-06-21T14:58:58.915183671Z INFO 06-21 14:58:58 weight_utils.py:254] Using model weights format ['*.safetensors']
+2025-06-21T14:58:59.187552512Z INFO 06-21 14:58:59 weight_utils.py:304] No model.safetensors.index.json found in remote.
+2025-06-21T14:58:59.188997756Z Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+2025-06-21T14:58:59.452250939Z Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  3.80it/s]
+2025-06-21T14:58:59.452524739Z Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  3.80it/s]
+2025-06-21T14:58:59.734295963Z INFO 06-21 14:58:59 weight_utils.py:254] Using model weights format ['*.safetensors']
+2025-06-21T14:59:00.028481417Z Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+2025-06-21T14:59:00.225487816Z Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:00,  5.08it/s]
+2025-06-21T14:59:00.815083561Z Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:00<00:00,  2.34it/s]
+2025-06-21T14:59:01.624354196Z Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  1.66it/s]
+2025-06-21T14:59:02.424975889Z Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.47it/s]
+2025-06-21T14:59:02.425173495Z Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.67it/s]
+2025-06-21T14:59:02.922570510Z INFO 06-21 14:59:02 model_runner.py:1115] Loading model weights took 16.2698 GB
+2025-06-21T14:59:16.311900925Z INFO 06-21 14:59:16 worker.py:267] Memory profiling takes 13.17 seconds
+2025-06-21T14:59:16.311936041Z INFO 06-21 14:59:16 worker.py:267] the current vLLM instance can use total_gpu_memory (22.06GiB) x gpu_memory_utilization (0.90) = 19.85GiB
+2025-06-21T14:59:16.311943155Z INFO 06-21 14:59:16 worker.py:267] model weights take 16.27GiB; non_torch_memory takes 0.05GiB; PyTorch activation peak memory takes 1.95GiB; the rest of the memory reserved for KV Cache is 1.59GiB.
+2025-06-21T14:59:16.524483008Z INFO 06-21 14:59:16 executor_base.py:111] # cuda blocks: 813, # CPU blocks: 2048
+2025-06-21T14:59:16.524513435Z INFO 06-21 14:59:16 executor_base.py:116] Maximum concurrency for 8192 tokens per request: 1.59x
+2025-06-21T14:59:20.103823027Z INFO 06-21 14:59:20 model_runner.py:1434] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI. If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+2025-06-21T14:59:40.823295469Z Capturing CUDA graph shapes:   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graph shapes:   3%|▎         | 1/35 [00:00<00:21,  1.59it/s]Capturing CUDA graph shapes:   6%|▌         | 2/35 [00:01<00:20,  1.60it/s]Capturing CUDA graph shapes:   9%|▊         | 3/35 [00:01<00:19,  1.61it/s]Capturing CUDA graph shapes:  11%|█▏        | 4/35 [00:02<00:19,  1.61it/s]Capturing CUDA graph shapes:  14%|█▍        | 5/35 [00:03<00:18,  1.62it/s]Capturing CUDA graph shapes:  17%|█▋        | 6/35 [00:03<00:17,  1.62it/s]Capturing CUDA graph shapes:  20%|██        | 7/35 [00:04<00:17,  1.60it/s]Capturing CUDA graph shapes:  23%|██▎       | 8/35 [00:04<00:16,  1.60it/s]Capturing CUDA graph shapes:  26%|██▌       | 9/35 [00:05<00:16,  1.62it/s]Capturing CUDA graph shapes:  29%|██▊       | 10/35 [00:06<00:15,  1.63it/s]Capturing CUDA graph shapes:  31%|███▏      | 11/35 [00:06<00:14,  1.64it/s]Capturing CUDA graph shapes:  34%|███▍      | 12/35 [00:07<00:13,  1.65it/s]Capturing CUDA graph shapes:  37%|███▋      | 13/35 [00:07<00:13,  1.66it/s]Capturing CUDA graph shapes:  40%|████      | 14/35 [00:08<00:12,  1.66it/s]Capturing CUDA graph shapes:  43%|████▎     | 15/35 [00:09<00:12,  1.66it/s]Capturing CUDA graph shapes:  46%|████▌     | 16/35 [00:09<00:11,  1.67it/s]Capturing CUDA graph shapes:  49%|████▊     | 17/35 [00:10<00:10,  1.68it/s]Capturing CUDA graph shapes:  51%|█████▏    | 18/35 [00:10<00:10,  1.69it/s]Capturing CUDA graph shapes:  54%|█████▍    | 19/35 [00:11<00:09,  1.69it/s]Capturing CUDA graph shapes:  57%|█████▋    | 20/35 [00:12<00:08,  1.70it/s]Capturing CUDA graph shapes:  60%|██████    | 21/35 [00:12<00:08,  1.70it/s]Capturing CUDA graph shapes:  63%|██████▎   | 22/35 [00:13<00:07,  1.71it/s]Capturing CUDA graph shapes:  66%|██████▌   | 23/35 [00:13<00:07,  1.71it/s]Capturing CUDA graph shapes:  69%|██████▊   | 24/35 [00:14<00:06,  1.71it/s]Capturing CUDA graph shapes:  71%|███████▏  | 25/35 [00:15<00:05,  1.72it/s]Capturing CUDA graph shapes:  74%|███████▍  | 26/35 [00:15<00:05,  1.73it/s]Capturing CUDA graph shapes:  77%|███████▋  | 27/35 [00:16<00:04,  1.73it/s]Capturing CUDA graph shapes:  80%|████████  | 28/35 [00:16<00:04,  1.73it/s]Capturing CUDA graph shapes:  83%|████████▎ | 29/35 [00:17<00:03,  1.74it/s]Capturing CUDA graph shapes:  86%|████████▌ | 30/35 [00:17<00:02,  1.74it/s]Capturing CUDA graph shapes:  89%|████████▊ | 31/35 [00:18<00:02,  1.75it/s]Capturing CUDA graph shapes:  91%|█████████▏| 32/35 [00:19<00:01,  1.76it/s]Capturing CUDA graph shapes:  94%|█████████▍| 33/35 [00:19<00:01,  1.77it/s]Capturing CUDA graph shapes:  97%|█████████▋| 34/35 [00:20<00:00,  1.77it/s]Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:20<00:00,  1.77it/s]Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:20<00:00,  1.69it/s]
+2025-06-21T14:59:40.823657186Z INFO 06-21 14:59:40 model_runner.py:1562] Graph capturing finished in 21 secs, took 0.26 GiB
+2025-06-21T14:59:40.824637868Z INFO 06-21 14:59:40 llm_engine.py:436] init engine (profile, create kv cache, warmup model) took 37.90 seconds
+2025-06-21T14:59:41.601877986Z [32m14:59:41[0m | [36m             stt:223[0m | [1m    INFO[0m | [1mInitialized UltravoxSTTService with model: fixie-ai/ultravox-v0_5-llama-3_1-8b[0m
+2025-06-21T14:59:41.601923082Z 2025-06-21 14:59:41.601 | INFO     | pipecat.services.ultravox.stt:__init__:223 - Initialized UltravoxSTTService with model: fixie-ai/ultravox-v0_5-llama-3_1-8b
+2025-06-21T14:59:41.602087644Z [32m14:59:41[0m | [36mpipecat_pipeline:90[0m | [1m    INFO[0m | [1mUltravox model initialized successfully![0m
+2025-06-21T14:59:41.602110648Z 2025-06-21 14:59:41.601 | INFO     | src.pipecat_pipeline:_init_ultravox_once:90 - Ultravox model initialized successfully!
+2025-06-21T14:59:41.605930300Z 2025-06-21 14:59:41,605 - root - INFO - Starting voice pipeline server on 0.0.0.0:8000
+2025-06-21T14:59:41.631941719Z INFO:     Started server process [70]
+2025-06-21T14:59:41.631963781Z INFO:     Waiting for application startup.
+2025-06-21T14:59:41.632355224Z INFO:     Application startup complete.
+2025-06-21T14:59:41.632809046Z INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2025-06-21T14:59:53.970401128Z INFO:     100.64.0.32:44124 - "OPTIONS /connect HTTP/1.1" 200 OK
+2025-06-21T14:59:54.180659459Z 2025-06-21 14:59:54,180 - root - INFO - Connect request - returning WebSocket URL: wss://wlugc3aef909a9-8000.proxy.runpod.net/ws
+2025-06-21T14:59:54.180707109Z 2025-06-21 14:59:54,180 - root - INFO - Request headers: x-forwarded-host=wlugc3aef909a9-8000.proxy.runpod.net, x-forwarded-proto=https
+2025-06-21T14:59:54.181361712Z INFO:     100.64.0.32:44124 - "POST /connect HTTP/1.1" 200 OK
+2025-06-21T14:59:54.586877451Z INFO:     100.64.0.31:41338 - "WebSocket /ws" [accepted]
+2025-06-21T14:59:54.587501666Z 2025-06-21 14:59:54.587 | DEBUG    | pipecat.audio.vad.silero:__init__:111 - Loading Silero VAD model...
+2025-06-21T14:59:54.677922991Z 2025-06-21 14:59:54.677 | DEBUG    | pipecat.audio.vad.silero:__init__:133 - Loaded Silero VAD
+2025-06-21T14:59:54.678522409Z [32m14:59:54[0m | [36mkokoro_tts_service:127[0m | [1m    INFO[0m | [1mInitialising Kokoro TTS (model='/models/kokoro/model_fp16.onnx', voices='/models/kokoro/voices-v1.0.bin', voice='af_sarah')[0m
+2025-06-21T14:59:54.678537117Z 2025-06-21 14:59:54.678 | INFO     | src.kokoro_tts_service:__init__:127 - Initialising Kokoro TTS (model='/models/kokoro/model_fp16.onnx', voices='/models/kokoro/voices-v1.0.bin', voice='af_sarah')
+2025-06-21T14:59:54.870836659Z /usr/local/lib/python3.10/dist-packages/torch/nn/modules/rnn.py:123: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.2 and num_layers=1
+2025-06-21T14:59:54.870858961Z   warnings.warn(
+2025-06-21T14:59:54.922203710Z /usr/local/lib/python3.10/dist-packages/torch/nn/utils/weight_norm.py:143: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+2025-06-21T14:59:54.922225792Z   WeightNorm.apply(module, name, dim)
+2025-06-21T15:00:01.192923225Z [32m15:00:01[0m | [36mkokoro_tts_service:163[0m | [1m    INFO[0m | [1mKokoro pipeline initialised successfully (backend=PyTorch)[0m
+2025-06-21T15:00:01.192969704Z 2025-06-21 15:00:01.192 | INFO     | src.kokoro_tts_service:__init__:163 - Kokoro pipeline initialised successfully (backend=PyTorch)
+2025-06-21T15:00:01.193554945Z 2025-06-21 15:00:01.193 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking PipelineSource#0 -> FastAPIWebsocketInputTransport#0
+2025-06-21T15:00:01.193589100Z 2025-06-21 15:00:01.193 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking FastAPIWebsocketInputTransport#0 -> RTVIProcessor#0
+2025-06-21T15:00:01.193720459Z 2025-06-21 15:00:01.193 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking RTVIProcessor#0 -> UltravoxSTTService#0
+2025-06-21T15:00:01.193753331Z 2025-06-21 15:00:01.193 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking UltravoxSTTService#0 -> KokoroTTSService#0
+2025-06-21T15:00:01.193851828Z 2025-06-21 15:00:01.193 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking KokoroTTSService#0 -> FastAPIWebsocketOutputTransport#0
+2025-06-21T15:00:01.193910961Z 2025-06-21 15:00:01.193 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking FastAPIWebsocketOutputTransport#0 -> PipelineSink#0
+2025-06-21T15:00:01.194309347Z 2025-06-21 15:00:01.194 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking PipelineTaskSource#0 -> Pipeline#0
+2025-06-21T15:00:01.194388878Z 2025-06-21 15:00:01.194 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking Pipeline#0 -> PipelineTaskSink#0
+2025-06-21T15:00:01.195320567Z INFO:     connection open

@@ -1,24 +1,26 @@
 ###############################################################################
-# Base: CUDA 11.8 runtime (matches L4 driver + PyTorch cu118 wheels)
+# Base: CUDA 11.8 runtime (for PyTorch + Whisper CUDA acceleration)
 ###############################################################################
 FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
 
 ###############################################################################
-# 1. System packages
+# 1. System packages + Ollama dependencies
 ###############################################################################
-
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3.10 python3.10-dev python3-pip \
     gcc g++ build-essential openssh-server espeak-ng libespeak-ng1 \
     curl wget ffmpeg libsndfile1 git \
+    # Ollama dependencies
+    ca-certificates gnupg lsb-release \
  && rm -rf /var/lib/apt/lists/*
 
-
-
+###############################################################################
+# 2. Install Ollama
+###############################################################################
+RUN curl -fsSL https://ollama.com/install.sh | sh
 
 ###############################################################################
-# 2. SSH (unchanged)
+# 3. SSH (unchanged)
 ###############################################################################
 RUN mkdir -p /var/run/sshd && \
     echo 'root:runpod' | chpasswd && \
@@ -26,7 +28,7 @@ RUN mkdir -p /var/run/sshd && \
     sed -i 's@session\\s*required\\s*pam_loginuid.so@session optional pam_loginuid.so@g' /etc/pam.d/sshd
 
 ###############################################################################
-# 3. Python tooling
+# 4. Python tooling
 ###############################################################################
 # Set Python 3.10 as default
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1 && \
@@ -36,7 +38,7 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1 &
 RUN pip install --upgrade pip setuptools wheel
 
 ###############################################################################
-# 4. Clone Kokoro model & voices with Git-LFS
+# 5. Clone Kokoro model & voices with Git-LFS (TTS component)
 ###############################################################################
 RUN mkdir -p /models && \
     git clone https://huggingface.co/hexgrad/Kokoro-82M /models/kokoro   # downloads ~600 MB via LFS
@@ -45,68 +47,91 @@ RUN mkdir -p /models && \
 ENV KOKORO_HOME=/models/kokoro
 
 ###############################################################################
-# 5. Python dependencies
+# 6. Python dependencies (updated for cascaded pipeline)
 ###############################################################################
-# * cu118 wheels for torch/torchvision/torchaudio 2.3.0               ─┐
-# * Pipecat with Ultravox + Silero + WebSocket extras                 │
-# * bitsandbytes  — optional INT8 quant                               │
-# * kokoro         — PyTorch inference wrapper                        │
-
 # Copy requirements.txt right before installation to break cache when it changes
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
-#RUN pip install --no-cache-dir \
-#        torch==2.3.0+cu118 torchvision==0.18.0+cu118 torchaudio==2.3.0+cu118 \
-#            --index-url https://download.pytorch.org/whl/cu118 && \
-#    pip install --no-cache-dir -r /tmp/requirements.txt
+###############################################################################
+# 7. Pre-download recommended Ollama model for faster startup
+###############################################################################
+# Start Ollama service and download model during build (optional - speeds up first run)
+RUN ollama serve & \
+    sleep 5 && \
+    ollama pull llama3.2:3b && \
+    pkill ollama || true
 
 ###############################################################################
-# 6. Piper (kept as-is — comment if unused)
-###############################################################################
-#ARG PIPER_VERSION=latest
-#RUN set -eux; \
-#    mkdir -p /usr/local/bin /usr/local/lib && cd /tmp; \
-#    if [ "$PIPER_VERSION" = "latest" ]; then \
-#        PIPER_URL=$(curl -s https://api.github.com/repos/rhasspy/piper/releases/latest | \
-#                    grep browser_download_url | grep linux_x86_64 | cut -d '"' -f 4); \
-#    else \
-#        PIPER_URL="https://github.com/rhasspy/piper/releases/download/${PIPER_VERSION}/piper_linux_x86_64.tar.gz"; \
-#    fi; \
-#    echo "Downloading Piper from: $PIPER_URL"; \
-#    wget -q "$PIPER_URL" -O piper.tar.gz; \
-#    tar -xzf piper.tar.gz; \
-#    cp piper/piper /usr/local/bin/; \
-#    find piper -maxdepth 2 -name '*.so*' -exec cp {} /usr/local/lib/ \;; \
-#    ldconfig; rm -rf /tmp/piper*
-
-#RUN mkdir -p /models/piper && \
-#    cd /models/piper && \
-#    wget -q https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/en_US-lessac-medium.onnx && \
-#    wget -q https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/en_US-lessac-medium.onnx.json
-
-###############################################################################
-# 7. Copy your application code
+# 8. Copy application code
 ###############################################################################
 WORKDIR /app
 
 COPY src/ ./src/
+COPY setup_local_pipeline.sh ./
+COPY .env* ./
 
-# Create startup script that starts SSH and the app
-RUN cat > /app/start.sh << 'EOF'
-#!/bin/bash
-# Start SSH daemon
-service ssh start
-# Start the voice pipeline server
-exec python src/main.py
+# Create enhanced startup script
+RUN cat > /app/start.sh << 'EOF'\
+#!/bin/bash\
+echo "🚀 Starting Local Voice Pipeline Container..."\
+\
+# Start SSH daemon\
+service ssh start\
+echo "✅ SSH daemon started"\
+\
+# Start Ollama service\
+ollama serve &\
+OLLAMA_PID=$!\
+echo "✅ Ollama service started (PID: $OLLAMA_PID)"\
+\
+# Wait for Ollama to be ready\
+echo "⏳ Waiting for Ollama to be ready..."\
+for i in {1..30}; do\
+    if curl -s http://localhost:11434/api/tags > /dev/null 2>&1; then\
+        echo "✅ Ollama is ready!"\
+        break\
+    fi\
+    sleep 1\
+done\
+\
+# Ensure model is available\
+if ! ollama list | grep -q "llama3.2:3b"; then\
+    echo "📥 Downloading llama3.2:3b model..."\
+    ollama pull llama3.2:3b\
+fi\
+\
+# Set environment variables for the pipeline\
+export OLLAMA_MODEL="${OLLAMA_MODEL:-llama3.2:3b}"\
+export OLLAMA_BASE_URL="${OLLAMA_BASE_URL:-http://localhost:11434/v1}"\
+export CUDA_AVAILABLE="${CUDA_AVAILABLE:-true}"\
+export KOKORO_VOICE_ID="${KOKORO_VOICE_ID:-af_bella}"\
+export KOKORO_SAMPLE_RATE="${KOKORO_SAMPLE_RATE:-24000}"\
+\
+echo "🎙️ Environment configured:"\
+echo "   • Ollama Model: $OLLAMA_MODEL"\
+echo "   • Ollama URL: $OLLAMA_BASE_URL"\
+echo "   • CUDA Available: $CUDA_AVAILABLE"\
+echo "   • Kokoro Voice: $KOKORO_VOICE_ID"\
+\
+# Start the voice pipeline server\
+echo "🚀 Starting voice pipeline server..."\
+exec python src/main.py\
 EOF
 
 RUN chmod +x /app/start.sh
 
-# Expose ports
-EXPOSE 22 8000
+# Set environment variables with defaults
+ENV OLLAMA_MODEL="llama3.2:3b"
+ENV OLLAMA_BASE_URL="http://localhost:11434/v1"
+ENV CUDA_AVAILABLE="true"
+ENV KOKORO_VOICE_ID="af_bella"
+ENV KOKORO_SAMPLE_RATE="24000"
 
-# Start both SSH and the app
+# Expose ports
+EXPOSE 22 8000 11434
+
+# Start SSH, Ollama, and the pipeline
 CMD ["/app/start.sh"]
 
 

@@ -13,24 +13,11 @@ pipecat-ai[silero]
 # WebSocket transport  
 pipecat-ai[fastapi-websocket]
 
-# Audio and utilities
-numpy
-scipy
-loguru
-
-# TTS dependencies (Kokoro - PyTorch based)
-torch>=2.0.0
-torchaudio
-numpy
-scipy
-
-# Existing dependencies for your setup
-uvicorn
-fastapi
-websockets
-
 # Kokoro (PyTorch build, ≈ 0.5.2 or newer auto-discovers weights in $KOKORO_HOME)
 kokoro>=0.9.4
+
+# FastAPI / Uvicorn
+uvicorn[standard]
 
 # Audio helpers
 soundfile>=0.12.1

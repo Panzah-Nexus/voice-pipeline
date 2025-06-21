@@ -54,13 +54,22 @@ app.add_middleware(
 async def root():
     """Root endpoint with basic info."""
     return {
-        "service": "Voice Pipeline - Air-gapped",
+        "service": "Local Voice Pipeline - Cascaded Architecture",
         "status": "ready",
         "components": {
-            "stt_llm": "Ultravox v0.5 (Llama-3-8B)",
-            "tts": os.getenv("KOKORO_VOICE_ID", "af_sarah"),
+            "stt": "Whisper STT (local, CUDA-accelerated)",
+            "llm": f"Ollama {os.getenv('OLLAMA_MODEL', 'llama3.2:3b')} (local)",
+            "tts": f"Kokoro TTS - {os.getenv('KOKORO_VOICE_ID', 'af_bella')} (PyTorch)",
             "framework": "Pipecat + RTVI"
-        }
+        },
+        "architecture": "STT → LLM → TTS (fully local, no external APIs)",
+        "features": [
+            "Real-time conversation memory",
+            "Function calling support", 
+            "Fast interruption handling",
+            "English-only language enforcement",
+            "Component-level debugging"
+        ]
     }
 
 

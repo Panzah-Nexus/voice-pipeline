@@ -1,29 +1,37 @@
-# Source Code Structure
+# 🎙️ Local Voice Pipeline - Source Code
 
-This directory contains the core deployment code for the voice pipeline.
+This directory contains the core pipeline implementation for the **Local Cascaded Voice Pipeline**.
 
-## Core Files (Required for Deployment)
+## 🏗️ Architecture
 
-### main.py
-Entry point for the voice pipeline server. Handles initialization and fallback logic.
+### **Cascaded Components:**
+- **`WhisperSTTService`** - Local speech-to-text (CUDA accelerated)
+- **`OLLamaLLMService`** - Local language model with conversation memory
+- **`KokoroTTSService`** - PyTorch-based text-to-speech
 
-### pipecat_pipeline.py
-Main pipeline implementation using Pipecat framework:
-- Integrates Ultravox for combined STT+LLM processing
-- Uses custom Piper TTS service for air-gapped deployment
-- Handles WebSocket connections via FastAPI
-- No external API calls during operation
+### **Key Files:**
 
-### piper_tts_service.py
-Consolidated Pipecat-compatible TTS service that:
-- Runs Piper TTS directly via subprocess (no HTTP server needed)
-- Handles model downloading during deployment
-- Provides proper Pipecat frame integration
-- Supports audio resampling from 22050 Hz to 16000 Hz
+| File | Purpose |
+|------|---------|
+| `main.py` | FastAPI server entry point |
+| `pipecat_pipeline.py` | **Main pipeline logic** - cascaded STT → LLM → TTS |
+| `kokoro_tts_service.py` | TTS service implementation (PyTorch) |
+| `audio_frame_serializer.py` | Audio frame handling utilities |
 
-## Architecture Notes
+## 🎯 **Core Features:**
 
-1. **Air-Gapped Design**: All AI processing happens locally on the GPU without external API calls
-2. **Simplified TTS**: We use a direct subprocess approach instead of the official Pipecat Piper service to avoid HTTP server complexity
-3. **Cerebrium Deployment**: Models are pre-downloaded during container build for fast startup
+- **✅ Full conversation memory** - OpenAI-compatible context management
+- **✅ Function calling support** - Built-in tool calling capabilities
+- **✅ Fast interruption handling** - Smooth conversational flow
+- **✅ English-only enforcement** - Strong language constraints
+- **✅ Component-level debugging** - Isolate and troubleshoot each stage
+- **✅ No external dependencies** - Completely offline operation
+
+## 🔄 **Migration Notes:**
+
+This implementation replaces the previous Ultravox-based approach with a proper cascaded pipeline for better:
+- Conversation memory and context handling
+- Function calling and tool integration
+- Performance debugging and optimization
+- Language model flexibility and updates
 

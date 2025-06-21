@@ -49,12 +49,12 @@ case $MODEL_SIZE in
         MODEL="llama3.2:3b"
         echo "   Downloading balanced model (3B params) - recommended..."
         ;;
-    "7b")
-        MODEL="llama3.1:7b"
-        echo "   Downloading high-quality model (7B params) - slower but better..."
+    "8b")
+        MODEL="llama3.1:8b"
+        echo "   Downloading high-quality model (8B params) - slower but better..."
         ;;
     *)
-        echo "❌ Invalid model size. Use: 1b, 3b, or 7b"
+        echo "❌ Invalid model size. Use: 1b, 3b, or 8b"
         exit 1
         ;;
 esac
@@ -148,13 +148,13 @@ echo "   source $ENV_FILE  # Load environment"
 echo "   python src/main.py"
 echo ""
 echo "🔧 To change models later:"
-echo "   ollama pull llama3.1:7b  # Download different model"
+echo "   ollama pull llama3.1:8b  # Download different model"
 echo "   # Then update OLLAMA_MODEL in $ENV_FILE"
 echo ""
 echo "💡 Tips:"
 echo "   • Use llama3.2:1b for fastest inference"
 echo "   • Use llama3.2:3b for balanced performance (recommended)"
-echo "   • Use llama3.1:7b for best quality"
+echo "   • Use llama3.1:8b for best quality"
 echo ""
 echo "🆘 If you encounter issues:"
 echo "   • Check Ollama logs: ollama logs"

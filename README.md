@@ -26,7 +26,7 @@ curl -fsSL https://ollama.ai/install.sh | sh
 ollama pull llama3.2:3b
 
 # Or for better quality (if you have enough GPU memory):
-ollama pull llama3.1:7b
+ollama pull llama3.1:8b
 ```
 
 ### 2. Install Dependencies
@@ -100,7 +100,7 @@ ollama pull llama3.2:3b    # Good balance (recommended)
 
 ### **For Production Quality:**
 ```bash
-ollama pull llama3.1:7b    # Best quality, slower
+ollama pull llama3.1:8b    # Best quality, slower (~4.9GB)
 ollama pull mistral:7b     # Alternative high-quality option
 ```
 

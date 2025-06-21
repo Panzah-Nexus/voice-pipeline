@@ -53,6 +53,8 @@ from pipecat.services.ultravox.stt import UltravoxSTTService
 # Kokoro TTS service (preferred over Piper)
 from src.kokoro_tts_service import KokoroTTSService
 
+from src.llm_to_tts_bridge import LLMToTTSBridge
+
 # ---------------------------------------------------------------------------
 # Initialisation & configuration
 # ---------------------------------------------------------------------------
@@ -140,6 +142,7 @@ async def run_bot(websocket_client):
             user_ctx,              # add user transcription to history
             ultravox_processor,    # Combined STT+LLM
             bot_ctx,               # add assistant reply to history
+            LLMToTTSBridge(),      # Convert LLM response to TTS text
             tts,
             ws_transport.output(),
         ]

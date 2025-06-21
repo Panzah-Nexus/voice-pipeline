@@ -74,6 +74,19 @@ KOKORO_VOICES_PATH: str = os.getenv("KOKORO_VOICES_PATH", "/models/kokoro/voices
 KOKORO_VOICE_ID: str = os.getenv("KOKORO_VOICE_ID", "af_bella")
 SAMPLE_RATE: int = int(os.getenv("KOKORO_SAMPLE_RATE", "24000"))
 
+# Ultra-aggressive English-only system instructions (prevents Chinese switching)
+ENGLISH_ONLY_SYSTEM = (
+    "Follow these eight instructions in ALL your responses:\n"
+    "1. Use English language ONLY in all responses;\n"
+    "2. Never switch to Chinese, Japanese, Korean, or any other language;\n"
+    "3. If you detect Chinese characters, immediately switch back to English;\n"
+    "4. Use Latin alphabet exclusively in all text output;\n"
+    "5. Translate any non-English input to English before responding;\n"
+    "6. Keep responses conversational and natural in English;\n"
+    "7. Maintain context from previous conversation turns;\n"
+    "8. Respond with helpful information in clear English only."
+)
+
 # ---------------------------------------------------------------------------
 # Initialize Ultravox processor once at module level
 # ---------------------------------------------------------------------------
@@ -83,12 +96,9 @@ logger.info("Loading UltravoxSTTService... this can take a while on first run.")
 ultravox_processor = UltravoxSTTService(
     model_name="fixie-ai/ultravox-v0_5-llama-3_1-8b",
     hf_token=HF_TOKEN,
-    temperature=0.3,  # Lower temperature = faster inference
-    max_tokens=30,    # Much shorter responses = much faster
-    system_instruction=(
-        "You are a fast AI assistant. Give very short responses, maximum 1-2 sentences. "
-        "Be helpful but extremely concise."
-    ),
+    temperature=0.3,  # Lower temperature = faster inference + more consistent
+    max_tokens=40,    # Shorter responses = much faster + less chance for language drift
+    system_instruction=ENGLISH_ONLY_SYSTEM,  # Strong language constraints
 )
 logger.info("Ultravox model initialized successfully!")
 

@@ -58,16 +58,11 @@ SYSTEM_INSTRUCTION: str = (
 # ---------------------------------------------------------------------------
 # Model services – loaded once at startup
 # ---------------------------------------------------------------------------
-_ultravox_singleton = None  # Lazily initialised model backend
+_ultravox_singleton = None  # Global shared weights – cloned per session
 
 
-def _get_ultravox():
-    """Return a *fresh* UltravoxSTTService for a new connection.
-
-    The heavy model weights are cached by the underlying library after the
-    first load, so instantiating a new service for each WebSocket session is
-    cheap while avoiding re-using the same FrameProcessor across pipelines.
-    """
+def _init_ultravox_once():
+    """Load Ultravox weights once (blocking during server start-up)."""
 
     global _ultravox_singleton
 
@@ -85,6 +80,23 @@ def _get_ultravox():
         except Exception as e:
             logger.error(f"Could not initialise Ultravox. Check HF_TOKEN and GPU: {e}")
             raise
+
+
+# Eager initialisation at import so first client is instant
+_init_ultravox_once()
+
+
+def _get_ultravox():
+    """Return a *fresh* UltravoxSTTService for a new connection.
+
+    The heavy model weights are cached by the underlying library after the
+    first load, so instantiating a new service for each WebSocket session is
+    cheap while avoiding re-using the same FrameProcessor across pipelines.
+    """
+
+    # Ensure global model is ready (should already be by module import)
+    if _ultravox_singleton is None:
+        _init_ultravox_once()
 
     # Create a *new* service instance that shares weights (cheap)
     # Some versions expose `.clone()`; fallback to re-instantiation.

@@ -1,12 +1,13 @@
-"""gi
-Air-gapped Pipecat bot with RTVI compatibility for Runpod deployment
-====================================================================
-This module wires together:
+"""
+Air-gapped Pipecat bot with RTVI compatibility for Local deployment
+===================================================================
+This module wires together a proper cascaded pipeline:
 
-* **UltravoxSTTService** – combined STT + LLM (local)
-* **KokoroTTSService**   – offline TTS (local)
+* **WhisperSTTService** – local offline STT with CUDA support
+* **OLLamaLLMService**   – local LLM with full conversation memory
+* **KokoroTTSService**   – offline TTS (existing, working great)
 
-All AI processing happens on Runpod GPU infrastructure without external API calls.
+All AI processing happens locally with no external dependencies.
 """
 
 import os
@@ -15,14 +16,14 @@ import sys
 from loguru import logger
 
 # --- VAD --------------------------------------------------------------
-# Tune Silero so it fires sooner and streams shorter chunks
+# Aggressive VAD for fast interruption detection
 from pipecat.audio.vad.silero import SileroVADAnalyzer
 from pipecat.audio.vad.vad_analyzer import VADParams
 
 FAST_VAD = SileroVADAnalyzer(
     params=VADParams(
-        min_silence_ms=100,      # Even faster - was 200ms
-        speech_pad_ms=50,        # Minimal padding - was 120ms
+        min_silence_ms=150,      # Fast interruption detection
+        speech_pad_ms=100,       # Minimal padding
         window_ms=160,           # Keep same
     )
 )
@@ -36,79 +37,103 @@ from pipecat.transports.network.fastapi_websocket import (
     FastAPIWebsocketParams,
     FastAPIWebsocketTransport,
 )
-from pipecat.processors.metrics.frame_processor_metrics import (
-    FrameProcessorMetrics,
-)
-from pipecat.frames.frames import (
-    TranscriptionFrame,
-    TTSTextFrame,
-    Frame,
-)
+
+# Local STT (Whisper)
+from pipecat.services.whisper.stt import WhisperSTTService, Model as WhisperModel
+
+# Local LLM (Ollama) with conversation context
+from pipecat.services.ollama.llm import OLLamaLLMService
 from pipecat.processors.aggregators.openai_llm_context import (
     OpenAILLMContext,
 )
 
-from pipecat.services.ultravox.stt import UltravoxSTTService
-
-# Kokoro TTS service (preferred over Piper)
+# Keep existing TTS service
 from src.kokoro_tts_service import KokoroTTSService
 
-#from src.llm_to_tts_bridge import LLMToTTSBridge
-
 # ---------------------------------------------------------------------------
-# Initialisation & configuration
+# Configuration
 # ---------------------------------------------------------------------------
-# Configure loguru logger (id=0 might have been removed by upstream Pipecat)
+# Configure loguru logger
 try:
     logger.remove(0)
 except ValueError:
-    # Either already removed or replaced by another module – proceed silently
     pass
 
 logger.add(sys.stderr, level="DEBUG")
 
-# Configuration from environment variables
-HF_TOKEN: str = os.getenv("HF_TOKEN", "")
-KOKORO_MODEL_PATH: str = os.getenv("KOKORO_MODEL_PATH", "/models/kokoro/model_fp16.onnx")
+# Environment variables for TTS
+KOKORO_MODEL_PATH: str = os.getenv("KOKORO_MODEL_PATH", "/models/kokoro/model_fp16.onnx") 
 KOKORO_VOICES_PATH: str = os.getenv("KOKORO_VOICES_PATH", "/models/kokoro/voices-v1.0.bin")
 KOKORO_VOICE_ID: str = os.getenv("KOKORO_VOICE_ID", "af_bella")
 SAMPLE_RATE: int = int(os.getenv("KOKORO_SAMPLE_RATE", "24000"))
 
-# Ultra-aggressive English-only system instructions (prevents Chinese switching)
-ENGLISH_ONLY_SYSTEM = (
-    "Follow these eight instructions in ALL your responses:\n"
-    "1. Use English language ONLY in all responses;\n"
-    "2. Never switch to Chinese, Japanese, Korean, or any other language;\n"
-    "3. If you detect Chinese characters, immediately switch back to English;\n"
-    "4. Use Latin alphabet exclusively in all text output;\n"
-    "5. Translate any non-English input to English before responding;\n"
-    "6. Keep responses conversational and natural in English;\n"
-    "7. Maintain context from previous conversation turns;\n"
-    "8. Respond with helpful information in clear English only."
-)
+# Ollama configuration  
+OLLAMA_MODEL: str = os.getenv("OLLAMA_MODEL", "llama3.2:3b")  # Fast, good quality
+OLLAMA_BASE_URL: str = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1")
+
+# Strong English-only system prompt with conversation instructions
+SYSTEM_PROMPT = """You are a helpful AI assistant having a real-time voice conversation.
+
+CRITICAL INSTRUCTIONS:
+1. ALWAYS respond in English only - never Chinese, Japanese, Korean, or other languages
+2. If user speaks another language, understand it but respond in English
+3. Keep responses conversational and under 2 sentences for voice interaction
+4. Be natural, helpful, and engaging
+5. Remember our conversation context
+6. If you detect non-English generation starting, immediately switch to English
+
+You are knowledgeable and can help with various topics while maintaining engaging conversation."""
 
 # ---------------------------------------------------------------------------
-# Initialize Ultravox processor once at module level
+# Initialize services at module level for faster startup
 # ---------------------------------------------------------------------------
-# Want to initialize the ultravox processor since it takes time to load the model and dont
-# want to load it every time the pipeline is run
-logger.info("Loading UltravoxSTTService... this can take a while on first run.")
-ultravox_processor = UltravoxSTTService(
-    model_name="fixie-ai/ultravox-v0_5-llama-3_1-8b",
-    hf_token=HF_TOKEN,
-    temperature=0.3,  # Lower temperature = faster inference + more consistent
-    max_tokens=40,    # Shorter responses = much faster + less chance for language drift
-    system_instruction=ENGLISH_ONLY_SYSTEM,  # Strong language constraints
-)
-logger.info("Ultravox model initialized successfully!")
 
+logger.info("🔧 Initializing local cascaded pipeline components...")
+
+# 1. Local STT (Whisper) - fast model with CUDA support
+logger.info("📝 Loading WhisperSTTService...")
+stt_service = WhisperSTTService(
+    model=WhisperModel.DISTIL_MEDIUM_EN,  # Fast English model ~400MB
+    device="cuda" if os.getenv("CUDA_AVAILABLE", "true").lower() == "true" else "auto",
+    no_speech_prob=0.4,  # Filter out non-speech
+)
+logger.info("✅ Whisper STT initialized successfully!")
+
+# 2. Local LLM (Ollama) with proper conversation context
+logger.info("🧠 Loading Ollama LLM service...")
+llm_service = OLLamaLLMService(
+    model=OLLAMA_MODEL,
+    base_url=OLLAMA_BASE_URL,
+    params=OLLamaLLMService.InputParams(
+        temperature=0.7,          # Balanced creativity
+        max_tokens=150,           # Reasonable length for voice
+        frequency_penalty=0.3,    # Reduce repetition
+        presence_penalty=0.3,     # Encourage variety
+    )
+)
+logger.info("✅ Ollama LLM initialized successfully!")
+
+# 3. Conversation context with system prompt
+conversation_context = OpenAILLMContext(
+    messages=[],
+    system=SYSTEM_PROMPT,
+    tools=[],  # Ready for function calling later!
+)
+
+# 4. Context aggregators for proper conversation flow
+context_aggregators = OLLamaLLMService.create_context_aggregator(
+    conversation_context,
+    assistant_expect_stripped_words=True  # Better for voice responses
+)
+
+logger.info("🎯 All local pipeline components ready!")
 
 async def run_bot(websocket_client):
-    """Entry-point used by Pipecat example clients."""
+    """Entry-point for the local cascaded voice bot."""
     
-    logger.info("Starting bot")
+    logger.info("🚀 Starting local cascaded voice pipeline...")
 
-    # 1️⃣ WebSocket transport – identical params to reference example
+    # 1️⃣ WebSocket transport with fast VAD
     ws_transport = FastAPIWebsocketTransport(
         websocket=websocket_client,
         params=FastAPIWebsocketParams(
@@ -120,7 +145,7 @@ async def run_bot(websocket_client):
         ),
     )
 
-    # 2️⃣ Local TTS (Kokoro)
+    # 2️⃣ Local TTS (Kokoro) - keep what works!
     tts = KokoroTTSService(
         model_path=KOKORO_MODEL_PATH,
         voices_path=KOKORO_VOICES_PATH,
@@ -128,27 +153,28 @@ async def run_bot(websocket_client):
         sample_rate=SAMPLE_RATE,
     )
 
-    # 3️⃣ RTVI signalling layer – required for Pipecat web client
+    # 3️⃣ RTVI signalling layer
     rtvi = RTVIProcessor(config=RTVIConfig(config=[]))
 
-    # 4️⃣ Simple pipeline for optimal interruption handling
-    pipeline = Pipeline(
-        [
-            ws_transport.input(),
-            rtvi,           
-            ultravox_processor,    # Combined STT+LLM
-            tts,
-            ws_transport.output(),
-        ]
-    )
+    # 4️⃣ PERFECT CASCADED PIPELINE 🎯
+    # Input → STT → User_Aggregator → LLM → Assistant_Aggregator → TTS → Output
+    pipeline = Pipeline([
+        ws_transport.input(),           # Audio input
+        rtvi,                          # RTVI compatibility  
+        stt_service,                   # 🎙️  Whisper STT (local)
+        context_aggregators.user(),    # 👤  User message handling
+        llm_service,                   # 🧠  Ollama LLM (local)  
+        context_aggregators.assistant(), # 🤖  Assistant message handling
+        tts,                           # 🗣️  Kokoro TTS (local)
+        ws_transport.output(),         # Audio output
+    ])
 
     task = PipelineTask(
         pipeline,
         params=PipelineParams(
             enable_metrics=True,
             enable_usage_metrics=True,
-            allow_interruptions=True,
-            # Enable immediate interruption
+            allow_interruptions=True,  # Smooth interruptions!
             report_only_initial_ttfb=False,
         ),
         observers=[RTVIObserver(rtvi)],
@@ -157,27 +183,26 @@ async def run_bot(websocket_client):
     # ---------- Event handlers ----------
     @rtvi.event_handler("on_client_ready")
     async def on_client_ready(rtvi):
-        logger.info("Pipecat client ready.")
+        logger.info("✅ Client ready - local cascaded pipeline active!")
         await rtvi.set_bot_ready()
-        # Pipeline is ready - initial greeting will happen when user speaks
 
     @ws_transport.event_handler("on_client_connected")
     async def on_client_connected(transport, client):
-        logger.info("Client connected")
+        logger.info("🔗 Client connected to local pipeline")
 
     @ws_transport.event_handler("on_client_disconnected")
     async def on_client_disconnected(transport, client):
-        logger.info("Client disconnected")
+        logger.info("👋 Client disconnected")
         await task.cancel()
         
     # ---------- Interruption tracking ----------
     @ws_transport.event_handler("on_interruption_start")
     async def on_interruption_start(transport):
-        logger.info("🔴 INTERRUPTION: User started speaking - stopping TTS")
+        logger.info("🛑 INTERRUPTION: User speaking - stopping current TTS")
         
     @ws_transport.event_handler("on_interruption_end")  
     async def on_interruption_end(transport):
-        logger.info("🟢 INTERRUPTION: User stopped speaking - ready for response")
+        logger.info("▶️  INTERRUPTION: User stopped - processing input")
         
     # Track speech events
     @ws_transport.event_handler("on_user_started_speaking")
@@ -196,16 +221,20 @@ async def run_bot(websocket_client):
     async def on_bot_stopped_speaking(transport):
         logger.info("🤖 BOT: Stopped speaking")
 
-    # ---------- Metrics monitoring ----------
-    async def log_metrics():
-        """Log performance metrics every 5 seconds"""
+    # ---------- Performance monitoring ----------
+    async def log_performance():
+        """Monitor performance of the cascaded pipeline"""
         import asyncio
         while True:
             try:
-                await asyncio.sleep(5)  # More frequent - was 10 seconds
-                # Get metrics from the task
+                await asyncio.sleep(8)
                 if hasattr(task, '_pipeline') and hasattr(task._pipeline, '_processors'):
-                    logger.info("📊 === PERFORMANCE METRICS ===")
+                    logger.info("📊 === LOCAL PIPELINE PERFORMANCE ===")
+                    
+                    # Log conversation context stats
+                    logger.info(f"💬 Conversation messages: {len(conversation_context.messages)}")
+                    
+                    # Log component performance
                     for processor in task._pipeline._processors:
                         if hasattr(processor, '_metrics') and processor._metrics:
                             metrics = processor._metrics
@@ -216,14 +245,14 @@ async def run_bot(websocket_client):
                             if hasattr(metrics, 'processing_metrics') and metrics.processing_metrics:
                                 avg_processing = sum(metrics.processing_metrics) / len(metrics.processing_metrics)
                                 logger.info(f"🔄 {name} - Avg Processing: {avg_processing:.3f}s")
-                    logger.info("📊 ========================")
+                    logger.info("📊 ================================")
             except Exception as e:
-                logger.debug(f"Metrics logging error: {e}")
+                logger.debug(f"Performance monitoring error: {e}")
                 break
     
-    # Start metrics logging in background
+    # Start performance monitoring
     import asyncio
-    asyncio.create_task(log_metrics())
+    asyncio.create_task(log_performance())
 
     # ---------- Runner ----------
     runner = PipelineRunner(handle_sigint=False)

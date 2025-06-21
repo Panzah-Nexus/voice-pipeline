@@ -1,11 +1,36 @@
-# Core Pipecat with Ultravox + WebSocket server + Silero VAD
-pipecat-ai[ultravox,websocket,silero]
+# Core Pipecat framework
+pipecat-ai==0.0.71
+
+# Local Speech-to-Text (Whisper)  
+pipecat-ai[whisper]
+
+# Local Language Model (Ollama)
+pipecat-ai[ollama]
+
+# Audio processing and VAD
+pipecat-ai[silero]
+
+# WebSocket transport  
+pipecat-ai[fastapi-websocket]
+
+# Audio and utilities
+numpy
+scipy
+loguru
+
+# TTS dependencies (Kokoro - PyTorch based)
+torch>=2.0.0
+torchaudio
+numpy
+scipy
+
+# Existing dependencies for your setup
+uvicorn
+fastapi
+websockets
 
 # Kokoro (PyTorch build, ≈ 0.5.2 or newer auto-discovers weights in $KOKORO_HOME)
 kokoro>=0.9.4
-
-# FastAPI / Uvicorn
-uvicorn[standard]
 
 # Audio helpers
 soundfile>=0.12.1

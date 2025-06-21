@@ -8,7 +8,7 @@ FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
 ###############################################################################
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-        python3.11 python3.11-dev python3-pip \
+        python3 python3-dev python3-pip \
         git git-lfs curl wget ffmpeg libsndfile1 \
         gcc g++ build-essential openssh-server espeak-ng libespeak-ng1 && \
     git lfs install && \
@@ -23,11 +23,9 @@ RUN mkdir -p /var/run/sshd && \
     sed -i 's@session\\s*required\\s*pam_loginuid.so@session optional pam_loginuid.so@g' /etc/pam.d/sshd
 
 ###############################################################################
-# 3. Python tooling (latest pip)
+# 3. Python tooling
 ###############################################################################
-RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.11 1 && \
-    update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1 && \
-    pip install --no-cache-dir --upgrade pip setuptools wheel
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel
 
 ###############################################################################
 # 4. Clone Kokoro model & voices with Git-LFS
@@ -39,17 +37,16 @@ RUN mkdir -p /models && \
 ENV KOKORO_HOME=/models/kokoro
 
 ###############################################################################
-# 4b. Copy Python requirements for installation layer
-###############################################################################
-COPY requirements.txt /tmp/requirements.txt
-
-###############################################################################
 # 5. Python dependencies
 ###############################################################################
 # * cu118 wheels for torch/torchvision/torchaudio 2.3.0               ─┐
 # * Pipecat with Ultravox + Silero + WebSocket extras                 │
 # * bitsandbytes  — optional INT8 quant                               │
 # * kokoro         — PyTorch inference wrapper                        │
+
+# Copy requirements.txt right before installation to break cache when it changes
+COPY requirements.txt /tmp/requirements.txt
+
 RUN pip install --no-cache-dir \
         torch==2.3.0+cu118 torchvision==0.18.0+cu118 torchaudio==2.3.0+cu118 \
             --index-url https://download.pytorch.org/whl/cu118 && \

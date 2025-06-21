@@ -1,21 +1,14 @@
 # Development Dockerfile for fast iteration
-FROM mlbra2006/voice-pipeline-airgapped:latest
+FROM mlbra2006/voice-pipeline-airgapped:uvfix
 
-# Install git, SSH server, and missing Piper dependencies for development access
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    # Development tooling
+# Install git and SSH server for development access
+RUN apt-get update && apt-get install -y \
     git \
     openssh-server \
-    # Runtime libraries required by the Piper binary
-    espeak-ng \
-    libespeak-ng1 \
-    ffmpeg \
-    libsndfile1 \
-    && ldconfig \
     && rm -rf /var/lib/apt/lists/*
 
 # Configure SSH
-RUN mkdir -p /var/run/sshd
+RUN mkdir /var/run/sshd
 RUN echo 'root:runpod' | chpasswd
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' /etc/pam.d/sshd
@@ -24,39 +17,54 @@ RUN sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid
 RUN rm -rf /app/src/
 
 # Create startup script for development
-RUN printf '%s\n' "#!/bin/bash" "set -e" "service ssh start" "echo '🔧 Development mode starting...'" \
-  "if [ -z \"$GIT_TOKEN\" ] || [ -z \"$GIT_USER\" ] || [ -z \"$GIT_REPO\" ]; then" \
-  "  echo '❌ Missing git credentials. Please set:'" \
-  "  echo '   GIT_USER=your_github_username'" \
-  "  echo '   GIT_TOKEN=your_personal_access_token'" \
-  "  echo '   GIT_REPO=your_repo_name (e.g., voice-pipeline)'" \
-  "  exit 1" \
-  "fi" \
-  "GIT_URL=\"https://${GIT_USER}:${GIT_TOKEN}@github.com/${GIT_USER}/${GIT_REPO}.git\"" \
-  "if [ ! -d /app/voice-pipeline-src ]; then" \
-  "  echo '🔄 Cloning latest source code from cursor_oneshot branch...'" \
-  "  git clone -b cursor_oneshot \"$GIT_URL\" /app/voice-pipeline-src" \
-  "else" \
-  "  echo '🔄 Updating source code...'" \
-  "  cd /app/voice-pipeline-src && git pull origin cursor_oneshot" \
-  "fi" \
-  "echo '📁 Copying source code...'" \
-  "cp -r /app/voice-pipeline-src/src /app/" \
-  "if [ -d /workspace/src ]; then" \
-  "  echo '📁 Using volume-mounted source code...'" \
-  "  cp -r /workspace/src /app/" \
-  "fi" \
-  "echo '🚀 Starting voice pipeline...'" \
-  "cd /app && python src/main.py" > /app/dev_start.sh && chmod +x /app/dev_start.sh
+RUN cat > /app/dev_start.sh << 'EOF'
+#!/bin/bash
+set -e
+
+# Start SSH daemon
+service ssh start
+
+echo "🔧 Development mode starting..."
+
+# Check if we have git credentials
+if [ -z "$GIT_TOKEN" ] || [ -z "$GIT_USER" ] || [ -z "$GIT_REPO" ]; then
+    echo "❌ Missing git credentials. Please set:"
+    echo "   GIT_USER=your_github_username"
+    echo "   GIT_TOKEN=your_personal_access_token"
+    echo "   GIT_REPO=your_repo_name (e.g., voice-pipeline)"
+    exit 1
+fi
+
+# Construct the authenticated git URL
+GIT_URL="https://${GIT_USER}:${GIT_TOKEN}@github.com/${GIT_USER}/${GIT_REPO}.git"
+
+# Clone or update source code
+if [ ! -d "/app/voice-pipeline-src" ]; then
+    echo "🔄 Cloning latest source code from cursor_oneshot branch..."
+    git clone -b cursor_oneshot "$GIT_URL" /app/voice-pipeline-src
+else
+    echo "🔄 Updating source code..."
+    cd /app/voice-pipeline-src && git pull origin cursor_oneshot
+fi
+
+# Copy source to working directory
+echo "📁 Copying source code..."
+cp -r /app/voice-pipeline-src/src /app/
+
+# Option for volume-mounted source (local development)
+if [ -d "/workspace/src" ]; then
+    echo "📁 Using volume-mounted source code..."
+    cp -r /workspace/src /app/
+fi
+
+echo "🚀 Starting voice pipeline..."
+cd /app && python src/main.py
+EOF
+
+RUN chmod +x /app/dev_start.sh
 
 # Expose SSH port
 EXPOSE 22 8000
-
-# Add Kokoro environment variables
-ENV KOKORO_MODEL_PATH=/models/kokoro/model_fp16.onnx \
-    KOKORO_VOICES_PATH=/models/kokoro/voices-v1.0.bin \
-    KOKORO_VOICE_ID=af_sarah \
-    KOKORO_SAMPLE_RATE=24000
 
 # Default command for development
 CMD ["/app/dev_start.sh"] 

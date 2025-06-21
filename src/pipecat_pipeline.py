@@ -32,7 +32,9 @@ from pipecat.frames.frames import (
     TTSTextFrame,
     Frame,
 )
-from pipecat.services.openai.context import OpenAILLMContext
+from pipecat.processors.aggregators.openai_llm_context import (
+    OpenAILLMContext,
+)
 
 from pipecat.services.ultravox.stt import UltravoxSTTService
 

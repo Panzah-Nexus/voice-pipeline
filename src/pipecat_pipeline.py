@@ -98,18 +98,14 @@ def _get_ultravox():
     if _ultravox_singleton is None:
         _init_ultravox_once()
 
-    # Create a *new* service instance that shares weights (cheap)
-    # Some versions expose `.clone()`; fallback to re-instantiation.
-    try:
-        return _ultravox_singleton.clone()
-    except AttributeError:
-        return UltravoxSTTService(
-            model_name=_ultravox_singleton.model_name if hasattr(_ultravox_singleton, "model_name") else "fixie-ai/ultravox-v0_5-llama-3_1-8b",
-            hf_token=HF_TOKEN,
-            temperature=0.6,
-            max_tokens=150,
-            system_instruction=SYSTEM_INSTRUCTION,
-        )
+    # Ensure we start every call with a clean internal buffer
+    if hasattr(_ultravox_singleton, "reset"):
+        try:
+            _ultravox_singleton.reset()
+        except Exception as exc:  # pragma: no cover – defensive
+            logger.warning("Ultravox reset() failed: %s", exc)
+
+    return _ultravox_singleton
 
 
 async def run_bot(websocket_client):
@@ -172,6 +168,13 @@ async def run_bot(websocket_client):
     @ws_transport.event_handler("on_client_disconnected")
     async def on_client_disconnected(transport, client):
         logger.info("Pipecat Client disconnected")
+        # Prepare Ultravox for a fresh session next time
+        if hasattr(_ultravox_singleton, "reset"):
+            try:
+                _ultravox_singleton.reset()
+            except Exception as exc:
+                logger.warning("Ultravox reset() failed: %s", exc)
+
         await task.cancel()
 
     # ---------- Runner ----------

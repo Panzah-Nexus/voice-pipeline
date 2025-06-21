@@ -58,28 +58,53 @@ SYSTEM_INSTRUCTION: str = (
 # ---------------------------------------------------------------------------
 # Model services – loaded once at startup
 # ---------------------------------------------------------------------------
-logger.info("Loading UltravoxSTTService... this can take a while on first run.")
-try:
-    ULTRAVOX = UltravoxSTTService(
-        model_name="fixie-ai/ultravox-v0_5-llama-3_1-8b",
-        hf_token=HF_TOKEN,
-        temperature=0.6,
-        max_tokens=150,
-        system_instruction=SYSTEM_INSTRUCTION,
-    )
-    logger.info("Ultravox model initialized successfully!")
-except Exception as e:
-    logger.error(f"Could not initialise Ultravox. Check HF_TOKEN and GPU: {e}")
-    ULTRAVOX = None  # we fail later with a clearer message
+_ultravox_singleton = None  # Lazily initialised model backend
+
+
+def _get_ultravox():
+    """Return a *fresh* UltravoxSTTService for a new connection.
+
+    The heavy model weights are cached by the underlying library after the
+    first load, so instantiating a new service for each WebSocket session is
+    cheap while avoiding re-using the same FrameProcessor across pipelines.
+    """
+
+    global _ultravox_singleton
+
+    if _ultravox_singleton is None:
+        logger.info("Loading UltravoxSTTService... this can take a while on first run.")
+        try:
+            _ultravox_singleton = UltravoxSTTService(
+                model_name="fixie-ai/ultravox-v0_5-llama-3_1-8b",
+                hf_token=HF_TOKEN,
+                temperature=0.6,
+                max_tokens=150,
+                system_instruction=SYSTEM_INSTRUCTION,
+            )
+            logger.info("Ultravox model initialized successfully!")
+        except Exception as e:
+            logger.error(f"Could not initialise Ultravox. Check HF_TOKEN and GPU: {e}")
+            raise
+
+    # Create a *new* service instance that shares weights (cheap)
+    # Some versions expose `.clone()`; fallback to re-instantiation.
+    try:
+        return _ultravox_singleton.clone()
+    except AttributeError:
+        return UltravoxSTTService(
+            model_name=_ultravox_singleton.model_name if hasattr(_ultravox_singleton, "model_name") else "fixie-ai/ultravox-v0_5-llama-3_1-8b",
+            hf_token=HF_TOKEN,
+            temperature=0.6,
+            max_tokens=150,
+            system_instruction=SYSTEM_INSTRUCTION,
+        )
 
 
 async def run_bot(websocket_client):
     """Entry-point used by Pipecat example clients."""
     
-    if ULTRAVOX is None:
-        raise RuntimeError(
-            "Ultravox failed to initialise at startup – server cannot serve requests."
-        )
+    # Create a *connection-local* Ultravox service to avoid re-use across pipelines
+    ULTRAVOX = _get_ultravox()
 
     # 1️⃣ WebSocket transport – identical params to reference example
     ws_transport = FastAPIWebsocketTransport(

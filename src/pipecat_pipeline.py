@@ -124,17 +124,7 @@ async def run_bot(websocket_client):
     # 3️⃣ RTVI signalling layer – required for Pipecat web client
     rtvi = RTVIProcessor(config=RTVIConfig(config=[]))
 
-    # ---- Context memory (last 10 messages) ----------------------------
-    from pipecat.processors.aggregators.llm_response import (
-        LLMUserContextAggregator, LLMAssistantContextAggregator,
-    )
-    
-    # Create proper context object for conversation memory
-    context = OpenAILLMContext()
-    user_ctx = LLMUserContextAggregator(context)
-    bot_ctx  = LLMAssistantContextAggregator(context)
-
-    # 4️⃣ Pipeline: audio → Ultravox → Kokoro
+    # 4️⃣ Simple pipeline for optimal interruption handling
     pipeline = Pipeline(
         [
             ws_transport.input(),
@@ -151,6 +141,8 @@ async def run_bot(websocket_client):
             enable_metrics=True,
             enable_usage_metrics=True,
             allow_interruptions=True,
+            # Enable immediate interruption
+            report_only_initial_ttfb=False,
         ),
         observers=[RTVIObserver(rtvi)],
     )
@@ -170,6 +162,61 @@ async def run_bot(websocket_client):
     async def on_client_disconnected(transport, client):
         logger.info("Client disconnected")
         await task.cancel()
+        
+    # ---------- Interruption tracking ----------
+    @ws_transport.event_handler("on_interruption_start")
+    async def on_interruption_start(transport):
+        logger.info("🔴 INTERRUPTION: User started speaking - stopping TTS")
+        
+    @ws_transport.event_handler("on_interruption_end")  
+    async def on_interruption_end(transport):
+        logger.info("🟢 INTERRUPTION: User stopped speaking - ready for response")
+        
+    # Track speech events
+    @ws_transport.event_handler("on_user_started_speaking")
+    async def on_user_started_speaking(transport):
+        logger.info("👤 USER: Started speaking")
+        
+    @ws_transport.event_handler("on_user_stopped_speaking")
+    async def on_user_stopped_speaking(transport):
+        logger.info("👤 USER: Stopped speaking")
+        
+    @ws_transport.event_handler("on_bot_started_speaking")
+    async def on_bot_started_speaking(transport):
+        logger.info("🤖 BOT: Started speaking")
+        
+    @ws_transport.event_handler("on_bot_stopped_speaking")
+    async def on_bot_stopped_speaking(transport):
+        logger.info("🤖 BOT: Stopped speaking")
+
+    # ---------- Metrics monitoring ----------
+    async def log_metrics():
+        """Log performance metrics every 10 seconds"""
+        import asyncio
+        while True:
+            try:
+                await asyncio.sleep(10)
+                # Get metrics from the task
+                if hasattr(task, '_pipeline') and hasattr(task._pipeline, '_processors'):
+                    logger.info("📊 === PERFORMANCE METRICS ===")
+                    for processor in task._pipeline._processors:
+                        if hasattr(processor, '_metrics') and processor._metrics:
+                            metrics = processor._metrics
+                            name = processor.__class__.__name__
+                            if hasattr(metrics, 'ttfb_metrics') and metrics.ttfb_metrics:
+                                avg_ttfb = sum(metrics.ttfb_metrics) / len(metrics.ttfb_metrics)
+                                logger.info(f"⚡ {name} - Avg TTFB: {avg_ttfb:.3f}s")
+                            if hasattr(metrics, 'processing_metrics') and metrics.processing_metrics:
+                                avg_processing = sum(metrics.processing_metrics) / len(metrics.processing_metrics)
+                                logger.info(f"🔄 {name} - Avg Processing: {avg_processing:.3f}s")
+                    logger.info("📊 ========================")
+            except Exception as e:
+                logger.debug(f"Metrics logging error: {e}")
+                break
+    
+    # Start metrics logging in background
+    import asyncio
+    asyncio.create_task(log_metrics())
 
     # ---------- Runner ----------
     runner = PipelineRunner(handle_sigint=False)

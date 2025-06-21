@@ -1,4 +1,4 @@
-"""
+"""gi
 Air-gapped Pipecat bot with RTVI compatibility for Runpod deployment
 ====================================================================
 This module wires together:
@@ -27,7 +27,11 @@ from pipecat.transports.network.fastapi_websocket import (
 from pipecat.processors.metrics.frame_processor_metrics import (
     FrameProcessorMetrics,
 )
-from pipecat.frames.frames import UserTranscriptFrame, BotTranscriptFrame, Frame
+from pipecat.frames.frames import (
+    TranscriptionFrame,
+    TTSTextFrame,
+    Frame,
+)
 from pipecat.services.openai.context import OpenAILLMContext
 
 from pipecat.services.ultravox.stt import UltravoxSTTService
@@ -221,17 +225,24 @@ async def run_bot(websocket_client):
         async def __call__(self, frame: Frame):  # type: ignore[override]
             nonlocal chat_history
 
-            if isinstance(frame, UserTranscriptFrame) and frame.final:
-                chat_history.append(("user", frame.text))
+            # ---- USER SIDE ----
+            if isinstance(frame, TranscriptionFrame):
+                # Framework no longer marks .final; treat any TranscriptionFrame as
+                # final to avoid accumulating interim fragments.  If a 'final'
+                # attribute exists, respect it.
+                if not hasattr(frame, "final") or getattr(frame, "final", True):
+                    chat_history.append(("user", frame.text))
 
-            elif isinstance(frame, BotTranscriptFrame) and frame.final:
-                chat_history.append(("assistant", frame.text))
+            # ---- BOT SIDE ----
+            elif isinstance(frame, TTSTextFrame):
+                if not hasattr(frame, "final") or getattr(frame, "final", True):
+                    chat_history.append(("assistant", frame.text))
 
-                # Push context to Ultravox – ignore errors silently
-                try:
-                    await ULTRAVOX.set_context(build_context(chat_history))
-                except Exception as exc:  # pragma: no cover – debug aid
-                    logger.warning("Could not set Ultravox context: %s", exc)
+                    # Push context to Ultravox – ignore errors silently
+                    try:
+                        await ULTRAVOX.set_context(build_context(chat_history))
+                    except Exception as exc:  # pragma: no cover – debug aid
+                        logger.warning("Could not set Ultravox context: %s", exc)
 
     # Inject the observer right after RTVI so it sees transcript frames.
     pipeline.observers.append(HistoryObserver())

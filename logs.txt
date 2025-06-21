@@ -5475,3 +5475,61 @@
 2025-06-21T14:39:12.995061023Z INFO 06-21 14:39:12 async_llm_engine.py:179] Finished request 1750516752.4519532.
 2025-06-21T14:39:13.014325470Z 2025-06-21 14:39:13.014 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxSTTService#0 processing time: 0.5627424716949463
 2025-06-21T14:39:15.106554257Z 2025-06-21 14:39:15.106 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:410 - Bot stopped speaking
+2025-06-21T14:39:31.950511046Z INFO:     connection closed
+2025-06-21T14:39:31.950882482Z [32m14:39:31[0m | [36mpipecat_pipeline:181[0m | [1m    INFO[0m | [1mPipecat Client disconnected[0m
+2025-06-21T14:39:31.950927838Z 2025-06-21 14:39:31.950 | INFO     | src.pipecat_pipeline:on_client_disconnected:181 - Pipecat Client disconnected
+2025-06-21T14:39:31.951107699Z 2025-06-21 14:39:31.950 | DEBUG    | pipecat.pipeline.task:_cancel:419 - Canceling pipeline task PipelineTask#0
+2025-06-21T14:39:31.953981636Z [32m14:39:31[0m | [36m             stt:315[0m | [1m    INFO[0m | [1mUltravoxSTTService cancelled[0m
+2025-06-21T14:39:31.954002977Z 2025-06-21 14:39:31.953 | INFO     | pipecat.services.ultravox.stt:cancel:315 - UltravoxSTTService cancelled
+2025-06-21T14:39:31.955743261Z [32m14:39:31[0m | [36m        protobuf:64[0m | [33m[1m WARNING[0m | [33m[1mFrame type <class 'pipecat.frames.frames.CancelFrame'> is not serializable[0m
+2025-06-21T14:39:31.955803194Z 2025-06-21 14:39:31.955 | WARNING  | pipecat.serializers.protobuf:serialize:64 - Frame type <class 'pipecat.frames.frames.CancelFrame'> is not serializable
+2025-06-21T14:39:31.958287461Z 2025-06-21 14:39:31.957 | DEBUG    | pipecat.pipeline.runner:run:55 - Runner PipelineRunner#0 finished running PipelineTask#0
+2025-06-21T14:50:48.311799065Z ==========
+2025-06-21T14:50:48.311825916Z == CUDA ==
+2025-06-21T14:50:48.311931737Z ==========
+2025-06-21T14:50:48.318549963Z CUDA Version 11.8.0
+2025-06-21T14:50:48.320482773Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:50:48.322850328Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:50:48.322856811Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:50:48.322862682Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:50:48.322873462Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:50:48.370288299Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:50:48.389485509Z    ...done.
+2025-06-21T14:50:48.389928510Z 🔧 Development mode starting...
+2025-06-21T14:50:48.390023330Z 🔄 Updating source code...
+2025-06-21T14:50:49.301281016Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:50:49.301319809Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:50:49.302321601Z    8cbc58b..4818715  cursor_oneshot -> origin/cursor_oneshot
+2025-06-21T14:50:49.340802595Z Updating 8cbc58b..4818715
+2025-06-21T14:50:49.340826321Z Fast-forward
+2025-06-21T14:50:49.354138286Z  logs.txt                | 236 +++++++++++++++++++++++++++++++++++++++++++++++-
+2025-06-21T14:50:49.354160879Z  src/pipecat_pipeline.py |  71 +++++++++++++++
+2025-06-21T14:50:49.354167541Z  2 files changed, 306 insertions(+), 1 deletion(-)
+2025-06-21T14:50:49.355918486Z 📁 Copying source code...
+2025-06-21T14:50:49.361526364Z 🚀 Starting voice pipeline...
+2025-06-21T14:50:49.831170347Z 2025-06-21 14:50:49.830 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:50:53.404498750Z Traceback (most recent call last):
+2025-06-21T14:50:53.404554906Z   File "/app/src/main.py", line 31, in <module>
+2025-06-21T14:50:53.404561108Z     from src.pipecat_pipeline import run_bot
+2025-06-21T14:50:53.404566448Z   File "/app/src/pipecat_pipeline.py", line 30, in <module>
+2025-06-21T14:50:53.404572470Z     from pipecat.frames.frames import UserTranscriptFrame, BotTranscriptFrame, Frame
+2025-06-21T14:50:53.404578671Z ImportError: cannot import name 'UserTranscriptFrame' from 'pipecat.frames.frames' (/usr/local/lib/python3.10/dist-packages/pipecat/frames/frames.py)
+2025-06-21T14:51:06.747097496Z ==========
+2025-06-21T14:51:06.747128485Z == CUDA ==
+2025-06-21T14:51:06.747248994Z ==========
+2025-06-21T14:51:06.753456320Z CUDA Version 11.8.0
+2025-06-21T14:51:06.755761336Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:51:06.757974438Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:51:06.757980650Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:51:06.757986481Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:51:06.757997532Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:51:06.806795204Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:51:06.824091004Z    ...done.
+2025-06-21T14:51:06.824565395Z 🔧 Development mode starting...
+2025-06-21T14:51:06.824719006Z 🔄 Updating source code...
+2025-06-21T14:51:07.540039156Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:51:07.540092717Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:51:07.559012901Z Already up to date.
+2025-06-21T14:51:07.560655430Z 📁 Copying source code...
+2025-06-21T14:51:07.566412591Z 🚀 Starting voice pipeline...
+2025-06-21T14:51:08.046088031Z 2025-06-21 14:51:08.045 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ

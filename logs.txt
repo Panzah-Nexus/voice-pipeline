@@ -4998,3 +4998,246 @@
 2025-06-21T14:19:31.495791093Z 2025-06-21 14:19:31.495 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
 2025-06-21T14:19:42.920532404Z 2025-06-21 14:19:42.920 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
 2025-06-21T14:19:44.681829882Z 2025-06-21 14:19:44.681 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-21T14:23:02.961483918Z ==========
+2025-06-21T14:23:02.961519646Z == CUDA ==
+2025-06-21T14:23:02.961678848Z ==========
+2025-06-21T14:23:02.968017463Z CUDA Version 11.8.0
+2025-06-21T14:23:02.970256524Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-21T14:23:02.972601908Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-21T14:23:02.972663995Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-21T14:23:02.972675056Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-21T14:23:02.972693612Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-21T14:23:03.020179052Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-21T14:23:03.039333982Z    ...done.
+2025-06-21T14:23:03.039824563Z 🔧 Development mode starting...
+2025-06-21T14:23:03.039989065Z 🔄 Updating source code...
+2025-06-21T14:23:04.071825905Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-21T14:23:04.071857205Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-21T14:23:04.072890837Z    0cfe46d..3efdcf3  cursor_oneshot -> origin/cursor_oneshot
+2025-06-21T14:23:04.112695204Z Updating 0cfe46d..3efdcf3
+2025-06-21T14:23:04.112707177Z Fast-forward
+2025-06-21T14:23:04.127504122Z  logs .txt               | 5000 +++++++++++++++++++++++++++++++++++++++++++++++
+2025-06-21T14:23:04.127515563Z  logs.txt                |  200 +-
+2025-06-21T14:23:04.127521485Z  src/pipecat_pipeline.py |   33 +-
+2025-06-21T14:23:04.127526785Z  3 files changed, 5220 insertions(+), 13 deletions(-)
+2025-06-21T14:23:04.127532525Z  create mode 100644 logs .txt
+2025-06-21T14:23:04.129695843Z 📁 Copying source code...
+2025-06-21T14:23:04.135231323Z 🚀 Starting voice pipeline...
+2025-06-21T14:23:04.604908600Z 2025-06-21 14:23:04.604 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-21T14:23:23.881389105Z [32m14:23:23[0m | [36mpipecat_pipeline:70[0m | [1m    INFO[0m | [1mLoading UltravoxSTTService... this can take a while on first run.[0m
+2025-06-21T14:23:23.881445933Z 2025-06-21 14:23:23.880 | INFO     | src.pipecat_pipeline:_init_ultravox_once:70 - Loading UltravoxSTTService... this can take a while on first run.
+2025-06-21T14:23:24.265779196Z Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+2025-06-21T14:23:24.265809634Z 2025-06-21 14:23:24,265 - huggingface_hub._login - WARNING - Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+2025-06-21T14:23:24.354136531Z INFO 06-21 14:23:24 __init__.py:207] Automatically detected platform cuda.
+2025-06-21T14:23:31.531940525Z INFO 06-21 14:23:31 config.py:549] This model supports multiple tasks: {'generate', 'embed', 'score', 'classify', 'reward'}. Defaulting to 'generate'.
+2025-06-21T14:23:31.537284452Z INFO 06-21 14:23:31 llm_engine.py:234] Initializing a V0 LLM engine (v0.7.3) with config: model='fixie-ai/ultravox-v0_5-llama-3_1-8b', speculative_config=None, tokenizer='fixie-ai/ultravox-v0_5-llama-3_1-8b', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=0, served_model_name=fixie-ai/ultravox-v0_5-llama-3_1-8b, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=False, chunked_prefill_enabled=False, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"splitting_ops":[],"compile_sizes":[],"cudagraph_capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":256}, use_cached_outputs=False,
+2025-06-21T14:23:37.965669052Z INFO 06-21 14:23:37 cuda.py:229] Using Flash Attention backend.
+2025-06-21T14:23:38.329326429Z INFO 06-21 14:23:38 model_runner.py:1110] Starting to load model fixie-ai/ultravox-v0_5-llama-3_1-8b...
+2025-06-21T14:23:38.527147202Z INFO 06-21 14:23:38 config.py:3054] cudagraph sizes specified by model runner [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256] is overridden by config [256, 128, 2, 1, 4, 136, 8, 144, 16, 152, 24, 160, 32, 168, 40, 176, 48, 184, 56, 192, 64, 200, 72, 208, 80, 216, 88, 120, 224, 96, 232, 104, 240, 112, 248]
+2025-06-21T14:23:39.029412694Z INFO 06-21 14:23:39 weight_utils.py:254] Using model weights format ['*.safetensors']
+2025-06-21T14:23:39.303083873Z INFO 06-21 14:23:39 weight_utils.py:304] No model.safetensors.index.json found in remote.
+2025-06-21T14:23:39.304462992Z Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+2025-06-21T14:23:39.561059612Z Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  3.90it/s]
+2025-06-21T14:23:39.561279580Z Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  3.90it/s]
+2025-06-21T14:23:39.839193996Z INFO 06-21 14:23:39 weight_utils.py:254] Using model weights format ['*.safetensors']
+2025-06-21T14:23:40.118744779Z Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+2025-06-21T14:23:40.278555643Z Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:00,  6.27it/s]
+2025-06-21T14:23:40.856440734Z Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:00<00:00,  2.47it/s]
+2025-06-21T14:23:41.648038070Z Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  1.72it/s]
+2025-06-21T14:23:42.420190908Z Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.52it/s]
+2025-06-21T14:23:42.420435212Z Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.74it/s]
+2025-06-21T14:23:42.906449918Z INFO 06-21 14:23:42 model_runner.py:1115] Loading model weights took 16.2698 GB
+2025-06-21T14:23:56.504607375Z INFO 06-21 14:23:56 worker.py:267] Memory profiling takes 13.39 seconds
+2025-06-21T14:23:56.504690863Z INFO 06-21 14:23:56 worker.py:267] the current vLLM instance can use total_gpu_memory (22.06GiB) x gpu_memory_utilization (0.90) = 19.85GiB
+2025-06-21T14:23:56.504697225Z INFO 06-21 14:23:56 worker.py:267] model weights take 16.27GiB; non_torch_memory takes 0.05GiB; PyTorch activation peak memory takes 1.95GiB; the rest of the memory reserved for KV Cache is 1.59GiB.
+2025-06-21T14:23:56.714686292Z INFO 06-21 14:23:56 executor_base.py:111] # cuda blocks: 813, # CPU blocks: 2048
+2025-06-21T14:23:56.714711620Z INFO 06-21 14:23:56 executor_base.py:116] Maximum concurrency for 8192 tokens per request: 1.59x
+2025-06-21T14:24:00.212731684Z INFO 06-21 14:24:00 model_runner.py:1434] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI. If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+2025-06-21T14:24:22.393970878Z Capturing CUDA graph shapes:   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graph shapes:   3%|▎         | 1/35 [00:00<00:21,  1.60it/s]Capturing CUDA graph shapes:   6%|▌         | 2/35 [00:01<00:20,  1.61it/s]Capturing CUDA graph shapes:   9%|▊         | 3/35 [00:01<00:19,  1.62it/s]Capturing CUDA graph shapes:  11%|█▏        | 4/35 [00:02<00:19,  1.62it/s]Capturing CUDA graph shapes:  14%|█▍        | 5/35 [00:03<00:18,  1.63it/s]Capturing CUDA graph shapes:  17%|█▋        | 6/35 [00:03<00:17,  1.63it/s]Capturing CUDA graph shapes:  20%|██        | 7/35 [00:04<00:17,  1.63it/s]Capturing CUDA graph shapes:  23%|██▎       | 8/35 [00:04<00:16,  1.63it/s]Capturing CUDA graph shapes:  26%|██▌       | 9/35 [00:05<00:15,  1.64it/s]Capturing CUDA graph shapes:  29%|██▊       | 10/35 [00:06<00:15,  1.65it/s]Capturing CUDA graph shapes:  31%|███▏      | 11/35 [00:06<00:14,  1.65it/s]Capturing CUDA graph shapes:  34%|███▍      | 12/35 [00:07<00:13,  1.66it/s]Capturing CUDA graph shapes:  37%|███▋      | 13/35 [00:07<00:13,  1.61it/s]Capturing CUDA graph shapes:  40%|████      | 14/35 [00:08<00:14,  1.41it/s]Capturing CUDA graph shapes:  43%|████▎     | 15/35 [00:09<00:13,  1.48it/s]Capturing CUDA graph shapes:  46%|████▌     | 16/35 [00:10<00:12,  1.53it/s]Capturing CUDA graph shapes:  49%|████▊     | 17/35 [00:10<00:11,  1.58it/s]Capturing CUDA graph shapes:  51%|█████▏    | 18/35 [00:11<00:10,  1.62it/s]Capturing CUDA graph shapes:  54%|█████▍    | 19/35 [00:11<00:09,  1.64it/s]Capturing CUDA graph shapes:  57%|█████▋    | 20/35 [00:12<00:09,  1.63it/s]Capturing CUDA graph shapes:  60%|██████    | 21/35 [00:13<00:08,  1.62it/s]Capturing CUDA graph shapes:  63%|██████▎   | 22/35 [00:13<00:08,  1.49it/s]Capturing CUDA graph shapes:  66%|██████▌   | 23/35 [00:15<00:09,  1.24it/s]Capturing CUDA graph shapes:  69%|██████▊   | 24/35 [00:15<00:08,  1.28it/s]Capturing CUDA graph shapes:  71%|███████▏  | 25/35 [00:16<00:07,  1.38it/s]Capturing CUDA graph shapes:  74%|███████▍  | 26/35 [00:16<00:06,  1.46it/s]Capturing CUDA graph shapes:  77%|███████▋  | 27/35 [00:17<00:05,  1.52it/s]Capturing CUDA graph shapes:  80%|████████  | 28/35 [00:18<00:04,  1.57it/s]Capturing CUDA graph shapes:  83%|████████▎ | 29/35 [00:18<00:03,  1.61it/s]Capturing CUDA graph shapes:  86%|████████▌ | 30/35 [00:19<00:03,  1.64it/s]Capturing CUDA graph shapes:  89%|████████▊ | 31/35 [00:19<00:02,  1.66it/s]Capturing CUDA graph shapes:  91%|█████████▏| 32/35 [00:20<00:01,  1.68it/s]Capturing CUDA graph shapes:  94%|█████████▍| 33/35 [00:21<00:01,  1.70it/s]Capturing CUDA graph shapes:  97%|█████████▋| 34/35 [00:21<00:00,  1.71it/s]Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:22<00:00,  1.71it/s]Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:22<00:00,  1.58it/s]
+2025-06-21T14:24:22.394004151Z INFO 06-21 14:24:22 model_runner.py:1562] Graph capturing finished in 22 secs, took 0.26 GiB
+2025-06-21T14:24:22.395037293Z INFO 06-21 14:24:22 llm_engine.py:436] init engine (profile, create kv cache, warmup model) took 39.49 seconds
+2025-06-21T14:24:23.180712164Z [32m14:24:23[0m | [36m             stt:223[0m | [1m    INFO[0m | [1mInitialized UltravoxSTTService with model: fixie-ai/ultravox-v0_5-llama-3_1-8b[0m
+2025-06-21T14:24:23.180726071Z 2025-06-21 14:24:23.180 | INFO     | pipecat.services.ultravox.stt:__init__:223 - Initialized UltravoxSTTService with model: fixie-ai/ultravox-v0_5-llama-3_1-8b
+2025-06-21T14:24:23.180737933Z [32m14:24:23[0m | [36mpipecat_pipeline:79[0m | [1m    INFO[0m | [1mUltravox model initialized successfully![0m
+2025-06-21T14:24:23.180775044Z 2025-06-21 14:24:23.180 | INFO     | src.pipecat_pipeline:_init_ultravox_once:79 - Ultravox model initialized successfully!
+2025-06-21T14:24:23.184719052Z 2025-06-21 14:24:23,184 - root - INFO - Starting voice pipeline server on 0.0.0.0:8000
+2025-06-21T14:24:23.209754457Z INFO:     Started server process [75]
+2025-06-21T14:24:23.209799472Z INFO:     Waiting for application startup.
+2025-06-21T14:24:23.210158163Z INFO:     Application startup complete.
+2025-06-21T14:24:23.210650137Z INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2025-06-21T14:24:43.364519481Z 2025-06-21 14:24:43,364 - root - INFO - Connect request - returning WebSocket URL: wss://wlugc3aef909a9-8000.proxy.runpod.net/ws
+2025-06-21T14:24:43.364558355Z 2025-06-21 14:24:43,364 - root - INFO - Request headers: x-forwarded-host=wlugc3aef909a9-8000.proxy.runpod.net, x-forwarded-proto=https
+2025-06-21T14:24:43.365314391Z INFO:     100.64.0.36:44044 - "POST /connect HTTP/1.1" 200 OK
+2025-06-21T14:24:43.790841730Z INFO:     100.64.0.32:52588 - "WebSocket /ws" [accepted]
+2025-06-21T14:24:43.915464661Z Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+2025-06-21T14:24:43.915494538Z 2025-06-21 14:24:43,915 - huggingface_hub._login - WARNING - Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+2025-06-21T14:24:44.595003362Z WebSocket connection accepted
+2025-06-21T14:24:44.595027458Z INFO 06-21 14:24:44 config.py:549] This model supports multiple tasks: {'generate', 'embed', 'score', 'classify', 'reward'}. Defaulting to 'generate'.
+2025-06-21T14:24:44.599665454Z INFO 06-21 14:24:44 llm_engine.py:234] Initializing a V0 LLM engine (v0.7.3) with config: model='fixie-ai/ultravox-v0_5-llama-3_1-8b', speculative_config=None, tokenizer='fixie-ai/ultravox-v0_5-llama-3_1-8b', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=0, served_model_name=fixie-ai/ultravox-v0_5-llama-3_1-8b, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=False, chunked_prefill_enabled=False, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"splitting_ops":[],"compile_sizes":[],"cudagraph_capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":256}, use_cached_outputs=False,
+2025-06-21T14:24:45.912903150Z INFO 06-21 14:24:45 model_runner.py:1110] Starting to load model fixie-ai/ultravox-v0_5-llama-3_1-8b...
+2025-06-21T14:24:46.062540817Z INFO 06-21 14:24:46 config.py:3054] cudagraph sizes specified by model runner [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256] is overridden by config [256, 128, 2, 1, 4, 136, 8, 144, 16, 152, 24, 160, 32, 168, 40, 176, 48, 184, 56, 192, 64, 200, 72, 208, 80, 216, 88, 120, 224, 96, 232, 104, 240, 112, 248]
+2025-06-21T14:24:46.304170971Z [32m14:24:46[0m | [36mpipecat_pipeline:110[0m | [31m[1m   ERROR[0m | [31m[1mFailed to create per-session Ultravox instance: %s[0m
+2025-06-21T14:24:46.304196910Z 2025-06-21 14:24:46.303 | ERROR    | src.pipecat_pipeline:_get_ultravox:110 - Failed to create per-session Ultravox instance: %s
+2025-06-21T14:24:46.324251909Z 2025-06-21 14:24:46.323 | DEBUG    | pipecat.audio.vad.silero:__init__:111 - Loading Silero VAD model...
+2025-06-21T14:24:46.389340222Z 2025-06-21 14:24:46.388 | DEBUG    | pipecat.audio.vad.silero:__init__:133 - Loaded Silero VAD
+2025-06-21T14:24:46.389938758Z [32m14:24:46[0m | [36mkokoro_tts_service:127[0m | [1m    INFO[0m | [1mInitialising Kokoro TTS (model='/models/kokoro/model_fp16.onnx', voices='/models/kokoro/voices-v1.0.bin', voice='af_sarah')[0m
+2025-06-21T14:24:46.389976169Z 2025-06-21 14:24:46.389 | INFO     | src.kokoro_tts_service:__init__:127 - Initialising Kokoro TTS (model='/models/kokoro/model_fp16.onnx', voices='/models/kokoro/voices-v1.0.bin', voice='af_sarah')
+2025-06-21T14:24:46.735032849Z /usr/local/lib/python3.10/dist-packages/torch/nn/modules/rnn.py:123: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.2 and num_layers=1
+2025-06-21T14:24:46.735058928Z   warnings.warn(
+2025-06-21T14:24:46.809588538Z /usr/local/lib/python3.10/dist-packages/torch/nn/utils/weight_norm.py:143: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+2025-06-21T14:24:46.809668479Z   WeightNorm.apply(module, name, dim)
+2025-06-21T14:24:53.025936424Z [32m14:24:53[0m | [36mkokoro_tts_service:163[0m | [1m    INFO[0m | [1mKokoro pipeline initialised successfully (backend=PyTorch)[0m
+2025-06-21T14:24:53.025974897Z 2025-06-21 14:24:53.025 | INFO     | src.kokoro_tts_service:__init__:163 - Kokoro pipeline initialised successfully (backend=PyTorch)
+2025-06-21T14:24:53.026428338Z 2025-06-21 14:24:53.026 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking PipelineSource#0 -> FastAPIWebsocketInputTransport#0
+2025-06-21T14:24:53.026443136Z 2025-06-21 14:24:53.026 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking FastAPIWebsocketInputTransport#0 -> RTVIProcessor#0
+2025-06-21T14:24:53.026556492Z 2025-06-21 14:24:53.026 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking RTVIProcessor#0 -> UltravoxSTTService#0
+2025-06-21T14:24:53.026593562Z 2025-06-21 14:24:53.026 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking UltravoxSTTService#0 -> KokoroTTSService#0
+2025-06-21T14:24:53.026775457Z 2025-06-21 14:24:53.026 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking KokoroTTSService#0 -> FastAPIWebsocketOutputTransport#0
+2025-06-21T14:24:53.026798832Z 2025-06-21 14:24:53.026 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking FastAPIWebsocketOutputTransport#0 -> PipelineSink#0
+2025-06-21T14:24:53.027137695Z 2025-06-21 14:24:53.026 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking PipelineTaskSource#0 -> Pipeline#0
+2025-06-21T14:24:53.027270227Z 2025-06-21 14:24:53.027 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking Pipeline#0 -> PipelineTaskSink#0
+2025-06-21T14:24:53.027437204Z 2025-06-21 14:24:53.027 | DEBUG    | pipecat.pipeline.runner:run:38 - Runner PipelineRunner#0 started running PipelineTask#0
+2025-06-21T14:24:53.028415982Z INFO:     connection open
+2025-06-21T14:24:53.031125587Z [32m14:24:53[0m | [36m             stt:232[0m | [1m    INFO[0m | [1mWarming up Ultravox model with silent audio...[0m
+2025-06-21T14:24:53.031149082Z 2025-06-21 14:24:53.030 | INFO     | pipecat.services.ultravox.stt:_warm_up_model:232 - Warming up Ultravox model with silent audio...
+2025-06-21T14:24:53.031365753Z [32m14:24:53[0m | [36m             stt:272[0m | [1m    INFO[0m | [1mGenerated 1s of silent audio (16000 samples)[0m
+2025-06-21T14:24:53.031382064Z 2025-06-21 14:24:53.031 | INFO     | pipecat.services.ultravox.stt:_generate_silent_audio:272 - Generated 1s of silent audio (16000 samples)
+2025-06-21T14:24:53.096876007Z WARNING: Defaulting repo_id to hexgrad/Kokoro-82M. Pass repo_id='hexgrad/Kokoro-82M' to suppress this warning.
+2025-06-21T14:24:53.096901636Z INFO 06-21 14:24:53 async_llm_engine.py:211] Added request 1750515893.096404.
+2025-06-21T14:24:59.378175307Z ERROR 06-21 14:24:59 async_llm_engine.py:68] Engine background task failed
+2025-06-21T14:24:59.378222096Z ERROR 06-21 14:24:59 async_llm_engine.py:68] Traceback (most recent call last):
+2025-06-21T14:24:59.378227707Z ERROR 06-21 14:24:59 async_llm_engine.py:68]   File "/usr/local/lib/python3.10/dist-packages/vllm/inputs/registry.py", line 167, in call_hf_processor
+2025-06-21T14:24:59.378233498Z ERROR 06-21 14:24:59 async_llm_engine.py:68]     return hf_processor(**data, **merged_kwargs, return_tensors="pt")
+2025-06-21T14:24:59.378256081Z ERROR 06-21 14:24:59 async_llm_engine.py:68]   File "/root/.cache/huggingface/modules/transformers_modules/fixie-ai/ultravox-v0_5-llama-3_1-8b/94aa77f70ca548e669ea61f737e159b2fddbb7f7/ultravox_processing.py", line 298, in __call__
+2025-06-21T14:24:59.378261411Z ERROR 06-21 14:24:59 async_llm_engine.py:68]     self._chunk_and_pad_audio(
+2025-06-21T14:24:59.378266150Z ERROR 06-21 14:24:59 async_llm_engine.py:68]   File "/root/.cache/huggingface/modules/transformers_modules/fixie-ai/ultravox-v0_5-llama-3_1-8b/94aa77f70ca548e669ea61f737e159b2fddbb7f7/ultravox_processing.py", line 174, in _chunk_and_pad_audio
+2025-06-21T14:24:59.378270889Z ERROR 06-21 14:24:59 async_llm_engine.py:68]     num_chunks.append(int(np.ceil(audio_lens[i] / context_size)))
+2025-06-21T14:24:59.378275968Z ERROR 06-21 14:24:59 async_llm_engine.py:68]   File "/usr/local/lib/python3.10/dist-packages/torch/_tensor.py", line 1149, in __array__
+2025-06-21T14:24:59.378281349Z ERROR 06-21 14:24:59 async_llm_engine.py:68]     return self.numpy()
+2025-06-21T14:24:59.378286058Z ERROR 06-21 14:24:59 async_llm_engine.py:68] TypeError: Got unsupported ScalarType BFloat16
+2025-06-21T14:24:59.378291598Z ERROR 06-21 14:24:59 async_llm_engine.py:68]
+2025-06-21T14:24:59.378296838Z ERROR 06-21 14:24:59 async_llm_engine.py:68] The above exception was the direct cause of the following exception:
+2025-06-21T14:24:59.378301858Z ERROR 06-21 14:24:59 async_llm_engine.py:68]
+2025-06-21T14:24:59.378306506Z ERROR 06-21 14:24:59 async_llm_engine.py:68] Traceback (most recent call last):
+2025-06-21T14:24:59.378311235Z ERROR 06-21 14:24:59 async_llm_engine.py:68]   File "/usr/local/lib/python3.10/dist-packages/vllm/engine/async_llm_engine.py", line 58, in _log_task_completion
+2025-06-21T14:24:59.378315874Z ERROR 06-21 14:24:59 async_llm_engine.py:68]     return_value = task.result()
+2025-06-21T14:24:59.378321625Z ERROR 06-21 14:24:59 async_llm_engine.py:68]   File "/usr/local/lib/python3.10/dist-packages/vllm/engine/async_llm_engine.py", line 825, in run_engine_loop
+2025-06-21T14:24:59.378326334Z ERROR 06-21 14:24:59 async_llm_engine.py:68]     result = task.result()
+2025-06-21T14:24:59.378331163Z ERROR 06-21 14:24:59 async_llm_engine.py:68]   File "/usr/local/lib/python3.10/dist-packages/vllm/engine/async_llm_engine.py", line 736, in engine_step
+2025-06-21T14:24:59.378335772Z ERROR 06-21 14:24:59 async_llm_engine.py:68]     await self.engine.add_request_async(**new_request)
+2025-06-21T14:24:59.378340411Z ERROR 06-21 14:24:59 async_llm_engine.py:68]   File "/usr/local/lib/python3.10/dist-packages/vllm/engine/async_llm_engine.py", line 493, in add_request_async
+2025-06-21T14:24:59.378345130Z ERROR 06-21 14:24:59 async_llm_engine.py:68]     preprocessed_inputs = await self.input_preprocessor.preprocess_async(
+2025-06-21T14:24:59.378349829Z ERROR 06-21 14:24:59 async_llm_engine.py:68]   File "/usr/local/lib/python3.10/dist-packages/vllm/inputs/preprocess.py", line 790, in preprocess_async
+2025-06-21T14:24:59.378354437Z ERROR 06-21 14:24:59 async_llm_engine.py:68]     return await self._process_decoder_only_prompt_async(
+2025-06-21T14:24:59.378359086Z ERROR 06-21 14:24:59 async_llm_engine.py:68]   File "/usr/local/lib/python3.10/dist-packages/vllm/inputs/preprocess.py", line 730, in _process_decoder_only_prompt_async
+2025-06-21T14:24:59.378364136Z ERROR 06-21 14:24:59 async_llm_engine.py:68]     prompt_comps = await self._prompt_to_llm_inputs_async(
+2025-06-21T14:24:59.378368865Z ERROR 06-21 14:24:59 async_llm_engine.py:68]   File "/usr/local/lib/python3.10/dist-packages/vllm/inputs/preprocess.py", line 438, in _prompt_to_llm_inputs_async
+2025-06-21T14:24:59.378373494Z ERROR 06-21 14:24:59 async_llm_engine.py:68]     return await self._process_multimodal_async(
+2025-06-21T14:24:59.378378383Z ERROR 06-21 14:24:59 async_llm_engine.py:68]   File "/usr/local/lib/python3.10/dist-packages/vllm/inputs/preprocess.py", line 298, in _process_multimodal_async
+2025-06-21T14:24:59.378383312Z ERROR 06-21 14:24:59 async_llm_engine.py:68]     return mm_processor.apply(prompt, mm_data, mm_processor_kwargs)
+2025-06-21T14:24:59.378387941Z ERROR 06-21 14:24:59 async_llm_engine.py:68]   File "/usr/local/lib/python3.10/dist-packages/vllm/multimodal/processing.py", line 1239, in apply
+2025-06-21T14:24:59.378398120Z ERROR 06-21 14:24:59 async_llm_engine.py:68]     ) = self._cached_apply_hf_processor(
+2025-06-21T14:24:59.378403370Z ERROR 06-21 14:24:59 async_llm_engine.py:68]   File "/usr/local/lib/python3.10/dist-packages/vllm/multimodal/processing.py", line 1031, in _cached_apply_hf_processor
+2025-06-21T14:24:59.378408109Z ERROR 06-21 14:24:59 async_llm_engine.py:68]     ) = self._apply_hf_processor_main(
+2025-06-21T14:24:59.378412748Z ERROR 06-21 14:24:59 async_llm_engine.py:68]   File "/usr/local/lib/python3.10/dist-packages/vllm/multimodal/processing.py", line 976, in _apply_hf_processor_main
+2025-06-21T14:24:59.378417447Z ERROR 06-21 14:24:59 async_llm_engine.py:68]     mm_kwargs = self._apply_hf_processor_mm_only(
+2025-06-21T14:24:59.378422036Z ERROR 06-21 14:24:59 async_llm_engine.py:68]   File "/usr/local/lib/python3.10/dist-packages/vllm/multimodal/processing.py", line 937, in _apply_hf_processor_mm_only
+2025-06-21T14:24:59.378426705Z ERROR 06-21 14:24:59 async_llm_engine.py:68]     _, mm_kwargs, _ = self._apply_hf_processor_text_mm(
+2025-06-21T14:24:59.378431444Z ERROR 06-21 14:24:59 async_llm_engine.py:68]   File "/usr/local/lib/python3.10/dist-packages/vllm/multimodal/processing.py", line 865, in _apply_hf_processor_text_mm
+2025-06-21T14:24:59.378436103Z ERROR 06-21 14:24:59 async_llm_engine.py:68]     processed_data = self._call_hf_processor(
+2025-06-21T14:24:59.378440882Z ERROR 06-21 14:24:59 async_llm_engine.py:68]   File "/usr/local/lib/python3.10/dist-packages/vllm/model_executor/models/ultravox.py", line 171, in _call_hf_processor
+2025-06-21T14:24:59.378445490Z ERROR 06-21 14:24:59 async_llm_engine.py:68]     item_outputs = super()._call_hf_processor(
+2025-06-21T14:24:59.378450149Z ERROR 06-21 14:24:59 async_llm_engine.py:68]   File "/usr/local/lib/python3.10/dist-packages/vllm/multimodal/processing.py", line 828, in _call_hf_processor
+2025-06-21T14:24:59.378454838Z ERROR 06-21 14:24:59 async_llm_engine.py:68]     return self.info.ctx.call_hf_processor(
+2025-06-21T14:24:59.378459527Z ERROR 06-21 14:24:59 async_llm_engine.py:68]   File "/usr/local/lib/python3.10/dist-packages/vllm/inputs/registry.py", line 172, in call_hf_processor
+2025-06-21T14:24:59.378464216Z ERROR 06-21 14:24:59 async_llm_engine.py:68]     raise RuntimeError(msg) from exc
+2025-06-21T14:24:59.378468865Z ERROR 06-21 14:24:59 async_llm_engine.py:68] RuntimeError: Failed to apply UltravoxProcessor on data={'text': '<|audio|>', 'audio': array([0., 0., 0., ..., 0., 0., 0.], dtype=float32)} with kwargs={'sampling_rate': 16000}
+2025-06-21T14:24:59.379099242Z 2025-06-21 14:24:59,378 - asyncio - ERROR - Exception in callback _log_task_completion(error_callback=<bound method...749a4df57a60>>)(<Task finishe...te': 16000}")>) at /usr/local/lib/python3.10/dist-packages/vllm/engine/async_llm_engine.py:48
+2025-06-21T14:24:59.379129679Z handle: <Handle _log_task_completion(error_callback=<bound method...749a4df57a60>>)(<Task finishe...te': 16000}")>) at /usr/local/lib/python3.10/dist-packages/vllm/engine/async_llm_engine.py:48>
+2025-06-21T14:24:59.379133256Z Traceback (most recent call last):
+2025-06-21T14:24:59.379135961Z   File "/usr/local/lib/python3.10/dist-packages/vllm/inputs/registry.py", line 167, in call_hf_processor
+2025-06-21T14:24:59.379138817Z     return hf_processor(**data, **merged_kwargs, return_tensors="pt")
+2025-06-21T14:24:59.379141923Z   File "/root/.cache/huggingface/modules/transformers_modules/fixie-ai/ultravox-v0_5-llama-3_1-8b/94aa77f70ca548e669ea61f737e159b2fddbb7f7/ultravox_processing.py", line 298, in __call__
+2025-06-21T14:24:59.379144678Z     self._chunk_and_pad_audio(
+2025-06-21T14:24:59.379147363Z   File "/root/.cache/huggingface/modules/transformers_modules/fixie-ai/ultravox-v0_5-llama-3_1-8b/94aa77f70ca548e669ea61f737e159b2fddbb7f7/ultravox_processing.py", line 174, in _chunk_and_pad_audio
+2025-06-21T14:24:59.379149868Z     num_chunks.append(int(np.ceil(audio_lens[i] / context_size)))
+2025-06-21T14:24:59.379152322Z   File "/usr/local/lib/python3.10/dist-packages/torch/_tensor.py", line 1149, in __array__
+2025-06-21T14:24:59.379163023Z     return self.numpy()
+2025-06-21T14:24:59.379165718Z TypeError: Got unsupported ScalarType BFloat16
+2025-06-21T14:24:59.379170597Z The above exception was the direct cause of the following exception:
+2025-06-21T14:24:59.379175286Z Traceback (most recent call last):
+2025-06-21T14:24:59.379177711Z   File "/usr/local/lib/python3.10/dist-packages/vllm/engine/async_llm_engine.py", line 58, in _log_task_completion
+2025-06-21T14:24:59.379180506Z     return_value = task.result()
+2025-06-21T14:24:59.379182951Z   File "/usr/local/lib/python3.10/dist-packages/vllm/engine/async_llm_engine.py", line 825, in run_engine_loop
+2025-06-21T14:24:59.379185275Z     result = task.result()
+2025-06-21T14:24:59.379187589Z   File "/usr/local/lib/python3.10/dist-packages/vllm/engine/async_llm_engine.py", line 736, in engine_step
+2025-06-21T14:24:59.379189884Z     await self.engine.add_request_async(**new_request)
+2025-06-21T14:24:59.379192459Z   File "/usr/local/lib/python3.10/dist-packages/vllm/engine/async_llm_engine.py", line 493, in add_request_async
+2025-06-21T14:24:59.379194763Z     preprocessed_inputs = await self.input_preprocessor.preprocess_async(
+2025-06-21T14:24:59.379197929Z   File "/usr/local/lib/python3.10/dist-packages/vllm/inputs/preprocess.py", line 790, in preprocess_async
+2025-06-21T14:24:59.379200284Z     return await self._process_decoder_only_prompt_async(
+2025-06-21T14:24:59.379202618Z   File "/usr/local/lib/python3.10/dist-packages/vllm/inputs/preprocess.py", line 730, in _process_decoder_only_prompt_async
+2025-06-21T14:24:59.379205253Z     prompt_comps = await self._prompt_to_llm_inputs_async(
+2025-06-21T14:24:59.379207678Z   File "/usr/local/lib/python3.10/dist-packages/vllm/inputs/preprocess.py", line 438, in _prompt_to_llm_inputs_async
+2025-06-21T14:24:59.379210092Z     return await self._process_multimodal_async(
+2025-06-21T14:24:59.379212567Z   File "/usr/local/lib/python3.10/dist-packages/vllm/inputs/preprocess.py", line 298, in _process_multimodal_async
+2025-06-21T14:24:59.379215052Z     return mm_processor.apply(prompt, mm_data, mm_processor_kwargs)
+2025-06-21T14:24:59.379217436Z   File "/usr/local/lib/python3.10/dist-packages/vllm/multimodal/processing.py", line 1239, in apply
+2025-06-21T14:24:59.379219981Z     ) = self._cached_apply_hf_processor(
+2025-06-21T14:24:59.379222476Z   File "/usr/local/lib/python3.10/dist-packages/vllm/multimodal/processing.py", line 1031, in _cached_apply_hf_processor
+2025-06-21T14:24:59.379224980Z     ) = self._apply_hf_processor_main(
+2025-06-21T14:24:59.379227385Z   File "/usr/local/lib/python3.10/dist-packages/vllm/multimodal/processing.py", line 976, in _apply_hf_processor_main
+2025-06-21T14:24:59.379229860Z     mm_kwargs = self._apply_hf_processor_mm_only(
+2025-06-21T14:24:59.379232334Z   File "/usr/local/lib/python3.10/dist-packages/vllm/multimodal/processing.py", line 937, in _apply_hf_processor_mm_only
+2025-06-21T14:24:59.379234749Z     _, mm_kwargs, _ = self._apply_hf_processor_text_mm(
+2025-06-21T14:24:59.379237244Z   File "/usr/local/lib/python3.10/dist-packages/vllm/multimodal/processing.py", line 865, in _apply_hf_processor_text_mm
+2025-06-21T14:24:59.379239698Z     processed_data = self._call_hf_processor(
+2025-06-21T14:24:59.379242313Z   File "/usr/local/lib/python3.10/dist-packages/vllm/model_executor/models/ultravox.py", line 171, in _call_hf_processor
+2025-06-21T14:24:59.379244768Z     item_outputs = super()._call_hf_processor(
+2025-06-21T14:24:59.379247273Z   File "/usr/local/lib/python3.10/dist-packages/vllm/multimodal/processing.py", line 828, in _call_hf_processor
+2025-06-21T14:24:59.379249587Z     return self.info.ctx.call_hf_processor(
+2025-06-21T14:24:59.379252022Z   File "/usr/local/lib/python3.10/dist-packages/vllm/inputs/registry.py", line 172, in call_hf_processor
+2025-06-21T14:24:59.379254316Z     raise RuntimeError(msg) from exc
+2025-06-21T14:24:59.379256951Z RuntimeError: Failed to apply UltravoxProcessor on data={'text': '<|audio|>', 'audio': array([0., 0., 0., ..., 0., 0., 0.], dtype=float32)} with kwargs={'sampling_rate': 16000}
+2025-06-21T14:24:59.379265467Z The above exception was the direct cause of the following exception:
+2025-06-21T14:24:59.379270056Z Traceback (most recent call last):
+2025-06-21T14:24:59.379272491Z   File "/usr/lib/python3.10/asyncio/events.py", line 80, in _run
+2025-06-21T14:24:59.379274795Z     self._context.run(self._callback, *self._args)
+2025-06-21T14:24:59.379277079Z   File "/usr/local/lib/python3.10/dist-packages/vllm/engine/async_llm_engine.py", line 70, in _log_task_completion
+2025-06-21T14:24:59.379279494Z     raise AsyncEngineDeadError(
+2025-06-21T14:24:59.379281908Z vllm.engine.async_llm_engine.AsyncEngineDeadError: Task finished unexpectedly. This should never happen! Please open an issue on Github. See stack trace above for the actual cause.
+2025-06-21T14:24:59.379309311Z [32m14:24:59[0m | [36m             stt:254[0m | [33m[1m WARNING[0m | [33m[1mModel warm-up failed: Failed to apply UltravoxProcessor on data={'text': '<|audio|>', 'audio': array([0., 0., 0., ..., 0., 0., 0.], dtype=float32)} with kwargs={'sampling_rate': 16000}[0m
+2025-06-21T14:24:59.379318478Z 2025-06-21 14:24:59.379 | WARNING  | pipecat.services.ultravox.stt:_warm_up_model:254 - Model warm-up failed: Failed to apply UltravoxProcessor on data={'text': '<|audio|>', 'audio': array([0., 0., 0., ..., 0., 0., 0.], dtype=float32)} with kwargs={'sampling_rate': 16000}
+2025-06-21T14:24:59.379467902Z [32m14:24:59[0m | [36m             stt:294[0m | [1m    INFO[0m | [1mUltravoxSTTService started[0m
+2025-06-21T14:24:59.379480055Z 2025-06-21 14:24:59.379 | INFO     | pipecat.services.ultravox.stt:start:294 - UltravoxSTTService started
+2025-06-21T14:24:59.380655286Z 2025-06-21 14:24:59.380 | DEBUG    | pipecat.audio.vad.vad_analyzer:set_params:74 - Setting VAD params to: confidence=0.7 start_secs=0.2 stop_secs=0.8 min_volume=0.6
+2025-06-21T14:24:59.383441697Z [32m14:24:59[0m | [36mpipecat_pipeline:175[0m | [1m    INFO[0m | [1mPipecat Client connected[0m
+2025-06-21T14:24:59.383464640Z 2025-06-21 14:24:59.383 | INFO     | src.pipecat_pipeline:on_client_connected:175 - Pipecat Client connected
+2025-06-21T14:24:59.383740804Z 2025-06-21 14:24:59.383 | DEBUG    | pipecat.serializers.protobuf:deserialize:106 - ProtobufFrameSerializer: Transport message TransportMessageUrgentFrame#1(message: {'label': 'rtvi-ai', 'type': 'client-ready', 'data': {}, 'id': '3da1d718'})
+2025-06-21T14:24:59.385891869Z 2025-06-21 14:24:59.385 | DEBUG    | pipecat.processors.frameworks.rtvi:_handle_client_ready:844 - Received client-ready
+2025-06-21T14:24:59.387563813Z [32m14:24:59[0m | [36mpipecat_pipeline:169[0m | [1m    INFO[0m | [1mPipecat client ready.[0m
+2025-06-21T14:24:59.387586927Z 2025-06-21 14:24:59.387 | INFO     | src.pipecat_pipeline:on_client_ready:169 - Pipecat client ready.
+2025-06-21T14:25:25.181354051Z 2025-06-21 14:25:25.180 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-21T14:25:25.181768167Z [32m14:25:25[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-21T14:25:25.181795680Z 2025-06-21 14:25:25.181 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-21T14:25:26.716573684Z 2025-06-21 14:25:26.716 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-21T14:25:26.716905364Z [32m14:25:26[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-21T14:25:26.716927346Z 2025-06-21 14:25:26.716 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-21T14:25:26.717983100Z [32m14:25:26[0m | [36m             stt:405[0m | [1m    INFO[0m | [1mGenerating text from audio using model...[0m
+2025-06-21T14:25:26.718005102Z 2025-06-21 14:25:26.717 | INFO     | pipecat.services.ultravox.stt:_process_audio_buffer:405 - Generating text from audio using model...
+2025-06-21T14:25:26.719056448Z [32m14:25:26[0m | [36m             stt:436[0m | [31m[1m   ERROR[0m | [31m[1mError generating text from model: Background loop has errored already.[0m
+2025-06-21T14:25:26.719092346Z 2025-06-21 14:25:26.718 | ERROR    | pipecat.services.ultravox.stt:_process_audio_buffer:436 - Error generating text from model: Background loop has errored already.
+2025-06-21T14:25:26.726605892Z [32m14:25:26[0m | [36m            task:580[0m | [33m[1m WARNING[0m | [33m[1mSomething went wrong: ErrorFrame#0(error: Error generating text: Background loop has errored already., fatal: False)[0m
+2025-06-21T14:25:26.726649034Z 2025-06-21 14:25:26.726 | WARNING  | pipecat.pipeline.task:_process_up_queue:580 - Something went wrong: ErrorFrame#0(error: Error generating text: Background loop has errored already., fatal: False)
+2025-06-21T14:25:33.359804975Z 2025-06-21 14:25:33.359 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-21T14:25:33.360155470Z [32m14:25:33[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-21T14:25:33.360175608Z 2025-06-21 14:25:33.359 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-21T14:25:34.812352538Z 2025-06-21 14:25:34.811 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-21T14:25:34.812672115Z [32m14:25:34[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-21T14:25:34.812710277Z 2025-06-21 14:25:34.812 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-21T14:25:34.813676672Z [32m14:25:34[0m | [36m             stt:405[0m | [1m    INFO[0m | [1mGenerating text from audio using model...[0m
+2025-06-21T14:25:34.813719784Z 2025-06-21 14:25:34.813 | INFO     | pipecat.services.ultravox.stt:_process_audio_buffer:405 - Generating text from audio using model...
+2025-06-21T14:25:34.814645642Z [32m14:25:34[0m | [36m             stt:436[0m | [31m[1m   ERROR[0m | [31m[1mError generating text from model: Background loop has errored already.[0m
+2025-06-21T14:25:34.814675669Z 2025-06-21 14:25:34.814 | ERROR    | pipecat.services.ultravox.stt:_process_audio_buffer:436 - Error generating text from model: Background loop has errored already.
+2025-06-21T14:25:34.821941795Z [32m14:25:34[0m | [36m            task:580[0m | [33m[1m WARNING[0m | [33m[1mSomething went wrong: ErrorFrame#1(error: Error generating text: Background loop has errored already., fatal: False)[0m
+2025-06-21T14:25:34.821967334Z 2025-06-21 14:25:34.821 | WARNING  | pipecat.pipeline.task:_process_up_queue:580 - Something went wrong: ErrorFrame#1(error: Error generating text: Background loop has errored already., fatal: False)

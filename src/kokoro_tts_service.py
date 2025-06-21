@@ -75,7 +75,7 @@ def _language_to_kokoro_code(language: Language) -> Optional[str]:
 
 
 class KokoroTTSService(TTSService):
-    """GPU Text-to-Speech service powered by **Kokoro-PyTorch**.
+    """Text-to-Speech service powered by Kokoro-ONNX.
 
     Parameters
     ----------
@@ -113,8 +113,8 @@ class KokoroTTSService(TTSService):
     def __init__(
         self,
         *,
-        model_path: str | None = None,   # optional in PyTorch build
-        voices_path: str | None = None,
+        model_path: str,
+        voices_path: str,
         voice_id: str = "af_sarah",
         sample_rate: Optional[int] = None,
         params: Optional["KokoroTTSService.InputParams"] = None,
@@ -124,27 +124,23 @@ class KokoroTTSService(TTSService):
 
         params = params or self.InputParams()
 
-        logger.info("Initialising Kokoro TTS (voice='%s')", voice_id)
+        logger.info(
+            "Initialising Kokoro TTS (model='{}', voices='{}', voice='{}')",
+            model_path,
+            voices_path,
+            voice_id,
+        )
 
         # Initialise Kokoro pipeline (automatically loads GPU weights if available)
         self._language_code: str = (
             _language_to_kokoro_code(params.language) if params.language else "en-us"
         )
 
-        # Kokoro offers both a native PyTorch and an ONNX inference backend. The
-        # GPU-accelerated PyTorch path is preferred here.
-
-        try:
-            self._pipeline = KPipeline(
-                lang_code=self._language_code,
-                model_path=model_path,
-                voices_path=voices_path,
-                repo_id=None,  # Use local cache / $KOKORO_HOME if set
-            )
-        except TypeError:
-            # Older kokoro versions didn't expose model_path/voices_path –
-            # retry with minimal kwargs for compatibility.
-            self._pipeline = KPipeline(lang_code=self._language_code)
+        # Initialise Kokoro synthesis pipeline.
+        # Kokoro expects a short language code (e.g. "a" for English) in certain forks,
+        # but the public ONNX reference accepts the full locale. We therefore fall back
+        # to the resolved language code above which should be safe.
+        self._pipeline = KPipeline(lang_code=self._language_code)
 
         self._voice_id = voice_id
         self._speed: float = params.speed

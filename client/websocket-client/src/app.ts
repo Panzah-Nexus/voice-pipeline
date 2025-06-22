@@ -146,7 +146,7 @@ class WebsocketClientApp {
         transport,
         params: {
           // The baseURL and endpoint of your bot server that the client will connect to
-          baseUrl: 'https://wlugc3aef909a9-8000.proxy.runpod.net',
+          baseUrl: 'https://x8ac4l0110x2ah-8000.proxy.runpod.net/',
           endpoints: { connect: '/connect' },
         },
         enableMic: true,

@@ -92,8 +92,10 @@ class UltravoxWithContextService(UltravoxSTTService):
         
         return messages
 
-    async def _process_audio_buffer(self, buffer):
+    async def _process_audio_buffer(self):
         """Override to include conversation context."""
+        # Get the audio buffer from the parent class
+        buffer = self._audio_buffer
         if not buffer or not buffer.frames:
             logger.warning("Empty audio buffer received")
             return

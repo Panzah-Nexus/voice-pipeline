@@ -101,15 +101,14 @@ logger.info("✅ Whisper STT initialized successfully!")
 
 # 2. Local LLM (Ollama) with proper conversation context
 logger.info("🧠 Loading Ollama LLM service...")
-llm_service = OLLamaLLMService(
-    model=OLLAMA_MODEL,
+service = OLLamaLLMService(
+    model="llama2",
     params=OLLamaLLMService.InputParams(
-        temperature=0.7,          # Balanced creativity
-        max_tokens=150,           # Reasonable length for voice
-        frequency_penalty=0.3,    # Reduce repetition
-        presence_penalty=0.3,     # Encourage variety
+        temperature=0.7,
+        max_tokens=1000
     )
 )
+
 logger.info("✅ Ollama LLM initialized successfully!")
 
 context = OpenAILLMContext(

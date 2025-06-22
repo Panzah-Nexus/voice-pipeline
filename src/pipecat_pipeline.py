@@ -101,20 +101,11 @@ logger.info("✅ Whisper STT initialized successfully!")
 
 # 2. Local LLM (Ollama) with proper conversation context
 logger.info("🧠 Loading Ollama LLM service...")
-service = OLLamaLLMService()
-
-logger.info("✅ Ollama LLM initialized successfully!")
-
-context = OpenAILLMContext(
-    messages=[],
-    system="You are a helpful assistant"
+llm_service = OLLamaLLMService(
+    model=OLLAMA_MODEL,
+    base_url=OLLAMA_BASE_URL,
 )
-
-
-aggregators = OLLamaLLMService.create_context_aggregator(context)
-
-# 3. Access individual aggregators
-
+logger.info("✅ Ollama LLM initialized successfully!")
 
 logger.info("🎯 All local pipeline components ready!")
 
@@ -146,16 +137,28 @@ async def run_bot(websocket_client):
     # 3️⃣ RTVI signalling layer
     rtvi = RTVIProcessor(config=RTVIConfig(config=[]))
 
-    # 4️⃣ PERFECT CASCADED PIPELINE 🎯
+    # 4️⃣ Create conversation context and aggregator
+    messages = [
+        {
+            "role": "system",
+            "content": SYSTEM_PROMPT,
+        },
+    ]
+    
+    context = OpenAILLMContext(messages)
+    context_aggregator = llm_service.create_context_aggregator(context)
+
+    # 5️⃣ PERFECT CASCADED PIPELINE 🎯
     # Input → STT → User_Aggregator → LLM → Assistant_Aggregator → TTS → Output
     pipeline = Pipeline([
         ws_transport.input(),           # Audio input
         rtvi,                          # RTVI compatibility  
         stt_service,                   # 🎙️  Whisper STT (local)
-        aggregators.user(),    # 👤  User message handling
+        context_aggregator.user(),     # 👤  User message handling
         llm_service,                   # 🧠  Ollama LLM (local)  
         tts,                           # 🗣️  Kokoro TTS (local)
         ws_transport.output(),         # Audio output
+        context_aggregator.assistant(), # 🤖  Assistant message handling
     ])
 
     task = PipelineTask(
@@ -178,6 +181,9 @@ async def run_bot(websocket_client):
     @ws_transport.event_handler("on_client_connected")
     async def on_client_connected(transport, client):
         logger.info("🔗 Client connected to local pipeline")
+        # Kick off the conversation with introduction
+        messages.append({"role": "system", "content": "Please introduce yourself to the user."})
+        await task.queue_frames([context_aggregator.user().get_context_frame()])
 
     @ws_transport.event_handler("on_client_disconnected")
     async def on_client_disconnected(transport, client):
@@ -221,7 +227,7 @@ async def run_bot(websocket_client):
                     logger.info("📊 === LOCAL PIPELINE PERFORMANCE ===")
                     
                     # Log conversation context stats
-                    logger.info(f"💬 Conversation messages: {len(conversation_context.messages)}")
+                    logger.info(f"💬 Conversation messages: {len(context.messages)}")
                     
                     # Log component performance
                     for processor in task._pipeline._processors:

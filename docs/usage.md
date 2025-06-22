@@ -5,12 +5,15 @@ This guide explains how to use the air-gapped voice pipeline system effectively 
 ## 🎯 Daily Workflow
 
 1.  **Start Your RunPod Pod**: Ensure your configured pod is running on RunPod.
-2.  **Get the WebSocket URL**: Open your pod's `/connect` endpoint to get the current `ws_url`.
+2.  **Get the New Base URL**:
+    -   From the RunPod dashboard, copy the public HTTP URL for your pod (e.g., `https://<pod-id>-8000.proxy.runpod.net/`).
+    -   Remember, this URL changes every time you start a new pod.
 3.  **Configure the Client**:
     -   Navigate to the web client directory: `cd client/websocket-client`.
-    -   Update the `VITE_WS_URL` in your `.env` file with the new URL.
+    -   Update the `VITE_WS_URL` in your `.env` file with the new base URL.
 4.  **Run the Client**:
-    -   Run `npm run dev`.
+    -   If the client is already running, stop it (`Ctrl+C`).
+    -   Run `npm run dev` to start the server with the new URL.
     -   Open `http://localhost:5173` in your browser.
 5.  **Start a Conversation**: Click the "Start" button and begin speaking.
 6.  **Stop the Pod**: When you are finished, stop your RunPod pod to save costs.
@@ -57,6 +60,5 @@ The primary performance indicator you will notice is the **round-trip time**: th
 
 ## 🚫 Limitations
 
--   **No Real-Time Internet Access**: The air-gapped design means the AI cannot access live information from the web (e.g., current news, weather).
 -   **Context Window**: The AI remembers the most recent portion of the conversation (e.g., the last 20 messages).
 -   **Cold Starts**: The very first time you connect to a freshly started pod, there may be a one-time delay while the models are loaded into GPU memory. Subsequent connections will be much faster. 

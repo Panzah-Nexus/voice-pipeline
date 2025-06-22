@@ -8,15 +8,21 @@ Before diving deep, run through these quick checks:
 
 1.  **Check Pod Status**: Is your pod running in the RunPod dashboard?
 2.  **Check Pod Logs**: Open the **Logs** for your pod in RunPod. Are there any obvious errors like `ModuleNotFoundError`, `CUDA out of memory`, or tracebacks?
-3.  **Verify WebSocket URL**: Does the `VITE_WS_URL` in your web client's `.env` file match the current URL from your pod's `/connect` endpoint? RunPod URLs can change if the pod restarts.
-4.  **Test HTTP Endpoint**: Can you access the pod's public HTTP URL? Try opening `https://<your-pod-id>-8000.proxy.runpod.net/` in your browser. It should return a JSON response.
+3.  **Verify Base URL**: Does the `VITE_WS_URL` in your web client's `.env` file contain the correct **base HTTP URL** from your pod? (e.g., `https://<pod-id>-8000.proxy.runpod.net/`).
+4.  **Test HTTP Endpoint**: Can you access that base URL in your browser? It should return a JSON response like `{"service":"Voice Pipeline - Air-gapped", ...}`.
 
 ## 🚨 Common Issues & Solutions
 
 ### 1. Connection Refused / Timeout Error
-You may see "Error: Connection failed" in the web client.
+You may see "Error: Connection failed" in the web client. This is the most common issue and is almost always caused by an incorrect URL.
 
 **Causes & Solutions:**
+
+*   **Incorrect or Stale Base URL**: The most likely cause. RunPod URLs are **ephemeral** and change every time you start a new pod. You must update the client's configuration for every new session.
+    *   **Solution**:
+        1. Get the latest base HTTP URL from your RunPod dashboard.
+        2. Update the `VITE_WS_URL` in the `client/websocket-client/.env` file.
+        3. **Restart the Vite development server** (`Ctrl+C`, then `npm run dev`).
 
 *   **Pod Not Ready**: The pod might still be starting, or the application inside it may have crashed.
     *   **Solution**: Check the pod's **Logs** in the RunPod UI. Look for `Uvicorn running on http://0.0.0.0:8000`. If you see errors before this, the server failed to start.

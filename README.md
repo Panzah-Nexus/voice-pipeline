@@ -4,34 +4,23 @@ A complete, low-latency, and air-gapped voice AI pipeline using **Ultravox** (co
 
 ## 🚀 Quick Start
 
-### 1. Configure RunPod
-- Select a RunPod template with PyTorch and CUDA support.
-- Set the required environment variables in the template settings:
-  - `HF_TOKEN`: Your Hugging Face token for model downloads.
-  - `KOKORO_VOICE_ID`: The specific TTS voice to use (e.g., `af_bella`).
-- Set the container's start command to: `python src/main.py`
+### 1. Deploy on RunPod
+- Follow the [**Deployment Guide**](docs/deployment_guide.md) to set up a RunPod template using the custom Docker image (`mlbra2006/voice-pipeline-airgapped:uvfix`) and launch a pod.
+- Configure the necessary environment variables like `HF_TOKEN`.
 
-### 2. Deploy and Connect
-- Deploy your pod on RunPod.
-- Once running, find your pod's WebSocket endpoint. The application provides a `/connect` endpoint to help discover this URL.
-- Use a local WebSocket client to connect to the endpoint and start talking.
+### 2. Configure the Client
+- Once the pod is running, find its public URL for port 8000.
+- Navigate to the `client/websocket-client` directory.
+- Create a `.env` file from the `.env.example`.
+- Paste the pod's WebSocket URL (obtained from the `/connect` endpoint) into the `VITE_WS_URL` variable in your `.env` file.
 
-### 3. Setup Local Client
-The recommended client is the web client located in `client/websocket-client/`.
-
+### 3. Run the Client
 ```bash
 # Navigate to the web client directory
 cd client/websocket-client
 
-# Install dependencies
+# Install dependencies and run
 npm install
-```
-
-Before running, you must update the `VITE_WS_URL` in the `.env` file (or create one from `.env.example`) to point to your RunPod's WebSocket URL.
-
-### 4. Run Local Client
-```bash
-# Run the development server
 npm run dev
 ```
 Then, visit `http://localhost:5173` in your browser to use the client.
@@ -54,7 +43,7 @@ Local Machine (CPU)                RunPod Cloud (NVIDIA L4 GPU)
 - **RunPod Optimized**: Designed to leverage powerful NVIDIA L4 GPUs on RunPod for minimal latency.
 - **Real-Time & Low-Latency**: Engineered for natural, real-time voice conversations.
 - **Pipecat Framework**: Built on a robust, production-ready framework for voice AI.
-- **Air-Gapped by Design**: All AI processing occurs within your private RunPod instance. No data is sent to third-party APIs.
+- **Air-Gapped by Design**: All AI processing occurs within your private RunPod instance.
 
 ## 📁 Project Structure
 
@@ -63,26 +52,22 @@ voice-pipeline/
 ├── src/
 │   ├── main.py                     # FastAPI server entry point
 │   ├── pipecat_pipeline.py         # Core pipeline logic with Pipecat
-│   ├── ultravox_with_context.py    # Custom Ultravox service with memory
-│   └── kokoro_tts_service.py       # Custom Kokoro TTS service
+│   └── ...                         # AI services
 ├── docker/
-│   └── Dockerfile                  # Container definition for RunPod
+│   └── Dockerfile                  # Container definitions for RunPod
 ├── docs/                           # All project documentation
-├── requirements.txt                # Server dependencies for RunPod
+├── requirements.txt                # Server dependencies
 └── client/                         # Local WebSocket client code
 ```
 
 ## 🔧 Troubleshooting
 
-Common issues often relate to incorrect environment variables on RunPod, network connectivity, or audio device configuration on your local machine.
-
-Refer to the complete [**Troubleshooting Guide**](docs/troubleshooting.md) for detailed solutions.
+Refer to the complete [**Troubleshooting Guide**](docs/troubleshooting.md) for detailed solutions to common issues related to RunPod deployment and client setup.
 
 ## 💰 Cost
 
-- **RunPod L4**: Billed by the hour. Check RunPod's pricing for the most current rates.
+- **RunPod L4**: Cost me $0.43 per hour
 - **No API fees**: The air-gapped design means no extra costs for STT, LLM, or TTS APIs.
-Cost me $0.43 per hour
 
 ## 📚 Documentation
 

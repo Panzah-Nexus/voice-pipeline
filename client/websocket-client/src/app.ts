@@ -146,7 +146,7 @@ class WebsocketClientApp {
         transport,
         params: {
           // The baseURL and endpoint of your bot server that the client will connect to
-          baseUrl: 'https://kkqc33rcg7qmwf-8000.proxy.runpod.net/',
+          baseUrl: import.meta.env.VITE_WS_URL,
           endpoints: { connect: '/connect' },
         },
         enableMic: true,

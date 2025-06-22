@@ -90,6 +90,69 @@ You are knowledgeable and can help with various topics while maintaining engagin
 
 logger.info("🔧 Initializing local cascaded pipeline components...")
 
+# Health check for Ollama service
+async def check_ollama_health():
+    """Verify Ollama is running and model is loaded"""
+    import aiohttp
+    import asyncio
+    import json
+    
+    logger.info("🏥 Checking Ollama health...")
+    
+    # Check if Ollama API is responding
+    try:
+        async with aiohttp.ClientSession() as session:
+            # Test basic API endpoint
+            async with session.get(f"{OLLAMA_BASE_URL.replace('/v1', '')}/api/tags") as response:
+                if response.status != 200:
+                    raise Exception(f"Ollama API returned status {response.status}")
+                
+                tags_data = await response.json()
+                models = [model['name'] for model in tags_data.get('models', [])]
+                logger.info(f"📋 Available models: {models}")
+                
+                if OLLAMA_MODEL not in models:
+                    raise Exception(f"Model {OLLAMA_MODEL} not found in available models: {models}")
+                
+            # Test chat completions endpoint
+            test_payload = {
+                "model": OLLAMA_MODEL,
+                "messages": [{"role": "user", "content": "Hi"}],
+                "max_tokens": 5,
+                "stream": False
+            }
+            
+            async with session.post(f"{OLLAMA_BASE_URL}/chat/completions", 
+                                  json=test_payload,
+                                  headers={"Content-Type": "application/json"}) as response:
+                if response.status != 200:
+                    text = await response.text()
+                    raise Exception(f"Chat completions test failed: {response.status} - {text}")
+                
+                result = await response.json()
+                if 'choices' not in result:
+                    raise Exception(f"Invalid response format: {result}")
+                    
+            logger.info("✅ Ollama health check passed!")
+            return True
+            
+    except Exception as e:
+        logger.error(f"❌ Ollama health check failed: {e}")
+        logger.error(f"🔧 Make sure Ollama is running on {OLLAMA_BASE_URL}")
+        logger.error(f"🔧 And that model {OLLAMA_MODEL} is available")
+        return False
+
+# Run health check before initializing services
+import asyncio
+try:
+    loop = asyncio.get_event_loop()
+    if not loop.run_until_complete(check_ollama_health()):
+        logger.error("🚨 Ollama health check failed - cannot start pipeline")
+        sys.exit(1)
+except Exception as e:
+    logger.error(f"🚨 Could not perform health check: {e}")
+    sys.exit(1)
+
 # 1. Local STT (Whisper) - fast model with CUDA support
 logger.info("📝 Loading WhisperSTTService...")
 stt_service = WhisperSTTService(

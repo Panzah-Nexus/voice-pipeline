@@ -15,6 +15,42 @@ service ssh start
 
 echo "🔧 Development mode starting..."
 
+echo "🚀 Starting Ollama service..."
+ollama serve &
+OLLAMA_PID=$!
+
+echo "⏳ Waiting for Ollama to be ready..."
+# Wait for Ollama to be ready with more patience
+for i in {1..60}; do
+    if curl -s http://localhost:11434/api/tags >/dev/null 2>&1; then
+        echo "✅ Ollama is ready!"
+        break
+    fi
+    echo "   Waiting for Ollama... ($i/60)"
+    sleep 2
+done
+
+# Verify model is available
+echo "🔍 Verifying model is available..."
+if ollama list | grep -q "llama3.2:3b"; then
+    echo "✅ Model llama3.2:3b is available"
+else
+    echo "⚠️  Model not found, pulling llama3.2:3b..."
+    ollama pull llama3.2:3b
+fi
+
+# Health check - test a simple generation
+echo "🧪 Testing Ollama connection..."
+if curl -s -X POST http://localhost:11434/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{"model":"llama3.2:3b","messages":[{"role":"user","content":"test"}],"max_tokens":1}' \
+  | grep -q "choices"; then
+    echo "✅ Ollama API is working correctly!"
+else
+    echo "❌ Ollama API test failed!"
+    exit 1
+fi
+
 # Check if we have git credentials
 if [ -z "$GIT_TOKEN" ] || [ -z "$GIT_USER" ] || [ -z "$GIT_REPO" ]; then
     echo "❌ Missing git credentials. Please set:"
@@ -29,8 +65,8 @@ GIT_URL="https://${GIT_USER}:${GIT_TOKEN}@github.com/${GIT_USER}/${GIT_REPO}.git
 
 # Clone or update source code
 if [ ! -d "/app/voice-pipeline-src" ]; then
-    echo "🔄 Cloning latest source code from cursor_oneshot branch..."
-    git clone -b cursor_oneshot "$GIT_URL" /app/voice-pipeline-src
+    echo "🔄 Cloning latest source code from cascade_branch..."
+    git clone -b cascade_branch "$GIT_URL" /app/voice-pipeline-src
 else
     echo "🔄 Updating source code..."
     cd /app/voice-pipeline-src && git pull origin cascade_branch
@@ -52,8 +88,8 @@ EOF
 
 RUN chmod +x /app/dev_start.sh
 
-# Expose SSH port
-EXPOSE 22 8000
+# Expose SSH port and Ollama port
+EXPOSE 22 8000 11434
 
 # Default command for development
 CMD ["/app/dev_start.sh"] 

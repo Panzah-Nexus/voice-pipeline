@@ -44,10 +44,9 @@ from pipecat.frames.frames import (
     TTSTextFrame,
     Frame,
 )
-from pipecat.processors.aggregators.openai_llm_context import (
-    OpenAILLMContext,
-)
+from pipecat.processors.aggregators.openai_llm_context import OpenAILLMContext
 
+from src.ultravox_with_context import UltravoxWithContextService, ContextManager
 from pipecat.services.ultravox.stt import UltravoxSTTService
 
 # Kokoro TTS service (preferred over Piper)
@@ -74,26 +73,37 @@ KOKORO_VOICES_PATH: str = os.getenv("KOKORO_VOICES_PATH", "/models/kokoro/voices
 KOKORO_VOICE_ID: str = os.getenv("KOKORO_VOICE_ID", "af_bella")
 SAMPLE_RATE: int = int(os.getenv("KOKORO_SAMPLE_RATE", "24000"))
 
-SYSTEM_INSTRUCTION: str = (
-    "You are an AI assistant running entirely on local infrastructure. "
-    "When the user first connects, greet them warmly with 'Hello! I'm your AI assistant. How can I help you today?' "
-    "Keep all responses concise – no more than two sentences. Avoid special characters so the TTS remains clear."
-)
+# ---------------------------------------------------------------------------
+# Initialize Ultravox processor once at module level with context awareness
+# ---------------------------------------------------------------------------
+logger.info("Loading UltravoxWithContextService... this can take a while on first run.")
 
-# ---------------------------------------------------------------------------
-# Initialize Ultravox processor once at module level
-# ---------------------------------------------------------------------------
-# Want to initialize the ultravox processor since it takes time to load the model and dont
-# want to load it every time the pipeline is run
-logger.info("Loading UltravoxSTTService... this can take a while on first run.")
-ultravox_processor = UltravoxSTTService(
+# Create a context-aware system instruction that encourages building on previous conversation
+SYSTEM_INSTRUCTION = """You are a helpful AI assistant with full memory of our conversation. 
+
+Key behaviors:
+1. Remember and reference previous parts of our conversation naturally
+2. Build on what we've discussed before without repeating yourself
+3. If the user refers to something we discussed earlier, acknowledge it
+4. Keep responses concise (1-2 sentences) unless more detail is needed
+5. Maintain conversational continuity and flow
+6. If context seems missing or unclear, politely ask for clarification
+
+You have access to our full conversation history, so use it to provide contextual, relevant responses."""
+
+ultravox_processor = UltravoxWithContextService(
     model_name="fixie-ai/ultravox-v0_5-llama-3_1-8b",
     hf_token=HF_TOKEN,
-    temperature=0.6,
-    max_tokens=150,
+    temperature=0.3,  # Lower temperature = more consistent responses
+    max_tokens=50,    # Slightly more tokens for contextual responses
     system_instruction=SYSTEM_INSTRUCTION,
 )
-logger.info("Ultravox model initialized successfully!")
+
+# Create context manager for trimming conversation history
+context_manager = ContextManager(max_messages=20)  # Keep last 20 messages
+
+logger.info("Ultravox model with context initialized successfully!")
+
 
 
 async def run_bot(websocket_client):

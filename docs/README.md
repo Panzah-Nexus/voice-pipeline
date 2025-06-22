@@ -2,7 +2,7 @@
 
 Welcome to the complete documentation for the **Air-Gapped Voice AI Pipeline**. This system is designed for deployment on **RunPod with NVIDIA L4 GPUs**, enabling natural, low-latency voice conversations using a fully self-contained AI stack.
 
-All AI processing, from speech recognition to language understanding and speech synthesis, happens within your private RunPod instance, ensuring data privacy and security with no external API dependencies during operation.
+All AI processing, from speech recognition to language understanding, and speech synthesis, happens within your private RunPod instance, ensuring data privacy and security with no external API dependencies during operation.
 
 ## 🚀 Getting Started
 
@@ -44,22 +44,21 @@ This documentation is structured to help you based on your goals, whether you wa
 ## 🏗️ System Architecture Overview
 
 ```
-LOCAL MACHINE (Your Computer)        RUNPOD CLOUD (NVIDIA L4 GPU)
+LOCAL MACHINE (Web Browser)          RUNPOD CLOUD (NVIDIA L4 GPU)
 ┌─────────────────────────┐ WSS    ┌───────────────────────────────────┐
-│  🐍 Local Client        │◄─────►│     🐳 Docker Container           │
+│  🕸️ Web Client          │◄─────►│     🐳 Docker Container           │
 │  ┌─────────────────────┐│        │  ┌───────────────────────────────┐ │
-│  │   Dependencies:     ││        │  │      AI Services:             │ │
-│  │   • websockets      ││        │  │   • UltravoxWithContext       │ │
-│  │   • sounddevice     ││        │  │   • KokoroTTS                 │ │
-│  │   • numpy           ││        │  └───────────────────────────────┘ │
-│  └─────────────────────┘│        │                                    │
-│                         │        │   🚀 Pipecat Orchestration      │
-│  🎙️ Microphone Input    │        └───────────────────────────────────┘
-│  🔊 Speaker Output      │
+│  │   JavaScript        ││        │  │      AI Services:             │ │
+│  │   • Pipecat SDK     ││        │  │   • UltravoxWithContext       │ │
+│  │   • Web Audio API   ││        │  │   • KokoroTTSService          │ │
+│  └─────────────────────┘│        │  └───────────────────────────────┘ │
+│                         │        │                                    │
+│  🎙️ Microphone Input    │        │   🚀 Pipecat Orchestration      │
+│  🔊 Speaker Output      │        └───────────────────────────────────┘
 └─────────────────────────┘
 ```
 
-**Key Principle**: Your local machine runs a very lightweight client, while all the intensive AI processing happens in your private, secure RunPod container.
+**Key Principle**: Your local machine runs a lightweight web client, while all the intensive AI processing happens in your private, secure RunPod container.
 
 ## 🎯 Success Indicators
 

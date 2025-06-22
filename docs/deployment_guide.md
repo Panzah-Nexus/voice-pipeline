@@ -1,375 +1,65 @@
-# Voice Pipeline Deployment Guide
+# Voice Pipeline Deployment Guide for RunPod
 
-This guide shows you how to deploy your air-gapped voice AI pipeline with **Nvidia A10 GPU on Cerebrium** and connect it to your local devices (no local GPU required).
+This guide provides a complete walkthrough for deploying the air-gapped voice AI pipeline on **RunPod** using an **NVIDIA L4 GPU** and connecting it to your local machine.
 
 ## 🎯 Overview
 
-- **Local Device (CPU-only)**: Captures microphone → WebSocket client → Plays speakers
-- **Cerebrium (A10 GPU)**: WebSocket server → Ultravox (STT+LLM) → Piper TTS → Response
-- **Air-Gapped**: No external API calls during operation
+-   **Local Device (Your Computer)**: Runs a web-based client to capture microphone audio, send it via a WebSocket, and play the AI's spoken response.
+-   **RunPod (L4 GPU)**: Hosts the AI pipeline in a Docker container. It runs the WebSocket server, processes audio with `UltravoxWithContextService`, generates speech with `KokoroTTSService`, and streams the audio response back to your client.
+-   **Air-Gapped Operation**: Once deployed, no external API calls are made for the core AI processing.
 
 ## 📋 Prerequisites
 
-- Python 3.10+ on your local machine
-- Cerebrium account
-- Hugging Face account (for model downloads only)
-- Microphone and speakers on local machine
-
-## 🐍 Virtual Environment Setup
-
-### Why Virtual Environments?
-
-This project uses **two different sets of dependencies**:
-- **Server dependencies** (heavy ML libraries for Cerebrium)
-- **Client dependencies** (lightweight audio libraries for local use)
-
-Virtual environments prevent conflicts and keep your system clean.
-
-### Phase 0: Virtual Environment Management
-
-#### 0.1 Create Project Virtual Environment
-```bash
-# Navigate to your project directory
-cd /path/to/voice-pipeline
-
-# Create virtual environment
-python3 -m venv venv
-
-# Activate virtual environment (Linux/macOS)
-source venv/bin/activate
-
-# Activate virtual environment (Windows)
-# venv\Scripts\activate
-
-# Verify activation (should show venv path)
-which python
-```
-
-#### 0.2 When to Use Which Environment
-
-| Task | Virtual Environment | Dependencies | Why |
-|------|-------------------|--------------|-----|
-| **Local Client** | ✅ `venv` activated | `local_client_requirements.txt` | Lightweight, no ML libraries |
-| **Local Testing** | ✅ `venv` activated | `requirements.txt` | Full server dependencies for testing |
-| **Cerebrium Deploy** | ❌ No local venv | `requirements.txt` | Cerebrium builds its own container |
-
-#### 0.3 Dependency Management
-
-**For Local Client Only** (recommended for most users):
-```bash
-# Activate venv
-source venv/bin/activate
-
-
-```
-
-**For Full Local Testing** (optional - if you want to test server locally):
-```bash
-# Activate venv  
-source venv/bin/activate
-
-# Install all server dependencies (large download!)
-pip install -r requirements.txt
-
-# This includes ML libraries like torch, transformers, etc.
-```
-
-#### 0.4 Virtual Environment Best Practices
-
-```bash
-# Always activate before working
-source venv/bin/activate
-
-# Check what's installed
-pip list
-
-# Deactivate when done
-deactivate
-
-# Recreate if corrupted
-rm -rf venv
-python3 -m venv venv
-source venv/bin/activate
-pip install -r local_client_requirements.txt
-```
-
-## Phase 1: Token Setup
-
-### 1.1 Hugging Face Token
-1. Visit: https://huggingface.co/settings/tokens
-2. Create a token with "Read" access
-3. Copy the token (starts with `hf_`)
-4. This is only needed for initial model downloads
-
-## Phase 2: Configure Cerebrium Deployment
-
-### 2.1 Update Cerebrium Configuration
-Edit `cerebrium.toml` and replace the placeholder token:
-
-```toml
-[cerebrium.secrets]
-HF_TOKEN = "hf_your_actual_token_here"
-# Piper TTS configuration (optional)
-PIPER_MODEL = "en_US-lessac-medium"
-PIPER_SAMPLE_RATE = "22050"
-```
-
-### 2.2 Install Cerebrium CLI
-```bash
-# Option 1: In your project venv (recommended)
-source venv/bin/activate
-pip install cerebrium
-
-# Option 2: Global installation
-pip install --user cerebrium
-```
-
-### 2.3 Login to Cerebrium
-```bash
-cerebrium login
-```
-
-## Phase 3: Deploy to Cerebrium
-
-### 3.1 Deploy the Application
-```bash
-# Make sure you're in the project directory
-cd /path/to/voice-pipeline
-
-# Deploy (no need for venv activation - Cerebrium builds its own container)
-cerebrium deploy
-```
-
-After deployment, you'll receive a URL like:
-```
-https://your-deployment-id.cerebrium.app
-```
-
-### 3.2 Verify Deployment
-Test the health endpoint:
-```bash
-curl -I https://your-deployment-id.cerebrium.app/health
-```
-
-Should return: `200 OK`
-
-### 3.3 Initial Model Download
-On first deployment, the system will download:
-- **Ultravox Model**: ~8GB (combined STT+LLM)
-- **Piper TTS Models**: ~100MB per voice
-
-These are cached on Cerebrium's storage for subsequent deployments.
-
-## Phase 4: Local Client Setup
-
-### 4.1 Activate Virtual Environment
-```bash
-# Navigate to project directory
-cd /path/to/voice-pipeline
-
-# Activate virtual environment
-source venv/bin/activate
-
-# Verify activation
-echo "Virtual env: $VIRTUAL_ENV"
-```
-
-### 4.2 Install Local Dependencies
-```bash
-# With venv activated, install client dependencies
-pip install -r local_client_requirements.txt
-```
-
-The local client only needs:
-- `websockets` - For WebSocket communication
-- `sounddevice` - For microphone/speaker access
-- `numpy` - For audio processing
-
-### 4.3 Configure Server URL
-```bash
-# Set environment variable (with venv activated)
-export WS_SERVER="wss://your-deployment-id.cerebrium.app/ws"
-
-# Verify it's set
-echo $WS_SERVER
-```
-
-⚠️ **Important**: Replace `your-deployment-id` with your actual deployment ID
-
-### 4.4 Test Audio Devices
-```bash
-# With venv activated, test audio system
-python -c "import sounddevice as sd; print('Audio devices:'); print(sd.query_devices())"
-```
-
-## Phase 5: Run the Voice Pipeline
-
-### 5.1 Start Local Client
-```bash
-# Ensure venv is activated and WS_SERVER is set
-source venv/bin/activate
-export WS_SERVER="wss://your-deployment-id.cerebrium.app/ws"
-
-# Run the client
-python local_client.py
-```
-
-
-
-## Phase 6: Monitoring and Logs
-
-### 6.1 View Deployment Logs
-```bash
-# No venv needed for Cerebrium CLI commands
-cerebrium logs voice-pipeline-airgapped
-```
-
-### 6.2 Check Deployment Status
-```bash
-cerebrium list
-```
-
-### 6.3 Debug Endpoint
-Check service status:
-```bash
-curl https://your-deployment-id.cerebrium.app/debug
-```
-
-## 🔧 Virtual Environment Troubleshooting
-
-### Common Issues
-
-#### "Command not found" errors
-```bash
-# Problem: venv not activated
-python local_client.py  # ❌ Error
-
-# Solution: Activate venv first
-source venv/bin/activate
-python local_client.py  # ✅ Works
-```
-
-#### Import errors
-```bash
-# Problem: Wrong dependencies installed
-ModuleNotFoundError: No module named 'websockets'
-
-# Solution: Install correct dependencies
-source venv/bin/activate
-pip install -r local_client_requirements.txt
-```
-
-#### Mixed dependencies
-```bash
-# Problem: Installed wrong requirements file
-# You have torch, transformers, etc. but just want client
-
-# Solution: Recreate venv with correct dependencies
-deactivate
-rm -rf venv
-python3 -m venv venv
-source venv/bin/activate
-pip install -r local_client_requirements.txt
-```
-
-### Verification Commands
-```bash
-# Check if venv is active
-echo $VIRTUAL_ENV  # Should show path to your venv
-
-# Check Python location
-which python  # Should show venv/bin/python
-
-# Check installed packages
-pip list | grep -E "(websockets|sounddevice|numpy)"
-
-# Test client dependencies
-python -c "import websockets, sounddevice, numpy; print('✅ All client deps working')"
-```
-
-## 📝 Daily Workflow
-
-### Starting a Session
-```bash
-# 1. Navigate to project
-cd /path/to/voice-pipeline
-
-# 2. Activate virtual environment
-source venv/bin/activate
-
-# 3. Set server URL (if not in .bashrc/.zshrc)
-export WS_SERVER="wss://your-deployment-id.cerebrium.app/ws"
-
-# 4. Run client
-python local_client.py
-```
-
-### Ending a Session
-```bash
-# 1. Stop client (Ctrl+C)
-# 2. Deactivate venv
-deactivate
-```
-
-### Environment Persistence (Optional)
-Add to your `~/.bashrc` or `~/.zshrc`:
-```bash
-# Auto-activate venv when entering project directory
-alias voice-pipeline="cd /path/to/voice-pipeline && source venv/bin/activate && export WS_SERVER='wss://your-deployment-id.cerebrium.app/ws'"
-```
-
-Then just run: `voice-pipeline` followed by `python local_client.py`
-
-## Configuration Details
-
-### Hardware Configuration (A10 GPU)
-```toml
-[cerebrium.hardware]
-compute = "AMPERE_A10"        # Nvidia A10 GPU
-memory = "24Gi"               # 24GB RAM
-cpu = "8"                     # 8 CPU cores
-```
-
-### Scaling Configuration
-```toml
-[cerebrium.scaling]
-min_replicas = 0       # Scale to zero when idle
-max_replicas = 2       # Max 2 instances
-max_concurrency = 5    # 5 concurrent connections per instance
-```
-
-### Runtime Configuration
-```toml
-[cerebrium.runtime.custom]
-port = 8000                        # WebSocket port
-healthcheck_endpoint = "/health"   # Health check
-readycheck_endpoint = "/ready"     # Readiness check
-dockerfile_path = "./docker/Dockerfile"
-```
-
-## Air-Gapped Benefits
-
-- **No External APIs**: All processing happens on Cerebrium GPU
-- **Data Privacy**: Audio never leaves your infrastructure
-- **Predictable Costs**: Only pay for GPU time, no per-request API fees
-- **Offline Capable**: Once deployed, no internet needed for AI processing
-
-## Cost Optimization
-
-- **Scale to Zero**: Automatically scales down when not in use
-- **Pay per Use**: Only charged for active GPU time (~$0.50-1.00/hour)
-- **No API Costs**: Ultravox and Piper run locally, no per-request charges
-- **Efficient Models**: 8B Ultravox model optimized for A10 GPU
-
-## Security Notes
-
-- HF token only used for initial model downloads
-- WebSocket connection uses WSS (secure WebSocket)
-- All AI processing happens within your Cerebrium deployment
-- No audio data sent to external services
-
-## Next Steps
-
-- See [Architecture Documentation](architecture.md) for system details
-- Check [Troubleshooting Guide](troubleshooting.md) for common issues
-- Review [Usage Guide](usage.md) for advanced features 
+-   A [RunPod](https://www.runpod.io/) account with billing set up.
+-   A [Hugging Face](https://huggingface.co/) account with a Read token.
+-   Basic familiarity with Docker concepts.
+-   Node.js and `npm` installed on your local machine for the web client.
+-   A microphone and speakers connected to your local machine.
+
+## Phase 1: Deploy on RunPod
+
+### 1.1 Choose a Template
+1.  Navigate to **Secure Cloud** or **Community Cloud** in RunPod to deploy a new pod.
+2.  Select the desired **NVIDIA L4** GPU.
+3.  For the template, choose **"RunPod Pytorch 2.2"** or a similar official PyTorch template. This provides the necessary CUDA drivers and Python environment.
+
+### 1.2 Configure the Pod
+1.  **Customize Deployment**: Set your desired container and volume disk sizes. A 20 GB container disk and 50 GB volume disk is a safe starting point.
+2.  **Set Environment Variables**: This is a critical step.
+    -   Click **"Add Environment Variable"**.
+    -   Create a variable named `HF_TOKEN` and paste your Hugging Face token as the value.
+    -   You can also override defaults by adding `KOKORO_VOICE_ID`.
+3.  **Set Start Command**:
+    -   In the "Docker Command" or "Run Command" field, enter: `python src/main.py`
+4.  **Expose Ports**:
+    -   The application runs on port `8000`. RunPod automatically maps this to a public-facing TCP port. No manual configuration is needed.
+
+### 1.3 Deploy and Verify
+1.  Click **"Deploy"** and wait for the pod to initialize.
+2.  Once running, check the **Logs**. The first launch will take several minutes to download the Ultravox model.
+3.  Look for a log message like `Starting voice pipeline server on 0.0.0.0:8000`.
+
+## Phase 2: Local Client Setup
+
+### 2.1 Get Your WebSocket URL
+The application running on your RunPod pod exposes a `/connect` endpoint to help you determine the correct WebSocket URL.
+
+1.  In the RunPod UI for your pod, find the **HTTP port `8000`** and click the corresponding link to open the public URL. It will look like `https://<your-pod-id>-8000.proxy.runpod.net/`.
+2.  Navigate to the `/connect` endpoint in your browser: `https://<your-pod-id>-8000.proxy.runpod.net/connect`.
+3.  This will return a JSON object containing the `ws_url`. Copy this URL.
+
+### 2.2 Configure the Client
+1.  Navigate to the web client directory: `cd client/websocket-client`.
+2.  If it doesn't exist, create a `.env` file by copying the example: `cp .env.example .env`.
+3.  Open the `.env` file and paste the `ws_url` you copied as the value for `VITE_WS_URL`.
+
+### 2.3 Run the Client
+1.  Install the dependencies: `npm install`.
+2.  Run the client's development server: `npm run dev`.
+3.  Open `http://localhost:5173` in your browser to start a conversation.
+
+## Phase 3: Monitoring and Management
+
+-   **Viewing Logs**: Use the **Logs** tab in the RunPod pod view to see real-time application output. This is essential for debugging.
+-   **Stopping and Restarting**: Use the controls in the RunPod UI to manage your pod. Stopping the pod will incur minimal storage costs, while terminating it is permanent.
+-   **Daily Workflow**: Start your pod, update the `.env` file with the latest WebSocket URL, run the client with `npm run dev`, and stop the pod when you're finished to save costs. 

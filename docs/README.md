@@ -1,158 +1,65 @@
 # 📖 Voice Pipeline Documentation
 
-Welcome to the complete documentation for the **Air-Gapped Voice AI Pipeline** running on **Nvidia A10 GPU** via Cerebrium. This system enables natural voice conversations with AI using your local microphone and speakers, with all AI processing happening on dedicated GPU infrastructure without external API dependencies.
+Welcome to the complete documentation for the **Air-Gapped Voice AI Pipeline**. This system is designed for deployment on **RunPod with NVIDIA L4 GPUs**, enabling natural, low-latency voice conversations using a fully self-contained AI stack.
 
-## 🚀 Quick Start Guide
+All AI processing, from speech recognition to language understanding and speech synthesis, happens within your private RunPod instance, ensuring data privacy and security with no external API dependencies during operation.
 
-### Step 1: Virtual Environment Setup ⚡
-```bash
-# Navigate to your project directory
-cd /path/to/voice-pipeline
+## 🚀 Getting Started
 
-# Create and activate virtual environment (ESSENTIAL!)
-python3 -m venv venv
-source venv/bin/activate
-
-# Install client dependencies (lightweight)
-pip install -r local_client_requirements.txt
-
-# Verify setup
-python -c "import websockets, sounddevice, numpy; print('✅ Ready for voice pipeline')"
-```
-
-### Step 2: Get Required Tokens 🔑
-- [**Hugging Face Token**](https://huggingface.co/settings/tokens) - For downloading Ultravox models
-
-### Step 3: Deploy & Connect 🚀
-```bash
-# Configure and deploy
-nano cerebrium.toml  # Add your HF token
-cerebrium deploy
-
-# Start voice session (with venv active)
-source venv/bin/activate
-export WS_SERVER="wss://your-deployment-id.cerebrium.app/ws"
-python local_client.py
-```
-
-## 🐍 Virtual Environment Management
-
-### ⚠️ Critical: Why Virtual Environments Matter
-
-This project uses **two different dependency sets**:
-
-| Component | Environment | Dependencies | Purpose |
-|-----------|-------------|--------------|---------|
-| **Local Client** | `venv` activated | `local_client_requirements.txt` | Lightweight audio & WebSocket |
-| **Remote Server** | Cerebrium container | `requirements.txt` | Heavy ML libraries (GPU) |
-
-**Not using virtual environments** leads to:
-- Dependency conflicts 
-- Bloated local installations
-- Import errors
-- Performance issues
-
-### Virtual Environment Quick Reference
-
-```bash
-# ✅ Correct Workflow
-cd voice-pipeline
-source venv/bin/activate          # ALWAYS do this first
-python local_client.py            # Works perfectly
-
-# ❌ Common Mistakes  
-python local_client.py            # Error: venv not activated
-pip install requirements.txt      # Wrong file (too heavy)
-pip install -g websockets         # Global install (conflicts)
-```
-
-```
+If this is your first time using the project, the **[Deployment Guide](deployment_guide.md)** is the best place to start. It provides a complete, step-by-step walkthrough of setting up the pipeline on RunPod.
 
 ## 📚 Complete Documentation
 
-| Guide | Essential For | Virtual Env Notes |
-|-------|---------------|-------------------|
-| [**🚀 Deployment Guide**](deployment_guide.md) | **First-time setup** | Full venv setup with troubleshooting |
-| [**🎯 Usage Guide**](usage.md) | **Daily operation** | Daily workflow with venv activation |
-| [**🔧 Troubleshooting**](troubleshooting.md) | **Problem solving** | Venv issues are #1 most common problem |
-| [**🏗️ Architecture**](architecture.md) | **Understanding system** | Why local vs remote dependencies differ |
-| [**🔑 API Setup**](api_setup.md) | **Configuration** | Only HF token needed for model access |
-| [**🤖 Ultravox Setup**](ultravox_setup.md) | **STT+LLM Model** | Combined speech and language processing |
-| [**🔊 Piper Setup**](piper_setup.md) | **TTS System** | Local neural text-to-speech |
+This documentation is structured to help you based on your goals, whether you want to use the system, understand its inner workings, or troubleshoot problems.
 
-### Start Here Based on Your Goal
+| Guide | Description | Key Topics |
+| :------------------------------------------ | :----------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------- |
+| [**🚀 Deployment Guide**](deployment_guide.md) | **Step-by-step instructions** for deploying the pipeline on RunPod.      | RunPod template setup, environment variables (`HF_TOKEN`), start commands, and local client configuration. |
+| [**🎯 Usage Guide**](usage.md) | **How to use the pipeline** for daily operation and interaction.         | Starting a session, speaking tips, conversation examples, and configuration options.                  |
+| [**🔧 Troubleshooting Guide**](troubleshooting.md) | **Solutions to common problems** you might encounter in a RunPod environment. | Checking pod logs, SSHing into the pod, connection errors, and AI service failures.                 |
+| [**🏗️ Architecture**](architecture.md) | A **high-level overview** of the system's design and data flow.        | The roles of the local client and the RunPod server, `UltravoxWithContextService`, and `KokoroTTSService`. |
+| [**🔑 API & Model Setup**](api_setup.md) | **Details on the models** and the Hugging Face token setup.              | How the `HF_TOKEN` is used, model names, and security best practices.                                 |
+| [**🤖 Ultravox Setup**](ultravox_setup.md) | An in-depth look at the **combined STT+LLM service**.                  | Benefits of a single model, context management, and performance tuning.                               |
+| [**🔊 Kokoro TTS Setup**](kokoro_setup.md) | An in-depth look at the **offline TTS service**.                       | Benefits of local TTS, configuration, and troubleshooting.                                            |
+| [**🔌 Hardware Guide**](hardware_guide.md) | A **comparison of suitable GPUs** for deploying the pipeline.            | Comparison of NVIDIA L4, A10, and L40 GPUs for different deployment scenarios.                        |
+| [**ንድ Pipeline Design**](pipeline_design.md) | The **strategic goals** of the project and its deployment path.          | Using RunPod for development and targeting an on-premises GPU for final production.                   |
 
-#### 🎯 "I want to use this system"
-1. **[Deployment Guide](deployment_guide.md)** - Complete setup including venv
-2. **[Usage Guide](usage.md)** - Daily operation with venv workflow
-3. **[Troubleshooting](troubleshooting.md)** - When things go wrong
+### Where to Start Based on Your Goal
 
-#### 🏗️ "I want to understand how it works" 
-1. **[Architecture](architecture.md)** - System design and data flow
-2. **[API Setup](api_setup.md)** - Configuration and tokens
-3. **[Deployment Guide](deployment_guide.md)** - Technical implementation
+#### 🎯 "I want to use this system."
+1.  **[Deployment Guide](deployment_guide.md)**: For your initial one-time setup.
+2.  **[Usage Guide](usage.md)**: For your day-to-day workflow.
+3.  **[Troubleshooting Guide](troubleshooting.md)**: When you encounter any issues.
 
-#### 🔧 "I'm having problems"
-1. **[Troubleshooting](troubleshooting.md)** - Start here for all issues
-2. **[Usage Guide](usage.md)** - Verify correct operation
-3. **[Deployment Guide](deployment_guide.md)** - Reconfigure if needed
+#### 🏗️ "I want to understand how it works."
+1.  **[Architecture](architecture.md)**: For the system's overall structure.
+2.  **[Pipeline Design](pipeline_design.md)**: For the project's strategic vision.
+3.  **[Hardware Guide](hardware_guide.md)**: To understand the hardware requirements.
 
-## 🏗️ System Architecture
+#### 🔧 "I'm having problems."
+1.  **[Troubleshooting Guide](troubleshooting.md)**: The first place to look for solutions.
+2.  **[Usage Guide](usage.md)**: To double-check that you are following the correct operational steps.
+3.  **[Deployment Guide](deployment_guide.md)**: To verify that your RunPod setup is configured correctly.
+
+## 🏗️ System Architecture Overview
 
 ```
-LOCAL MACHINE (CPU Only)           CEREBRIUM CLOUD (A10 GPU)
-┌─────────────────────────┐       ┌─────────────────────────────────────┐
-│  🐍 Virtual Environment │       │     🐳 Docker Container             │
-│  ┌─────────────────────┐│       │  ┌─────────────────────────────────┐│
-│  │   Dependencies:     ││  WSS  │  │      Dependencies:              ││
-│  │   • websockets      ││◄─────►│  │   • pipecat-ai[ultravox]        ││
-│  │   • sounddevice     ││       │  │   • torch                       ││
-│  │   • numpy           ││       │  │   • transformers                ││
-│  └─────────────────────┘│       │  │   • piper-tts                   ││
-│                         │       │  │                                 ││
-│  🎙️ Microphone Input    │       │  └─────────────────────────────────┘│
-│  🔊 Speaker Output      │       │                                     │
-│  📡 WebSocket Client    │       │  🤖 Ultravox (STT+LLM Combined)     │
-└─────────────────────────┘       │  🔊 Piper TTS                       │
-                                  └─────────────────────────────────────┘
+LOCAL MACHINE (Your Computer)        RUNPOD CLOUD (NVIDIA L4 GPU)
+┌─────────────────────────┐ WSS    ┌───────────────────────────────────┐
+│  🐍 Local Client        │◄─────►│     🐳 Docker Container           │
+│  ┌─────────────────────┐│        │  ┌───────────────────────────────┐ │
+│  │   Dependencies:     ││        │  │      AI Services:             │ │
+│  │   • websockets      ││        │  │   • UltravoxWithContext       │ │
+│  │   • sounddevice     ││        │  │   • KokoroTTS                 │ │
+│  │   • numpy           ││        │  └───────────────────────────────┘ │
+│  └─────────────────────┘│        │                                    │
+│                         │        │   🚀 Pipecat Orchestration      │
+│  🎙️ Microphone Input    │        └───────────────────────────────────┘
+│  🔊 Speaker Output      │
+└─────────────────────────┘
 ```
 
-**Key Point**: Local environment stays lightweight, all AI processing happens on GPU with no external API calls.
-
-## ⚡ Most Common Issues (All Virtual Environment Related!)
-
-### 1. `ModuleNotFoundError: No module named 'websockets'`
-```bash
-# Problem: venv not activated
-echo $VIRTUAL_ENV  # Shows nothing
-
-# Solution:
-source venv/bin/activate
-echo $VIRTUAL_ENV  # Shows path to venv
-```
-
-### 2. `python: command not found`
-```bash
-# Problem: Using system python instead of venv
-which python  # Shows /usr/bin/python
-
-# Solution:
-source venv/bin/activate
-which python  # Shows venv/bin/python
-```
-
-### 3. Heavy Dependencies Installed Locally
-```bash
-# Problem: Installed server requirements on local machine
-pip list | grep torch  # Shows torch, transformers, etc.
-
-# Solution: Recreate venv with correct dependencies
-deactivate
-rm -rf venv
-python3 -m venv venv
-source venv/bin/activate
-pip install -r local_client_requirements.txt
-```
+**Key Principle**: Your local machine runs a very lightweight client, while all the intensive AI processing happens in your private, secure RunPod container.
 
 ## 🎯 Success Indicators
 

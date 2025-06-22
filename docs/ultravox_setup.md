@@ -1,48 +1,61 @@
 # Ultravox Setup Guide
 
-This guide explains how Ultravox is integrated with Pipecat for the air-gapped voice pipeline.
+This guide explains how the **Ultravox** model is integrated into the voice pipeline using the custom `UltravoxWithContextService` to enable low-latency, context-aware conversations.
 
 ## What is Ultravox?
 
-Ultravox is a breakthrough multimodal LLM that combines Speech-to-Text (STT) and Language Model (LLM) capabilities into a single model. This eliminates the traditional cascaded pipeline approach, resulting in:
+Ultravox is a state-of-the-art multimodal model that combines Speech-to-Text (STT) and a Large Language Model (LLM) into a single, unified system. This approach offers significant advantages:
 
-- **60% faster response times** (1-2 seconds vs 2-5 seconds)
-- **Better audio understanding** (tone, emotion, context)
-- **No transcription errors** between STT and LLM
-- **Lower GPU memory usage** than running separate models
+-   **Dramatically Lower Latency**: Processing audio directly into a language response eliminates the separate transcription step.
+-   **Superior Audio Understanding**: The model can interpret nuances in speech like tone and pauses.
+-   **No Transcription Errors**: Eliminates the risk of STT errors being passed to the LLM.
 
-## How Ultravox Works with Pipecat
+## `UltravoxWithContextService`
 
-In Pipecat, Ultravox is implemented as a specialized STT service that also handles the LLM functionality:
+This project uses a custom `UltravoxWithContextService` (defined in `src/ultravox_with_context.py`) which extends the base Pipecat service to include **conversation memory**. It passes the conversation history back to the model with each new request, enabling a natural, coherent dialogue.
 
+## Pipeline Integration
 
-## Pipeline Architecture
-
-Traditional cascaded approach:
-```
-Audio → STT → Text → LLM → Response → TTS → Audio
-```
-
-Ultravox approach (faster):
-```
-Audio → Ultravox (STT+LLM) → Response → Piper TTS → Audio
-```
+**Our Ultravox Approach (Faster and Context-Aware):**
+`Audio → UltravoxWithContextService (STT+LLM) → Response Text → KokoroTTSService → Audio`
 
 ## Model Selection
 
-| Model | Size | VRAM Required | Speed | Quality |
-|-------|------|---------------|-------|---------|
-| `ultravox-v0_4_1-llama-3_1-8b` | 8B | ~16GB | Fast | Excellent |
-| `ultravox-v0_4_1-llama-3_1-70b` | 70B | ~80GB | Slower | Best |
-| `ultravox-v0_4-mistral-7b` | 7B | ~14GB | Fastest | Good |
+The pipeline is configured to use a performant and high-quality version of Ultravox that runs efficiently on an NVIDIA L4 GPU.
 
-For Cerebrium A10 (24GB VRAM), the 8B model is recommended.
+| Model                                        | Size | Est. VRAM | Performance on L4 |
+| -------------------------------------------- | ---- | --------- | ----------------- |
+| `fixie-ai/ultravox-v0_5-llama-3_1-8b`        | 8B   | ~16-18 GB | **Excellent**     |
 
-## Configuration in Pipecat
+## Configuration in `pipecat_pipeline.py`
 
-The Ultravox service is configured in `src/pipecat_pipeline.py`:
+The service is instantiated in `src/pipecat_pipeline.py`. Key parameters include:
 
+```python
+ultravox_processor = UltravoxWithContextService(
+    model_name="fixie-ai/ultravox-v0_5-llama-3_1-8b",
+    hf_token=HF_TOKEN,  # Injected from RunPod environment variable
+    temperature=0.3,    # Lower value for more consistent, less random responses
+    max_tokens=50,      # Controls the max length of a response
+    system_instruction=SYSTEM_INSTRUCTION, # Defines the AI's persona
+)
+```
 
+-   `temperature`: Controls the "creativity" of the AI. Lower is better for factual, assistant-like roles.
+-   `max_tokens`: Prevents overly long responses, keeping the conversation snappy.
+-   `system_instruction`: A powerful feature used to set the AI's persona, rules, and objectives.
+
+## Troubleshooting
+
+### Model Fails to Load
+If you see errors related to model loading in your RunPod logs (`401 Unauthorized` or file-not-found):
+
+1.  **Check `HF_TOKEN`**: Ensure the `HF_TOKEN` environment variable is correctly set in your RunPod pod configuration.
+2.  **Model Name**: Verify the model name in `pipecat_pipeline.py` is correct.
+3.  **Network Access**: On first launch, the pod needs internet access to contact Hugging Face.
+
+### GPU Memory Issues (CUDA Out of Memory)
+While unlikely on an NVIDIA L4 with the 8B model, if you encounter this error, it may indicate a memory leak. Use `nvidia-smi` (by SSHing into the pod) to monitor VRAM usage.
 
 ## Air-Gapped Benefits
 
@@ -62,35 +75,4 @@ The Ultravox service is configured in `src/pipecat_pipeline.py`:
 - `50-100`: Quick responses, commands
 - `100-200`: Normal conversation
 - `200-500`: Detailed explanations
-
-## Troubleshooting
-
-### Model Not Loading
-```bash
-# Check if HF token is set
-echo $HF_TOKEN
-
-# Verify model access
-curl -H "Authorization: Bearer $HF_TOKEN" \
-     "https://huggingface.co/api/models/fixie-ai/ultravox-v0_4_1-llama-3_1-8b"
-```
-
-### GPU Memory Issues
-```bash
-# Monitor GPU usage during deployment
-cerebrium logs voice-pipeline-airgapped | grep "CUDA"
-
-# If OOM errors, consider:
-# 1. Reducing max_tokens
-# 2. Lowering max_concurrency in cerebrium.toml
-# 3. Using smaller model (7B Mistral variant)
-```
-
-## Integration with Piper TTS
-
-Ultravox outputs text that's passed directly to Piper TTS:
-
-
-
-This creates a fully air-gapped voice pipeline with no external dependencies during operation.
 

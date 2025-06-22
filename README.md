@@ -1,111 +1,91 @@
-# Voice AI Pipeline - Air-Gapped Deployment
+# Air-Gapped Voice AI Pipeline on RunPod
 
-A complete voice AI pipeline using **Ultravox** (combined STT + LLM) and **Piper TTS** for fully local, air-gapped deployment on NVIDIA A10 GPUs via Cerebrium.
+A complete, low-latency, and air-gapped voice AI pipeline using **Ultravox** (combined STT + LLM) and **Kokoro TTS**. This project is designed for deployment on **RunPod (NVIDIA L4 GPU)**, providing a powerful, private voice interface without external API dependencies.
 
 ## 🚀 Quick Start
 
-### 1. Setup Local Environment
+### 1. Configure RunPod
+- Select a RunPod template with PyTorch and CUDA support.
+- Set the required environment variables in the template settings:
+  - `HF_TOKEN`: Your Hugging Face token for model downloads.
+  - `KOKORO_VOICE_ID`: The specific TTS voice to use (e.g., `af_bella`).
+- Set the container's start command to: `python src/main.py`
+
+### 2. Deploy and Connect
+- Deploy your pod on RunPod.
+- Once running, find your pod's WebSocket endpoint. The application provides a `/connect` endpoint to help discover this URL.
+- Use a local WebSocket client to connect to the endpoint and start talking.
+
+### 3. Setup Local Client
+The recommended client is the web client located in `client/websocket-client/`.
+
 ```bash
-# Create virtual environment
-python3 -m venv venv
-source venv/bin/activate
+# Navigate to the web client directory
+cd client/websocket-client
 
-# Install local client dependencies
-pip install -r local_client_requirements.txt
+# Install dependencies
+npm install
 ```
 
-### 2. Configure Cerebrium
-Edit `cerebrium.toml` and add your Hugging Face token:
-```toml
-[cerebrium.secrets]
-HF_TOKEN = "hf_YOUR_ACTUAL_TOKEN_HERE"
-```
+Before running, you must update the `VITE_WS_URL` in the `.env` file (or create one from `.env.example`) to point to your RunPod's WebSocket URL.
 
-### 3. Deploy to Cerebrium
+### 4. Run Local Client
 ```bash
-# Install Cerebrium CLI
-pip install cerebrium
-
-# Login
-cerebrium login
-
-# Deploy
-cerebrium deploy
+# Run the development server
+npm run dev
 ```
-
-### 4. Connect and Talk
-```bash
-# Set server URL
-export WS_SERVER="wss://your-deployment-id.cerebrium.app/ws"
-
-# Run client
-python local_client.py
-```
+Then, visit `http://localhost:5173` in your browser to use the client.
 
 ## 🏗️ Architecture
 
 ```
-Local Machine (CPU)          Cerebrium Cloud (A10 GPU)
-┌─────────────────┐         ┌────────────────────────┐
-│ 🎙️ Microphone   │   WSS   │ 🤖 Ultravox (STT+LLM)  │
-│ 🔊 Speakers     │ ◄─────► │ 🔊 Piper TTS           │
-│ 📡 WebSocket    │         │ 🚀 Pipecat Framework   │
-└─────────────────┘         └────────────────────────┘
+Local Machine (CPU)                RunPod Cloud (NVIDIA L4 GPU)
+┌─────────────────┐         ┌──────────────────────────────────┐
+│ 🌐 Web Browser  │   WSS   │   🤖 UltravoxWithContext (STT+LLM) │
+│ 🔊 Speakers     │ ◄─────► │   🔊 KokoroTTS (Offline TTS)       │
+│ 📡 WebSocket    │         │   🚀 Pipecat Framework             │
+└─────────────────┘         └──────────────────────────────────┘
 ```
 
 ## 🎯 Key Features
 
-- **Ultravox**: Single model for both speech recognition and language understanding
-- **Piper TTS**: Local neural text-to-speech (no APIs)
-- **Air-Gapped**: All AI processing on GPU, no external API calls
-- **Real-Time**: Low-latency voice conversations
-- **Pipecat**: Production-ready voice pipeline framework
+- **Ultravox with Context**: A single, powerful model for speech recognition and language understanding that maintains conversation history.
+- **Kokoro TTS**: High-quality, offline text-to-speech, ensuring the entire pipeline remains air-gapped.
+- **RunPod Optimized**: Designed to leverage powerful NVIDIA L4 GPUs on RunPod for minimal latency.
+- **Real-Time & Low-Latency**: Engineered for natural, real-time voice conversations.
+- **Pipecat Framework**: Built on a robust, production-ready framework for voice AI.
+- **Air-Gapped by Design**: All AI processing occurs within your private RunPod instance. No data is sent to third-party APIs.
 
 ## 📁 Project Structure
 
 ```
 voice-pipeline/
 ├── src/
-│   ├── main.py                 # Entry point
-│   ├── pipecat_pipeline.py     # Main pipeline with Pipecat
-│   └── piper_tts_service.py    # Custom Piper TTS service
+│   ├── main.py                     # FastAPI server entry point
+│   ├── pipecat_pipeline.py         # Core pipeline logic with Pipecat
+│   ├── ultravox_with_context.py    # Custom Ultravox service with memory
+│   └── kokoro_tts_service.py       # Custom Kokoro TTS service
 ├── docker/
-│   └── Dockerfile              # GPU-enabled container
-├── local_client.py             # Audio capture/playback client
-├── cerebrium.toml              # Deployment configuration
-├── requirements.txt            # Server dependencies (GPU)
-└── local_client_requirements.txt  # Client dependencies (lightweight)
+│   └── Dockerfile                  # Container definition for RunPod
+├── docs/                           # All project documentation
+├── requirements.txt                # Server dependencies for RunPod
+└── client/                         # Local WebSocket client code
 ```
 
 ## 🔧 Troubleshooting
 
-### Common Issues
+Common issues often relate to incorrect environment variables on RunPod, network connectivity, or audio device configuration on your local machine.
 
-1. **WebSocket Connection Failed**
-   - Check `WS_SERVER` environment variable
-   - Verify deployment is running: `cerebrium list`
-
-2. **No Audio Input/Output**
-   - Check audio devices: `python -c "import sounddevice; print(sounddevice.query_devices())"`
-   - Ensure microphone/speakers are connected
-
-3. **GPU Memory Issues**
-   - The 8B Ultravox model requires ~16GB VRAM
-   - A10 has 24GB, should work fine
+Refer to the complete [**Troubleshooting Guide**](docs/troubleshooting.md) for detailed solutions.
 
 ## 💰 Cost
 
-- **Cerebrium A10**: ~$0.50-1.00/hour when active
-- **Auto-scaling**: Scales to zero when idle (no cost)
-- **No API fees**: All models run locally on GPU
+- **RunPod L4**: Billed by the hour. Check RunPod's pricing for the most current rates.
+- **No API fees**: The air-gapped design means no extra costs for STT, LLM, or TTS APIs.
+Cost me $0.43 per hour
 
 ## 📚 Documentation
 
-See the `docs/` directory for detailed guides:
-- [Architecture](docs/architecture.md)
-- [Deployment Guide](docs/deployment_guide.md) 
-- [API Setup](docs/api_setup.md)
-- [Ultravox Setup](docs/ultravox_setup.md)
-- [Piper Setup](docs/piper_setup.md)
+See the `docs/` directory for detailed guides on every aspect of this project. The main [**Documentation Hub**](docs/README.md) provides a complete overview.
 
 

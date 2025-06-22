@@ -1,29 +1,27 @@
 # Source Code Structure
 
-This directory contains the core deployment code for the voice pipeline.
+This directory contains the core server-side Python code for the voice pipeline.
 
-## Core Files (Required for Deployment)
+## Core Files
 
-### main.py
-Entry point for the voice pipeline server. Handles initialization and fallback logic.
+### `main.py`
+The FastAPI entry point for the voice pipeline server. It handles server startup, WebSocket routing, and basic management endpoints like `/connect`.
 
-### pipecat_pipeline.py
-Main pipeline implementation using Pipecat framework:
-- Integrates Ultravox for combined STT+LLM processing
-- Uses custom Piper TTS service for air-gapped deployment
-- Handles WebSocket connections via FastAPI
-- No external API calls during operation
+### `pipecat_pipeline.py`
+This is the heart of the application. It uses the `pipecat-ai` framework to wire together all the necessary AI services:
+-   Integrates `UltravoxWithContextService` for unified, low-latency STT and LLM processing.
+-   Uses the custom `KokoroTTSService` for fully offline, air-gapped text-to-speech.
+-   Manages the WebSocket transport layer and client connections.
 
-### piper_tts_service.py
-Consolidated Pipecat-compatible TTS service that:
-- Runs Piper TTS directly via subprocess (no HTTP server needed)
-- Handles model downloading during deployment
-- Provides proper Pipecat frame integration
-- Supports audio resampling from 22050 Hz to 16000 Hz
+### `ultravox_with_context.py`
+A custom Pipecat service that extends the base `UltravoxSTTService` to include conversation memory. This allows the AI to maintain context across multiple turns, leading to more natural conversations.
+
+### `kokoro_tts_service.py`
+A custom Pipecat-compatible TTS service for the Kokoro engine. It receives text from the pipeline and streams synthesized audio back in real-time.
 
 ## Architecture Notes
 
-1. **Air-Gapped Design**: All AI processing happens locally on the GPU without external API calls
-2. **Simplified TTS**: We use a direct subprocess approach instead of the official Pipecat Piper service to avoid HTTP server complexity
-3. **Cerebrium Deployment**: Models are pre-downloaded during container build for fast startup
+1.  **Air-Gapped Design**: All AI processing (STT, LLM, TTS) happens on the deployed GPU without external API calls during operation.
+2.  **Unified STT/LLM**: The use of `UltravoxWithContextService` is a key design choice to minimize latency by avoiding a separate transcription step.
+3.  **Dockerized Deployment**: The models are downloaded when the Docker container is first initialized on RunPod, ensuring they are cached in the pod's volume for fast subsequent startups.
 

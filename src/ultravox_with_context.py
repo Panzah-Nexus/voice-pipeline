@@ -24,11 +24,13 @@ from pipecat.frames.frames import (
     StartFrame,
     UserStartedSpeakingFrame,
     UserStoppedSpeakingFrame,
-    OpenAILLMContextFrame,
 )
 from pipecat.processors.frame_processor import FrameDirection
 from pipecat.services.ultravox.stt import UltravoxSTTService, AudioBuffer, UltravoxModel
-from pipecat.processors.aggregators.openai_llm_context import OpenAILLMContext
+from pipecat.processors.aggregators.openai_llm_context import (
+    OpenAILLMContext,
+    OpenAILLMContextFrame,
+)
 
 
 class UltravoxWithContextService(UltravoxSTTService):

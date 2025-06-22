@@ -110,7 +110,7 @@ async def run_bot(websocket_client):
         params=FastAPIWebsocketParams(
             audio_in_enabled=True,
             audio_out_enabled=True,
-            add_wav_header=False,
+            add_wav_header=True,
             vad_analyzer=FAST_VAD,
             serializer=ProtobufFrameSerializer(),
         ),

@@ -1,21 +1,20 @@
-"""gi
-Air-gapped Pipecat bot with RTVI compatibility for Runpod deployment
-====================================================================
-This module wires together:
-
-* **UltravoxSTTService** – combined STT + LLM (local)
-* **KokoroTTSService**   – offline TTS (local)
-
-All AI processing happens on Runpod GPU infrastructure without external API calls.
-"""
-
-import os
+# This example demonstrates how to create an interruptible PURELY LOCAL audio pipeline using Pipecat.
+# It uses the Moonshine ASR for speech-to-text, Kokoro for text-to-speech, and Ollama for LLM.
+# The pipeline is designed to be interruptible, allowing for real-time interaction with the user.
+#
+# Note you need to have the following services running:
+# - Ollama server running with the Llama 3.1 model
+# - Kokoro-onnx in assets folder 
+# $ pip install kokoro-onnx
+# copy kokoro-v1.0.onnx and voices-v1.0.bin to the assets folder
+# - Moonshine ASR onnx installed
+# $ uv pip install useful-moonshine-onnx@git+https://git@github.com/usefulsensors/moonshine.git#subdirectory=moonshine-onnx
+import asyncio
 import sys
 
+from dotenv import load_dotenv
 from loguru import logger
 
-# --- VAD --------------------------------------------------------------
-# Tune Silero so it fires sooner and streams shorter chunks
 from pipecat.audio.vad.silero import SileroVADAnalyzer
 from pipecat.audio.vad.vad_analyzer import VADParams
 
@@ -26,93 +25,35 @@ FAST_VAD = SileroVADAnalyzer(
         window_ms=160,           # 10 × 16-kHz frames
     )
 )
-
 from pipecat.pipeline.pipeline import Pipeline
 from pipecat.pipeline.runner import PipelineRunner
 from pipecat.pipeline.task import PipelineParams, PipelineTask
+
 from pipecat.processors.frameworks.rtvi import RTVIConfig, RTVIObserver, RTVIProcessor
 from pipecat.serializers.protobuf import ProtobufFrameSerializer
+
+from pipecat.processors.aggregators.openai_llm_context import OpenAILLMContext
+from src.kokoro.tts import KokoroTTSService
+from src.moonshine.stt import MoonshineSTTService
+from pipecat.services.ollama.llm import OLLamaLLMService
+
+
 from pipecat.transports.network.fastapi_websocket import (
     FastAPIWebsocketParams,
     FastAPIWebsocketTransport,
 )
-from pipecat.processors.metrics.frame_processor_metrics import (
-    FrameProcessorMetrics,
-)
-from pipecat.frames.frames import (
-    TranscriptionFrame,
-    TTSTextFrame,
-    Frame,
-)
-from pipecat.processors.aggregators.openai_llm_context import OpenAILLMContext
 
-from src.ultravox_with_context import UltravoxWithContextService, ContextManager
-from pipecat.services.ultravox.stt import UltravoxSTTService
+load_dotenv(override=True)
 
-# Kokoro TTS service (preferred over Piper)
-from src.kokoro_tts_service import KokoroTTSService
-
-#from src.llm_to_tts_bridge import LLMToTTSBridge
-
-# ---------------------------------------------------------------------------
-# Initialisation & configuration
-# ---------------------------------------------------------------------------
-# Configure loguru logger (id=0 might have been removed by upstream Pipecat)
-try:
-    logger.remove(0)
-except ValueError:
-    # Either already removed or replaced by another module – proceed silently
-    pass
-
+logger.remove(0)
 logger.add(sys.stderr, level="DEBUG")
-
-# Configuration from environment variables
-HF_TOKEN: str = os.getenv("HF_TOKEN", "")
-KOKORO_MODEL_PATH: str = os.getenv("KOKORO_MODEL_PATH", "/models/kokoro/model_fp16.onnx")
-KOKORO_VOICES_PATH: str = os.getenv("KOKORO_VOICES_PATH", "/models/kokoro/voices-v1.0.bin")
-KOKORO_VOICE_ID: str = os.getenv("KOKORO_VOICE_ID", "af_bella")
-SAMPLE_RATE: int = int(os.getenv("KOKORO_SAMPLE_RATE", "24000"))
-
-# ---------------------------------------------------------------------------
-# Initialize Ultravox processor once at module level with context awareness
-# ---------------------------------------------------------------------------
-logger.info("Loading UltravoxWithContextService... this can take a while on first run.")
-
-# Create a context-aware system instruction that encourages building on previous conversation
-SYSTEM_INSTRUCTION = """You are a helpful AI assistant with full memory of our conversation. 
-
-Key behaviors:
-1. Remember and reference previous parts of our conversation naturally
-2. Build on what we've discussed before without repeating yourself
-3. If the user refers to something we discussed earlier, acknowledge it
-4. Keep responses concise (1-2 sentences) unless more detail is needed
-5. Maintain conversational continuity and flow
-6. If context seems missing or unclear, politely ask for clarification
-
-You have access to our full conversation history, so use it to provide contextual, relevant responses."""
-
-ultravox_processor = UltravoxWithContextService(
-    model_name="fixie-ai/ultravox-v0_5-llama-3_1-8b",
-    hf_token=HF_TOKEN,
-    temperature=0.3,  # Lower temperature = more consistent responses
-    max_tokens=50,    # Slightly more tokens for contextual responses
-    system_instruction=SYSTEM_INSTRUCTION,
-)
-
-# Create context manager for trimming conversation history
-context_manager = ContextManager(max_messages=20)  # Keep last 20 messages
-
-logger.info("Ultravox model with context initialized successfully!")
-
 
 
 async def run_bot(websocket_client):
-    """Entry-point used by Pipecat example clients."""
-    
+
     logger.info("Starting bot")
 
-    # 1️⃣ WebSocket transport – identical params to reference example
-    ws_transport = FastAPIWebsocketTransport(
+    transport = FastAPIWebsocketTransport(
         websocket=websocket_client,
         params=FastAPIWebsocketParams(
             audio_in_enabled=True,
@@ -123,111 +64,66 @@ async def run_bot(websocket_client):
         ),
     )
 
-    # 2️⃣ Local TTS (Kokoro)
-    tts = KokoroTTSService(
-        model_path=KOKORO_MODEL_PATH,
-        voices_path=KOKORO_VOICES_PATH,
-        voice_id=KOKORO_VOICE_ID,
-        sample_rate=SAMPLE_RATE,
-    )
-
-    # 3️⃣ RTVI signalling layer – required for Pipecat web client
     rtvi = RTVIProcessor(config=RTVIConfig(config=[]))
 
-    # 4️⃣ Simple pipeline for optimal interruption handling
+    stt = MoonshineSTTService(
+        model_name="moonshine/tiny",
+        language="en",
+        vad_enabled=True,
+        vad_analyzer=SileroVADAnalyzer(),
+    )
+
+    tts = KokoroTTSService(
+        model_path="/app/assets/kokoro-v1.0.onnx",
+        voices_path="/app/assets/voices-v1.0.bin",
+        voice_id="am_fenrir",
+    )
+
+    llm = OLLamaLLMService(
+        model="llama3.1",
+        base_url="http://localhost:11434/v1",
+    )
+
+    messages = [
+        {
+            "role": "system",
+            "content": "You are a helpful LLM. Your goal is to demonstrate your capabilities in a succinct way. Your output will be converted to audio so don't include special characters in your answers. Respond to what the user said in a creative and helpful way.",
+        },
+    ]
+
+    context = OpenAILLMContext(messages)
+    context_aggregator = llm.create_context_aggregator(context)
+
     pipeline = Pipeline(
         [
-            ws_transport.input(),
-            rtvi,           
-            ultravox_processor,    # Combined STT+LLM
-            tts,
-            ws_transport.output(),
+            transport.input(),  # Transport user input
+            stt,
+            context_aggregator.user(),  # User responses
+            llm,  # LLM
+            tts,  # TTS
+            transport.output(),  # Transport bot output
+            context_aggregator.assistant(),  # Assistant spoken responses
         ]
     )
 
     task = PipelineTask(
         pipeline,
         params=PipelineParams(
+            allow_interruptions=True,
             enable_metrics=True,
             enable_usage_metrics=True,
-            allow_interruptions=True,
-            # Enable immediate interruption
-            report_only_initial_ttfb=False,
+            report_only_initial_ttfb=True,
         ),
         observers=[RTVIObserver(rtvi)],
     )
 
-    # ---------- Event handlers ----------
-    @rtvi.event_handler("on_client_ready")
-    async def on_client_ready(rtvi):
-        logger.info("Pipecat client ready.")
-        await rtvi.set_bot_ready()
-        # Pipeline is ready - initial greeting will happen when user speaks
+    messages.append({"role": "system", "content": "Please introduce yourself to the user."})
+    await task.queue_frames([context_aggregator.user().get_context_frame()])
 
-    @ws_transport.event_handler("on_client_connected")
-    async def on_client_connected(transport, client):
-        logger.info("Client connected")
+    runner = PipelineRunner()
 
-    @ws_transport.event_handler("on_client_disconnected")
-    async def on_client_disconnected(transport, client):
-        logger.info("Client disconnected")
-        await task.cancel()
-        
-    # ---------- Interruption tracking ----------
-    @ws_transport.event_handler("on_interruption_start")
-    async def on_interruption_start(transport):
-        logger.info("🔴 INTERRUPTION: User started speaking - stopping TTS")
-        
-    @ws_transport.event_handler("on_interruption_end")  
-    async def on_interruption_end(transport):
-        logger.info("🟢 INTERRUPTION: User stopped speaking - ready for response")
-        
-    # Track speech events
-    @ws_transport.event_handler("on_user_started_speaking")
-    async def on_user_started_speaking(transport):
-        logger.info("👤 USER: Started speaking")
-        
-    @ws_transport.event_handler("on_user_stopped_speaking")
-    async def on_user_stopped_speaking(transport):
-        logger.info("👤 USER: Stopped speaking")
-        
-    @ws_transport.event_handler("on_bot_started_speaking")
-    async def on_bot_started_speaking(transport):
-        logger.info("🤖 BOT: Started speaking")
-        
-    @ws_transport.event_handler("on_bot_stopped_speaking")
-    async def on_bot_stopped_speaking(transport):
-        logger.info("🤖 BOT: Stopped speaking")
-
-    # ---------- Metrics monitoring ----------
-    async def log_metrics():
-        """Log performance metrics every 10 seconds"""
-        import asyncio
-        while True:
-            try:
-                await asyncio.sleep(10)
-                # Get metrics from the task
-                if hasattr(task, '_pipeline') and hasattr(task._pipeline, '_processors'):
-                    logger.info("📊 === PERFORMANCE METRICS ===")
-                    for processor in task._pipeline._processors:
-                        if hasattr(processor, '_metrics') and processor._metrics:
-                            metrics = processor._metrics
-                            name = processor.__class__.__name__
-                            if hasattr(metrics, 'ttfb_metrics') and metrics.ttfb_metrics:
-                                avg_ttfb = sum(metrics.ttfb_metrics) / len(metrics.ttfb_metrics)
-                                logger.info(f"⚡ {name} - Avg TTFB: {avg_ttfb:.3f}s")
-                            if hasattr(metrics, 'processing_metrics') and metrics.processing_metrics:
-                                avg_processing = sum(metrics.processing_metrics) / len(metrics.processing_metrics)
-                                logger.info(f"🔄 {name} - Avg Processing: {avg_processing:.3f}s")
-                    logger.info("📊 ========================")
-            except Exception as e:
-                logger.debug(f"Metrics logging error: {e}")
-                break
-    
-    # Start metrics logging in background
-    import asyncio
-    asyncio.create_task(log_metrics())
-
-    # ---------- Runner ----------
-    runner = PipelineRunner(handle_sigint=False)
     await runner.run(task)
+
+
+if __name__ == "__main__":
+    asyncio.run(run_bot())

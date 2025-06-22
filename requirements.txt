@@ -1,8 +1,5 @@
-# Core Pipecat with Ultravox + WebSocket server + Silero VAD
-pipecat-ai[ultravox,websocket,silero]
-
-# Kokoro (PyTorch build, ≈ 0.5.2 or newer auto-discovers weights in $KOKORO_HOME)
-kokoro>=0.9.4
+# Core Pipecat with WebSocket server + Silero VAD
+pipecat-ai[websocket,silero]
 
 # FastAPI / Uvicorn
 uvicorn[standard]

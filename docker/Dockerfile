@@ -33,70 +33,49 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1 &
     update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
 
 # Upgrade pip
-RUN pip install --upgrade pip setuptools wheel
+RUN pip install --upgrade pip setuptools wheel uv
 
 ###############################################################################
-# 4. Clone Kokoro model & voices with Git-LFS
+# 4. Install Moonshine ASR
 ###############################################################################
-RUN mkdir -p /models && \
-    git clone https://huggingface.co/hexgrad/Kokoro-82M /models/kokoro   # downloads ~600 MB via LFS
-
-# Expose the path to Kokoro so the Python package finds it automatically
-ENV KOKORO_HOME=/models/kokoro
+RUN uv pip install useful-moonshine-onnx@git+https://git@github.com/usefulsensors/moonshine.git#subdirectory=moonshine-onnx
 
 ###############################################################################
-# 5. Python dependencies
+# 5. Install Ollama and pull model
+###############################################################################
+RUN curl -fsSL https://ollama.com/install.sh | sh
+RUN ollama pull llama3.1
+
+###############################################################################
+# 6. Python dependencies from requirements.txt
 ###############################################################################
 # * cu118 wheels for torch/torchvision/torchaudio 2.3.0               ─┐
-# * Pipecat with Ultravox + Silero + WebSocket extras                 │
+# * Pipecat with WebSocket + Silero extras                            │
 # * bitsandbytes  — optional INT8 quant                               │
-# * kokoro         — PyTorch inference wrapper                        │
+# * kokoro-onnx    — ONNX inference wrapper                           │
+# * ollama         — Ollama client library                            │
 
 # Copy requirements.txt right before installation to break cache when it changes
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
-#RUN pip install --no-cache-dir \
-#        torch==2.3.0+cu118 torchvision==0.18.0+cu118 torchaudio==2.3.0+cu118 \
-#            --index-url https://download.pytorch.org/whl/cu118 && \
-#    pip install --no-cache-dir -r /tmp/requirements.txt
-
 ###############################################################################
-# 6. Piper (kept as-is — comment if unused)
-###############################################################################
-#ARG PIPER_VERSION=latest
-#RUN set -eux; \
-#    mkdir -p /usr/local/bin /usr/local/lib && cd /tmp; \
-#    if [ "$PIPER_VERSION" = "latest" ]; then \
-#        PIPER_URL=$(curl -s https://api.github.com/repos/rhasspy/piper/releases/latest | \
-#                    grep browser_download_url | grep linux_x86_64 | cut -d '"' -f 4); \
-#    else \
-#        PIPER_URL="https://github.com/rhasspy/piper/releases/download/${PIPER_VERSION}/piper_linux_x86_64.tar.gz"; \
-#    fi; \
-#    echo "Downloading Piper from: $PIPER_URL"; \
-#    wget -q "$PIPER_URL" -O piper.tar.gz; \
-#    tar -xzf piper.tar.gz; \
-#    cp piper/piper /usr/local/bin/; \
-#    find piper -maxdepth 2 -name '*.so*' -exec cp {} /usr/local/lib/ \;; \
-#    ldconfig; rm -rf /tmp/piper*
-
-#RUN mkdir -p /models/piper && \
-#    cd /models/piper && \
-#    wget -q https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/en_US-lessac-medium.onnx && \
-#    wget -q https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/en_US-lessac-medium.onnx.json
-
-###############################################################################
-# 7. Copy your application code
+# 7. Copy your application code and models
 ###############################################################################
 WORKDIR /app
 
 COPY src/ ./src/
+COPY assets/ /app/assets/
 
-# Create startup script that starts SSH and the app
+# Create startup script that starts SSH, Ollama, and the app
 RUN cat > /app/start.sh << 'EOF'
 #!/bin/bash
 # Start SSH daemon
 service ssh start
+# Start Ollama server in the background
+ollama serve &
+# Give it a moment to initialize
+sleep 3
 # Start the voice pipeline server
 exec python src/main.py
 EOF
@@ -104,9 +83,9 @@ EOF
 RUN chmod +x /app/start.sh
 
 # Expose ports
-EXPOSE 22 8000
+EXPOSE 22 8000 11434
 
-# Start both SSH and the app
+# Start all services
 CMD ["/app/start.sh"]
 
 

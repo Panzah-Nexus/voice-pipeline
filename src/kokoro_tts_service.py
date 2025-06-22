@@ -14,9 +14,6 @@ from typing import AsyncGenerator, Optional
 import numpy as np
 from loguru import logger
 import torch
-import asyncio
-import concurrent.futures
-import queue
 
 # Pipecat frame & base-service imports -------------------------------------------------
 from pipecat.frames.frames import (
@@ -149,13 +146,6 @@ class KokoroTTSService(TTSService):
         self._speed: float = params.speed
 
         logger.info("Kokoro pipeline initialised successfully (backend=PyTorch)")
-        
-        # Log GPU availability for performance monitoring
-        if torch.cuda.is_available():
-            logger.info(f"🔥 GPU acceleration enabled: {torch.cuda.get_device_name(0)}")
-            logger.info(f"🔥 GPU memory: {torch.cuda.get_device_properties(0).total_memory / 1e9:.1f}GB")
-        else:
-            logger.warning("⚠️  No GPU detected - TTS will run on CPU (slower)")
 
     # ---------------------------------------------------------------------
     # Public helpers
@@ -172,92 +162,34 @@ class KokoroTTSService(TTSService):
         return False
 
     async def run_tts(self, text: str) -> AsyncGenerator[Frame, None]:
-        """Generate speech with true async streaming using thread pool execution."""
+        """Generate speech and stream PCM chunks back to Pipecat."""
 
-        logger.info("🔊 Kokoro TTS received: '%s'", text.replace("\n", " ")[:120])
-        
+        logger.debug("Kokoro generating for: %s", text.replace("\n", " ")[:120])
         try:
             yield TTSStartedFrame()
-            
-            # Run the synchronous generator in a thread pool for true async
-            def sync_generator_worker():
-                """Worker function that runs sync generator in thread pool."""
-                try:
-                    # Your existing sync generator - this IS streaming!
-                    for i, (_, _, audio) in enumerate(self._pipeline(
-                        text,
-                        voice=self._voice_id,
-                        speed=self._speed,
-                        split_pattern=r'[.!?]',  # Split only on sentence endings for fewer, larger chunks
-                    )):
-                        # Convert torch.Tensor → numpy → int16
-                        if isinstance(audio, torch.Tensor):
-                            samples = audio.cpu().numpy()
-                        else:
-                            samples = audio
 
-                        pcm_i16 = (np.clip(samples, -1.0, 1.0) * 32767).astype(np.int16)
-                        
-                        # Put chunk in queue for async consumption
-                        chunk_queue.put(('chunk', i + 1, pcm_i16.tobytes()))
-                        
-                    chunk_queue.put(('done', None, None))
-                except Exception as e:
-                    chunk_queue.put(('error', None, str(e)))
-            
-            # Create queue for communication between threads
-            chunk_queue = queue.Queue()
-            
-            # Submit worker to thread pool
-            loop = asyncio.get_event_loop()
-            with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
-                future = loop.run_in_executor(executor, sync_generator_worker)
-                
-                chunks_generated = 0
-                try:
-                    while True:
-                        # Check if task was cancelled
-                        if asyncio.current_task().cancelled():
-                            logger.info("🚫 TTS cancelled due to interruption")
-                            future.cancel()  # Cancel the thread
-                            break
-                            
-                        # Get chunk from queue (non-blocking with timeout)
-                        try:
-                            chunk_type, chunk_num, chunk_data = chunk_queue.get(timeout=0.01)
-                        except queue.Empty:
-                            # Give other tasks a chance and check cancellation
-                            await asyncio.sleep(0.001)
-                            continue
-                        
-                        if chunk_type == 'chunk':
-                            chunks_generated = chunk_num
-                            logger.debug("🔊 TTS chunk %d", chunk_num)
-                            
-                            yield TTSAudioRawFrame(
-                                audio=chunk_data,
-                                sample_rate=self._sample_rate,
-                                num_channels=1,
-                            )
-                            
-                        elif chunk_type == 'done':
-                            logger.info("🔊 TTS completed (%d chunks)", chunks_generated)
-                            break
-                            
-                        elif chunk_type == 'error':
-                            raise Exception(f"TTS generation failed: {chunk_data}")
-                
-                except asyncio.CancelledError:
-                    logger.info("🚫 TTS cancelled after %d chunks", chunks_generated)
-                    future.cancel()
-                    raise
+            # `KPipeline.__call__` yields (graphemes, phonemes, audio) tuples.
+            for _, _, audio in self._pipeline(
+                text,
+                voice=self._voice_id,
+                speed=self._speed,
+                split_pattern=None,
+            ):
+                # Convert torch.Tensor → numpy → int16 and stream out
+                if isinstance(audio, torch.Tensor):
+                    samples = audio.cpu().numpy()
+                else:
+                    samples = audio
+
+                pcm_i16 = (np.clip(samples, -1.0, 1.0) * 32767).astype(np.int16)
+                yield TTSAudioRawFrame(
+                    audio=pcm_i16.tobytes(),
+                    sample_rate=self._sample_rate,
+                    num_channels=1,
+                )
 
             yield TTSStoppedFrame()
 
-        except asyncio.CancelledError:
-            logger.info("🚫 TTS cancelled by interruption")
-            yield TTSStoppedFrame()
-            raise
         except Exception as exc:
-            logger.exception("❌ Kokoro TTS failed: %s", exc)
+            logger.exception("Kokoro TTS failed: %s", exc)
             yield ErrorFrame(error=f"Kokoro TTS error: {exc}") 

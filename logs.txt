@@ -13622,3 +13622,1299 @@
 2025-06-22T12:48:00.501398947Z 2025-06-22 12:48:00.500 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
 2025-06-22T12:48:00.501413949Z [32m12:48:00[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
 2025-06-22T12:48:00.501419818Z 2025-06-22 12:48:00.501 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:48:04.786803243Z [32m12:48:04[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:48:04.786856183Z 2025-06-22 12:48:04.786 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:48:05.503308321Z [32m12:48:05[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:48:05.503356113Z 2025-06-22 12:48:05.502 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:48:05.503447120Z [32m12:48:05[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:48:05.503472638Z 2025-06-22 12:48:05.503 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:48:10.504664725Z [32m12:48:10[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:48:10.504710254Z 2025-06-22 12:48:10.504 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:48:10.504812688Z [32m12:48:10[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:48:10.504840219Z 2025-06-22 12:48:10.504 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:48:14.789332266Z [32m12:48:14[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:48:14.789374189Z 2025-06-22 12:48:14.788 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:48:15.505966027Z [32m12:48:15[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:48:15.506007159Z 2025-06-22 12:48:15.505 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:48:15.506184635Z [32m12:48:15[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:48:15.506211495Z 2025-06-22 12:48:15.505 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:48:20.507361730Z [32m12:48:20[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:48:20.507432396Z 2025-06-22 12:48:20.506 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:48:20.507444284Z [32m12:48:20[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:48:20.507449802Z 2025-06-22 12:48:20.507 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:48:24.790391601Z [32m12:48:24[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:48:24.790440525Z 2025-06-22 12:48:24.789 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:48:25.509100046Z [32m12:48:25[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:48:25.509143331Z 2025-06-22 12:48:25.508 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:48:25.509200006Z [32m12:48:25[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:48:25.509231524Z 2025-06-22 12:48:25.509 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:48:30.511465165Z [32m12:48:30[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:48:30.511507498Z 2025-06-22 12:48:30.510 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:48:30.511716211Z [32m12:48:30[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:48:30.511743342Z 2025-06-22 12:48:30.511 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:48:34.791164758Z [32m12:48:34[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:48:34.791203166Z 2025-06-22 12:48:34.790 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:48:35.512565855Z [32m12:48:35[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:48:35.512612375Z 2025-06-22 12:48:35.512 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:48:35.512693627Z [32m12:48:35[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:48:35.512717012Z 2025-06-22 12:48:35.512 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:48:40.513812735Z [32m12:48:40[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:48:40.513860106Z 2025-06-22 12:48:40.513 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:48:40.514005544Z [32m12:48:40[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:48:40.514030081Z 2025-06-22 12:48:40.513 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:48:44.792200479Z [32m12:48:44[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:48:44.792246829Z 2025-06-22 12:48:44.791 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:48:45.514417611Z [32m12:48:45[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:48:45.514452534Z 2025-06-22 12:48:45.514 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:48:45.514506495Z [32m12:48:45[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:48:45.514528508Z 2025-06-22 12:48:45.514 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:48:50.515665603Z [32m12:48:50[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:48:50.515735638Z 2025-06-22 12:48:50.515 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:48:50.515798662Z [32m12:48:50[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:48:50.515826063Z 2025-06-22 12:48:50.515 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:48:54.793594148Z [32m12:48:54[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:48:54.793638444Z 2025-06-22 12:48:54.793 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:48:55.517105262Z [32m12:48:55[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:48:55.517151792Z 2025-06-22 12:48:55.516 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:48:55.517253144Z [32m12:48:55[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:48:55.517280405Z 2025-06-22 12:48:55.517 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:49:00.518968447Z [32m12:49:00[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:49:00.519030450Z 2025-06-22 12:49:00.518 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:49:00.519224111Z [32m12:49:00[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:49:00.519249589Z 2025-06-22 12:49:00.518 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:49:04.796241398Z [32m12:49:04[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:49:04.796285965Z 2025-06-22 12:49:04.795 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:49:05.520631131Z [32m12:49:05[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:49:05.520663920Z 2025-06-22 12:49:05.520 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:49:05.520803590Z [32m12:49:05[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:49:05.520809479Z 2025-06-22 12:49:05.520 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:49:10.522021737Z [32m12:49:10[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:49:10.522071872Z 2025-06-22 12:49:10.521 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:49:10.522359343Z [32m12:49:10[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:49:10.522387355Z 2025-06-22 12:49:10.521 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:49:14.798238352Z [32m12:49:14[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:49:14.798285433Z 2025-06-22 12:49:14.797 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:49:15.523469798Z [32m12:49:15[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:49:15.523502117Z 2025-06-22 12:49:15.523 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:49:15.523681666Z [32m12:49:15[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:49:15.523708647Z 2025-06-22 12:49:15.523 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:49:20.525067976Z [32m12:49:20[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:49:20.525125221Z 2025-06-22 12:49:20.524 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:49:20.525294696Z [32m12:49:20[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:49:20.525320204Z 2025-06-22 12:49:20.525 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:49:24.799778801Z [32m12:49:24[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:49:24.799831360Z 2025-06-22 12:49:24.799 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:49:25.526282196Z [32m12:49:25[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:49:25.526324249Z 2025-06-22 12:49:25.525 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:49:25.526523899Z [32m12:49:25[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:49:25.526551691Z 2025-06-22 12:49:25.526 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:49:30.527895336Z [32m12:49:30[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:49:30.527938220Z 2025-06-22 12:49:30.527 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:49:30.528004319Z [32m12:49:30[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:49:30.528047144Z 2025-06-22 12:49:30.527 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:49:34.800780801Z [32m12:49:34[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:49:34.800826400Z 2025-06-22 12:49:34.800 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:49:35.529570408Z [32m12:49:35[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:49:35.529616367Z 2025-06-22 12:49:35.529 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:49:35.529683348Z [32m12:49:35[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:49:35.529723348Z 2025-06-22 12:49:35.529 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:49:40.530654404Z [32m12:49:40[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:49:40.530725400Z 2025-06-22 12:49:40.530 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:49:40.530770959Z [32m12:49:40[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:49:40.530788395Z 2025-06-22 12:49:40.530 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:49:44.801662211Z [32m12:49:44[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:49:44.801715862Z 2025-06-22 12:49:44.801 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:49:45.532183768Z [32m12:49:45[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:49:45.532215425Z 2025-06-22 12:49:45.531 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:49:45.532365951Z [32m12:49:45[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:49:45.532376076Z 2025-06-22 12:49:45.532 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:49:50.534897519Z [32m12:49:50[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:49:50.534935386Z 2025-06-22 12:49:50.534 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:49:50.535114224Z [32m12:49:50[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:49:50.535145882Z 2025-06-22 12:49:50.534 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:49:54.804095630Z [32m12:49:54[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:49:54.804141689Z 2025-06-22 12:49:54.803 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:49:55.537096558Z [32m12:49:55[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:49:55.537139332Z 2025-06-22 12:49:55.536 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:49:55.537275086Z [32m12:49:55[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:49:55.537302828Z 2025-06-22 12:49:55.537 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:50:00.539509258Z [32m12:50:00[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:50:00.539563950Z 2025-06-22 12:50:00.538 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:50:00.539570390Z [32m12:50:00[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:50:00.539581567Z 2025-06-22 12:50:00.539 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:50:04.805552834Z [32m12:50:04[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:50:04.805608908Z 2025-06-22 12:50:04.805 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:50:05.540261265Z [32m12:50:05[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:50:05.540304179Z 2025-06-22 12:50:05.539 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:50:05.540429978Z [32m12:50:05[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:50:05.540457269Z 2025-06-22 12:50:05.540 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:50:10.541315646Z [32m12:50:10[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:50:10.541370048Z 2025-06-22 12:50:10.540 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:50:10.541449527Z [32m12:50:10[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:50:10.541476137Z 2025-06-22 12:50:10.541 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:50:14.806266882Z [32m12:50:14[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:50:14.806312661Z 2025-06-22 12:50:14.805 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:50:15.542744228Z [32m12:50:15[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:50:15.542789476Z 2025-06-22 12:50:15.542 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:50:15.542942666Z [32m12:50:15[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:50:15.542996327Z 2025-06-22 12:50:15.542 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:50:20.544547033Z [32m12:50:20[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:50:20.544579742Z 2025-06-22 12:50:20.544 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:50:20.544683998Z [32m12:50:20[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:50:20.544720764Z 2025-06-22 12:50:20.544 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:50:24.807132809Z [32m12:50:24[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:50:24.807192579Z 2025-06-22 12:50:24.806 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:50:25.546031539Z [32m12:50:25[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:50:25.546084799Z 2025-06-22 12:50:25.545 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:50:25.546150758Z [32m12:50:25[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:50:25.546159461Z 2025-06-22 12:50:25.545 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:50:30.546981964Z [32m12:50:30[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:50:30.547025439Z 2025-06-22 12:50:30.546 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:50:30.547199110Z [32m12:50:30[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:50:30.547222876Z 2025-06-22 12:50:30.546 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:50:34.808645436Z [32m12:50:34[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:50:34.808682932Z 2025-06-22 12:50:34.808 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:50:35.548092079Z [32m12:50:35[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:50:35.548129675Z 2025-06-22 12:50:35.547 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:50:35.548338739Z [32m12:50:35[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:50:35.548355574Z 2025-06-22 12:50:35.548 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:50:40.550767483Z [32m12:50:40[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:50:40.550813592Z 2025-06-22 12:50:40.550 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:50:40.550971649Z [32m12:50:40[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:50:40.551002225Z 2025-06-22 12:50:40.550 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:50:44.809829720Z [32m12:50:44[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:50:44.809880266Z 2025-06-22 12:50:44.809 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:50:45.552264929Z [32m12:50:45[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:50:45.552302715Z 2025-06-22 12:50:45.551 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:50:45.552491779Z [32m12:50:45[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:50:45.552516687Z 2025-06-22 12:50:45.552 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:50:50.553575735Z [32m12:50:50[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:50:50.553623797Z 2025-06-22 12:50:50.553 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:50:50.553810377Z [32m12:50:50[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:50:50.553833842Z 2025-06-22 12:50:50.553 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:50:54.811045111Z [32m12:50:54[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:50:54.811087785Z 2025-06-22 12:50:54.810 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:50:55.554709144Z [32m12:50:55[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:50:55.554750476Z 2025-06-22 12:50:55.554 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:50:55.554865389Z [32m12:50:55[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:50:55.554892179Z 2025-06-22 12:50:55.554 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:51:00.555943125Z [32m12:51:00[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:51:00.555993801Z 2025-06-22 12:51:00.555 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:51:00.556225028Z [32m12:51:00[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:51:00.556252028Z 2025-06-22 12:51:00.555 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:51:04.813460653Z [32m12:51:04[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:51:04.813500583Z 2025-06-22 12:51:04.812 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:51:05.557987341Z [32m12:51:05[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:51:05.558033651Z 2025-06-22 12:51:05.557 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:51:05.558186480Z [32m12:51:05[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:51:05.558230286Z 2025-06-22 12:51:05.557 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:51:10.559557426Z [32m12:51:10[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:51:10.559608643Z 2025-06-22 12:51:10.559 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:51:10.559757376Z [32m12:51:10[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:51:10.559782394Z 2025-06-22 12:51:10.559 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:51:14.815036465Z [32m12:51:14[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:51:14.815088253Z 2025-06-22 12:51:14.814 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:51:15.560746580Z [32m12:51:15[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:51:15.560790315Z 2025-06-22 12:51:15.560 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:51:15.560892529Z [32m12:51:15[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:51:15.560916915Z 2025-06-22 12:51:15.560 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:51:20.562070435Z [32m12:51:20[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:51:20.562124326Z 2025-06-22 12:51:20.561 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:51:20.562222193Z [32m12:51:20[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:51:20.562247270Z 2025-06-22 12:51:20.561 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:51:24.816202252Z [32m12:51:24[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:51:24.816248221Z 2025-06-22 12:51:24.815 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:51:25.563737786Z [32m12:51:25[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:51:25.563781852Z 2025-06-22 12:51:25.563 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:51:25.564011286Z [32m12:51:25[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:51:25.564056464Z 2025-06-22 12:51:25.563 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:51:30.565314030Z [32m12:51:30[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:51:30.565364015Z 2025-06-22 12:51:30.564 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:51:30.565618587Z [32m12:51:30[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:51:30.565645928Z 2025-06-22 12:51:30.565 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:51:34.817609110Z [32m12:51:34[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:51:34.817653426Z 2025-06-22 12:51:34.817 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:51:35.567137175Z [32m12:51:35[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:51:35.567183965Z 2025-06-22 12:51:35.566 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:51:35.567316995Z [32m12:51:35[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:51:35.567361712Z 2025-06-22 12:51:35.567 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:51:40.568555272Z [32m12:51:40[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:51:40.568600960Z 2025-06-22 12:51:40.568 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:51:40.568706108Z [32m12:51:40[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:51:40.568713589Z 2025-06-22 12:51:40.568 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:51:44.820261838Z [32m12:51:44[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:51:44.820295198Z 2025-06-22 12:51:44.819 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:51:45.569876093Z [32m12:51:45[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:51:45.569917505Z 2025-06-22 12:51:45.569 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:51:45.570076123Z [32m12:51:45[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:51:45.570102152Z 2025-06-22 12:51:45.569 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:51:50.571497474Z [32m12:51:50[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:51:50.571548621Z 2025-06-22 12:51:50.570 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:51:50.571554670Z [32m12:51:50[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:51:50.571595351Z 2025-06-22 12:51:50.571 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:51:54.821938822Z [32m12:51:54[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:51:54.822018702Z 2025-06-22 12:51:54.821 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:51:55.572252526Z [32m12:51:55[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:51:55.572295060Z 2025-06-22 12:51:55.571 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:51:55.572397924Z [32m12:51:55[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:51:55.572424645Z 2025-06-22 12:51:55.572 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:52:00.573861109Z [32m12:52:00[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:52:00.573896152Z 2025-06-22 12:52:00.573 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:52:00.574060648Z [32m12:52:00[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:52:00.574099687Z 2025-06-22 12:52:00.573 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:52:04.823352410Z [32m12:52:04[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:52:04.823401564Z 2025-06-22 12:52:04.822 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:52:05.575677704Z [32m12:52:05[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:52:05.575721770Z 2025-06-22 12:52:05.575 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:52:05.575882651Z [32m12:52:05[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:52:05.575930603Z 2025-06-22 12:52:05.575 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:52:10.577214910Z [32m12:52:10[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:52:10.577258245Z 2025-06-22 12:52:10.576 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:52:10.577447769Z [32m12:52:10[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:52:10.577504064Z 2025-06-22 12:52:10.577 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:52:14.824913400Z [32m12:52:14[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:52:14.824993430Z 2025-06-22 12:52:14.824 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:52:15.578466406Z [32m12:52:15[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:52:15.578505876Z 2025-06-22 12:52:15.578 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:52:15.578701720Z [32m12:52:15[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:52:15.578726316Z 2025-06-22 12:52:15.578 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:52:20.579666867Z [32m12:52:20[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:52:20.579719596Z 2025-06-22 12:52:20.579 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:52:20.579835920Z [32m12:52:20[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:52:20.579860107Z 2025-06-22 12:52:20.579 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:52:24.826401490Z [32m12:52:24[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:52:24.826485306Z 2025-06-22 12:52:24.825 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:52:25.583023032Z [32m12:52:25[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:52:25.583067950Z 2025-06-22 12:52:25.582 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:52:25.583214990Z [32m12:52:25[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:52:25.583241210Z 2025-06-22 12:52:25.583 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:52:30.584488580Z [32m12:52:30[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:52:30.584541640Z 2025-06-22 12:52:30.584 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:52:30.584632827Z [32m12:52:30[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:52:30.584660889Z 2025-06-22 12:52:30.584 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:52:34.828085765Z [32m12:52:34[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:52:34.828151073Z 2025-06-22 12:52:34.827 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:52:35.585586517Z [32m12:52:35[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:52:35.585624494Z 2025-06-22 12:52:35.585 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:52:35.585722301Z [32m12:52:35[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:52:35.585737774Z 2025-06-22 12:52:35.585 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:52:40.586648349Z [32m12:52:40[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:52:40.586698174Z 2025-06-22 12:52:40.586 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:52:40.586819556Z [32m12:52:40[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:52:40.586857082Z 2025-06-22 12:52:40.586 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:52:44.829270310Z [32m12:52:44[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:52:44.829309288Z 2025-06-22 12:52:44.828 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:52:45.588536271Z [32m12:52:45[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:52:45.588576281Z 2025-06-22 12:52:45.588 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:52:45.588695490Z [32m12:52:45[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:52:45.588715941Z 2025-06-22 12:52:45.588 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:52:50.590225825Z [32m12:52:50[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:52:50.590269541Z 2025-06-22 12:52:50.589 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:52:50.590413917Z [32m12:52:50[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:52:50.590442570Z 2025-06-22 12:52:50.590 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:52:54.830483587Z [32m12:52:54[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:52:54.830539031Z 2025-06-22 12:52:54.830 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:52:55.591675860Z [32m12:52:55[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:52:55.591716321Z 2025-06-22 12:52:55.591 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:52:55.591722450Z [32m12:52:55[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:52:55.591731433Z 2025-06-22 12:52:55.591 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:53:00.593124423Z [32m12:53:00[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:53:00.593176581Z 2025-06-22 12:53:00.592 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:53:00.593414949Z [32m12:53:00[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:53:00.593460277Z 2025-06-22 12:53:00.593 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:53:04.831708863Z [32m12:53:04[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:53:04.831738718Z 2025-06-22 12:53:04.831 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:53:05.594347356Z [32m12:53:05[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:53:05.594395449Z 2025-06-22 12:53:05.593 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:53:05.594563391Z [32m12:53:05[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:53:05.594591333Z 2025-06-22 12:53:05.594 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:53:10.595352133Z [32m12:53:10[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:53:10.595401397Z 2025-06-22 12:53:10.594 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:53:10.595549139Z [32m12:53:10[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:53:10.595563019Z 2025-06-22 12:53:10.595 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:53:14.833514069Z [32m12:53:14[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:53:14.833715321Z 2025-06-22 12:53:14.832 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:53:15.597244742Z [32m12:53:15[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:53:15.597287065Z 2025-06-22 12:53:15.596 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:53:15.597477291Z [32m12:53:15[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:53:15.597521117Z 2025-06-22 12:53:15.597 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:53:20.599029049Z [32m12:53:20[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:53:20.599082389Z 2025-06-22 12:53:20.598 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:53:20.599219214Z [32m12:53:20[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:53:20.599243030Z 2025-06-22 12:53:20.599 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:53:24.834881839Z [32m12:53:24[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:53:24.834929410Z 2025-06-22 12:53:24.834 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:53:25.601345133Z [32m12:53:25[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:53:25.601393987Z 2025-06-22 12:53:25.600 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:53:25.601584703Z [32m12:53:25[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:53:25.601615719Z 2025-06-22 12:53:25.601 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:53:30.603265764Z [32m12:53:30[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:53:30.603312304Z 2025-06-22 12:53:30.602 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:53:30.603344292Z [32m12:53:30[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:53:30.603362289Z 2025-06-22 12:53:30.603 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:53:34.835819753Z [32m12:53:34[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:53:34.835896228Z 2025-06-22 12:53:34.835 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:53:35.604201457Z [32m12:53:35[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:53:35.604253335Z 2025-06-22 12:53:35.603 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:53:35.604427767Z [32m12:53:35[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:53:35.604450671Z 2025-06-22 12:53:35.604 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:53:40.605343520Z [32m12:53:40[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:53:40.605395608Z 2025-06-22 12:53:40.604 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:53:40.605500375Z [32m12:53:40[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:53:40.605521968Z 2025-06-22 12:53:40.605 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:53:44.837140032Z [32m12:53:44[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:53:44.837182876Z 2025-06-22 12:53:44.836 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:53:45.607293214Z [32m12:53:45[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:53:45.607330090Z 2025-06-22 12:53:45.606 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:53:45.607441807Z [32m12:53:45[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:53:45.607449499Z 2025-06-22 12:53:45.607 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:53:50.608823309Z [32m12:53:50[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:53:50.608878072Z 2025-06-22 12:53:50.608 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:53:50.609103240Z [32m12:53:50[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:53:50.609148798Z 2025-06-22 12:53:50.608 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:53:54.839106189Z [32m12:53:54[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:53:54.839239910Z 2025-06-22 12:53:54.838 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:53:55.610591742Z [32m12:53:55[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:53:55.610634016Z 2025-06-22 12:53:55.609 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:53:55.610725873Z [32m12:53:55[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:53:55.610743660Z 2025-06-22 12:53:55.610 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:54:00.611672493Z [32m12:54:00[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:54:00.611726053Z 2025-06-22 12:54:00.611 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:54:00.611869769Z [32m12:54:00[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:54:00.611901817Z 2025-06-22 12:54:00.611 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:54:04.839984475Z [32m12:54:04[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:54:04.840031926Z 2025-06-22 12:54:04.839 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:54:05.613528875Z [32m12:54:05[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:54:05.613611389Z 2025-06-22 12:54:05.613 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:54:05.613690207Z [32m12:54:05[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:54:05.613716497Z 2025-06-22 12:54:05.613 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:54:10.614885987Z [32m12:54:10[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:54:10.614941430Z 2025-06-22 12:54:10.614 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:54:10.615070124Z [32m12:54:10[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:54:10.615096383Z 2025-06-22 12:54:10.614 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:54:14.841174010Z [32m12:54:14[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:54:14.841222753Z 2025-06-22 12:54:14.840 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:54:15.615785182Z [32m12:54:15[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:54:15.615820885Z 2025-06-22 12:54:15.615 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:54:15.615988627Z [32m12:54:15[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:54:15.616016249Z 2025-06-22 12:54:15.615 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:54:20.617184017Z [32m12:54:20[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:54:20.617234242Z 2025-06-22 12:54:20.616 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:54:20.617342094Z [32m12:54:20[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:54:20.617367141Z 2025-06-22 12:54:20.617 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:54:24.842613260Z [32m12:54:24[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:54:24.842665178Z 2025-06-22 12:54:24.842 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:54:25.618344023Z [32m12:54:25[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:54:25.618394899Z 2025-06-22 12:54:25.617 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:54:25.618495600Z [32m12:54:25[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:54:25.618520898Z 2025-06-22 12:54:25.618 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:54:30.621127886Z [32m12:54:30[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:54:30.621177350Z 2025-06-22 12:54:30.620 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:54:30.621294066Z [32m12:54:30[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:54:30.621318042Z 2025-06-22 12:54:30.621 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:54:34.844239211Z [32m12:54:34[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:54:34.844291479Z 2025-06-22 12:54:34.843 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:54:35.623011288Z [32m12:54:35[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:54:35.623059380Z 2025-06-22 12:54:35.622 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:54:35.623157728Z [32m12:54:35[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:54:35.623175485Z 2025-06-22 12:54:35.622 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:54:40.623944654Z [32m12:54:40[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:54:40.624017884Z 2025-06-22 12:54:40.623 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:54:40.624184103Z [32m12:54:40[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:54:40.624210183Z 2025-06-22 12:54:40.623 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:54:44.845562837Z [32m12:54:44[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:54:44.845616147Z 2025-06-22 12:54:44.845 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:54:45.625403799Z [32m12:54:45[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:54:45.625442267Z 2025-06-22 12:54:45.624 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:54:45.625540104Z [32m12:54:45[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:54:45.625546864Z 2025-06-22 12:54:45.625 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:54:50.626625308Z [32m12:54:50[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:54:50.626697987Z 2025-06-22 12:54:50.626 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:54:50.626710876Z [32m12:54:50[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:54:50.626716354Z 2025-06-22 12:54:50.626 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:54:54.847080285Z [32m12:54:54[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:54:54.847122378Z 2025-06-22 12:54:54.846 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:54:55.627910482Z [32m12:54:55[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:54:55.627976110Z 2025-06-22 12:54:55.627 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:54:55.628074307Z [32m12:54:55[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:54:55.628101428Z 2025-06-22 12:54:55.627 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:55:00.629474124Z [32m12:55:00[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:55:00.629522897Z 2025-06-22 12:55:00.629 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:55:00.629598420Z [32m12:55:00[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:55:00.629623888Z 2025-06-22 12:55:00.629 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:55:04.847815348Z [32m12:55:04[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:55:04.847871633Z 2025-06-22 12:55:04.847 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:55:05.631235262Z [32m12:55:05[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:55:05.631277575Z 2025-06-22 12:55:05.630 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:55:05.631375553Z [32m12:55:05[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:55:05.631400620Z 2025-06-22 12:55:05.631 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:55:10.632610802Z [32m12:55:10[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:55:10.632649269Z 2025-06-22 12:55:10.632 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:55:10.632801698Z [32m12:55:10[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:55:10.632832384Z 2025-06-22 12:55:10.632 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:55:14.849398875Z [32m12:55:14[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:55:14.849450012Z 2025-06-22 12:55:14.848 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:55:15.634290428Z [32m12:55:15[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:55:15.634339321Z 2025-06-22 12:55:15.633 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:55:15.634428855Z [32m12:55:15[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:55:15.634444188Z 2025-06-22 12:55:15.634 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:55:20.635513338Z [32m12:55:20[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:55:20.635546678Z 2025-06-22 12:55:20.635 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:55:20.635549392Z [32m12:55:20[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:55:20.635551325Z 2025-06-22 12:55:20.635 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:55:24.850195220Z [32m12:55:24[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:55:24.850244835Z 2025-06-22 12:55:24.849 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:55:25.636848577Z [32m12:55:25[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:55:25.636876740Z 2025-06-22 12:55:25.636 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:55:25.636879203Z [32m12:55:25[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:55:25.636881146Z 2025-06-22 12:55:25.636 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:55:30.637917346Z [32m12:55:30[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:55:30.637978058Z 2025-06-22 12:55:30.637 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:55:30.638094322Z [32m12:55:30[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:55:30.638109124Z 2025-06-22 12:55:30.637 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:55:34.851563154Z [32m12:55:34[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:55:34.851602332Z 2025-06-22 12:55:34.851 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:55:35.639299075Z [32m12:55:35[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:55:35.639336712Z 2025-06-22 12:55:35.638 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:55:35.639476752Z [32m12:55:35[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:55:35.639503162Z 2025-06-22 12:55:35.639 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:55:40.640762237Z [32m12:55:40[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:55:40.640819803Z 2025-06-22 12:55:40.640 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:55:40.640826183Z [32m12:55:40[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:55:40.640835697Z 2025-06-22 12:55:40.640 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:55:44.852362764Z [32m12:55:44[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:55:44.852411467Z 2025-06-22 12:55:44.851 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:55:45.642105648Z [32m12:55:45[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:55:45.642152999Z 2025-06-22 12:55:45.641 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:55:45.642263415Z [32m12:55:45[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:55:45.642292068Z 2025-06-22 12:55:45.642 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:55:50.643994859Z [32m12:55:50[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:55:50.644048119Z 2025-06-22 12:55:50.643 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:55:50.644216181Z [32m12:55:50[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:55:50.644242070Z 2025-06-22 12:55:50.643 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:55:54.853893301Z [32m12:55:54[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:55:54.853942074Z 2025-06-22 12:55:54.853 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:55:55.646602878Z [32m12:55:55[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:55:55.646634456Z 2025-06-22 12:55:55.646 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:55:55.646816479Z [32m12:55:55[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:55:55.646847185Z 2025-06-22 12:55:55.646 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:56:00.647865959Z [32m12:56:00[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:56:00.647898728Z 2025-06-22 12:56:00.647 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:56:00.648058588Z [32m12:56:00[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:56:00.648062644Z 2025-06-22 12:56:00.647 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:56:04.854655195Z [32m12:56:04[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:56:04.854729236Z 2025-06-22 12:56:04.854 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:56:05.649527418Z [32m12:56:05[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:56:05.649568019Z 2025-06-22 12:56:05.649 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:56:05.649697063Z [32m12:56:05[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:56:05.649720528Z 2025-06-22 12:56:05.649 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:56:10.651119753Z [32m12:56:10[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:56:10.651166523Z 2025-06-22 12:56:10.650 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:56:10.651317179Z [32m12:56:10[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:56:10.651343649Z 2025-06-22 12:56:10.651 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:56:14.855617960Z [32m12:56:14[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:56:14.855670038Z 2025-06-22 12:56:14.855 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:56:15.652395693Z [32m12:56:15[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:56:15.652439629Z 2025-06-22 12:56:15.651 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:56:15.652574041Z [32m12:56:15[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:56:15.652579920Z 2025-06-22 12:56:15.652 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:56:20.654224573Z [32m12:56:20[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:56:20.654280006Z 2025-06-22 12:56:20.653 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:56:20.654349431Z [32m12:56:20[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:56:20.654377473Z 2025-06-22 12:56:20.654 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:56:24.856412572Z [32m12:56:24[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:56:24.856459773Z 2025-06-22 12:56:24.855 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:56:25.655190959Z [32m12:56:25[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:56:25.655233673Z 2025-06-22 12:56:25.654 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:56:25.655363788Z [32m12:56:25[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:56:25.655378460Z 2025-06-22 12:56:25.655 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:56:30.657037265Z [32m12:56:30[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:56:30.657103564Z 2025-06-22 12:56:30.656 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:56:30.657180220Z [32m12:56:30[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:56:30.657206249Z 2025-06-22 12:56:30.656 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:56:34.857795047Z [32m12:56:34[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:56:34.857845493Z 2025-06-22 12:56:34.857 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:56:35.658600416Z [32m12:56:35[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:56:35.658632735Z 2025-06-22 12:56:35.658 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:56:35.658638443Z [32m12:56:35[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:56:35.658640607Z 2025-06-22 12:56:35.658 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:56:40.659380612Z [32m12:56:40[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:56:40.659418339Z 2025-06-22 12:56:40.659 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:56:40.659453201Z [32m12:56:40[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:56:40.659471849Z 2025-06-22 12:56:40.659 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:56:44.859097753Z [32m12:56:44[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:56:44.859138504Z 2025-06-22 12:56:44.858 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:56:45.660879938Z [32m12:56:45[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:56:45.660973238Z 2025-06-22 12:56:45.660 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:56:45.660992937Z [32m12:56:45[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:56:45.661159718Z 2025-06-22 12:56:45.660 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:56:50.662044571Z [32m12:56:50[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:56:50.662095307Z 2025-06-22 12:56:50.661 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:56:50.662222408Z [32m12:56:50[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:56:50.662244771Z 2025-06-22 12:56:50.662 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:56:54.860562711Z [32m12:56:54[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:56:54.860597784Z 2025-06-22 12:56:54.860 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:56:55.663453460Z [32m12:56:55[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:56:55.663486861Z 2025-06-22 12:56:55.662 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:56:55.663648533Z [32m12:56:55[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:56:55.663652249Z 2025-06-22 12:56:55.663 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:57:00.665477894Z [32m12:57:00[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:57:00.665533658Z 2025-06-22 12:57:00.664 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:57:00.665612206Z [32m12:57:00[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:57:00.665637403Z 2025-06-22 12:57:00.665 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:57:04.861464154Z [32m12:57:04[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:57:04.861525116Z 2025-06-22 12:57:04.860 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:57:05.666536117Z [32m12:57:05[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:57:05.666608676Z 2025-06-22 12:57:05.666 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:57:05.666845832Z [32m12:57:05[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:57:05.666861566Z 2025-06-22 12:57:05.666 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:57:10.668899099Z [32m12:57:10[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:57:10.668946170Z 2025-06-22 12:57:10.668 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:57:10.669070807Z [32m12:57:10[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:57:10.669143967Z 2025-06-22 12:57:10.668 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:57:14.863500060Z [32m12:57:14[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:57:14.863545749Z 2025-06-22 12:57:14.862 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:57:15.670277203Z [32m12:57:15[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:57:15.670319356Z 2025-06-22 12:57:15.669 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:57:15.670443122Z [32m12:57:15[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:57:15.670458144Z 2025-06-22 12:57:15.670 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:57:20.672007715Z [32m12:57:20[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:57:20.672057119Z 2025-06-22 12:57:20.671 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:57:20.672166083Z [32m12:57:20[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:57:20.672195918Z 2025-06-22 12:57:20.671 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:57:24.864431578Z [32m12:57:24[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:57:24.864478339Z 2025-06-22 12:57:24.863 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:57:25.674313851Z [32m12:57:25[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:57:25.674356636Z 2025-06-22 12:57:25.673 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:57:25.674482044Z [32m12:57:25[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:57:25.674509245Z 2025-06-22 12:57:25.674 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:57:30.676133017Z [32m12:57:30[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:57:30.676183993Z 2025-06-22 12:57:30.675 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:57:30.676308981Z [32m12:57:30[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:57:30.676336322Z 2025-06-22 12:57:30.676 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:57:34.865739001Z [32m12:57:34[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:57:34.865783868Z 2025-06-22 12:57:34.865 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:57:35.677580975Z [32m12:57:35[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:57:35.677625853Z 2025-06-22 12:57:35.677 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:57:35.677725983Z [32m12:57:35[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:57:35.677751031Z 2025-06-22 12:57:35.677 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:57:40.678735934Z [32m12:57:40[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:57:40.678782354Z 2025-06-22 12:57:40.678 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:57:40.678867591Z [32m12:57:40[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:57:40.678896034Z 2025-06-22 12:57:40.678 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:57:44.868109158Z [32m12:57:44[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:57:44.868156279Z 2025-06-22 12:57:44.867 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:57:45.679759285Z [32m12:57:45[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:57:45.679814317Z 2025-06-22 12:57:45.679 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:57:45.679966997Z [32m12:57:45[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:57:45.680037773Z 2025-06-22 12:57:45.679 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:57:50.681127994Z [32m12:57:50[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:57:50.681175726Z 2025-06-22 12:57:50.680 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:57:50.681331820Z [32m12:57:50[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:57:50.681358841Z 2025-06-22 12:57:50.681 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:57:54.869658093Z [32m12:57:54[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:57:54.869709260Z 2025-06-22 12:57:54.869 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:57:55.682437955Z [32m12:57:55[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:57:55.682483694Z 2025-06-22 12:57:55.681 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:57:55.682604185Z [32m12:57:55[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:57:55.682630354Z 2025-06-22 12:57:55.682 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:58:00.683941918Z [32m12:58:00[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:58:00.684000005Z 2025-06-22 12:58:00.683 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:58:00.684124141Z [32m12:58:00[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:58:00.684149700Z 2025-06-22 12:58:00.683 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:58:04.870549681Z [32m12:58:04[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:58:04.870607328Z 2025-06-22 12:58:04.870 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:58:05.685344869Z [32m12:58:05[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:58:05.685393942Z 2025-06-22 12:58:05.684 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:58:05.685527413Z [32m12:58:05[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:58:05.685555445Z 2025-06-22 12:58:05.685 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:58:10.687037925Z [32m12:58:10[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:58:10.687082331Z 2025-06-22 12:58:10.686 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:58:10.687294300Z [32m12:58:10[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:58:10.687320759Z 2025-06-22 12:58:10.686 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:58:14.873147581Z [32m12:58:14[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:58:14.873195793Z 2025-06-22 12:58:14.872 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:58:15.688817711Z [32m12:58:15[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:58:15.688866094Z 2025-06-22 12:58:15.688 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:58:15.689031923Z [32m12:58:15[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:58:15.689075338Z 2025-06-22 12:58:15.688 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:58:20.689991278Z [32m12:58:20[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:58:20.690043947Z 2025-06-22 12:58:20.689 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:58:20.690116606Z [32m12:58:20[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:58:20.690139190Z 2025-06-22 12:58:20.689 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:58:24.874096816Z [32m12:58:24[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:58:24.874150296Z 2025-06-22 12:58:24.873 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:58:25.692741791Z [32m12:58:25[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:58:25.692780900Z 2025-06-22 12:58:25.692 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:58:25.692947440Z [32m12:58:25[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:58:25.692990595Z 2025-06-22 12:58:25.692 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:58:30.694112604Z [32m12:58:30[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:58:30.694155969Z 2025-06-22 12:58:30.693 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:58:30.694340686Z [32m12:58:30[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:58:30.694371693Z 2025-06-22 12:58:30.694 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:58:34.876402496Z [32m12:58:34[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:58:34.876452902Z 2025-06-22 12:58:34.875 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:58:35.695167101Z [32m12:58:35[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:58:35.695211098Z 2025-06-22 12:58:35.694 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:58:35.695288784Z [32m12:58:35[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:58:35.695314613Z 2025-06-22 12:58:35.695 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:58:40.696395230Z [32m12:58:40[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:58:40.696439246Z 2025-06-22 12:58:40.695 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:58:40.696600007Z [32m12:58:40[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:58:40.696617243Z 2025-06-22 12:58:40.696 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:58:44.877382367Z [32m12:58:44[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:58:44.877435897Z 2025-06-22 12:58:44.876 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:58:45.697979953Z [32m12:58:45[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:58:45.698020214Z 2025-06-22 12:58:45.697 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:58:45.698286383Z [32m12:58:45[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:58:45.698308667Z 2025-06-22 12:58:45.697 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:58:50.699468963Z [32m12:58:50[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:58:50.699516865Z 2025-06-22 12:58:50.698 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:58:50.699617146Z [32m12:58:50[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:58:50.699644487Z 2025-06-22 12:58:50.699 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:58:54.878530280Z [32m12:58:54[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:58:54.878585783Z 2025-06-22 12:58:54.877 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:58:55.700507998Z [32m12:58:55[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:58:55.700556511Z 2025-06-22 12:58:55.699 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:58:55.700684403Z [32m12:58:55[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:58:55.700717082Z 2025-06-22 12:58:55.700 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:59:00.702025501Z [32m12:59:00[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:59:00.702084669Z 2025-06-22 12:59:00.701 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:59:00.702204399Z [32m12:59:00[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:59:00.702241275Z 2025-06-22 12:59:00.702 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:59:04.880343792Z [32m12:59:04[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:59:04.880397012Z 2025-06-22 12:59:04.879 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:59:05.703752418Z [32m12:59:05[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:59:05.703794501Z 2025-06-22 12:59:05.703 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:59:05.703936925Z [32m12:59:05[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:59:05.703992188Z 2025-06-22 12:59:05.703 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:59:10.704834867Z [32m12:59:10[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:59:10.704885924Z 2025-06-22 12:59:10.704 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:59:10.705010110Z [32m12:59:10[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:59:10.705031292Z 2025-06-22 12:59:10.704 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:59:14.881487128Z [32m12:59:14[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:59:14.881532897Z 2025-06-22 12:59:14.881 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:59:15.706338800Z [32m12:59:15[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:59:15.706382606Z 2025-06-22 12:59:15.705 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:59:15.706495505Z [32m12:59:15[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:59:15.706521764Z 2025-06-22 12:59:15.706 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:59:20.707969462Z [32m12:59:20[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:59:20.708022342Z 2025-06-22 12:59:20.707 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:59:20.708115542Z [32m12:59:20[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:59:20.708145026Z 2025-06-22 12:59:20.707 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:59:24.882530013Z [32m12:59:24[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:59:24.882571776Z 2025-06-22 12:59:24.882 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:59:25.708938342Z [32m12:59:25[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:59:25.708990320Z 2025-06-22 12:59:25.708 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:59:25.709179824Z [32m12:59:25[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:59:25.709197851Z 2025-06-22 12:59:25.708 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:59:30.710040571Z [32m12:59:30[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:59:30.710092719Z 2025-06-22 12:59:30.709 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:59:30.710199690Z [32m12:59:30[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:59:30.710224878Z 2025-06-22 12:59:30.709 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:59:34.884270055Z [32m12:59:34[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:59:34.884312789Z 2025-06-22 12:59:34.883 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:59:35.711551183Z [32m12:59:35[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:59:35.711593196Z 2025-06-22 12:59:35.711 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:59:35.711719426Z [32m12:59:35[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:59:35.711745064Z 2025-06-22 12:59:35.711 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:59:40.713204680Z [32m12:59:40[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:59:40.713251140Z 2025-06-22 12:59:40.712 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:59:40.713409678Z [32m12:59:40[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:59:40.713424761Z 2025-06-22 12:59:40.713 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:59:44.885788314Z [32m12:59:44[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:59:44.885854523Z 2025-06-22 12:59:44.885 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:59:45.715514853Z [32m12:59:45[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:59:45.715562384Z 2025-06-22 12:59:45.715 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:59:45.715721072Z [32m12:59:45[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:59:45.715746010Z 2025-06-22 12:59:45.715 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:59:50.717025095Z [32m12:59:50[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:59:50.717080628Z 2025-06-22 12:59:50.716 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:59:50.717246988Z [32m12:59:50[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:59:50.717260618Z 2025-06-22 12:59:50.716 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T12:59:54.887033092Z [32m12:59:54[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T12:59:54.887081205Z 2025-06-22 12:59:54.886 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T12:59:55.718763239Z [32m12:59:55[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T12:59:55.718810820Z 2025-06-22 12:59:55.718 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T12:59:55.718870710Z [32m12:59:55[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T12:59:55.718889528Z 2025-06-22 12:59:55.718 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:00:00.720499239Z [32m13:00:00[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:00:00.720546901Z 2025-06-22 13:00:00.720 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:00:00.720597096Z [32m13:00:00[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:00:00.720630016Z 2025-06-22 13:00:00.720 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:00:04.887791891Z [32m13:00:04[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T13:00:04.887828166Z 2025-06-22 13:00:04.887 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T13:00:05.721332785Z [32m13:00:05[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:00:05.721377512Z 2025-06-22 13:00:05.720 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:00:05.721514538Z [32m13:00:05[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:00:05.721540477Z 2025-06-22 13:00:05.721 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:00:10.723564811Z [32m13:00:10[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:00:10.723603879Z 2025-06-22 13:00:10.723 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:00:10.723742788Z [32m13:00:10[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:00:10.723752843Z 2025-06-22 13:00:10.723 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:00:14.890412134Z [32m13:00:14[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T13:00:14.890460096Z 2025-06-22 13:00:14.889 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T13:00:15.724640911Z [32m13:00:15[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:00:15.724689584Z 2025-06-22 13:00:15.724 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:00:15.724696043Z [32m13:00:15[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:00:15.724700741Z 2025-06-22 13:00:15.724 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:00:20.725505754Z [32m13:00:20[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:00:20.725552163Z 2025-06-22 13:00:20.724 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:00:20.725663941Z [32m13:00:20[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:00:20.725691633Z 2025-06-22 13:00:20.725 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:00:26.355483289Z ==========
+2025-06-22T13:00:26.355510240Z == CUDA ==
+2025-06-22T13:00:26.355594056Z ==========
+2025-06-22T13:00:26.358241309Z CUDA Version 11.8.0
+2025-06-22T13:00:26.359298636Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-22T13:00:26.360185147Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-22T13:00:26.360189403Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-22T13:00:26.360191827Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-22T13:00:26.360195953Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-22T13:00:26.381028192Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-22T13:00:26.388809892Z    ...done.
+2025-06-22T13:00:26.388999637Z 🔧 Development mode starting...
+2025-06-22T13:00:26.389059957Z 🔄 Updating source code...
+2025-06-22T13:00:27.380310640Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-22T13:00:27.380356508Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-22T13:00:27.381264872Z    a692231..74ba9c7  cursor_oneshot -> origin/cursor_oneshot
+2025-06-22T13:00:27.398082455Z Updating a692231..74ba9c7
+2025-06-22T13:00:27.398109465Z Fast-forward
+2025-06-22T13:00:27.405978847Z  logs.txt                  | 15831 ++++++++++++++++++++++++++++++++++++++------
+2025-06-22T13:00:27.406002472Z  src/kokoro_tts_service.py |    13 +-
+2025-06-22T13:00:27.406008471Z  src/pipecat_pipeline.py   |     2 +-
+2025-06-22T13:00:27.406013198Z  3 files changed, 13628 insertions(+), 2218 deletions(-)
+2025-06-22T13:00:27.406800230Z 📁 Copying source code...
+2025-06-22T13:00:27.409037237Z 🚀 Starting voice pipeline...
+2025-06-22T13:00:27.729186053Z 2025-06-22 13:00:27.728 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-22T13:00:29.058050675Z 2025-06-22 13:00:29.057 | DEBUG    | pipecat.audio.vad.silero:__init__:111 - Loading Silero VAD model...
+2025-06-22T13:00:29.100180812Z 2025-06-22 13:00:29.099 | DEBUG    | pipecat.audio.vad.silero:__init__:133 - Loaded Silero VAD
+2025-06-22T13:00:43.908031686Z [32m13:00:43[0m | [36mpipecat_pipeline:73[0m | [1m    INFO[0m | [1mLoading UltravoxWithContextService... this can take a while on first run.[0m
+2025-06-22T13:00:43.908084275Z 2025-06-22 13:00:43.907 | INFO     | src.pipecat_pipeline:<module>:73 - Loading UltravoxWithContextService... this can take a while on first run.
+2025-06-22T13:00:44.147823978Z Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+2025-06-22T13:00:44.147862586Z 2025-06-22 13:00:44,147 - huggingface_hub._login - WARNING - Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+2025-06-22T13:00:44.202874237Z INFO 06-22 13:00:44 __init__.py:207] Automatically detected platform cuda.
+2025-06-22T13:00:49.818242664Z INFO 06-22 13:00:49 config.py:549] This model supports multiple tasks: {'embed', 'generate', 'score', 'classify', 'reward'}. Defaulting to 'generate'.
+2025-06-22T13:00:49.822790631Z INFO 06-22 13:00:49 llm_engine.py:234] Initializing a V0 LLM engine (v0.7.3) with config: model='fixie-ai/ultravox-v0_5-llama-3_1-8b', speculative_config=None, tokenizer='fixie-ai/ultravox-v0_5-llama-3_1-8b', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=0, served_model_name=fixie-ai/ultravox-v0_5-llama-3_1-8b, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=False, chunked_prefill_enabled=False, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"splitting_ops":[],"compile_sizes":[],"cudagraph_capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":256}, use_cached_outputs=False,
+2025-06-22T13:00:55.066178395Z INFO 06-22 13:00:55 cuda.py:229] Using Flash Attention backend.
+2025-06-22T13:00:55.413445124Z INFO 06-22 13:00:55 model_runner.py:1110] Starting to load model fixie-ai/ultravox-v0_5-llama-3_1-8b...
+2025-06-22T13:00:55.554540524Z INFO 06-22 13:00:55 config.py:3054] cudagraph sizes specified by model runner [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256] is overridden by config [256, 128, 2, 1, 4, 136, 8, 144, 16, 152, 24, 160, 32, 168, 40, 176, 48, 184, 56, 192, 64, 200, 72, 208, 80, 216, 88, 120, 224, 96, 232, 104, 240, 112, 248]
+2025-06-22T13:00:56.022232668Z INFO 06-22 13:00:56 weight_utils.py:254] Using model weights format ['*.safetensors']
+2025-06-22T13:00:56.335293615Z INFO 06-22 13:00:56 weight_utils.py:304] No model.safetensors.index.json found in remote.
+2025-06-22T13:00:56.336970752Z Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+2025-06-22T13:00:56.553186537Z Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  4.63it/s]
+2025-06-22T13:00:56.553286277Z Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  4.62it/s]
+2025-06-22T13:00:56.861881450Z INFO 06-22 13:00:56 weight_utils.py:254] Using model weights format ['*.safetensors']
+2025-06-22T13:00:57.186900846Z Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+2025-06-22T13:00:57.674811147Z Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:01,  2.05it/s]
+2025-06-22T13:00:57.928872958Z Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:00<00:00,  2.86it/s]
+2025-06-22T13:00:58.383264688Z Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  2.51it/s]
+2025-06-22T13:00:58.973712916Z Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:01<00:00,  2.11it/s]
+2025-06-22T13:00:58.973811284Z Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:01<00:00,  2.24it/s]
+2025-06-22T13:00:59.354030143Z INFO 06-22 13:00:59 model_runner.py:1115] Loading model weights took 16.2698 GB
+2025-06-22T13:01:11.548943955Z INFO 06-22 13:01:11 worker.py:267] Memory profiling takes 11.99 seconds
+2025-06-22T13:01:11.549034430Z INFO 06-22 13:01:11 worker.py:267] the current vLLM instance can use total_gpu_memory (21.95GiB) x gpu_memory_utilization (0.90) = 19.76GiB
+2025-06-22T13:01:11.549041501Z INFO 06-22 13:01:11 worker.py:267] model weights take 16.27GiB; non_torch_memory takes 0.05GiB; PyTorch activation peak memory takes 1.95GiB; the rest of the memory reserved for KV Cache is 1.49GiB.
+2025-06-22T13:01:11.752851925Z INFO 06-22 13:01:11 executor_base.py:111] # cuda blocks: 763, # CPU blocks: 2048
+2025-06-22T13:01:11.752891214Z INFO 06-22 13:01:11 executor_base.py:116] Maximum concurrency for 8192 tokens per request: 1.49x
+2025-06-22T13:01:14.169709968Z INFO 06-22 13:01:14 model_runner.py:1434] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI. If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+2025-06-22T13:01:34.818922250Z Capturing CUDA graph shapes:   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graph shapes:   3%|▎         | 1/35 [00:00<00:20,  1.63it/s]Capturing CUDA graph shapes:   6%|▌         | 2/35 [00:01<00:20,  1.64it/s]Capturing CUDA graph shapes:   9%|▊         | 3/35 [00:01<00:19,  1.64it/s]Capturing CUDA graph shapes:  11%|█▏        | 4/35 [00:02<00:18,  1.65it/s]Capturing CUDA graph shapes:  14%|█▍        | 5/35 [00:03<00:18,  1.66it/s]Capturing CUDA graph shapes:  17%|█▋        | 6/35 [00:03<00:17,  1.66it/s]Capturing CUDA graph shapes:  20%|██        | 7/35 [00:04<00:16,  1.66it/s]Capturing CUDA graph shapes:  23%|██▎       | 8/35 [00:04<00:16,  1.67it/s]Capturing CUDA graph shapes:  26%|██▌       | 9/35 [00:05<00:15,  1.68it/s]Capturing CUDA graph shapes:  29%|██▊       | 10/35 [00:06<00:14,  1.68it/s]Capturing CUDA graph shapes:  31%|███▏      | 11/35 [00:06<00:14,  1.68it/s]Capturing CUDA graph shapes:  34%|███▍      | 12/35 [00:07<00:13,  1.69it/s]Capturing CUDA graph shapes:  37%|███▋      | 13/35 [00:07<00:12,  1.69it/s]Capturing CUDA graph shapes:  40%|████      | 14/35 [00:08<00:12,  1.70it/s]Capturing CUDA graph shapes:  43%|████▎     | 15/35 [00:08<00:11,  1.70it/s]Capturing CUDA graph shapes:  46%|████▌     | 16/35 [00:09<00:11,  1.70it/s]Capturing CUDA graph shapes:  49%|████▊     | 17/35 [00:10<00:10,  1.71it/s]Capturing CUDA graph shapes:  51%|█████▏    | 18/35 [00:10<00:09,  1.72it/s]Capturing CUDA graph shapes:  54%|█████▍    | 19/35 [00:11<00:09,  1.65it/s]Capturing CUDA graph shapes:  57%|█████▋    | 20/35 [00:11<00:09,  1.65it/s]Capturing CUDA graph shapes:  60%|██████    | 21/35 [00:12<00:08,  1.65it/s]Capturing CUDA graph shapes:  63%|██████▎   | 22/35 [00:13<00:07,  1.65it/s]Capturing CUDA graph shapes:  66%|██████▌   | 23/35 [00:13<00:07,  1.65it/s]Capturing CUDA graph shapes:  69%|██████▊   | 24/35 [00:14<00:06,  1.66it/s]Capturing CUDA graph shapes:  71%|███████▏  | 25/35 [00:14<00:05,  1.67it/s]Capturing CUDA graph shapes:  74%|███████▍  | 26/35 [00:15<00:05,  1.67it/s]Capturing CUDA graph shapes:  77%|███████▋  | 27/35 [00:16<00:04,  1.67it/s]Capturing CUDA graph shapes:  80%|████████  | 28/35 [00:16<00:04,  1.65it/s]Capturing CUDA graph shapes:  83%|████████▎ | 29/35 [00:17<00:03,  1.69it/s]Capturing CUDA graph shapes:  86%|████████▌ | 30/35 [00:17<00:02,  1.72it/s]Capturing CUDA graph shapes:  89%|████████▊ | 31/35 [00:18<00:02,  1.75it/s]Capturing CUDA graph shapes:  91%|█████████▏| 32/35 [00:18<00:01,  1.77it/s]Capturing CUDA graph shapes:  94%|█████████▍| 33/35 [00:19<00:01,  1.79it/s]Capturing CUDA graph shapes:  97%|█████████▋| 34/35 [00:20<00:00,  1.80it/s]Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:20<00:00,  1.79it/s]Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:20<00:00,  1.70it/s]
+2025-06-22T13:01:34.819214488Z INFO 06-22 13:01:34 model_runner.py:1562] Graph capturing finished in 21 secs, took 0.26 GiB
+2025-06-22T13:01:34.820017394Z INFO 06-22 13:01:34 llm_engine.py:436] init engine (profile, create kv cache, warmup model) took 35.47 seconds
+2025-06-22T13:01:35.424666657Z [32m13:01:35[0m | [36m             stt:223[0m | [1m    INFO[0m | [1mInitialized UltravoxSTTService with model: fixie-ai/ultravox-v0_5-llama-3_1-8b[0m
+2025-06-22T13:01:35.424701309Z 2025-06-22 13:01:35.424 | INFO     | pipecat.services.ultravox.stt:__init__:223 - Initialized UltravoxSTTService with model: fixie-ai/ultravox-v0_5-llama-3_1-8b
+2025-06-22T13:01:35.424751785Z [32m13:01:35[0m | [36multravox_with_context:84[0m | [1m    INFO[0m | [1mInitialized UltravoxWithContextService with conversation memory[0m
+2025-06-22T13:01:35.424780368Z 2025-06-22 13:01:35.424 | INFO     | src.ultravox_with_context:__init__:84 - Initialized UltravoxWithContextService with conversation memory
+2025-06-22T13:01:35.424822721Z [32m13:01:35[0m | [36mpipecat_pipeline:99[0m | [1m    INFO[0m | [1mUltravox model with context initialized successfully![0m
+2025-06-22T13:01:35.424834439Z 2025-06-22 13:01:35.424 | INFO     | src.pipecat_pipeline:<module>:99 - Ultravox model with context initialized successfully!
+2025-06-22T13:01:35.427924467Z 2025-06-22 13:01:35,427 - root - INFO - Starting voice pipeline server on 0.0.0.0:8000
+2025-06-22T13:01:35.446888471Z INFO:     Started server process [75]
+2025-06-22T13:01:35.446916694Z INFO:     Waiting for application startup.
+2025-06-22T13:01:35.447280359Z INFO:     Application startup complete.
+2025-06-22T13:01:35.447513369Z INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2025-06-22T13:01:45.963608946Z INFO:     100.64.0.32:49282 - "OPTIONS /connect HTTP/1.1" 200 OK
+2025-06-22T13:01:46.054430236Z 2025-06-22 13:01:46,054 - root - INFO - Connect request - returning WebSocket URL: wss://x8ac4l0110x2ah-8000.proxy.runpod.net/ws
+2025-06-22T13:01:46.054496526Z 2025-06-22 13:01:46,054 - root - INFO - Request headers: x-forwarded-host=x8ac4l0110x2ah-8000.proxy.runpod.net, x-forwarded-proto=https
+2025-06-22T13:01:46.055071098Z INFO:     100.64.0.32:49282 - "POST /connect HTTP/1.1" 200 OK
+2025-06-22T13:01:46.271451039Z INFO:     100.64.0.32:49294 - "WebSocket /ws" [accepted]
+2025-06-22T13:01:46.271932852Z [32m13:01:46[0m | [36mpipecat_pipeline:105[0m | [1m    INFO[0m | [1mStarting bot with conversation memory[0m
+2025-06-22T13:01:46.271987664Z 2025-06-22 13:01:46.271 | INFO     | src.pipecat_pipeline:run_bot:105 - Starting bot with conversation memory
+2025-06-22T13:01:46.272753714Z [32m13:01:46[0m | [36mkokoro_tts_service:130[0m | [1m    INFO[0m | [1mInitialising Kokoro TTS (model='/models/kokoro/model_fp16.onnx', voices='/models/kokoro/voices-v1.0.bin', voice='af_bella')[0m
+2025-06-22T13:01:46.272820414Z 2025-06-22 13:01:46.272 | INFO     | src.kokoro_tts_service:__init__:130 - Initialising Kokoro TTS (model='/models/kokoro/model_fp16.onnx', voices='/models/kokoro/voices-v1.0.bin', voice='af_bella')
+2025-06-22T13:01:46.497874335Z /usr/local/lib/python3.10/dist-packages/torch/nn/modules/rnn.py:123: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.2 and num_layers=1
+2025-06-22T13:01:46.497913834Z   warnings.warn(
+2025-06-22T13:01:46.537900032Z /usr/local/lib/python3.10/dist-packages/torch/nn/utils/weight_norm.py:143: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+2025-06-22T13:01:46.537943007Z   WeightNorm.apply(module, name, dim)
+2025-06-22T13:01:51.985631551Z [32m13:01:51[0m | [36mkokoro_tts_service:151[0m | [1m    INFO[0m | [1mKokoro pipeline initialised successfully (backend=PyTorch)[0m
+2025-06-22T13:01:51.985678081Z 2025-06-22 13:01:51.985 | INFO     | src.kokoro_tts_service:__init__:151 - Kokoro pipeline initialised successfully (backend=PyTorch)
+2025-06-22T13:01:51.986040355Z 2025-06-22 13:01:51.985 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking PipelineSource#0 -> FastAPIWebsocketInputTransport#0
+2025-06-22T13:01:51.986081777Z 2025-06-22 13:01:51.985 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking FastAPIWebsocketInputTransport#0 -> RTVIProcessor#0
+2025-06-22T13:01:51.986088727Z 2025-06-22 13:01:51.985 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking RTVIProcessor#0 -> UltravoxWithContextService#0
+2025-06-22T13:01:51.986103109Z 2025-06-22 13:01:51.985 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking UltravoxWithContextService#0 -> KokoroTTSService#0
+2025-06-22T13:01:51.986120455Z 2025-06-22 13:01:51.986 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking KokoroTTSService#0 -> FastAPIWebsocketOutputTransport#0
+2025-06-22T13:01:51.986194376Z 2025-06-22 13:01:51.986 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking FastAPIWebsocketOutputTransport#0 -> PipelineSink#0
+2025-06-22T13:01:51.986480886Z 2025-06-22 13:01:51.986 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking PipelineTaskSource#0 -> Pipeline#0
+2025-06-22T13:01:51.986529148Z 2025-06-22 13:01:51.986 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking Pipeline#0 -> PipelineTaskSink#0
+2025-06-22T13:01:51.986647336Z [32m13:01:51[0m | [36m     base_object:55[0m | [33m[1m WARNING[0m | [33m[1mEvent handler on_interruption_start not registered[0m
+2025-06-22T13:01:51.986653195Z 2025-06-22 13:01:51.986 | WARNING  | pipecat.utils.base_object:add_event_handler:55 - Event handler on_interruption_start not registered
+2025-06-22T13:01:51.986714056Z [32m13:01:51[0m | [36m     base_object:55[0m | [33m[1m WARNING[0m | [33m[1mEvent handler on_interruption_end not registered[0m
+2025-06-22T13:01:51.986735568Z 2025-06-22 13:01:51.986 | WARNING  | pipecat.utils.base_object:add_event_handler:55 - Event handler on_interruption_end not registered
+2025-06-22T13:01:51.986799013Z [32m13:01:51[0m | [36m     base_object:55[0m | [33m[1m WARNING[0m | [33m[1mEvent handler on_user_started_speaking not registered[0m
+2025-06-22T13:01:51.986822699Z 2025-06-22 13:01:51.986 | WARNING  | pipecat.utils.base_object:add_event_handler:55 - Event handler on_user_started_speaking not registered
+2025-06-22T13:01:51.986863100Z [32m13:01:51[0m | [36m     base_object:55[0m | [33m[1m WARNING[0m | [33m[1mEvent handler on_user_stopped_speaking not registered[0m
+2025-06-22T13:01:51.986871713Z 2025-06-22 13:01:51.986 | WARNING  | pipecat.utils.base_object:add_event_handler:55 - Event handler on_user_stopped_speaking not registered
+2025-06-22T13:01:51.986927316Z [32m13:01:51[0m | [36m     base_object:55[0m | [33m[1m WARNING[0m | [33m[1mEvent handler on_bot_started_speaking not registered[0m
+2025-06-22T13:01:51.986963310Z 2025-06-22 13:01:51.986 | WARNING  | pipecat.utils.base_object:add_event_handler:55 - Event handler on_bot_started_speaking not registered
+2025-06-22T13:01:51.986999645Z [32m13:01:51[0m | [36m     base_object:55[0m | [33m[1m WARNING[0m | [33m[1mEvent handler on_bot_stopped_speaking not registered[0m
+2025-06-22T13:01:51.987022469Z 2025-06-22 13:01:51.986 | WARNING  | pipecat.utils.base_object:add_event_handler:55 - Event handler on_bot_stopped_speaking not registered
+2025-06-22T13:01:51.987171633Z 2025-06-22 13:01:51.987 | DEBUG    | pipecat.pipeline.runner:run:38 - Runner PipelineRunner#0 started running PipelineTask#0
+2025-06-22T13:01:51.987904643Z INFO:     connection open
+2025-06-22T13:01:51.989722461Z [32m13:01:51[0m | [36m             stt:232[0m | [1m    INFO[0m | [1mWarming up Ultravox model with silent audio...[0m
+2025-06-22T13:01:51.989736923Z 2025-06-22 13:01:51.989 | INFO     | pipecat.services.ultravox.stt:_warm_up_model:232 - Warming up Ultravox model with silent audio...
+2025-06-22T13:01:51.989850874Z [32m13:01:51[0m | [36m             stt:272[0m | [1m    INFO[0m | [1mGenerated 1s of silent audio (16000 samples)[0m
+2025-06-22T13:01:51.989863904Z 2025-06-22 13:01:51.989 | INFO     | pipecat.services.ultravox.stt:_generate_silent_audio:272 - Generated 1s of silent audio (16000 samples)
+2025-06-22T13:01:52.039258374Z WebSocket connection accepted
+2025-06-22T13:01:52.039292405Z WARNING: Defaulting repo_id to hexgrad/Kokoro-82M. Pass repo_id='hexgrad/Kokoro-82M' to suppress this warning.
+2025-06-22T13:01:52.039298995Z INFO 06-22 13:01:52 async_llm_engine.py:211] Added request 1750597312.0387957.
+2025-06-22T13:01:57.234121133Z [32m13:01:57[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:01:57.234150797Z 2025-06-22 13:01:57.233 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:01:57.234162495Z [32m13:01:57[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:01:57.234199040Z 2025-06-22 13:01:57.234 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:01:57.322162931Z INFO 06-22 13:01:57 metrics.py:455] Avg prompt throughput: 1.9 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.4%, CPU KV cache usage: 0.0%.
+2025-06-22T13:01:59.606113784Z INFO 06-22 13:01:59 async_llm_engine.py:179] Finished request 1750597312.0387957.
+2025-06-22T13:01:59.658365713Z [32m13:01:59[0m | [36m             stt:252[0m | [1m    INFO[0m | [1mModel warm-up completed successfully[0m
+2025-06-22T13:01:59.658402198Z 2025-06-22 13:01:59.657 | INFO     | pipecat.services.ultravox.stt:_warm_up_model:252 - Model warm-up completed successfully
+2025-06-22T13:01:59.658604562Z [32m13:01:59[0m | [36m             stt:294[0m | [1m    INFO[0m | [1mUltravoxSTTService started[0m
+2025-06-22T13:01:59.658619294Z 2025-06-22 13:01:59.658 | INFO     | pipecat.services.ultravox.stt:start:294 - UltravoxSTTService started
+2025-06-22T13:01:59.660430903Z 2025-06-22 13:01:59.660 | DEBUG    | pipecat.audio.vad.vad_analyzer:set_params:74 - Setting VAD params to: confidence=0.7 start_secs=0.2 stop_secs=0.8 min_volume=0.6
+2025-06-22T13:01:59.665686592Z [32m13:01:59[0m | [36mpipecat_pipeline:162[0m | [1m    INFO[0m | [1mClient connected - conversation memory active[0m
+2025-06-22T13:01:59.665959171Z 2025-06-22 13:01:59.665 | INFO     | src.pipecat_pipeline:on_client_connected:162 - Client connected - conversation memory active
+2025-06-22T13:01:59.666419492Z 2025-06-22 13:01:59.666 | DEBUG    | pipecat.serializers.protobuf:deserialize:106 - ProtobufFrameSerializer: Transport message TransportMessageUrgentFrame#1(message: {'label': 'rtvi-ai', 'type': 'client-ready', 'data': {}, 'id': '058f439d'})
+2025-06-22T13:01:59.669890652Z 2025-06-22 13:01:59.669 | DEBUG    | pipecat.processors.frameworks.rtvi:_handle_client_ready:844 - Received client-ready
+2025-06-22T13:01:59.672940910Z [32m13:01:59[0m | [36mpipecat_pipeline:156[0m | [1m    INFO[0m | [1mPipecat client ready with conversation memory.[0m
+2025-06-22T13:01:59.672990565Z 2025-06-22 13:01:59.672 | INFO     | src.pipecat_pipeline:on_client_ready:156 - Pipecat client ready with conversation memory.
+2025-06-22T13:01:59.909696855Z 2025-06-22 13:01:59.909 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-22T13:01:59.909834612Z [32m13:01:59[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-22T13:01:59.909866059Z 2025-06-22 13:01:59.909 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-22T13:01:59.914811983Z [32m13:01:59[0m | [36m        protobuf:64[0m | [33m[1m WARNING[0m | [33m[1mFrame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable[0m
+2025-06-22T13:01:59.914837421Z 2025-06-22 13:01:59.914 | WARNING  | pipecat.serializers.protobuf:serialize:64 - Frame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable
+2025-06-22T13:02:00.031113659Z 2025-06-22 13:02:00.030 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-22T13:02:00.031240900Z [32m13:02:00[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-22T13:02:00.031266899Z 2025-06-22 13:02:00.031 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-22T13:02:00.031697435Z [32m13:02:00[0m | [36multravox_with_context:154[0m | [1m    INFO[0m | [1mProcessing audio with 2 messages in context[0m
+2025-06-22T13:02:00.031728031Z 2025-06-22 13:02:00.031 | INFO     | src.ultravox_with_context:_process_audio_buffer:154 - Processing audio with 2 messages in context
+2025-06-22T13:02:00.032448642Z INFO 06-22 13:02:00 async_llm_engine.py:211] Added request 1750597320.0321603.
+2025-06-22T13:02:00.158521334Z 2025-06-22 13:02:00.158 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxWithContextService#0 TTFB: 0.12641000747680664
+2025-06-22T13:02:00.278191256Z [32m13:02:00[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:02:00.278218767Z 2025-06-22 13:02:00.277 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:02:00.568021714Z 2025-06-22 13:02:00,567 - phonemizer - WARNING - words count mismatch on 100.0% of the lines (1/1)
+2025-06-22T13:02:01.152270397Z 2025-06-22 13:02:01.151 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:02:01.152696717Z [32m13:02:01[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:02:01.152723267Z 2025-06-22 13:02:01.152 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:02:01.153550468Z [32m13:02:01[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:02:01.153596407Z 2025-06-22 13:02:01.153 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:02:01.160585417Z 2025-06-22 13:02:01,160 - phonemizer - WARNING - words count mismatch on 100.0% of the lines (1/1)
+2025-06-22T13:02:01.250232245Z 2025-06-22 13:02:01.249 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:02:01.250555610Z [32m13:02:01[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:02:01.250583242Z 2025-06-22 13:02:01.250 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:02:01.271650453Z 2025-06-22 13:02:01.271 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:395 - Bot started speaking
+2025-06-22T13:02:01.795970334Z [32m13:02:01[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:02:01.796016914Z 2025-06-22 13:02:01.795 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:02:01.839590507Z 2025-06-22 13:02:01,839 - phonemizer - WARNING - words count mismatch on 100.0% of the lines (1/1)
+2025-06-22T13:02:01.909655303Z INFO 06-22 13:02:01 async_llm_engine.py:179] Finished request 1750597320.0321603.
+2025-06-22T13:02:02.008861218Z 2025-06-22 13:02:02.008 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxWithContextService#0 processing time: 1.9766147136688232
+2025-06-22T13:02:02.009569471Z [32m13:02:02[0m | [36multravox_with_context:199[0m | [1m    INFO[0m | [1mAdded response to context. Total messages: 3[0m
+2025-06-22T13:02:02.009641499Z 2025-06-22 13:02:02.009 | INFO     | src.ultravox_with_context:_process_audio_buffer:199 - Added response to context. Total messages: 3
+2025-06-22T13:02:02.017445633Z [32m13:02:02[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 3 messages in conversation[0m
+2025-06-22T13:02:02.017484752Z 2025-06-22 13:02:02.017 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 3 messages in conversation
+2025-06-22T13:02:02.026297069Z 2025-06-22 13:02:02.025 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:02:02.026586614Z [32m13:02:02[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:02:02.026616538Z 2025-06-22 13:02:02.026 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:02:02.235322931Z [32m13:02:02[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:02:02.235364354Z 2025-06-22 13:02:02.234 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:02:02.235519567Z [32m13:02:02[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:02:02.235544985Z 2025-06-22 13:02:02.235 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:02:07.236642086Z [32m13:02:07[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:02:07.236692733Z 2025-06-22 13:02:07.235 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:02:07.236812522Z [32m13:02:07[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:02:07.236841426Z 2025-06-22 13:02:07.236 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:02:12.018030441Z [32m13:02:12[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 3 messages in conversation[0m
+2025-06-22T13:02:12.018097612Z 2025-06-22 13:02:12.017 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 3 messages in conversation
+2025-06-22T13:02:12.238378388Z [32m13:02:12[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:02:12.238418468Z 2025-06-22 13:02:12.237 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:02:12.238534121Z [32m13:02:12[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:02:12.238560771Z 2025-06-22 13:02:12.238 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:02:12.876003066Z 2025-06-22 13:02:12.875 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-22T13:02:12.876237328Z [32m13:02:12[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-22T13:02:12.876264329Z 2025-06-22 13:02:12.875 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-22T13:02:12.884022553Z 2025-06-22 13:02:12.883 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:410 - Bot stopped speaking
+2025-06-22T13:02:12.884865338Z [32m13:02:12[0m | [36m        protobuf:64[0m | [33m[1m WARNING[0m | [33m[1mFrame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable[0m
+2025-06-22T13:02:12.884880912Z 2025-06-22 13:02:12.884 | WARNING  | pipecat.serializers.protobuf:serialize:64 - Frame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable
+2025-06-22T13:02:14.892832527Z 2025-06-22 13:02:14.892 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-22T13:02:14.893085667Z [32m13:02:14[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-22T13:02:14.893127860Z 2025-06-22 13:02:14.892 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-22T13:02:14.894013940Z [32m13:02:14[0m | [36multravox_with_context:154[0m | [1m    INFO[0m | [1mProcessing audio with 4 messages in context[0m
+2025-06-22T13:02:14.894068432Z 2025-06-22 13:02:14.893 | INFO     | src.ultravox_with_context:_process_audio_buffer:154 - Processing audio with 4 messages in context
+2025-06-22T13:02:14.895070987Z INFO 06-22 13:02:14 async_llm_engine.py:211] Added request 1750597334.8946598.
+2025-06-22T13:02:15.016156062Z INFO 06-22 13:02:15 metrics.py:455] Avg prompt throughput: 20.1 tokens/s, Avg generation throughput: 3.3 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 1.7%, CPU KV cache usage: 0.0%.
+2025-06-22T13:02:15.023508548Z 2025-06-22 13:02:15.023 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxWithContextService#0 TTFB: 0.12899398803710938
+2025-06-22T13:02:15.272906889Z [32m13:02:15[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:02:15.272962803Z 2025-06-22 13:02:15.272 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:02:15.465726597Z 2025-06-22 13:02:15.465 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:02:15.466096892Z [32m13:02:15[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:02:15.466108320Z 2025-06-22 13:02:15.465 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:02:15.473374035Z 2025-06-22 13:02:15.473 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:395 - Bot started speaking
+2025-06-22T13:02:16.190749007Z [32m13:02:16[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:02:16.190797390Z 2025-06-22 13:02:16.190 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:02:16.386892704Z 2025-06-22 13:02:16.386 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:02:16.387262309Z [32m13:02:16[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:02:16.387305333Z 2025-06-22 13:02:16.386 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:02:17.239870813Z [32m13:02:17[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:02:17.239911724Z 2025-06-22 13:02:17.239 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:02:17.240068660Z [32m13:02:17[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:02:17.240122450Z 2025-06-22 13:02:17.239 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:02:17.683489283Z [32m13:02:17[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:02:17.683531366Z 2025-06-22 13:02:17.683 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:02:17.721248919Z 2025-06-22 13:02:17,720 - phonemizer - WARNING - words count mismatch on 100.0% of the lines (1/1)
+2025-06-22T13:02:17.798390437Z INFO 06-22 13:02:17 async_llm_engine.py:179] Finished request 1750597334.8946598.
+2025-06-22T13:02:17.886111213Z 2025-06-22 13:02:17.885 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:02:17.886557083Z [32m13:02:17[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:02:17.886694068Z 2025-06-22 13:02:17.886 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:02:17.888247830Z 2025-06-22 13:02:17.887 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxWithContextService#0 processing time: 2.993893623352051
+2025-06-22T13:02:17.888875392Z [32m13:02:17[0m | [36multravox_with_context:199[0m | [1m    INFO[0m | [1mAdded response to context. Total messages: 5[0m
+2025-06-22T13:02:17.888924406Z 2025-06-22 13:02:17.888 | INFO     | src.ultravox_with_context:_process_audio_buffer:199 - Added response to context. Total messages: 5
+2025-06-22T13:02:22.018792154Z [32m13:02:22[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 5 messages in conversation[0m
+2025-06-22T13:02:22.018832044Z 2025-06-22 13:02:22.018 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 5 messages in conversation
+2025-06-22T13:02:22.240839131Z [32m13:02:22[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:02:22.240879982Z 2025-06-22 13:02:22.240 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:02:22.241026653Z [32m13:02:22[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:02:22.241049717Z 2025-06-22 13:02:22.240 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:02:27.241775301Z [32m13:02:27[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:02:27.242127600Z 2025-06-22 13:02:27.241 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:02:27.242204946Z [32m13:02:27[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:02:27.242240650Z 2025-06-22 13:02:27.242 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:02:29.105784813Z 2025-06-22 13:02:29.105 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:410 - Bot stopped speaking
+2025-06-22T13:02:32.020124895Z [32m13:02:32[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 5 messages in conversation[0m
+2025-06-22T13:02:32.020165185Z 2025-06-22 13:02:32.019 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 5 messages in conversation
+2025-06-22T13:02:32.243653075Z [32m13:02:32[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:02:32.243690351Z 2025-06-22 13:02:32.243 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:02:32.243792644Z [32m13:02:32[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:02:32.243802118Z 2025-06-22 13:02:32.243 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:02:37.244627222Z [32m13:02:37[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:02:37.244687262Z 2025-06-22 13:02:37.244 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:02:37.244791018Z [32m13:02:37[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:02:37.244805890Z 2025-06-22 13:02:37.244 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:02:38.965869684Z 2025-06-22 13:02:38.965 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-22T13:02:38.966147731Z [32m13:02:38[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-22T13:02:38.966170896Z 2025-06-22 13:02:38.965 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-22T13:02:38.974625586Z [32m13:02:38[0m | [36m        protobuf:64[0m | [33m[1m WARNING[0m | [33m[1mFrame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable[0m
+2025-06-22T13:02:38.974650934Z 2025-06-22 13:02:38.974 | WARNING  | pipecat.serializers.protobuf:serialize:64 - Frame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable
+2025-06-22T13:02:41.715025708Z 2025-06-22 13:02:41.714 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-22T13:02:41.715574973Z [32m13:02:41[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-22T13:02:41.715669835Z 2025-06-22 13:02:41.715 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-22T13:02:41.717856537Z [32m13:02:41[0m | [36multravox_with_context:154[0m | [1m    INFO[0m | [1mProcessing audio with 6 messages in context[0m
+2025-06-22T13:02:41.717865701Z 2025-06-22 13:02:41.717 | INFO     | src.ultravox_with_context:_process_audio_buffer:154 - Processing audio with 6 messages in context
+2025-06-22T13:02:41.719795317Z INFO 06-22 13:02:41 async_llm_engine.py:211] Added request 1750597361.719017.
+2025-06-22T13:02:41.896534929Z INFO 06-22 13:02:41 metrics.py:455] Avg prompt throughput: 9.6 tokens/s, Avg generation throughput: 1.5 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 2.2%, CPU KV cache usage: 0.0%.
+2025-06-22T13:02:41.901015324Z 2025-06-22 13:02:41.900 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxWithContextService#0 TTFB: 0.18248677253723145
+2025-06-22T13:02:42.021493328Z [32m13:02:42[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 5 messages in conversation[0m
+2025-06-22T13:02:42.021682042Z 2025-06-22 13:02:42.020 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 5 messages in conversation
+2025-06-22T13:02:42.245549481Z [32m13:02:42[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:02:42.245587558Z 2025-06-22 13:02:42.245 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:02:42.245690233Z [32m13:02:42[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:02:42.245704073Z 2025-06-22 13:02:42.245 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:02:43.340808187Z [32m13:02:43[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:02:43.340844472Z 2025-06-22 13:02:43.340 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:02:43.666434244Z 2025-06-22 13:02:43.665 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:02:43.666817479Z [32m13:02:43[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:02:43.666909377Z 2025-06-22 13:02:43.666 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:02:43.681592095Z 2025-06-22 13:02:43.681 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:395 - Bot started speaking
+2025-06-22T13:02:45.190705367Z INFO 06-22 13:02:45 async_llm_engine.py:179] Finished request 1750597361.719017.
+2025-06-22T13:02:45.193762946Z 2025-06-22 13:02:45.193 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxWithContextService#0 processing time: 3.4753317832946777
+2025-06-22T13:02:45.194547834Z [32m13:02:45[0m | [36multravox_with_context:199[0m | [1m    INFO[0m | [1mAdded response to context. Total messages: 7[0m
+2025-06-22T13:02:45.194568785Z 2025-06-22 13:02:45.194 | INFO     | src.ultravox_with_context:_process_audio_buffer:199 - Added response to context. Total messages: 7
+2025-06-22T13:02:45.202901463Z [32m13:02:45[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:02:45.202923165Z 2025-06-22 13:02:45.202 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:02:45.362724333Z 2025-06-22 13:02:45.362 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:02:45.363094929Z [32m13:02:45[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:02:45.363204594Z 2025-06-22 13:02:45.362 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:02:47.246264239Z [32m13:02:47[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:02:47.246302336Z 2025-06-22 13:02:47.245 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:02:47.246469237Z [32m13:02:47[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:02:47.246496007Z 2025-06-22 13:02:47.246 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:02:48.012478658Z 2025-06-22 13:02:48.012 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-22T13:02:48.012764156Z [32m13:02:48[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-22T13:02:48.012791988Z 2025-06-22 13:02:48.012 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-22T13:02:48.021767440Z 2025-06-22 13:02:48.021 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:410 - Bot stopped speaking
+2025-06-22T13:02:48.022677796Z [32m13:02:48[0m | [36m        protobuf:64[0m | [33m[1m WARNING[0m | [33m[1mFrame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable[0m
+2025-06-22T13:02:48.022715964Z 2025-06-22 13:02:48.022 | WARNING  | pipecat.serializers.protobuf:serialize:64 - Frame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable
+2025-06-22T13:02:50.990619282Z 2025-06-22 13:02:50.990 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-22T13:02:50.990886714Z [32m13:02:50[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-22T13:02:50.990912182Z 2025-06-22 13:02:50.990 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-22T13:02:50.992276780Z [32m13:02:50[0m | [36multravox_with_context:154[0m | [1m    INFO[0m | [1mProcessing audio with 8 messages in context[0m
+2025-06-22T13:02:50.992287787Z 2025-06-22 13:02:50.992 | INFO     | src.ultravox_with_context:_process_audio_buffer:154 - Processing audio with 8 messages in context
+2025-06-22T13:02:50.993754929Z INFO 06-22 13:02:50 async_llm_engine.py:211] Added request 1750597370.9933307.
+2025-06-22T13:02:51.180106047Z INFO 06-22 13:02:51 metrics.py:455] Avg prompt throughput: 34.9 tokens/s, Avg generation throughput: 5.4 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 2.8%, CPU KV cache usage: 0.0%.
+2025-06-22T13:02:51.199486357Z 2025-06-22 13:02:51.199 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxWithContextService#0 TTFB: 0.20674490928649902
+2025-06-22T13:02:51.950913159Z [32m13:02:51[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:02:51.950979990Z 2025-06-22 13:02:51.950 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:02:52.056315606Z [32m13:02:52[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 7 messages in conversation[0m
+2025-06-22T13:02:52.056356247Z 2025-06-22 13:02:52.055 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 7 messages in conversation
+2025-06-22T13:02:52.151596310Z 2025-06-22 13:02:52.151 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:02:52.152012515Z [32m13:02:52[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:02:52.152089310Z 2025-06-22 13:02:52.151 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:02:52.162357121Z 2025-06-22 13:02:52.162 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:395 - Bot started speaking
+2025-06-22T13:02:52.248046810Z [32m13:02:52[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:02:52.248083935Z 2025-06-22 13:02:52.247 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:02:52.248253019Z [32m13:02:52[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:02:52.248266509Z 2025-06-22 13:02:52.247 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:02:53.133198871Z [32m13:02:53[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:02:53.133236377Z 2025-06-22 13:02:53.132 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:02:53.343327529Z 2025-06-22 13:02:53.342 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:02:53.343737564Z [32m13:02:53[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:02:53.343751054Z 2025-06-22 13:02:53.343 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:02:54.486688485Z INFO 06-22 13:02:54 async_llm_engine.py:179] Finished request 1750597370.9933307.
+2025-06-22T13:02:54.518867975Z 2025-06-22 13:02:54.518 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxWithContextService#0 processing time: 3.5261306762695312
+2025-06-22T13:02:54.519456108Z [32m13:02:54[0m | [36multravox_with_context:199[0m | [1m    INFO[0m | [1mAdded response to context. Total messages: 9[0m
+2025-06-22T13:02:54.519477030Z 2025-06-22 13:02:54.519 | INFO     | src.ultravox_with_context:_process_audio_buffer:199 - Added response to context. Total messages: 9
+2025-06-22T13:02:54.528005260Z [32m13:02:54[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:02:54.528027163Z 2025-06-22 13:02:54.527 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:02:54.643672374Z 2025-06-22 13:02:54.643 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:02:54.644184392Z [32m13:02:54[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:02:54.644205925Z 2025-06-22 13:02:54.643 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:02:57.249692154Z [32m13:02:57[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:02:57.249740487Z 2025-06-22 13:02:57.249 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:02:57.249823251Z [32m13:02:57[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:02:57.249852365Z 2025-06-22 13:02:57.249 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:02:57.520048172Z 2025-06-22 13:02:57.519 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-22T13:02:57.520303245Z [32m13:02:57[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-22T13:02:57.520310776Z 2025-06-22 13:02:57.520 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-22T13:02:57.531168343Z 2025-06-22 13:02:57.530 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:410 - Bot stopped speaking
+2025-06-22T13:02:57.531984017Z [32m13:02:57[0m | [36m        protobuf:64[0m | [33m[1m WARNING[0m | [33m[1mFrame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable[0m
+2025-06-22T13:02:57.532006531Z 2025-06-22 13:02:57.531 | WARNING  | pipecat.serializers.protobuf:serialize:64 - Frame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable
+2025-06-22T13:03:01.323877294Z 2025-06-22 13:03:01.323 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-22T13:03:01.324116113Z [32m13:03:01[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-22T13:03:01.324155512Z 2025-06-22 13:03:01.323 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-22T13:03:01.325732459Z [32m13:03:01[0m | [36multravox_with_context:154[0m | [1m    INFO[0m | [1mProcessing audio with 10 messages in context[0m
+2025-06-22T13:03:01.325756475Z 2025-06-22 13:03:01.325 | INFO     | src.ultravox_with_context:_process_audio_buffer:154 - Processing audio with 10 messages in context
+2025-06-22T13:03:01.326915965Z INFO 06-22 13:03:01 async_llm_engine.py:211] Added request 1750597381.3264983.
+2025-06-22T13:03:01.541736225Z INFO 06-22 13:03:01 metrics.py:455] Avg prompt throughput: 38.0 tokens/s, Avg generation throughput: 4.8 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 3.3%, CPU KV cache usage: 0.0%.
+2025-06-22T13:03:01.546685704Z 2025-06-22 13:03:01.546 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxWithContextService#0 TTFB: 0.22050833702087402
+2025-06-22T13:03:02.057535767Z [32m13:03:02[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 9 messages in conversation[0m
+2025-06-22T13:03:02.057582167Z 2025-06-22 13:03:02.057 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 9 messages in conversation
+2025-06-22T13:03:02.191263810Z [32m13:03:02[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:03:02.191307375Z 2025-06-22 13:03:02.190 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:03:02.296812506Z [32m13:03:02[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:03:02.296857724Z 2025-06-22 13:03:02.296 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:03:02.296982431Z [32m13:03:02[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:03:02.297005585Z 2025-06-22 13:03:02.296 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:03:02.375759012Z 2025-06-22 13:03:02.375 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:03:02.376055938Z [32m13:03:02[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:03:02.376081637Z 2025-06-22 13:03:02.375 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:03:02.384794585Z 2025-06-22 13:03:02.384 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:395 - Bot started speaking
+2025-06-22T13:03:03.536373826Z [32m13:03:03[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:03:03.536433846Z 2025-06-22 13:03:03.535 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:03:03.732140036Z 2025-06-22 13:03:03.731 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:03:03.732468259Z [32m13:03:03[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:03:03.732481940Z 2025-06-22 13:03:03.732 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:03:04.635769732Z [32m13:03:04[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:03:04.635817694Z 2025-06-22 13:03:04.635 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:03:04.748928200Z INFO 06-22 13:03:04 async_llm_engine.py:179] Finished request 1750597381.3264983.
+2025-06-22T13:03:04.848989039Z 2025-06-22 13:03:04.848 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxWithContextService#0 processing time: 3.5227580070495605
+2025-06-22T13:03:04.849721218Z [32m13:03:04[0m | [36multravox_with_context:199[0m | [1m    INFO[0m | [1mAdded response to context. Total messages: 11[0m
+2025-06-22T13:03:04.849755950Z 2025-06-22 13:03:04.849 | INFO     | src.ultravox_with_context:_process_audio_buffer:199 - Added response to context. Total messages: 11
+2025-06-22T13:03:04.880049019Z 2025-06-22 13:03:04.879 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:03:04.880396991Z [32m13:03:04[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:03:04.880410452Z 2025-06-22 13:03:04.880 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:03:07.299101677Z [32m13:03:07[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:03:07.299141917Z 2025-06-22 13:03:07.298 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:03:07.299294797Z [32m13:03:07[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:03:07.299301396Z 2025-06-22 13:03:07.299 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:03:07.374194389Z 2025-06-22 13:03:07.373 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-22T13:03:07.374404024Z [32m13:03:07[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-22T13:03:07.374411044Z 2025-06-22 13:03:07.374 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-22T13:03:07.382687397Z 2025-06-22 13:03:07.382 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:410 - Bot stopped speaking
+2025-06-22T13:03:07.383520708Z [32m13:03:07[0m | [36m        protobuf:64[0m | [33m[1m WARNING[0m | [33m[1mFrame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable[0m
+2025-06-22T13:03:07.383543261Z 2025-06-22 13:03:07.383 | WARNING  | pipecat.serializers.protobuf:serialize:64 - Frame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable
+2025-06-22T13:03:09.260205074Z 2025-06-22 13:03:09.259 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-22T13:03:09.260448690Z [32m13:03:09[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-22T13:03:09.260481138Z 2025-06-22 13:03:09.260 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-22T13:03:09.261411505Z [32m13:03:09[0m | [36multravox_with_context:154[0m | [1m    INFO[0m | [1mProcessing audio with 12 messages in context[0m
+2025-06-22T13:03:09.261458004Z 2025-06-22 13:03:09.261 | INFO     | src.ultravox_with_context:_process_audio_buffer:154 - Processing audio with 12 messages in context
+2025-06-22T13:03:09.262614300Z INFO 06-22 13:03:09 async_llm_engine.py:211] Added request 1750597389.2622414.
+2025-06-22T13:03:09.483096528Z INFO 06-22 13:03:09 metrics.py:455] Avg prompt throughput: 55.9 tokens/s, Avg generation throughput: 6.0 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 3.7%, CPU KV cache usage: 0.0%.
+2025-06-22T13:03:09.498151405Z 2025-06-22 13:03:09.497 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxWithContextService#0 TTFB: 0.2362685203552246
+2025-06-22T13:03:09.932579391Z [32m13:03:09[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:03:09.932619962Z 2025-06-22 13:03:09.932 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:03:10.141192654Z 2025-06-22 13:03:10.140 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:03:10.141540166Z [32m13:03:10[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:03:10.141567407Z 2025-06-22 13:03:10.141 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:03:10.149511981Z 2025-06-22 13:03:10.149 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:395 - Bot started speaking
+2025-06-22T13:03:11.308513083Z [32m13:03:11[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:03:11.308554705Z 2025-06-22 13:03:11.308 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:03:11.509088441Z 2025-06-22 13:03:11.508 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:03:11.509496905Z [32m13:03:11[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:03:11.509503825Z 2025-06-22 13:03:11.509 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:03:12.058162458Z [32m13:03:12[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 11 messages in conversation[0m
+2025-06-22T13:03:12.058212583Z 2025-06-22 13:03:12.057 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 11 messages in conversation
+2025-06-22T13:03:12.300877738Z [32m13:03:12[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:03:12.300921283Z 2025-06-22 13:03:12.300 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:03:12.301124508Z [32m13:03:12[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:03:12.301167222Z 2025-06-22 13:03:12.300 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:03:12.776997732Z INFO 06-22 13:03:12 async_llm_engine.py:179] Finished request 1750597389.2622414.
+2025-06-22T13:03:12.778180647Z 2025-06-22 13:03:12.777 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxWithContextService#0 processing time: 3.5163166522979736
+2025-06-22T13:03:12.778775971Z [32m13:03:12[0m | [36multravox_with_context:199[0m | [1m    INFO[0m | [1mAdded response to context. Total messages: 13[0m
+2025-06-22T13:03:12.778802571Z 2025-06-22 13:03:12.778 | INFO     | src.ultravox_with_context:_process_audio_buffer:199 - Added response to context. Total messages: 13
+2025-06-22T13:03:12.787344842Z [32m13:03:12[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:03:12.787370982Z 2025-06-22 13:03:12.786 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:03:12.931129760Z 2025-06-22 13:03:12.930 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:03:12.931441568Z [32m13:03:12[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:03:12.931456340Z 2025-06-22 13:03:12.931 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:03:17.302040638Z [32m13:03:17[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:03:17.302087709Z 2025-06-22 13:03:17.301 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:03:17.302219346Z [32m13:03:17[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:03:17.302247218Z 2025-06-22 13:03:17.302 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:03:18.891036791Z 2025-06-22 13:03:18.890 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-22T13:03:18.891213196Z [32m13:03:18[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-22T13:03:18.891238094Z 2025-06-22 13:03:18.890 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-22T13:03:18.899138191Z 2025-06-22 13:03:18.898 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:410 - Bot stopped speaking
+2025-06-22T13:03:18.899922369Z [32m13:03:18[0m | [36m        protobuf:64[0m | [33m[1m WARNING[0m | [33m[1mFrame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable[0m
+2025-06-22T13:03:18.899966224Z 2025-06-22 13:03:18.899 | WARNING  | pipecat.serializers.protobuf:serialize:64 - Frame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable
+2025-06-22T13:03:22.059164412Z [32m13:03:22[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 13 messages in conversation[0m
+2025-06-22T13:03:22.059204722Z 2025-06-22 13:03:22.058 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 13 messages in conversation
+2025-06-22T13:03:22.305016510Z [32m13:03:22[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:03:22.305055518Z 2025-06-22 13:03:22.304 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:03:22.305272514Z [32m13:03:22[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:03:22.305286976Z 2025-06-22 13:03:22.305 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:03:22.317818976Z 2025-06-22 13:03:22.317 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-22T13:03:22.318082952Z [32m13:03:22[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-22T13:03:22.318105155Z 2025-06-22 13:03:22.317 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-22T13:03:22.319506128Z [32m13:03:22[0m | [36multravox_with_context:154[0m | [1m    INFO[0m | [1mProcessing audio with 14 messages in context[0m
+2025-06-22T13:03:22.319522333Z 2025-06-22 13:03:22.319 | INFO     | src.ultravox_with_context:_process_audio_buffer:154 - Processing audio with 14 messages in context
+2025-06-22T13:03:22.320773260Z INFO 06-22 13:03:22 async_llm_engine.py:211] Added request 1750597402.3203554.
+2025-06-22T13:03:22.546381442Z INFO 06-22 13:03:22 metrics.py:455] Avg prompt throughput: 39.7 tokens/s, Avg generation throughput: 3.8 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 4.3%, CPU KV cache usage: 0.0%.
+2025-06-22T13:03:22.563865385Z 2025-06-22 13:03:22.563 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxWithContextService#0 TTFB: 0.24392437934875488
+2025-06-22T13:03:23.052693274Z [32m13:03:23[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:03:23.052758121Z 2025-06-22 13:03:23.052 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:03:23.251658005Z 2025-06-22 13:03:23.251 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:03:23.252289062Z [32m13:03:23[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:03:23.252310234Z 2025-06-22 13:03:23.251 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:03:23.260566446Z 2025-06-22 13:03:23.260 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:395 - Bot started speaking
+2025-06-22T13:03:24.109740145Z [32m13:03:24[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:03:24.109783309Z 2025-06-22 13:03:24.109 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:03:24.314017360Z 2025-06-22 13:03:24.313 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:03:24.314500615Z [32m13:03:24[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:03:24.314525382Z 2025-06-22 13:03:24.314 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:03:25.034486406Z [32m13:03:25[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:03:25.034523642Z 2025-06-22 13:03:25.034 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:03:25.147308729Z INFO 06-22 13:03:25 async_llm_engine.py:179] Finished request 1750597402.3203554.
+2025-06-22T13:03:25.247549889Z 2025-06-22 13:03:25.247 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxWithContextService#0 processing time: 2.927569627761841
+2025-06-22T13:03:25.248196059Z [32m13:03:25[0m | [36multravox_with_context:199[0m | [1m    INFO[0m | [1mAdded response to context. Total messages: 15[0m
+2025-06-22T13:03:25.248219524Z 2025-06-22 13:03:25.247 | INFO     | src.ultravox_with_context:_process_audio_buffer:199 - Added response to context. Total messages: 15
+2025-06-22T13:03:25.283923595Z 2025-06-22 13:03:25.283 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:03:25.284302303Z [32m13:03:25[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:03:25.284322804Z 2025-06-22 13:03:25.284 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:03:27.306872390Z [32m13:03:27[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:03:27.306912230Z 2025-06-22 13:03:27.306 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:03:27.307182466Z [32m13:03:27[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:03:27.307211169Z 2025-06-22 13:03:27.306 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:03:28.012113209Z 2025-06-22 13:03:28.011 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-22T13:03:28.012277446Z [32m13:03:28[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-22T13:03:28.012308893Z 2025-06-22 13:03:28.012 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-22T13:03:28.020114799Z 2025-06-22 13:03:28.019 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:410 - Bot stopped speaking
+2025-06-22T13:03:28.020936392Z [32m13:03:28[0m | [36m        protobuf:64[0m | [33m[1m WARNING[0m | [33m[1mFrame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable[0m
+2025-06-22T13:03:28.020991495Z 2025-06-22 13:03:28.020 | WARNING  | pipecat.serializers.protobuf:serialize:64 - Frame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable
+2025-06-22T13:03:30.928204690Z 2025-06-22 13:03:30.927 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-22T13:03:30.928431700Z [32m13:03:30[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-22T13:03:30.928460413Z 2025-06-22 13:03:30.928 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-22T13:03:30.930325172Z [32m13:03:30[0m | [36multravox_with_context:154[0m | [1m    INFO[0m | [1mProcessing audio with 16 messages in context[0m
+2025-06-22T13:03:30.930347896Z 2025-06-22 13:03:30.930 | INFO     | src.ultravox_with_context:_process_audio_buffer:154 - Processing audio with 16 messages in context
+2025-06-22T13:03:30.931617843Z INFO 06-22 13:03:30 async_llm_engine.py:211] Added request 1750597410.9311924.
+2025-06-22T13:03:31.171392739Z INFO 06-22 13:03:31 metrics.py:455] Avg prompt throughput: 65.9 tokens/s, Avg generation throughput: 4.4 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 4.7%, CPU KV cache usage: 0.0%.
+2025-06-22T13:03:31.175295246Z 2025-06-22 13:03:31.174 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxWithContextService#0 TTFB: 0.24454736709594727
+2025-06-22T13:03:31.552848704Z [32m13:03:31[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:03:31.552889295Z 2025-06-22 13:03:31.552 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:03:31.754849262Z 2025-06-22 13:03:31.754 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:03:31.755194060Z [32m13:03:31[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:03:31.755215712Z 2025-06-22 13:03:31.754 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:03:31.764838826Z 2025-06-22 13:03:31.764 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:395 - Bot started speaking
+2025-06-22T13:03:32.060093246Z [32m13:03:32[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 15 messages in conversation[0m
+2025-06-22T13:03:32.060134578Z 2025-06-22 13:03:32.059 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 15 messages in conversation
+2025-06-22T13:03:32.161366104Z [32m13:03:32[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:03:32.161406905Z 2025-06-22 13:03:32.160 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:03:32.371146850Z 2025-06-22 13:03:32.370 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:03:32.371484927Z [32m13:03:32[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:03:32.371500561Z 2025-06-22 13:03:32.371 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:03:32.379801570Z [32m13:03:32[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:03:32.379826087Z 2025-06-22 13:03:32.379 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:03:32.379961741Z [32m13:03:32[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:03:32.379980689Z 2025-06-22 13:03:32.379 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:03:33.957915550Z [32m13:03:33[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:03:33.957975770Z 2025-06-22 13:03:33.957 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:03:34.072749653Z INFO 06-22 13:03:34 async_llm_engine.py:179] Finished request 1750597410.9311924.
+2025-06-22T13:03:34.172279405Z 2025-06-22 13:03:34.171 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxWithContextService#0 processing time: 3.2415127754211426
+2025-06-22T13:03:34.172943161Z [32m13:03:34[0m | [36multravox_with_context:199[0m | [1m    INFO[0m | [1mAdded response to context. Total messages: 17[0m
+2025-06-22T13:03:34.173021318Z 2025-06-22 13:03:34.172 | INFO     | src.ultravox_with_context:_process_audio_buffer:199 - Added response to context. Total messages: 17
+2025-06-22T13:03:34.215368210Z 2025-06-22 13:03:34.215 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:03:34.215742682Z [32m13:03:34[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:03:34.215814309Z 2025-06-22 13:03:34.215 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:03:34.650463096Z 2025-06-22 13:03:34.650 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-22T13:03:34.650592921Z [32m13:03:34[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-22T13:03:34.650626001Z 2025-06-22 13:03:34.650 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-22T13:03:34.656220188Z 2025-06-22 13:03:34.656 | DEBUG    | pipecat.transports.base_output:_bot_stopped_speaking:410 - Bot stopped speaking
+2025-06-22T13:03:34.656797083Z [32m13:03:34[0m | [36m        protobuf:64[0m | [33m[1m WARNING[0m | [33m[1mFrame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable[0m
+2025-06-22T13:03:34.656809692Z 2025-06-22 13:03:34.656 | WARNING  | pipecat.serializers.protobuf:serialize:64 - Frame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable
+2025-06-22T13:03:36.013706100Z 2025-06-22 13:03:36.013 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-22T13:03:36.013935484Z [32m13:03:36[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-22T13:03:36.013996215Z 2025-06-22 13:03:36.013 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-22T13:03:36.015157208Z [32m13:03:36[0m | [36multravox_with_context:154[0m | [1m    INFO[0m | [1mProcessing audio with 18 messages in context[0m
+2025-06-22T13:03:36.015219532Z 2025-06-22 13:03:36.014 | INFO     | src.ultravox_with_context:_process_audio_buffer:154 - Processing audio with 18 messages in context
+2025-06-22T13:03:36.016515877Z INFO 06-22 13:03:36 async_llm_engine.py:211] Added request 1750597416.0161572.
+2025-06-22T13:03:36.245912446Z INFO 06-22 13:03:36 metrics.py:455] Avg prompt throughput: 122.0 tokens/s, Avg generation throughput: 8.5 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 5.1%, CPU KV cache usage: 0.0%.
+2025-06-22T13:03:36.264592584Z 2025-06-22 13:03:36.264 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_ttfb_metrics:69 - UltravoxWithContextService#0 TTFB: 0.24887919425964355
+2025-06-22T13:03:37.131943737Z [32m13:03:37[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:03:37.132009816Z 2025-06-22 13:03:37.131 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:03:37.334039347Z 2025-06-22 13:03:37.333 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:03:37.334486859Z [32m13:03:37[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:03:37.334502052Z 2025-06-22 13:03:37.334 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:03:37.345272758Z 2025-06-22 13:03:37.344 | DEBUG    | pipecat.transports.base_output:_bot_started_speaking:395 - Bot started speaking
+2025-06-22T13:03:37.382615869Z [32m13:03:37[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:03:37.382647397Z 2025-06-22 13:03:37.382 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:03:37.382771984Z [32m13:03:37[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:03:37.382780026Z 2025-06-22 13:03:37.382 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:03:38.944744836Z [32m13:03:38[0m | [36mkokoro_tts_service:170[0m | [1m    INFO[0m | [1m🔊 Kokoro TTS received: '%s'[0m
+2025-06-22T13:03:38.944784245Z 2025-06-22 13:03:38.944 | INFO     | src.kokoro_tts_service:run_tts:170 - 🔊 Kokoro TTS received: '%s'
+2025-06-22T13:03:39.058564797Z INFO 06-22 13:03:39 async_llm_engine.py:179] Finished request 1750597416.0161572.
+2025-06-22T13:03:39.142349005Z 2025-06-22 13:03:39.141 | DEBUG    | src.kokoro_tts_service:run_tts:228 - 🔊 TTS chunk %d
+2025-06-22T13:03:39.142749195Z [32m13:03:39[0m | [36mkokoro_tts_service:237[0m | [1m    INFO[0m | [1m🔊 TTS completed (%d chunks)[0m
+2025-06-22T13:03:39.142785961Z 2025-06-22 13:03:39.142 | INFO     | src.kokoro_tts_service:run_tts:237 - 🔊 TTS completed (%d chunks)
+2025-06-22T13:03:39.143730498Z 2025-06-22 13:03:39.143 | DEBUG    | pipecat.processors.metrics.frame_processor_metrics:stop_processing_metrics:84 - UltravoxWithContextService#0 processing time: 3.1282389163970947
+2025-06-22T13:03:39.144307214Z [32m13:03:39[0m | [36multravox_with_context:199[0m | [1m    INFO[0m | [1mAdded response to context. Total messages: 19[0m
+2025-06-22T13:03:39.144373854Z 2025-06-22 13:03:39.144 | INFO     | src.ultravox_with_context:_process_audio_buffer:199 - Added response to context. Total messages: 19
+2025-06-22T13:03:42.061084333Z [32m13:03:42[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 19 messages in conversation[0m
+2025-06-22T13:03:42.061124003Z 2025-06-22 13:03:42.060 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 19 messages in conversation
+2025-06-22T13:03:42.384123026Z [32m13:03:42[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:03:42.384160633Z 2025-06-22 13:03:42.383 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:03:42.384341244Z [32m13:03:42[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:03:42.384355115Z 2025-06-22 13:03:42.384 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:03:42.998591829Z [32m13:03:42[0m | [36mfastapi_websocket:300[0m | [31m[1m   ERROR[0m | [31m[1mFastAPIWebsocketOutputTransport#0 exception sending data: WebSocketDisconnect ()[0m
+2025-06-22T13:03:42.998630056Z 2025-06-22 13:03:42.998 | ERROR    | pipecat.transports.network.fastapi_websocket:_write_frame:300 - FastAPIWebsocketOutputTransport#0 exception sending data: WebSocketDisconnect ()
+2025-06-22T13:03:42.998981414Z INFO:     connection closed
+2025-06-22T13:03:42.999157107Z [32m13:03:42[0m | [36mpipecat_pipeline:168[0m | [1m    INFO[0m | [1mClient disconnected[0m
+2025-06-22T13:03:42.999189616Z 2025-06-22 13:03:42.998 | INFO     | src.pipecat_pipeline:on_client_disconnected:168 - Client disconnected
+2025-06-22T13:03:42.999360943Z 2025-06-22 13:03:42.999 | DEBUG    | pipecat.pipeline.task:_cancel:419 - Canceling pipeline task PipelineTask#0
+2025-06-22T13:03:43.002644251Z [32m13:03:43[0m | [36m             stt:315[0m | [1m    INFO[0m | [1mUltravoxSTTService cancelled[0m
+2025-06-22T13:03:43.002665343Z 2025-06-22 13:03:43.002 | INFO     | pipecat.services.ultravox.stt:cancel:315 - UltravoxSTTService cancelled
+2025-06-22T13:03:43.004175209Z [32m13:03:43[0m | [36m        protobuf:64[0m | [33m[1m WARNING[0m | [33m[1mFrame type <class 'pipecat.frames.frames.CancelFrame'> is not serializable[0m
+2025-06-22T13:03:43.004208029Z 2025-06-22 13:03:43.003 | WARNING  | pipecat.serializers.protobuf:serialize:64 - Frame type <class 'pipecat.frames.frames.CancelFrame'> is not serializable
+2025-06-22T13:03:43.006319979Z 2025-06-22 13:03:43.006 | DEBUG    | pipecat.pipeline.runner:run:55 - Runner PipelineRunner#0 finished running PipelineTask#0
+2025-06-22T13:03:47.385243093Z [32m13:03:47[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:03:47.385296833Z 2025-06-22 13:03:47.384 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:03:47.385408731Z [32m13:03:47[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:03:47.385436974Z 2025-06-22 13:03:47.385 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================
+2025-06-22T13:03:52.062223023Z [32m13:03:52[0m | [36mpipecat_pipeline:205[0m | [1m    INFO[0m | [1m📝 CONTEXT: 19 messages in conversation[0m
+2025-06-22T13:03:52.062262662Z 2025-06-22 13:03:52.061 | INFO     | src.pipecat_pipeline:monitor_context:205 - 📝 CONTEXT: 19 messages in conversation
+2025-06-22T13:03:52.386775748Z [32m13:03:52[0m | [36mpipecat_pipeline:225[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T13:03:52.386817230Z 2025-06-22 13:03:52.386 | INFO     | src.pipecat_pipeline:log_metrics:225 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T13:03:52.386924331Z [32m13:03:52[0m | [36mpipecat_pipeline:236[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T13:03:52.386938943Z 2025-06-22 13:03:52.386 | INFO     | src.pipecat_pipeline:log_metrics:236 - 📊 ========================

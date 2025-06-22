@@ -103,7 +103,6 @@ logger.info("✅ Whisper STT initialized successfully!")
 logger.info("🧠 Loading Ollama LLM service...")
 llm_service = OLLamaLLMService(
     model=OLLAMA_MODEL,
-    base_url=OLLAMA_BASE_URL,
     params=OLLamaLLMService.InputParams(
         temperature=0.7,          # Balanced creativity
         max_tokens=150,           # Reasonable length for voice
@@ -113,18 +112,16 @@ llm_service = OLLamaLLMService(
 )
 logger.info("✅ Ollama LLM initialized successfully!")
 
-# 3. Conversation context with system prompt
-conversation_context = OpenAILLMContext(
+context = OpenAILLMContext(
     messages=[],
-    system=SYSTEM_PROMPT,
-    tools=[],  # Ready for function calling later!
+    system="You are a helpful assistant"
 )
 
-# 4. Context aggregators for proper conversation flow
-context_aggregators = OLLamaLLMService.create_context_aggregator(
-    conversation_context,
-    assistant_expect_stripped_words=True  # Better for voice responses
-)
+
+aggregators = OLLamaLLMService.create_context_aggregator(context)
+
+# 3. Access individual aggregators
+
 
 logger.info("🎯 All local pipeline components ready!")
 
@@ -162,9 +159,8 @@ async def run_bot(websocket_client):
         ws_transport.input(),           # Audio input
         rtvi,                          # RTVI compatibility  
         stt_service,                   # 🎙️  Whisper STT (local)
-        context_aggregators.user(),    # 👤  User message handling
+        aggregators.user(),    # 👤  User message handling
         llm_service,                   # 🧠  Ollama LLM (local)  
-        context_aggregators.assistant(), # 🤖  Assistant message handling
         tts,                           # 🗣️  Kokoro TTS (local)
         ws_transport.output(),         # Audio output
     ])

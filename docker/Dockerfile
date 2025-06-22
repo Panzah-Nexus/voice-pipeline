@@ -56,11 +56,26 @@ RUN pip install --no-cache-dir -r /tmp/requirements.txt
 ###############################################################################
 # 7. Pre-download recommended Ollama model for faster startup
 ###############################################################################
-# Start Ollama service and download model during build (optional - speeds up first run)
-RUN ollama serve & \
-    sleep 5 && \
-    ollama pull llama3.2:3b && \
-    pkill ollama || true
+#ARG PIPER_VERSION=latest
+#RUN set -eux; \
+#    mkdir -p /usr/local/bin /usr/local/lib && cd /tmp; \
+#    if [ "$PIPER_VERSION" = "latest" ]; then \
+#        PIPER_URL=$(curl -s https://api.github.com/repos/rhasspy/piper/releases/latest | \
+#                    grep browser_download_url | grep linux_x86_64 | cut -d '"' -f 4); \
+#    else \
+#        PIPER_URL="https://github.com/rhasspy/piper/releases/download/${PIPER_VERSION}/piper_linux_x86_64.tar.gz"; \
+#    fi; \
+#    echo "Downloading Piper from: $PIPER_URL"; \
+#    wget -q "$PIPER_URL" -O piper.tar.gz; \
+#    tar -xzf piper.tar.gz; \
+#    cp piper/piper /usr/local/bin/; \
+#    find piper -maxdepth 2 -name '*.so*' -exec cp {} /usr/local/lib/ \;; \
+#    ldconfig; rm -rf /tmp/piper*
+
+#RUN mkdir -p /models/piper && \
+#    cd /models/piper && \
+#    wget -q https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/en_US-lessac-medium.onnx && \
+#    wget -q https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/en_US-lessac-medium.onnx.json
 
 ###############################################################################
 # 8. Copy application code
@@ -68,55 +83,14 @@ RUN ollama serve & \
 WORKDIR /app
 
 COPY src/ ./src/
-COPY setup_local_pipeline.sh ./
-COPY .env* ./
 
-# Create enhanced startup script
-RUN cat > /app/start.sh << 'EOF'\
-#!/bin/bash\
-echo "🚀 Starting Local Voice Pipeline Container..."\
-\
-# Start SSH daemon\
-service ssh start\
-echo "✅ SSH daemon started"\
-\
-# Start Ollama service\
-ollama serve &\
-OLLAMA_PID=$!\
-echo "✅ Ollama service started (PID: $OLLAMA_PID)"\
-\
-# Wait for Ollama to be ready\
-echo "⏳ Waiting for Ollama to be ready..."\
-for i in {1..30}; do\
-    if curl -s http://localhost:11434/api/tags > /dev/null 2>&1; then\
-        echo "✅ Ollama is ready!"\
-        break\
-    fi\
-    sleep 1\
-done\
-\
-# Ensure model is available\
-if ! ollama list | grep -q "llama3.2:3b"; then\
-    echo "📥 Downloading llama3.2:3b model..."\
-    ollama pull llama3.2:3b\
-fi\
-\
-# Set environment variables for the pipeline\
-export OLLAMA_MODEL="${OLLAMA_MODEL:-llama3.2:3b}"\
-export OLLAMA_BASE_URL="${OLLAMA_BASE_URL:-http://localhost:11434/v1}"\
-export CUDA_AVAILABLE="${CUDA_AVAILABLE:-true}"\
-export KOKORO_VOICE_ID="${KOKORO_VOICE_ID:-af_bella}"\
-export KOKORO_SAMPLE_RATE="${KOKORO_SAMPLE_RATE:-24000}"\
-\
-echo "🎙️ Environment configured:"\
-echo "   • Ollama Model: $OLLAMA_MODEL"\
-echo "   • Ollama URL: $OLLAMA_BASE_URL"\
-echo "   • CUDA Available: $CUDA_AVAILABLE"\
-echo "   • Kokoro Voice: $KOKORO_VOICE_ID"\
-\
-# Start the voice pipeline server\
-echo "🚀 Starting voice pipeline server..."\
-exec python src/main.py\
+# Create startup script that starts SSH and the app
+RUN cat > /app/start.sh << 'EOF'
+#!/bin/bash
+# Start SSH daemon
+service ssh start
+# Start the voice pipeline server
+exec python src/main.py
 EOF
 
 RUN chmod +x /app/start.sh
@@ -131,7 +105,7 @@ ENV KOKORO_SAMPLE_RATE="24000"
 # Expose ports
 EXPOSE 22 8000 11434
 
-# Start SSH, Ollama, and the pipeline
+# Start both SSH and the app
 CMD ["/app/start.sh"]
 
 

@@ -11,7 +11,7 @@ pipecat-ai[ollama]
 pipecat-ai[silero]
 
 # WebSocket transport  
-pipecat-ai[fastapi-websocket]
+pipecat-ai[websocket]
 
 # Kokoro (PyTorch build, ≈ 0.5.2 or newer auto-discovers weights in $KOKORO_HOME)
 kokoro>=0.9.4

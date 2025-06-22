@@ -3,10 +3,14 @@ Air-gapped Pipecat bot with RTVI compatibility for Runpod deployment
 ====================================================================
 This module wires together:
 
-* **UltravoxSTTService** – combined STT + LLM (local) with context
+* **UltravoxSTTService** – speech-to-speech service (local) with conversation context
 * **KokoroTTSService**   – offline TTS (local)
 
 All AI processing happens on Runpod GPU infrastructure without external API calls.
+
+Note: UltravoxSTTService is a speech-to-speech service similar to Gemini Multimodal Live,
+not just an STT service. It handles both speech-to-text AND language model generation
+internally, so it doesn't need external context aggregators.
 """
 
 import os
@@ -60,126 +64,107 @@ from pipecat.services.ultravox.stt import UltravoxSTTService
 from src.kokoro_tts_service import KokoroTTSService
 
 
-
 # ---------------------------------------------------------------------------
-# Enhanced Ultravox service with direct context integration
+# Conversation history manager for Ultravox
 # ---------------------------------------------------------------------------
-class ContextAwareUltravoxService(UltravoxSTTService):
+class UltravoxConversationHistory:
     """
-    Enhanced Ultravox service that can receive and use conversation context.
+    Manages conversation history for Ultravox.
+    
+    Since Ultravox is a speech-to-speech service (like Gemini Multimodal Live),
+    it handles context internally. This class tracks conversation for monitoring
+    and provides context when needed.
     """
     
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self._current_context_messages = []
+    def __init__(self, system_instruction: str, max_history: int = 10):
+        self.system_instruction = system_instruction
+        self.max_history = max_history
+        self.messages = [{"role": "system", "content": system_instruction}]
         
-    def set_conversation_context(self, messages):
-        """Set the current conversation context for the next audio processing."""
-        self._current_context_messages = messages
-        logger.info(f"🔄 Context updated: {len(messages)} messages")
+    def add_user_message(self, content: str):
+        """Add a user message to conversation history."""
+        self.messages.append({"role": "user", "content": content})
+        self._trim_history()
         
-    async def _process_audio_buffer(self):
-        """Override to use conversation context when processing audio."""
-        buffer = self._audio_buffer
-        if not buffer or not buffer.frames:
-            logger.warning("Empty audio buffer received")
-            return
+    def add_assistant_message(self, content: str):
+        """Add an assistant message to conversation history."""
+        self.messages.append({"role": "assistant", "content": content})
+        self._trim_history()
+        
+    def get_messages(self):
+        """Get current conversation messages."""
+        return self.messages.copy()
+        
+    def _trim_history(self):
+        """Keep only recent messages to avoid context overflow."""
+        if len(self.messages) > self.max_history:
+            # Always keep system message + recent messages
+            self.messages = [self.messages[0]] + self.messages[-(self.max_history-1):]
             
-        try:
-            logger.info("🎙️ Processing audio with conversation context...")
-            
-            # Use current context messages or fall back to system instruction
-            messages = self._current_context_messages if self._current_context_messages else []
-            if not messages and hasattr(self, '_system_instruction') and self._system_instruction:
-                messages = [{"role": "system", "content": self._system_instruction}]
-            
-            logger.info(f"📝 Using {len(messages)} context messages")
-            
-            # Convert audio frames to numpy array
-            import numpy as np
-            audio_data = b''.join([frame.audio for frame in buffer.frames])
-            audio_array = np.frombuffer(audio_data, dtype=np.int16).astype(np.float32) / 32768.0
-            
-            # Generate response using conversation history
-            full_response = ""
-            async for chunk in self.model.generate(
-                messages=messages,
-                temperature=self.temperature,
-                max_tokens=self.max_tokens,
-                audio=audio_array
-            ):
-                # Parse JSON response from Ultravox
-                import json
-                try:
-                    chunk_data = json.loads(chunk)
-                    if 'choices' in chunk_data and len(chunk_data['choices']) > 0:
-                        choice = chunk_data['choices'][0]
-                        if 'delta' in choice and 'content' in choice['delta']:
-                            content = choice['delta']['content']
-                            if content:
-                                full_response += content
-                                yield TextFrame(content)
-                except json.JSONDecodeError:
-                    # Fallback: treat as plain text
-                    if chunk.strip():
-                        full_response += chunk
-                        yield TextFrame(chunk)
-            
-            # Send final response
-            if full_response.strip():
-                logger.info(f"✅ Generated full response: {full_response[:100]}...")
-                yield LLMFullResponseEndFrame(full_response)
-                
-        except Exception as e:
-            logger.error(f"Error processing audio buffer: {e}")
-            import traceback
-            logger.error(traceback.format_exc())
+    def get_summary(self):
+        """Get a summary of current conversation state."""
+        total = len(self.messages)
+        user_count = sum(1 for m in self.messages if m['role'] == 'user')
+        assistant_count = sum(1 for m in self.messages if m['role'] == 'assistant')
+        return {
+            'total_messages': total,
+            'user_messages': user_count,
+            'assistant_messages': assistant_count
+        }
+
 
 # ---------------------------------------------------------------------------
-# Context bridge processor
+# Context injection processor for Ultravox
 # ---------------------------------------------------------------------------
-class ContextBridgeProcessor(FrameProcessor):
+class UltravoxContextProcessor(FrameProcessor):
     """
-    Bridges the OpenAI context to the Ultravox service.
+    Processor that injects conversation context into Ultravox.
+    
+    This processor:
+    1. Maintains conversation history for monitoring
+    2. Injects context via OpenAILLMContextFrame before audio processing
+    3. Tracks responses for conversation history
     """
     
-    def __init__(self, ultravox_service: ContextAwareUltravoxService, context: OpenAILLMContext):
+    def __init__(self, conversation_history: UltravoxConversationHistory):
         super().__init__()
-        self._ultravox = ultravox_service
-        self._context = context
+        self.conversation_history = conversation_history
+        self.current_response = ""
         
     async def process_frame(self, frame: Frame, direction: FrameDirection):
-        # Always pass the frame through first
-        await self.push_frame(frame, direction)
+        """Process frames to maintain conversation context."""
         
-        # Handle context management
-        try:
-            if isinstance(frame, UserStoppedSpeakingFrame):
-                # Before audio processing, update Ultravox with latest context
-                messages = self._context.get_messages()
-                self._ultravox.set_conversation_context(messages)
-                logger.info(f"🔄 Updated Ultravox with {len(messages)} context messages")
-                
-            elif isinstance(frame, LLMFullResponseEndFrame):
-                # Add the complete response to conversation context
-                if frame.text and frame.text.strip():
-                    # Add user message (placeholder for audio input)
-                    self._context.add_message({
-                        "role": "user", 
-                        "content": "[Audio input]"
-                    })
-                    
-                    # Add assistant response
-                    self._context.add_message({
-                        "role": "assistant",
-                        "content": frame.text.strip()
-                    })
-                    
-                    total_messages = len(self._context.get_messages())
-                    logger.info(f"✅ Added response to context. Total messages: {total_messages}")
-                    
-        except Exception as e:
-            logger.error(f"Failed to manage context: {e}")
+        # Handle user speech events - inject context before processing
+        if isinstance(frame, UserStoppedSpeakingFrame):
+            # User finished speaking - inject conversation context for Ultravox
+            context = OpenAILLMContext(messages=self.conversation_history.get_messages())
+            context_frame = OpenAILLMContextFrame(context=context)
+            
+            # Push context frame first, then the user stopped speaking frame
+            await self.push_frame(context_frame, direction)
+            logger.info(f"🔄 Injected context with {len(self.conversation_history.get_messages())} messages")
+            
+            # Add placeholder for user message to history (audio input)
+            self.conversation_history.add_user_message("[Audio input]")
+            logger.info("📤 Added user audio input to conversation history")
+            
+        # Handle assistant response text accumulation
+        elif isinstance(frame, TextFrame) and direction == FrameDirection.DOWNSTREAM:
+            # Accumulate assistant response text
+            self.current_response += frame.text
+            
+        # Handle end of assistant response
+        elif isinstance(frame, LLMFullResponseEndFrame):
+            # Complete response received - add to conversation history
+            if self.current_response.strip():
+                self.conversation_history.add_assistant_message(self.current_response.strip())
+                summary = self.conversation_history.get_summary()
+                logger.info(f"🤖 Added assistant response to history. Total: {summary['total_messages']} messages")
+                self.current_response = ""
+        
+        # Always pass frame through
+        await self.push_frame(frame, direction)
+
 
 # ---------------------------------------------------------------------------
 # Initialisation & configuration
@@ -214,12 +199,17 @@ ENGLISH_ONLY_SYSTEM = (
 )
 
 # ---------------------------------------------------------------------------
-# Initialize Ultravox processor once at module level
+# Initialize components once at module level
 # ---------------------------------------------------------------------------
-# Want to initialize the ultravox processor since it takes time to load the model and dont
-# want to load it every time the pipeline is run
-logger.info("Loading ContextAwareUltravoxService... this can take a while on first run.")
-ultravox_service = ContextAwareUltravoxService(
+logger.info("Initializing conversation history manager...")
+conversation_history = UltravoxConversationHistory(
+    system_instruction=ENGLISH_ONLY_SYSTEM,
+    max_history=10
+)
+
+logger.info("Loading UltravoxSTTService... this can take a while on first run.")
+# Note: UltravoxSTTService is actually a speech-to-speech service, not just STT
+ultravox_service = UltravoxSTTService(
     model_name="fixie-ai/ultravox-v0_5-llama-3_1-8b",
     hf_token=HF_TOKEN,
     temperature=0.3,  # Lower temperature = faster inference + more consistent
@@ -232,19 +222,9 @@ logger.info("Ultravox model initialized successfully!")
 async def run_bot(websocket_client):
     """Entry-point used by Pipecat example clients."""
     
-    logger.info("Starting bot with context management")
+    logger.info("Starting bot with Ultravox speech-to-speech conversation context")
 
-    # 1️⃣ Create conversation context with system instruction
-    context = OpenAILLMContext(
-        messages=[
-            {
-                "role": "system", 
-                "content": ENGLISH_ONLY_SYSTEM
-            }
-        ]
-    )
-
-    # 2️⃣ WebSocket transport – identical params to reference example
+    # 1️⃣ WebSocket transport – identical params to reference example
     ws_transport = FastAPIWebsocketTransport(
         websocket=websocket_client,
         params=FastAPIWebsocketParams(
@@ -256,7 +236,7 @@ async def run_bot(websocket_client):
         ),
     )
 
-    # 3️⃣ Local TTS (Kokoro)
+    # 2️⃣ Local TTS (Kokoro) - Note: Ultravox generates text, Kokoro converts to speech
     tts = KokoroTTSService(
         model_path=KOKORO_MODEL_PATH,
         voices_path=KOKORO_VOICES_PATH,
@@ -264,20 +244,20 @@ async def run_bot(websocket_client):
         sample_rate=SAMPLE_RATE,
     )
 
-    # 4️⃣ RTVI signalling layer – required for Pipecat web client
+    # 3️⃣ RTVI signalling layer – required for Pipecat web client
     rtvi = RTVIProcessor(config=RTVIConfig(config=[]))
 
-    # 5️⃣ Simplified context management
-    context_bridge = ContextBridgeProcessor(ultravox_service, context)
+    # 4️⃣ Context processor for conversation management
+    context_processor = UltravoxContextProcessor(conversation_history)
 
-    # 6️⃣ Pipeline with simplified context management
+    # 5️⃣ Clean, simple pipeline with proper speech-to-speech architecture
     pipeline = Pipeline(
         [
             ws_transport.input(),
             rtvi,           
-            context_bridge,       # Injects context into Ultravox
-            ultravox_service,     # Enhanced STT+LLM with context
-            tts,
+            context_processor,    # Manages conversation context injection
+            ultravox_service,     # Speech-to-speech (STT + LLM combined)
+            tts,                  # Text-to-speech for audio output
             ws_transport.output(),
         ]
     )
@@ -310,31 +290,31 @@ async def run_bot(websocket_client):
         logger.info("Client disconnected")
         await task.cancel()
 
-    # ---------- Context monitoring ----------
-    async def monitor_context():
+    # ---------- Conversation monitoring ----------
+    async def monitor_conversation():
         """Monitor conversation context for debugging"""
         import asyncio
         while True:
             try:
                 await asyncio.sleep(5)  # Check every 5 seconds
-                messages = context.get_messages()
-                msg_count = len(messages)
-                if msg_count > 1:  # More than just system message
-                    logger.info(f"📝 CONVERSATION: {msg_count} messages")
+                summary = conversation_history.get_summary()
+                if summary['total_messages'] > 1:  # More than just system message
+                    logger.info(f"💬 CONVERSATION: {summary}")
                     # Show last 2 messages for debugging
-                    for msg in messages[-2:]:
+                    recent_messages = conversation_history.get_messages()[-2:]
+                    for msg in recent_messages:
                         role = msg.get('role', 'unknown')
                         content = msg.get('content', '')[:100] + "..." if len(msg.get('content', '')) > 100 else msg.get('content', '')
                         logger.info(f"   {role}: {content}")
                 else:
-                    logger.debug("📝 CONVERSATION: Only system message")
+                    logger.debug("💬 CONVERSATION: Only system message")
             except Exception as e:
-                logger.debug(f"Context monitoring error: {e}")
+                logger.debug(f"Conversation monitoring error: {e}")
                 break
     
-    # Start context monitoring
+    # Start conversation monitoring
     import asyncio
-    asyncio.create_task(monitor_context())
+    asyncio.create_task(monitor_conversation())
 
     # ---------- Metrics monitoring ----------
     async def log_metrics():

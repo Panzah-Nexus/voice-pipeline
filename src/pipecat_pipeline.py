@@ -59,98 +59,7 @@ from pipecat.services.ultravox.stt import UltravoxSTTService
 # Kokoro TTS service (preferred over Piper)
 from src.kokoro_tts_service import KokoroTTSService
 
-# ---------------------------------------------------------------------------
-# Context-aware Ultravox processor
-# ---------------------------------------------------------------------------
-class UltravoxContextProcessor(FrameProcessor):
-    """
-    Processor that manages conversation context for Ultravox.
-    
-    This sits between the transport and Ultravox service to:
-    1. Maintain conversation history in OpenAILLMContext
-    2. Pass context to Ultravox for each audio processing
-    3. Update context with responses
-    """
-    
-    def __init__(self, ultravox_service: UltravoxSTTService, context: OpenAILLMContext):
-        super().__init__()
-        self._ultravox = ultravox_service
-        self._context = context
-        self._processing_audio = False
-        
-    async def process_frame(self, frame: Frame, direction: FrameDirection):
-        # Pass through most frames
-        if isinstance(frame, UserStartedSpeakingFrame):
-            logger.info("👤 User started speaking")
-            self._processing_audio = True
-            
-        elif isinstance(frame, UserStoppedSpeakingFrame):
-            logger.info("👤 User stopped speaking - processing with context")
-            # Inject context before Ultravox processes the audio
-            await self._inject_context_to_ultravox()
-            
-        elif isinstance(frame, TextFrame):
-            # This is likely a response from Ultravox - add to context
-            await self._handle_ultravox_response(frame)
-            
-        elif isinstance(frame, LLMFullResponseEndFrame):
-            # Complete response from Ultravox - finalize context
-            await self._finalize_response_context(frame)
-            self._processing_audio = False
-            
-        # Always pass frame downstream
-        await self.push_frame(frame, direction)
-    
-    async def _inject_context_to_ultravox(self):
-        """Inject current conversation context into Ultravox before processing."""
-        try:
-            # Get current conversation messages
-            messages = self._context.get_messages()
-            
-            # Set up Ultravox with conversation history
-            if hasattr(self._ultravox, 'model') and hasattr(self._ultravox.model, 'format_prompt'):
-                # Format the conversation for Ultravox
-                formatted_prompt = self._ultravox.model.format_prompt(messages)
-                logger.info(f"📝 Injected {len(messages)} messages into Ultravox context")
-                logger.debug(f"Context preview: {formatted_prompt[:200]}...")
-                
-        except Exception as e:
-            logger.error(f"Failed to inject context to Ultravox: {e}")
-    
-    async def _handle_ultravox_response(self, frame: TextFrame):
-        """Handle streaming response from Ultravox."""
-        # For now, just log the streaming text
-        # We'll accumulate the full response in _finalize_response_context
-        logger.debug(f"Ultravox streaming: {frame.text[:50]}...")
-    
-    async def _finalize_response_context(self, frame: LLMFullResponseEndFrame):
-        """Add the complete response to conversation context."""
-        try:
-            if frame.text and frame.text.strip():
-                # Add user message (placeholder for audio input)
-                self._context.add_message({
-                    "role": "user", 
-                    "content": "[Audio input]"  # Could be enhanced with actual transcription
-                })
-                
-                # Add assistant response
-                self._context.add_message({
-                    "role": "assistant",
-                    "content": frame.text.strip()
-                })
-                
-                total_messages = len(self._context.get_messages())
-                logger.info(f"✅ Added response to context. Total messages: {total_messages}")
-                
-                # Log recent conversation for debugging
-                messages = self._context.get_messages()
-                for msg in messages[-4:]:  # Last 4 messages
-                    role = msg.get('role', 'unknown')
-                    content = msg.get('content', '')[:100]
-                    logger.debug(f"  {role}: {content}...")
-                    
-        except Exception as e:
-            logger.error(f"Failed to finalize response context: {e}")
+
 
 # ---------------------------------------------------------------------------
 # Enhanced Ultravox service with direct context integration
@@ -240,12 +149,37 @@ class ContextBridgeProcessor(FrameProcessor):
         self._context = context
         
     async def process_frame(self, frame: Frame, direction: FrameDirection):
-        if isinstance(frame, UserStoppedSpeakingFrame):
-            # Before audio processing, update Ultravox with latest context
-            messages = self._context.get_messages()
-            self._ultravox.set_conversation_context(messages)
-            
+        # Always pass the frame through first
         await self.push_frame(frame, direction)
+        
+        # Handle context management
+        try:
+            if isinstance(frame, UserStoppedSpeakingFrame):
+                # Before audio processing, update Ultravox with latest context
+                messages = self._context.get_messages()
+                self._ultravox.set_conversation_context(messages)
+                logger.info(f"🔄 Updated Ultravox with {len(messages)} context messages")
+                
+            elif isinstance(frame, LLMFullResponseEndFrame):
+                # Add the complete response to conversation context
+                if frame.text and frame.text.strip():
+                    # Add user message (placeholder for audio input)
+                    self._context.add_message({
+                        "role": "user", 
+                        "content": "[Audio input]"
+                    })
+                    
+                    # Add assistant response
+                    self._context.add_message({
+                        "role": "assistant",
+                        "content": frame.text.strip()
+                    })
+                    
+                    total_messages = len(self._context.get_messages())
+                    logger.info(f"✅ Added response to context. Total messages: {total_messages}")
+                    
+        except Exception as e:
+            logger.error(f"Failed to manage context: {e}")
 
 # ---------------------------------------------------------------------------
 # Initialisation & configuration
@@ -333,17 +267,15 @@ async def run_bot(websocket_client):
     # 4️⃣ RTVI signalling layer – required for Pipecat web client
     rtvi = RTVIProcessor(config=RTVIConfig(config=[]))
 
-    # 5️⃣ Context management processors
+    # 5️⃣ Simplified context management
     context_bridge = ContextBridgeProcessor(ultravox_service, context)
-    context_processor = UltravoxContextProcessor(ultravox_service, context)
 
-    # 6️⃣ Pipeline with proper context management
+    # 6️⃣ Pipeline with simplified context management
     pipeline = Pipeline(
         [
             ws_transport.input(),
             rtvi,           
             context_bridge,       # Injects context into Ultravox
-            context_processor,    # Manages conversation history
             ultravox_service,     # Enhanced STT+LLM with context
             tts,
             ws_transport.output(),

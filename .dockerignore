@@ -71,3 +71,5 @@ requirements_runpod.txt
 
 # Cerebrium files (not needed in container)
 cerebrium.toml 
+
+logs.txt

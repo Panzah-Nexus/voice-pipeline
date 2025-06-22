@@ -129,15 +129,15 @@ class UltravoxWithContextService(UltravoxSTTService):
                             content = choice['delta']['content']
                             if content:
                                 full_response += content
-                                # Stream the content
+                                # Yield the content as a frame
                                 from pipecat.frames.frames import TextFrame
-                                await self.push_frame(TextFrame(content))
+                                yield TextFrame(content)
                 except json.JSONDecodeError:
                     # Fallback: treat as plain text
                     if chunk.strip():
                         full_response += chunk
                         from pipecat.frames.frames import TextFrame
-                        await self.push_frame(TextFrame(chunk))
+                        yield TextFrame(chunk)
             
             # Add to conversation context manually
             if full_response.strip() and self._conversation_context:
@@ -157,7 +157,7 @@ class UltravoxWithContextService(UltravoxSTTService):
             if full_response.strip():
                 logger.info(f"Generated full response: {full_response[:100]}...")
                 from pipecat.frames.frames import LLMFullResponseEndFrame
-                await self.push_frame(LLMFullResponseEndFrame(full_response))
+                yield LLMFullResponseEndFrame(full_response)
                 
         except Exception as e:
             logger.error(f"Error processing audio buffer: {e}")

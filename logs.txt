@@ -900,3 +900,1308 @@
 2025-06-22T10:41:45.586475939Z 1. Use English language ONLY in all responses...[0m
 2025-06-22T10:41:45.586478292Z 2025-06-22 10:41:45.586 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
 2025-06-22T10:41:45.586480546Z 1. Use English language ONLY in all responses...
+2025-06-22T10:41:48.587642909Z [32m10:41:48[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:41:48.587691683Z 2025-06-22 10:41:48.587 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:41:48.587814377Z [32m10:41:48[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:41:48.587840206Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:41:48.587846355Z 2025-06-22 10:41:48.587 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:41:48.587852193Z 1. Use English language ONLY in all responses...
+2025-06-22T10:41:50.581333405Z [32m10:41:50[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:41:50.581373655Z 2025-06-22 10:41:50.580 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:41:50.581549960Z [32m10:41:50[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:41:50.581575568Z 2025-06-22 10:41:50.581 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:41:51.588880746Z [32m10:41:51[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:41:51.588920736Z 2025-06-22 10:41:51.588 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:41:51.589051853Z [32m10:41:51[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:41:51.589064432Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:41:51.589069730Z 2025-06-22 10:41:51.588 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:41:51.589074757Z 1. Use English language ONLY in all responses...
+2025-06-22T10:41:54.591246185Z [32m10:41:54[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:41:54.591290392Z 2025-06-22 10:41:54.590 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:41:54.591404273Z [32m10:41:54[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:41:54.591417372Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:41:54.591427548Z 2025-06-22 10:41:54.591 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:41:54.591432876Z 1. Use English language ONLY in all responses...
+2025-06-22T10:41:55.582902455Z [32m10:41:55[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:41:55.582945509Z 2025-06-22 10:41:55.582 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:41:55.583083306Z [32m10:41:55[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:41:55.583096746Z 2025-06-22 10:41:55.582 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:41:57.592533647Z [32m10:41:57[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:41:57.592570933Z 2025-06-22 10:41:57.592 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:41:57.592648269Z [32m10:41:57[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:41:57.592662460Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:41:57.592668700Z 2025-06-22 10:41:57.592 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:41:57.592674538Z 1. Use English language ONLY in all responses...
+2025-06-22T10:42:00.583970783Z [32m10:42:00[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:42:00.584016882Z 2025-06-22 10:42:00.583 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:42:00.584123172Z [32m10:42:00[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:42:00.584146607Z 2025-06-22 10:42:00.583 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:42:00.594654719Z [32m10:42:00[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:42:00.594678946Z 2025-06-22 10:42:00.594 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:42:00.594820909Z [32m10:42:00[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:00.594845185Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:42:00.594886227Z 2025-06-22 10:42:00.594 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:00.594905045Z 1. Use English language ONLY in all responses...
+2025-06-22T10:42:03.596325456Z [32m10:42:03[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:42:03.596371525Z 2025-06-22 10:42:03.595 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:42:03.596509041Z [32m10:42:03[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:03.596535471Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:42:03.596542592Z 2025-06-22 10:42:03.596 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:03.596548601Z 1. Use English language ONLY in all responses...
+2025-06-22T10:42:05.585843739Z [32m10:42:05[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:42:05.585887274Z 2025-06-22 10:42:05.585 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:42:05.586041265Z [32m10:42:05[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:42:05.586100464Z 2025-06-22 10:42:05.585 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:42:06.597753398Z [32m10:42:06[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:42:06.597802261Z 2025-06-22 10:42:06.597 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:42:06.597902732Z [32m10:42:06[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:06.597929522Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:42:06.597936162Z 2025-06-22 10:42:06.597 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:06.597941571Z 1. Use English language ONLY in all responses...
+2025-06-22T10:42:09.600149273Z [32m10:42:09[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:42:09.600196173Z 2025-06-22 10:42:09.599 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:42:09.600282283Z [32m10:42:09[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:09.600315412Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:42:09.600321992Z 2025-06-22 10:42:09.600 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:09.600328642Z 1. Use English language ONLY in all responses...
+2025-06-22T10:42:10.587813030Z [32m10:42:10[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:42:10.587856915Z 2025-06-22 10:42:10.587 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:42:10.587995694Z [32m10:42:10[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:42:10.588036996Z 2025-06-22 10:42:10.587 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:42:12.601642093Z [32m10:42:12[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:42:12.601689804Z 2025-06-22 10:42:12.601 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:42:12.601861352Z [32m10:42:12[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:12.601886730Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:42:12.601892779Z 2025-06-22 10:42:12.601 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:12.601898297Z 1. Use English language ONLY in all responses...
+2025-06-22T10:42:15.588926716Z [32m10:42:15[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:42:15.588980026Z 2025-06-22 10:42:15.588 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:42:15.589244693Z [32m10:42:15[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:42:15.589279716Z 2025-06-22 10:42:15.588 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:42:15.603990276Z [32m10:42:15[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:42:15.604067202Z 2025-06-22 10:42:15.603 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:42:15.604321103Z [32m10:42:15[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:15.604334423Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:42:15.604340311Z 2025-06-22 10:42:15.604 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:15.604345139Z 1. Use English language ONLY in all responses...
+2025-06-22T10:42:18.605460001Z [32m10:42:18[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:42:18.605509325Z 2025-06-22 10:42:18.604 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:42:18.605598329Z [32m10:42:18[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:18.605625890Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:42:18.605633722Z 2025-06-22 10:42:18.605 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:18.605640973Z 1. Use English language ONLY in all responses...
+2025-06-22T10:42:20.590298960Z [32m10:42:20[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:42:20.590339621Z 2025-06-22 10:42:20.589 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:42:20.590450097Z [32m10:42:20[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:42:20.590479031Z 2025-06-22 10:42:20.590 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:42:21.607275565Z [32m10:42:21[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:42:21.607317949Z 2025-06-22 10:42:21.606 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:42:21.607410397Z [32m10:42:21[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:21.607416977Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:42:21.607421784Z 2025-06-22 10:42:21.607 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:21.607426722Z 1. Use English language ONLY in all responses...
+2025-06-22T10:42:24.608178149Z [32m10:42:24[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:42:24.608237387Z 2025-06-22 10:42:24.607 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:42:24.608329856Z [32m10:42:24[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:24.608355525Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:42:24.608362375Z 2025-06-22 10:42:24.608 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:24.608367983Z 1. Use English language ONLY in all responses...
+2025-06-22T10:42:25.591808621Z [32m10:42:25[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:42:25.591848451Z 2025-06-22 10:42:25.591 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:42:25.591940940Z [32m10:42:25[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:42:25.592048802Z 2025-06-22 10:42:25.591 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:42:27.609718960Z [32m10:42:27[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:42:27.609758960Z 2025-06-22 10:42:27.609 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:42:27.609841975Z [32m10:42:27[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:27.609847914Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:42:27.609885790Z 2025-06-22 10:42:27.609 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:27.609891739Z 1. Use English language ONLY in all responses...
+2025-06-22T10:42:30.592877099Z [32m10:42:30[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:42:30.592921065Z 2025-06-22 10:42:30.592 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:42:30.593075718Z [32m10:42:30[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:42:30.593119904Z 2025-06-22 10:42:30.592 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:42:30.610644758Z [32m10:42:30[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:42:30.610675254Z 2025-06-22 10:42:30.610 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:42:30.610818990Z [32m10:42:30[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:30.610838409Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:42:30.610844819Z 2025-06-22 10:42:30.610 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:30.610850167Z 1. Use English language ONLY in all responses...
+2025-06-22T10:42:33.612444308Z [32m10:42:33[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:42:33.612484338Z 2025-06-22 10:42:33.611 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:42:33.612683077Z [32m10:42:33[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:33.612709997Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:42:33.612716076Z 2025-06-22 10:42:33.612 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:33.612739021Z 1. Use English language ONLY in all responses...
+2025-06-22T10:42:35.594089123Z [32m10:42:35[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:42:35.594133750Z 2025-06-22 10:42:35.593 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:42:35.594409074Z [32m10:42:35[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:42:35.594435924Z 2025-06-22 10:42:35.594 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:42:36.613900012Z [32m10:42:36[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:42:36.613939121Z 2025-06-22 10:42:36.613 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:42:36.614097188Z [32m10:42:36[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:36.614135015Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:42:36.614141735Z 2025-06-22 10:42:36.613 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:36.614147303Z 1. Use English language ONLY in all responses...
+2025-06-22T10:42:39.614856256Z [32m10:42:39[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:42:39.614898760Z 2025-06-22 10:42:39.614 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:42:39.615058860Z [32m10:42:39[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:39.615101945Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:42:39.615108785Z 2025-06-22 10:42:39.614 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:39.615114314Z 1. Use English language ONLY in all responses...
+2025-06-22T10:42:40.595795990Z [32m10:42:40[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:42:40.595836932Z 2025-06-22 10:42:40.595 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:42:40.596011313Z [32m10:42:40[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:42:40.596055209Z 2025-06-22 10:42:40.595 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:42:42.616830198Z [32m10:42:42[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:42:42.616876107Z 2025-06-22 10:42:42.616 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:42:42.617024510Z [32m10:42:42[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:42.617067114Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:42:42.617073974Z 2025-06-22 10:42:42.616 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:42.617079482Z 1. Use English language ONLY in all responses...
+2025-06-22T10:42:45.597187053Z [32m10:42:45[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:42:45.597223237Z 2025-06-22 10:42:45.596 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:42:45.597396798Z [32m10:42:45[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:42:45.597420123Z 2025-06-22 10:42:45.597 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:42:45.617893773Z [32m10:42:45[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:42:45.617940373Z 2025-06-22 10:42:45.617 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:42:45.618106983Z [32m10:42:45[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:45.618120644Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:42:45.618135897Z 2025-06-22 10:42:45.617 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:45.618141415Z 1. Use English language ONLY in all responses...
+2025-06-22T10:42:48.619590539Z [32m10:42:48[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:42:48.619644580Z 2025-06-22 10:42:48.619 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:42:48.619737049Z [32m10:42:48[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:48.619765542Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:42:48.619772452Z 2025-06-22 10:42:48.619 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:48.619777910Z 1. Use English language ONLY in all responses...
+2025-06-22T10:42:50.598748031Z [32m10:42:50[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:42:50.598800640Z 2025-06-22 10:42:50.598 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:42:50.599006919Z [32m10:42:50[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:42:50.599031025Z 2025-06-22 10:42:50.598 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:42:51.621094976Z [32m10:42:51[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:42:51.621138501Z 2025-06-22 10:42:51.620 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:42:51.621265953Z [32m10:42:51[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:51.621285121Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:42:51.621291841Z 2025-06-22 10:42:51.620 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:51.621297210Z 1. Use English language ONLY in all responses...
+2025-06-22T10:42:54.622252212Z [32m10:42:54[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:42:54.622299122Z 2025-06-22 10:42:54.621 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:42:54.622459944Z [32m10:42:54[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:54.622484521Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:42:54.622491461Z 2025-06-22 10:42:54.622 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:54.622497009Z 1. Use English language ONLY in all responses...
+2025-06-22T10:42:55.600115748Z [32m10:42:55[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:42:55.600163460Z 2025-06-22 10:42:55.599 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:42:55.600318843Z [32m10:42:55[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:42:55.600351763Z 2025-06-22 10:42:55.600 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:42:57.624114105Z [32m10:42:57[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:42:57.624159393Z 2025-06-22 10:42:57.623 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:42:57.624315628Z [32m10:42:57[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:57.624332493Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:42:57.624338522Z 2025-06-22 10:42:57.624 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:42:57.624343720Z 1. Use English language ONLY in all responses...
+2025-06-22T10:43:00.601883486Z [32m10:43:00[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:43:00.601937427Z 2025-06-22 10:43:00.601 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:43:00.602052119Z [32m10:43:00[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:43:00.602093532Z 2025-06-22 10:43:00.601 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:43:00.625634166Z [32m10:43:00[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:43:00.625663249Z 2025-06-22 10:43:00.625 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:43:00.625826975Z [32m10:43:00[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:00.625848307Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:43:00.625855017Z 2025-06-22 10:43:00.625 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:00.625860866Z 1. Use English language ONLY in all responses...
+2025-06-22T10:43:03.627560997Z [32m10:43:03[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:43:03.627608067Z 2025-06-22 10:43:03.627 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:43:03.627669900Z [32m10:43:03[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:03.627699475Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:43:03.627705744Z 2025-06-22 10:43:03.627 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:03.627715399Z 1. Use English language ONLY in all responses...
+2025-06-22T10:43:05.603939818Z [32m10:43:05[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:43:05.604018406Z 2025-06-22 10:43:05.603 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:43:05.604134680Z [32m10:43:05[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:43:05.604161270Z 2025-06-22 10:43:05.603 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:43:06.628903381Z [32m10:43:06[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:43:06.628986565Z 2025-06-22 10:43:06.628 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:43:06.629123060Z [32m10:43:06[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:06.629164543Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:43:06.629170562Z 2025-06-22 10:43:06.628 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:06.629176080Z 1. Use English language ONLY in all responses...
+2025-06-22T10:43:09.630472164Z [32m10:43:09[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:43:09.630520927Z 2025-06-22 10:43:09.629 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:43:09.630582089Z [32m10:43:09[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:09.630608829Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:43:09.630614948Z 2025-06-22 10:43:09.630 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:09.630620046Z 1. Use English language ONLY in all responses...
+2025-06-22T10:43:10.605257981Z [32m10:43:10[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:43:10.605297811Z 2025-06-22 10:43:10.604 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:43:10.605405843Z [32m10:43:10[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:43:10.605412072Z 2025-06-22 10:43:10.605 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:43:12.632245845Z [32m10:43:12[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:43:12.632292295Z 2025-06-22 10:43:12.631 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:43:12.632439846Z [32m10:43:12[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:12.632466627Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:43:12.632472906Z 2025-06-22 10:43:12.632 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:12.632478024Z 1. Use English language ONLY in all responses...
+2025-06-22T10:43:15.607706361Z [32m10:43:15[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:43:15.607754112Z 2025-06-22 10:43:15.607 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:43:15.607927372Z [32m10:43:15[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:43:15.607982105Z 2025-06-22 10:43:15.607 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:43:15.633812045Z [32m10:43:15[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:43:15.633841880Z 2025-06-22 10:43:15.633 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:43:15.634059446Z [32m10:43:15[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:15.634089802Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:43:15.634096001Z 2025-06-22 10:43:15.633 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:15.634101620Z 1. Use English language ONLY in all responses...
+2025-06-22T10:43:18.635562561Z [32m10:43:18[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:43:18.635609231Z 2025-06-22 10:43:18.635 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:43:18.635784084Z [32m10:43:18[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:18.635814099Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:43:18.635820579Z 2025-06-22 10:43:18.635 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:18.635825997Z 1. Use English language ONLY in all responses...
+2025-06-22T10:43:20.609102411Z [32m10:43:20[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:43:20.609149111Z 2025-06-22 10:43:20.608 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:43:20.609336753Z [32m10:43:20[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:43:20.609364594Z 2025-06-22 10:43:20.609 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:43:21.637112847Z [32m10:43:21[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:43:21.637156382Z 2025-06-22 10:43:21.636 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:43:21.637297765Z [32m10:43:21[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:21.637304134Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:43:21.637309051Z 2025-06-22 10:43:21.637 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:21.637314109Z 1. Use English language ONLY in all responses...
+2025-06-22T10:43:24.639099237Z [32m10:43:24[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:43:24.639149964Z 2025-06-22 10:43:24.638 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:43:24.639252477Z [32m10:43:24[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:24.639269643Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:43:24.639275702Z 2025-06-22 10:43:24.639 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:24.639281241Z 1. Use English language ONLY in all responses...
+2025-06-22T10:43:25.610905522Z [32m10:43:25[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:43:25.610946293Z 2025-06-22 10:43:25.610 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:43:25.611110650Z [32m10:43:25[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:43:25.611137540Z 2025-06-22 10:43:25.610 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:43:27.642262134Z [32m10:43:27[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:43:27.642364778Z 2025-06-22 10:43:27.641 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:43:27.642509134Z [32m10:43:27[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:27.642516966Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:43:27.642535314Z 2025-06-22 10:43:27.642 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:27.642543776Z 1. Use English language ONLY in all responses...
+2025-06-22T10:43:30.612272429Z [32m10:43:30[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:43:30.612328813Z 2025-06-22 10:43:30.611 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:43:30.612414762Z [32m10:43:30[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:43:30.612431858Z 2025-06-22 10:43:30.612 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:43:30.644083787Z [32m10:43:30[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:43:30.644113041Z 2025-06-22 10:43:30.643 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:43:30.644322155Z [32m10:43:30[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:30.644340672Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:43:30.644346391Z 2025-06-22 10:43:30.644 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:30.644351649Z 1. Use English language ONLY in all responses...
+2025-06-22T10:43:33.645523817Z [32m10:43:33[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:43:33.645563046Z 2025-06-22 10:43:33.645 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:43:33.645689596Z [32m10:43:33[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:33.645707253Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:43:33.645713622Z 2025-06-22 10:43:33.645 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:33.645719060Z 1. Use English language ONLY in all responses...
+2025-06-22T10:43:35.614172415Z [32m10:43:35[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:43:35.614213296Z 2025-06-22 10:43:35.613 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:43:35.614389381Z [32m10:43:35[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:43:35.614416251Z 2025-06-22 10:43:35.614 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:43:36.646981825Z [32m10:43:36[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:43:36.647033332Z 2025-06-22 10:43:36.646 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:43:36.647191760Z [32m10:43:36[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:36.647218009Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:43:36.647225220Z 2025-06-22 10:43:36.646 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:36.647231259Z 1. Use English language ONLY in all responses...
+2025-06-22T10:43:39.648295135Z [32m10:43:39[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:43:39.648344919Z 2025-06-22 10:43:39.647 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:43:39.648399071Z [32m10:43:39[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:39.648416156Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:43:39.648426762Z 2025-06-22 10:43:39.648 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:39.648447724Z 1. Use English language ONLY in all responses...
+2025-06-22T10:43:40.615579712Z [32m10:43:40[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:43:40.615611710Z 2025-06-22 10:43:40.615 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:43:40.615770038Z [32m10:43:40[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:43:40.615810519Z 2025-06-22 10:43:40.615 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:43:42.649505140Z [32m10:43:42[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:43:42.649556907Z 2025-06-22 10:43:42.649 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:43:42.649706161Z [32m10:43:42[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:42.649724078Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:43:42.649730508Z 2025-06-22 10:43:42.649 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:42.649735916Z 1. Use English language ONLY in all responses...
+2025-06-22T10:43:45.616583664Z [32m10:43:45[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:43:45.616626268Z 2025-06-22 10:43:45.616 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:43:45.616632147Z [32m10:43:45[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:43:45.616636794Z 2025-06-22 10:43:45.616 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:43:45.650023537Z [32m10:43:45[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:43:45.650049516Z 2025-06-22 10:43:45.649 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:43:45.650059460Z [32m10:43:45[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:45.650065149Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:43:45.650070046Z 2025-06-22 10:43:45.649 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:45.650075104Z 1. Use English language ONLY in all responses...
+2025-06-22T10:43:48.651031048Z [32m10:43:48[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:43:48.651073431Z 2025-06-22 10:43:48.650 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:43:48.651194523Z [32m10:43:48[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:48.651218429Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:43:48.651225049Z 2025-06-22 10:43:48.650 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:48.651230747Z 1. Use English language ONLY in all responses...
+2025-06-22T10:43:50.617712713Z [32m10:43:50[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:43:50.617773034Z 2025-06-22 10:43:50.617 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:43:50.617898783Z [32m10:43:50[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:43:50.617911942Z 2025-06-22 10:43:50.617 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:43:51.652407973Z [32m10:43:51[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:43:51.652449806Z 2025-06-22 10:43:51.651 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:43:51.652543797Z [32m10:43:51[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:51.652550127Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:43:51.652554984Z 2025-06-22 10:43:51.652 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:51.652559861Z 1. Use English language ONLY in all responses...
+2025-06-22T10:43:54.653849506Z [32m10:43:54[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:43:54.653893973Z 2025-06-22 10:43:54.653 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:43:54.654053512Z [32m10:43:54[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:54.654093362Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:43:54.654100132Z 2025-06-22 10:43:54.653 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:54.654105059Z 1. Use English language ONLY in all responses...
+2025-06-22T10:43:55.618743105Z [32m10:43:55[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:43:55.618783615Z 2025-06-22 10:43:55.618 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:43:55.618917516Z [32m10:43:55[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:43:55.618934862Z 2025-06-22 10:43:55.618 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:43:57.654870087Z [32m10:43:57[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:43:57.654911258Z 2025-06-22 10:43:57.654 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:43:57.655086301Z [32m10:43:57[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:57.655123868Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:43:57.655130688Z 2025-06-22 10:43:57.654 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:43:57.655135896Z 1. Use English language ONLY in all responses...
+2025-06-22T10:44:00.619644192Z [32m10:44:00[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:44:00.619701488Z 2025-06-22 10:44:00.619 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:44:00.619803481Z [32m10:44:00[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:44:00.619829170Z 2025-06-22 10:44:00.619 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:44:00.657409377Z [32m10:44:00[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:44:00.657429858Z 2025-06-22 10:44:00.657 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:44:00.657637569Z [32m10:44:00[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:44:00.657660444Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:44:00.657666913Z 2025-06-22 10:44:00.657 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:44:00.657686944Z 1. Use English language ONLY in all responses...
+2025-06-22T10:44:03.658600053Z [32m10:44:03[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:44:03.658648566Z 2025-06-22 10:44:03.658 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:44:03.658741866Z [32m10:44:03[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:44:03.658766963Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:44:03.658773363Z 2025-06-22 10:44:03.658 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:44:03.658780814Z 1. Use English language ONLY in all responses...
+2025-06-22T10:44:05.621219742Z [32m10:44:05[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:44:05.621272290Z 2025-06-22 10:44:05.620 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:44:05.621352331Z [32m10:44:05[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:44:05.621385520Z 2025-06-22 10:44:05.621 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:44:06.660447545Z [32m10:44:06[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:44:06.660485652Z 2025-06-22 10:44:06.659 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:44:06.660746674Z [32m10:44:06[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:44:06.660772993Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:44:06.660779283Z 2025-06-22 10:44:06.660 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:44:06.660784841Z 1. Use English language ONLY in all responses...
+2025-06-22T10:44:09.662433244Z [32m10:44:09[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:44:09.662478622Z 2025-06-22 10:44:09.661 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:44:09.662767245Z [32m10:44:09[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:44:09.662795648Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:44:09.662809479Z 2025-06-22 10:44:09.662 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:44:09.662816159Z 1. Use English language ONLY in all responses...
+2025-06-22T10:44:10.623733119Z [32m10:44:10[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:44:10.623778207Z 2025-06-22 10:44:10.623 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:44:10.623911587Z [32m10:44:10[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:44:10.623937315Z 2025-06-22 10:44:10.623 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:44:12.663756469Z [32m10:44:12[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:44:12.663807746Z 2025-06-22 10:44:12.663 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:44:12.663929058Z [32m10:44:12[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:44:12.663991963Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:44:12.664010701Z 2025-06-22 10:44:12.663 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:44:12.664017150Z 1. Use English language ONLY in all responses...
+2025-06-22T10:44:15.625183461Z [32m10:44:15[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:44:15.625216320Z 2025-06-22 10:44:15.624 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:44:15.625394517Z [32m10:44:15[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:44:15.625419144Z 2025-06-22 10:44:15.625 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:44:15.665069008Z [32m10:44:15[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:44:15.665093285Z 2025-06-22 10:44:15.664 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:44:15.665262108Z [32m10:44:15[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:44:15.665280325Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:44:15.665287196Z 2025-06-22 10:44:15.665 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:44:15.665292694Z 1. Use English language ONLY in all responses...
+2025-06-22T10:44:18.666895448Z [32m10:44:18[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:44:18.666941277Z 2025-06-22 10:44:18.666 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:44:18.667074587Z [32m10:44:18[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:44:18.667118423Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:44:18.667125894Z 2025-06-22 10:44:18.666 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:44:18.667132244Z 1. Use English language ONLY in all responses...
+2025-06-22T10:44:20.626768104Z [32m10:44:20[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:44:20.626807183Z 2025-06-22 10:44:20.626 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:44:20.626934383Z [32m10:44:20[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:44:20.626986271Z 2025-06-22 10:44:20.626 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:44:21.669811274Z [32m10:44:21[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:44:21.669851634Z 2025-06-22 10:44:21.669 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:44:21.670035631Z [32m10:44:21[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:44:21.670078004Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:44:21.670084634Z 2025-06-22 10:44:21.669 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:44:21.670090092Z 1. Use English language ONLY in all responses...
+2025-06-22T10:44:24.670996251Z [32m10:44:24[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:44:24.671047138Z 2025-06-22 10:44:24.670 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:44:24.671137103Z [32m10:44:24[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:44:24.671165515Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:44:24.671172296Z 2025-06-22 10:44:24.670 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:44:24.671177714Z 1. Use English language ONLY in all responses...
+2025-06-22T10:44:25.627843403Z [32m10:44:25[0m | [36mpipecat_pipeline:359[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:44:25.627884675Z 2025-06-22 10:44:25.627 | INFO     | src.pipecat_pipeline:log_metrics:359 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:44:25.628013318Z [32m10:44:25[0m | [36mpipecat_pipeline:370[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:44:25.628050914Z 2025-06-22 10:44:25.627 | INFO     | src.pipecat_pipeline:log_metrics:370 - 📊 ========================
+2025-06-22T10:44:27.671912085Z [32m10:44:27[0m | [36mpipecat_pipeline:334[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:44:27.671967298Z 2025-06-22 10:44:27.671 | INFO     | src.pipecat_pipeline:monitor_context:334 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:44:27.672036051Z [32m10:44:27[0m | [36mpipecat_pipeline:339[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:44:27.672042260Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:44:27.672047118Z 2025-06-22 10:44:27.671 | INFO     | src.pipecat_pipeline:monitor_context:339 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:44:27.672052275Z 1. Use English language ONLY in all responses...
+2025-06-22T10:44:32.724036577Z ==========
+2025-06-22T10:44:32.724074074Z == CUDA ==
+2025-06-22T10:44:32.724102877Z ==========
+2025-06-22T10:44:32.728191344Z CUDA Version 11.8.0
+2025-06-22T10:44:32.729064284Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2025-06-22T10:44:32.729944806Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2025-06-22T10:44:32.729947209Z By pulling and using the container, you accept the terms and conditions of this license:
+2025-06-22T10:44:32.729955582Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2025-06-22T10:44:32.729960039Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2025-06-22T10:44:32.752524457Z  * Starting OpenBSD Secure Shell server sshd
+2025-06-22T10:44:32.760559999Z    ...done.
+2025-06-22T10:44:32.760761821Z 🔧 Development mode starting...
+2025-06-22T10:44:32.760822563Z 🔄 Updating source code...
+2025-06-22T10:44:33.617406971Z From https://github.com/Panzah-Nexus/voice-pipeline
+2025-06-22T10:44:33.617448844Z  * branch            cursor_oneshot -> FETCH_HEAD
+2025-06-22T10:44:33.618386201Z    317c050..5204a90  cursor_oneshot -> origin/cursor_oneshot
+2025-06-22T10:44:34.055768715Z Updating 317c050..5204a90
+2025-06-22T10:44:34.055811018Z Fast-forward
+2025-06-22T10:44:34.066132421Z  client/websocket-client/src/app.ts |     2 +-
+2025-06-22T10:44:34.066160102Z  logs.txt                           | 12040 +++--------------------------------
+2025-06-22T10:44:34.066166221Z  src/pipecat_pipeline.py            |     4 +-
+2025-06-22T10:44:34.066170918Z  3 files changed, 906 insertions(+), 11140 deletions(-)
+2025-06-22T10:44:34.067578471Z 📁 Copying source code...
+2025-06-22T10:44:34.070573997Z 🚀 Starting voice pipeline...
+2025-06-22T10:44:34.394810801Z 2025-06-22 10:44:34.394 | INFO     | pipecat:<module>:14 - ᓚᘏᗢ Pipecat 0.0.71 (Python 3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]) ᓚᘏᗢ
+2025-06-22T10:44:35.773795534Z 2025-06-22 10:44:35.773 | DEBUG    | pipecat.audio.vad.silero:__init__:111 - Loading Silero VAD model...
+2025-06-22T10:44:35.815532360Z 2025-06-22 10:44:35.815 | DEBUG    | pipecat.audio.vad.silero:__init__:133 - Loaded Silero VAD
+2025-06-22T10:44:50.095547399Z [32m10:44:50[0m | [36mpipecat_pipeline:204[0m | [1m    INFO[0m | [1mLoading UltravoxSTTService... this can take a while on first run.[0m
+2025-06-22T10:44:50.095591325Z 2025-06-22 10:44:50.095 | INFO     | src.pipecat_pipeline:<module>:204 - Loading UltravoxSTTService... this can take a while on first run.
+2025-06-22T10:44:50.357738814Z Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+2025-06-22T10:44:50.357780316Z 2025-06-22 10:44:50,357 - huggingface_hub._login - WARNING - Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+2025-06-22T10:44:50.414344188Z INFO 06-22 10:44:50 __init__.py:207] Automatically detected platform cuda.
+2025-06-22T10:44:56.318222318Z INFO 06-22 10:44:56 config.py:549] This model supports multiple tasks: {'reward', 'embed', 'classify', 'generate', 'score'}. Defaulting to 'generate'.
+2025-06-22T10:44:56.322665487Z INFO 06-22 10:44:56 llm_engine.py:234] Initializing a V0 LLM engine (v0.7.3) with config: model='fixie-ai/ultravox-v0_5-llama-3_1-8b', speculative_config=None, tokenizer='fixie-ai/ultravox-v0_5-llama-3_1-8b', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=0, served_model_name=fixie-ai/ultravox-v0_5-llama-3_1-8b, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=False, chunked_prefill_enabled=False, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"splitting_ops":[],"compile_sizes":[],"cudagraph_capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":256}, use_cached_outputs=False,
+2025-06-22T10:45:01.465306039Z INFO 06-22 10:45:01 cuda.py:229] Using Flash Attention backend.
+2025-06-22T10:45:01.821177629Z INFO 06-22 10:45:01 model_runner.py:1110] Starting to load model fixie-ai/ultravox-v0_5-llama-3_1-8b...
+2025-06-22T10:45:01.961486160Z INFO 06-22 10:45:01 config.py:3054] cudagraph sizes specified by model runner [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256] is overridden by config [256, 128, 2, 1, 4, 136, 8, 144, 16, 152, 24, 160, 32, 168, 40, 176, 48, 184, 56, 192, 64, 200, 72, 208, 80, 216, 88, 120, 224, 96, 232, 104, 240, 112, 248]
+2025-06-22T10:45:02.460207727Z INFO 06-22 10:45:02 weight_utils.py:254] Using model weights format ['*.safetensors']
+2025-06-22T10:45:02.789645469Z INFO 06-22 10:45:02 weight_utils.py:304] No model.safetensors.index.json found in remote.
+2025-06-22T10:45:02.790975636Z Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+2025-06-22T10:45:02.993487114Z Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  4.94it/s]
+2025-06-22T10:45:02.993580934Z Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  4.94it/s]
+2025-06-22T10:45:03.344675214Z INFO 06-22 10:45:03 weight_utils.py:254] Using model weights format ['*.safetensors']
+2025-06-22T10:45:03.714254959Z Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+2025-06-22T10:45:04.170485927Z Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:01,  2.19it/s]
+2025-06-22T10:45:04.430249370Z Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:00<00:00,  2.94it/s]
+2025-06-22T10:45:04.889822935Z Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  2.53it/s]
+2025-06-22T10:45:05.474975073Z Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:01<00:00,  2.13it/s]
+2025-06-22T10:45:05.475105469Z Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:01<00:00,  2.27it/s]
+2025-06-22T10:45:05.852540655Z INFO 06-22 10:45:05 model_runner.py:1115] Loading model weights took 16.2698 GB
+2025-06-22T10:45:18.248661893Z INFO 06-22 10:45:18 worker.py:267] Memory profiling takes 12.20 seconds
+2025-06-22T10:45:18.248727692Z INFO 06-22 10:45:18 worker.py:267] the current vLLM instance can use total_gpu_memory (21.95GiB) x gpu_memory_utilization (0.90) = 19.76GiB
+2025-06-22T10:45:18.248734291Z INFO 06-22 10:45:18 worker.py:267] model weights take 16.27GiB; non_torch_memory takes 0.05GiB; PyTorch activation peak memory takes 1.95GiB; the rest of the memory reserved for KV Cache is 1.49GiB.
+2025-06-22T10:45:18.449535682Z INFO 06-22 10:45:18 executor_base.py:111] # cuda blocks: 763, # CPU blocks: 2048
+2025-06-22T10:45:18.449580419Z INFO 06-22 10:45:18 executor_base.py:116] Maximum concurrency for 8192 tokens per request: 1.49x
+2025-06-22T10:45:20.905397267Z INFO 06-22 10:45:20 model_runner.py:1434] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI. If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+2025-06-22T10:45:41.378001116Z Capturing CUDA graph shapes:   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graph shapes:   3%|▎         | 1/35 [00:00<00:21,  1.56it/s]Capturing CUDA graph shapes:   6%|▌         | 2/35 [00:01<00:20,  1.57it/s]Capturing CUDA graph shapes:   9%|▊         | 3/35 [00:01<00:20,  1.58it/s]Capturing CUDA graph shapes:  11%|█▏        | 4/35 [00:02<00:19,  1.58it/s]Capturing CUDA graph shapes:  14%|█▍        | 5/35 [00:03<00:18,  1.59it/s]Capturing CUDA graph shapes:  17%|█▋        | 6/35 [00:03<00:18,  1.59it/s]Capturing CUDA graph shapes:  20%|██        | 7/35 [00:04<00:17,  1.59it/s]Capturing CUDA graph shapes:  23%|██▎       | 8/35 [00:05<00:17,  1.58it/s]Capturing CUDA graph shapes:  26%|██▌       | 9/35 [00:05<00:16,  1.56it/s]Capturing CUDA graph shapes:  29%|██▊       | 10/35 [00:06<00:16,  1.53it/s]Capturing CUDA graph shapes:  31%|███▏      | 11/35 [00:06<00:15,  1.58it/s]Capturing CUDA graph shapes:  34%|███▍      | 12/35 [00:07<00:14,  1.62it/s]Capturing CUDA graph shapes:  37%|███▋      | 13/35 [00:08<00:13,  1.65it/s]Capturing CUDA graph shapes:  40%|████      | 14/35 [00:08<00:12,  1.67it/s]Capturing CUDA graph shapes:  43%|████▎     | 15/35 [00:09<00:11,  1.68it/s]Capturing CUDA graph shapes:  46%|████▌     | 16/35 [00:09<00:11,  1.70it/s]Capturing CUDA graph shapes:  49%|████▊     | 17/35 [00:10<00:10,  1.71it/s]Capturing CUDA graph shapes:  51%|█████▏    | 18/35 [00:11<00:09,  1.73it/s]Capturing CUDA graph shapes:  54%|█████▍    | 19/35 [00:11<00:09,  1.74it/s]Capturing CUDA graph shapes:  57%|█████▋    | 20/35 [00:12<00:08,  1.75it/s]Capturing CUDA graph shapes:  60%|██████    | 21/35 [00:12<00:07,  1.76it/s]Capturing CUDA graph shapes:  63%|██████▎   | 22/35 [00:13<00:07,  1.76it/s]Capturing CUDA graph shapes:  66%|██████▌   | 23/35 [00:13<00:06,  1.77it/s]Capturing CUDA graph shapes:  69%|██████▊   | 24/35 [00:14<00:06,  1.77it/s]Capturing CUDA graph shapes:  71%|███████▏  | 25/35 [00:14<00:05,  1.78it/s]Capturing CUDA graph shapes:  74%|███████▍  | 26/35 [00:15<00:05,  1.79it/s]Capturing CUDA graph shapes:  77%|███████▋  | 27/35 [00:16<00:04,  1.79it/s]Capturing CUDA graph shapes:  80%|████████  | 28/35 [00:16<00:03,  1.79it/s]Capturing CUDA graph shapes:  83%|████████▎ | 29/35 [00:17<00:03,  1.80it/s]Capturing CUDA graph shapes:  86%|████████▌ | 30/35 [00:17<00:02,  1.80it/s]Capturing CUDA graph shapes:  89%|████████▊ | 31/35 [00:18<00:02,  1.81it/s]Capturing CUDA graph shapes:  91%|█████████▏| 32/35 [00:18<00:01,  1.82it/s]Capturing CUDA graph shapes:  94%|█████████▍| 33/35 [00:19<00:01,  1.82it/s]Capturing CUDA graph shapes:  97%|█████████▋| 34/35 [00:19<00:00,  1.83it/s]Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:20<00:00,  1.82it/s]Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:20<00:00,  1.71it/s]
+2025-06-22T10:45:41.378382649Z INFO 06-22 10:45:41 model_runner.py:1562] Graph capturing finished in 20 secs, took 0.26 GiB
+2025-06-22T10:45:41.379127266Z INFO 06-22 10:45:41 llm_engine.py:436] init engine (profile, create kv cache, warmup model) took 35.53 seconds
+2025-06-22T10:45:42.009637146Z [32m10:45:42[0m | [36m             stt:223[0m | [1m    INFO[0m | [1mInitialized UltravoxSTTService with model: fixie-ai/ultravox-v0_5-llama-3_1-8b[0m
+2025-06-22T10:45:42.009673650Z 2025-06-22 10:45:42.009 | INFO     | pipecat.services.ultravox.stt:__init__:223 - Initialized UltravoxSTTService with model: fixie-ai/ultravox-v0_5-llama-3_1-8b
+2025-06-22T10:45:42.009679479Z [32m10:45:42[0m | [36mpipecat_pipeline:212[0m | [1m    INFO[0m | [1mUltravox model initialized successfully![0m
+2025-06-22T10:45:42.009684487Z 2025-06-22 10:45:42.009 | INFO     | src.pipecat_pipeline:<module>:212 - Ultravox model initialized successfully!
+2025-06-22T10:45:42.012746873Z 2025-06-22 10:45:42,012 - root - INFO - Starting voice pipeline server on 0.0.0.0:8000
+2025-06-22T10:45:42.031364989Z INFO:     Started server process [75]
+2025-06-22T10:45:42.031390637Z INFO:     Waiting for application startup.
+2025-06-22T10:45:42.031677117Z INFO:     Application startup complete.
+2025-06-22T10:45:42.031911189Z INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2025-06-22T10:45:54.361798089Z 2025-06-22 10:45:54,361 - root - INFO - Connect request - returning WebSocket URL: wss://x8ac4l0110x2ah-8000.proxy.runpod.net/ws
+2025-06-22T10:45:54.361871039Z 2025-06-22 10:45:54,361 - root - INFO - Request headers: x-forwarded-host=x8ac4l0110x2ah-8000.proxy.runpod.net, x-forwarded-proto=https
+2025-06-22T10:45:54.362471420Z INFO:     100.64.0.32:60450 - "POST /connect HTTP/1.1" 200 OK
+2025-06-22T10:45:54.762551306Z INFO:     100.64.0.36:44326 - "WebSocket /ws" [accepted]
+2025-06-22T10:45:54.762944005Z [32m10:45:54[0m | [36mpipecat_pipeline:218[0m | [1m    INFO[0m | [1mStarting bot[0m
+2025-06-22T10:45:54.763019138Z 2025-06-22 10:45:54.762 | INFO     | src.pipecat_pipeline:run_bot:218 - Starting bot
+2025-06-22T10:45:54.763875363Z [32m10:45:54[0m | [36mkokoro_tts_service:130[0m | [1m    INFO[0m | [1mInitialising Kokoro TTS (model='/models/kokoro/model_fp16.onnx', voices='/models/kokoro/voices-v1.0.bin', voice='af_bella')[0m
+2025-06-22T10:45:54.763890316Z 2025-06-22 10:45:54.763 | INFO     | src.kokoro_tts_service:__init__:130 - Initialising Kokoro TTS (model='/models/kokoro/model_fp16.onnx', voices='/models/kokoro/voices-v1.0.bin', voice='af_bella')
+2025-06-22T10:45:55.005737566Z /usr/local/lib/python3.10/dist-packages/torch/nn/modules/rnn.py:123: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.2 and num_layers=1
+2025-06-22T10:45:55.005779399Z   warnings.warn(
+2025-06-22T10:45:55.045625628Z /usr/local/lib/python3.10/dist-packages/torch/nn/utils/weight_norm.py:143: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+2025-06-22T10:45:55.045657616Z   WeightNorm.apply(module, name, dim)
+2025-06-22T10:46:00.881925106Z [32m10:46:00[0m | [36mkokoro_tts_service:151[0m | [1m    INFO[0m | [1mKokoro pipeline initialised successfully (backend=PyTorch)[0m
+2025-06-22T10:46:00.881986619Z 2025-06-22 10:46:00.881 | INFO     | src.kokoro_tts_service:__init__:151 - Kokoro pipeline initialised successfully (backend=PyTorch)
+2025-06-22T10:46:00.882077335Z [32m10:46:00[0m | [36mkokoro_tts_service:155[0m | [1m    INFO[0m | [1m🔥 GPU acceleration enabled: NVIDIA L4[0m
+2025-06-22T10:46:00.882103114Z 2025-06-22 10:46:00.881 | INFO     | src.kokoro_tts_service:__init__:155 - 🔥 GPU acceleration enabled: NVIDIA L4
+2025-06-22T10:46:00.882149153Z [32m10:46:00[0m | [36mkokoro_tts_service:156[0m | [1m    INFO[0m | [1m🔥 GPU memory: 23.6GB[0m
+2025-06-22T10:46:00.882159999Z 2025-06-22 10:46:00.882 | INFO     | src.kokoro_tts_service:__init__:156 - 🔥 GPU memory: 23.6GB
+2025-06-22T10:46:00.882382022Z [32m10:46:00[0m | [36mpipecat_pipeline:76[0m | [1m    INFO[0m | [1mContext set for Ultravox service[0m
+2025-06-22T10:46:00.882390094Z 2025-06-22 10:46:00.882 | INFO     | src.pipecat_pipeline:set_context:76 - Context set for Ultravox service
+2025-06-22T10:46:00.882455392Z [32m10:46:00[0m | [36mpipecat_pipeline:258[0m | [1m    INFO[0m | [1mContext type: <class 'pipecat.processors.aggregators.openai_llm_context.OpenAILLMContext'>[0m
+2025-06-22T10:46:00.882461662Z 2025-06-22 10:46:00.882 | INFO     | src.pipecat_pipeline:run_bot:258 - Context type: <class 'pipecat.processors.aggregators.openai_llm_context.OpenAILLMContext'>
+2025-06-22T10:46:00.882534131Z [32m10:46:00[0m | [36mpipecat_pipeline:259[0m | [1m    INFO[0m | [1mContext messages: 1[0m
+2025-06-22T10:46:00.882539859Z 2025-06-22 10:46:00.882 | INFO     | src.pipecat_pipeline:run_bot:259 - Context messages: 1
+2025-06-22T10:46:00.882804176Z 2025-06-22 10:46:00.882 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking PipelineSource#0 -> FastAPIWebsocketInputTransport#0
+2025-06-22T10:46:00.882837125Z 2025-06-22 10:46:00.882 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking FastAPIWebsocketInputTransport#0 -> RTVIProcessor#0
+2025-06-22T10:46:00.882883815Z 2025-06-22 10:46:00.882 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking RTVIProcessor#0 -> UltravoxWithContextService#0
+2025-06-22T10:46:00.882923194Z 2025-06-22 10:46:00.882 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking UltravoxWithContextService#0 -> KokoroTTSService#0
+2025-06-22T10:46:00.883001031Z 2025-06-22 10:46:00.882 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking KokoroTTSService#0 -> FastAPIWebsocketOutputTransport#0
+2025-06-22T10:46:00.883087050Z 2025-06-22 10:46:00.882 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking FastAPIWebsocketOutputTransport#0 -> PipelineSink#0
+2025-06-22T10:46:00.883346941Z 2025-06-22 10:46:00.883 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking PipelineTaskSource#0 -> Pipeline#0
+2025-06-22T10:46:00.883431918Z 2025-06-22 10:46:00.883 | DEBUG    | pipecat.processors.frame_processor:link:202 - Linking Pipeline#0 -> PipelineTaskSink#0
+2025-06-22T10:46:00.883571888Z [32m10:46:00[0m | [36m     base_object:55[0m | [33m[1m WARNING[0m | [33m[1mEvent handler on_interruption_start not registered[0m
+2025-06-22T10:46:00.883577687Z 2025-06-22 10:46:00.883 | WARNING  | pipecat.utils.base_object:add_event_handler:55 - Event handler on_interruption_start not registered
+2025-06-22T10:46:00.883645178Z [32m10:46:00[0m | [36m     base_object:55[0m | [33m[1m WARNING[0m | [33m[1mEvent handler on_interruption_end not registered[0m
+2025-06-22T10:46:00.883669164Z 2025-06-22 10:46:00.883 | WARNING  | pipecat.utils.base_object:add_event_handler:55 - Event handler on_interruption_end not registered
+2025-06-22T10:46:00.883726851Z [32m10:46:00[0m | [36m     base_object:55[0m | [33m[1m WARNING[0m | [33m[1mEvent handler on_user_started_speaking not registered[0m
+2025-06-22T10:46:00.883728834Z 2025-06-22 10:46:00.883 | WARNING  | pipecat.utils.base_object:add_event_handler:55 - Event handler on_user_started_speaking not registered
+2025-06-22T10:46:00.883804788Z [32m10:46:00[0m | [36m     base_object:55[0m | [33m[1m WARNING[0m | [33m[1mEvent handler on_user_stopped_speaking not registered[0m
+2025-06-22T10:46:00.883812289Z 2025-06-22 10:46:00.883 | WARNING  | pipecat.utils.base_object:add_event_handler:55 - Event handler on_user_stopped_speaking not registered
+2025-06-22T10:46:00.883874242Z [32m10:46:00[0m | [36m     base_object:55[0m | [33m[1m WARNING[0m | [33m[1mEvent handler on_bot_started_speaking not registered[0m
+2025-06-22T10:46:00.883893501Z 2025-06-22 10:46:00.883 | WARNING  | pipecat.utils.base_object:add_event_handler:55 - Event handler on_bot_started_speaking not registered
+2025-06-22T10:46:00.883944808Z [32m10:46:00[0m | [36m     base_object:55[0m | [33m[1m WARNING[0m | [33m[1mEvent handler on_bot_stopped_speaking not registered[0m
+2025-06-22T10:46:00.883991909Z 2025-06-22 10:46:00.883 | WARNING  | pipecat.utils.base_object:add_event_handler:55 - Event handler on_bot_stopped_speaking not registered
+2025-06-22T10:46:00.884121012Z 2025-06-22 10:46:00.884 | DEBUG    | pipecat.pipeline.runner:run:38 - Runner PipelineRunner#0 started running PipelineTask#0
+2025-06-22T10:46:00.884870728Z INFO:     connection open
+2025-06-22T10:46:00.886899543Z [32m10:46:00[0m | [36m             stt:232[0m | [1m    INFO[0m | [1mWarming up Ultravox model with silent audio...[0m
+2025-06-22T10:46:00.886904310Z 2025-06-22 10:46:00.886 | INFO     | pipecat.services.ultravox.stt:_warm_up_model:232 - Warming up Ultravox model with silent audio...
+2025-06-22T10:46:00.887073594Z [32m10:46:00[0m | [36m             stt:272[0m | [1m    INFO[0m | [1mGenerated 1s of silent audio (16000 samples)[0m
+2025-06-22T10:46:00.887077210Z 2025-06-22 10:46:00.886 | INFO     | pipecat.services.ultravox.stt:_generate_silent_audio:272 - Generated 1s of silent audio (16000 samples)
+2025-06-22T10:46:00.941804164Z WebSocket connection accepted
+2025-06-22T10:46:00.941825546Z WARNING: Defaulting repo_id to hexgrad/Kokoro-82M. Pass repo_id='hexgrad/Kokoro-82M' to suppress this warning.
+2025-06-22T10:46:00.941828521Z INFO 06-22 10:46:00 async_llm_engine.py:211] Added request 1750589160.9414065.
+2025-06-22T10:46:06.955011750Z [32m10:46:06[0m | [36mpipecat_pipeline:336[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:46:06.955041755Z 2025-06-22 10:46:06.954 | INFO     | src.pipecat_pipeline:monitor_context:336 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:46:06.955071650Z [32m10:46:06[0m | [36mpipecat_pipeline:341[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:46:06.955090699Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:46:06.955093133Z 2025-06-22 10:46:06.954 | INFO     | src.pipecat_pipeline:monitor_context:341 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:46:06.955095496Z 1. Use English language ONLY in all responses...
+2025-06-22T10:46:06.955137109Z [32m10:46:06[0m | [36mpipecat_pipeline:361[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:46:06.955145882Z 2025-06-22 10:46:06.955 | INFO     | src.pipecat_pipeline:log_metrics:361 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:46:06.955216398Z [32m10:46:06[0m | [36mpipecat_pipeline:372[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:46:06.955228235Z 2025-06-22 10:46:06.955 | INFO     | src.pipecat_pipeline:log_metrics:372 - 📊 ========================
+2025-06-22T10:46:07.043131247Z INFO 06-22 10:46:07 metrics.py:455] Avg prompt throughput: 1.6 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 1 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.4%, CPU KV cache usage: 0.0%.
+2025-06-22T10:46:09.340292353Z INFO 06-22 10:46:09 async_llm_engine.py:179] Finished request 1750589160.9414065.
+2025-06-22T10:46:09.376452109Z [32m10:46:09[0m | [36m             stt:252[0m | [1m    INFO[0m | [1mModel warm-up completed successfully[0m
+2025-06-22T10:46:09.376485058Z 2025-06-22 10:46:09.376 | INFO     | pipecat.services.ultravox.stt:_warm_up_model:252 - Model warm-up completed successfully
+2025-06-22T10:46:09.376698899Z [32m10:46:09[0m | [36m             stt:294[0m | [1m    INFO[0m | [1mUltravoxSTTService started[0m
+2025-06-22T10:46:09.376762575Z 2025-06-22 10:46:09.376 | INFO     | pipecat.services.ultravox.stt:start:294 - UltravoxSTTService started
+2025-06-22T10:46:09.378758761Z 2025-06-22 10:46:09.378 | DEBUG    | pipecat.audio.vad.vad_analyzer:set_params:74 - Setting VAD params to: confidence=0.7 start_secs=0.2 stop_secs=0.8 min_volume=0.6
+2025-06-22T10:46:09.384239418Z [32m10:46:09[0m | [36mpipecat_pipeline:293[0m | [1m    INFO[0m | [1mClient connected[0m
+2025-06-22T10:46:09.384282162Z 2025-06-22 10:46:09.383 | INFO     | src.pipecat_pipeline:on_client_connected:293 - Client connected
+2025-06-22T10:46:09.384722873Z 2025-06-22 10:46:09.384 | DEBUG    | pipecat.serializers.protobuf:deserialize:106 - ProtobufFrameSerializer: Transport message TransportMessageUrgentFrame#1(message: {'label': 'rtvi-ai', 'type': 'client-ready', 'data': {}, 'id': '228b5d3a'})
+2025-06-22T10:46:09.388371590Z 2025-06-22 10:46:09.388 | DEBUG    | pipecat.processors.frameworks.rtvi:_handle_client_ready:844 - Received client-ready
+2025-06-22T10:46:09.391554417Z [32m10:46:09[0m | [36mpipecat_pipeline:287[0m | [1m    INFO[0m | [1mPipecat client ready.[0m
+2025-06-22T10:46:09.391597702Z 2025-06-22 10:46:09.391 | INFO     | src.pipecat_pipeline:on_client_ready:287 - Pipecat client ready.
+2025-06-22T10:46:09.956921618Z [32m10:46:09[0m | [36mpipecat_pipeline:336[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:46:09.957002990Z 2025-06-22 10:46:09.956 | INFO     | src.pipecat_pipeline:monitor_context:336 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:46:09.957090592Z [32m10:46:09[0m | [36mpipecat_pipeline:341[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:46:09.957110301Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:46:09.957115539Z 2025-06-22 10:46:09.956 | INFO     | src.pipecat_pipeline:monitor_context:341 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:46:09.957121388Z 1. Use English language ONLY in all responses...
+2025-06-22T10:46:11.956157632Z [32m10:46:11[0m | [36mpipecat_pipeline:361[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:46:11.956196620Z 2025-06-22 10:46:11.955 | INFO     | src.pipecat_pipeline:log_metrics:361 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:46:11.956318523Z [32m10:46:11[0m | [36mpipecat_pipeline:372[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:46:11.956356941Z 2025-06-22 10:46:11.956 | INFO     | src.pipecat_pipeline:log_metrics:372 - 📊 ========================
+2025-06-22T10:46:12.957789551Z [32m10:46:12[0m | [36mpipecat_pipeline:336[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:46:12.957832967Z 2025-06-22 10:46:12.957 | INFO     | src.pipecat_pipeline:monitor_context:336 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:46:12.958009241Z [32m10:46:12[0m | [36mpipecat_pipeline:341[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:46:12.958051595Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:46:12.958058205Z 2025-06-22 10:46:12.957 | INFO     | src.pipecat_pipeline:monitor_context:341 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:46:12.958063513Z 1. Use English language ONLY in all responses...
+2025-06-22T10:46:15.959393630Z [32m10:46:15[0m | [36mpipecat_pipeline:336[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:46:15.959438207Z 2025-06-22 10:46:15.959 | INFO     | src.pipecat_pipeline:monitor_context:336 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:46:15.959485959Z [32m10:46:15[0m | [36mpipecat_pipeline:341[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:46:15.959510285Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:46:15.959529674Z 2025-06-22 10:46:15.959 | INFO     | src.pipecat_pipeline:monitor_context:341 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:46:15.959535253Z 1. Use English language ONLY in all responses...
+2025-06-22T10:46:16.957872698Z [32m10:46:16[0m | [36mpipecat_pipeline:361[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:46:16.957915231Z 2025-06-22 10:46:16.957 | INFO     | src.pipecat_pipeline:log_metrics:361 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:46:16.958051726Z [32m10:46:16[0m | [36mpipecat_pipeline:372[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:46:16.958092097Z 2025-06-22 10:46:16.957 | INFO     | src.pipecat_pipeline:log_metrics:372 - 📊 ========================
+2025-06-22T10:46:18.960252680Z [32m10:46:18[0m | [36mpipecat_pipeline:336[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:46:18.960308975Z 2025-06-22 10:46:18.959 | INFO     | src.pipecat_pipeline:monitor_context:336 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:46:18.960372290Z [32m10:46:18[0m | [36mpipecat_pipeline:341[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:46:18.960399190Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:46:18.960405390Z 2025-06-22 10:46:18.960 | INFO     | src.pipecat_pipeline:monitor_context:341 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:46:18.960410477Z 1. Use English language ONLY in all responses...
+2025-06-22T10:46:21.959493442Z [32m10:46:21[0m | [36mpipecat_pipeline:361[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:46:21.959534824Z 2025-06-22 10:46:21.959 | INFO     | src.pipecat_pipeline:log_metrics:361 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:46:21.959647663Z [32m10:46:21[0m | [36mpipecat_pipeline:372[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:46:21.959676897Z 2025-06-22 10:46:21.959 | INFO     | src.pipecat_pipeline:log_metrics:372 - 📊 ========================
+2025-06-22T10:46:21.960986593Z [32m10:46:21[0m | [36mpipecat_pipeline:336[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:46:21.960999362Z 2025-06-22 10:46:21.960 | INFO     | src.pipecat_pipeline:monitor_context:336 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:46:21.961107574Z [32m10:46:21[0m | [36mpipecat_pipeline:341[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:46:21.961117209Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:46:21.961148125Z 2025-06-22 10:46:21.960 | INFO     | src.pipecat_pipeline:monitor_context:341 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:46:21.961162407Z 1. Use English language ONLY in all responses...
+2025-06-22T10:46:24.962274797Z [32m10:46:24[0m | [36mpipecat_pipeline:336[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:46:24.963199335Z 2025-06-22 10:46:24.961 | INFO     | src.pipecat_pipeline:monitor_context:336 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:46:24.963276010Z [32m10:46:24[0m | [36mpipecat_pipeline:341[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:46:24.963292575Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:46:24.963304363Z 2025-06-22 10:46:24.963 | INFO     | src.pipecat_pipeline:monitor_context:341 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:46:24.963309861Z 1. Use English language ONLY in all responses...
+2025-06-22T10:46:25.953587498Z 2025-06-22 10:46:25.953 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:242 - User started speaking
+2025-06-22T10:46:25.953821379Z [32m10:46:25[0m | [36m             stt:329[0m | [1m    INFO[0m | [1mSpeech started[0m
+2025-06-22T10:46:25.953836251Z 2025-06-22 10:46:25.953 | INFO     | pipecat.services.ultravox.stt:process_frame:329 - Speech started
+2025-06-22T10:46:25.961300755Z [32m10:46:25[0m | [36m        protobuf:64[0m | [33m[1m WARNING[0m | [33m[1mFrame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable[0m
+2025-06-22T10:46:25.961325212Z 2025-06-22 10:46:25.960 | WARNING  | pipecat.serializers.protobuf:serialize:64 - Frame type <class 'pipecat.frames.frames.StartInterruptionFrame'> is not serializable
+2025-06-22T10:46:26.961017711Z [32m10:46:26[0m | [36mpipecat_pipeline:361[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:46:26.961055017Z 2025-06-22 10:46:26.960 | INFO     | src.pipecat_pipeline:log_metrics:361 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:46:26.961228577Z [32m10:46:26[0m | [36mpipecat_pipeline:372[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:46:26.961253885Z 2025-06-22 10:46:26.960 | INFO     | src.pipecat_pipeline:log_metrics:372 - 📊 ========================
+2025-06-22T10:46:27.964283513Z [32m10:46:27[0m | [36mpipecat_pipeline:336[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:46:27.964320448Z 2025-06-22 10:46:27.963 | INFO     | src.pipecat_pipeline:monitor_context:336 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:46:27.964383503Z [32m10:46:27[0m | [36mpipecat_pipeline:341[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:46:27.964389482Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:46:27.964394510Z 2025-06-22 10:46:27.964 | INFO     | src.pipecat_pipeline:monitor_context:341 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:46:27.964400048Z 1. Use English language ONLY in all responses...
+2025-06-22T10:46:28.193865764Z 2025-06-22 10:46:28.193 | DEBUG    | pipecat.transports.base_input:_handle_user_interruption:265 - User stopped speaking
+2025-06-22T10:46:28.194118543Z [32m10:46:28[0m | [36m             stt:338[0m | [1m    INFO[0m | [1mSpeech ended, processing buffer...[0m
+2025-06-22T10:46:28.194157732Z 2025-06-22 10:46:28.193 | INFO     | pipecat.services.ultravox.stt:process_frame:338 - Speech ended, processing buffer...
+2025-06-22T10:46:28.210053101Z [32m10:46:28[0m | [36m frame_processor:345[0m | [31m[1m   ERROR[0m | [31m[1mUncaught exception in RTVIProcessor#0: 'async for' requires an object with __aiter__ method, got coroutine[0m
+2025-06-22T10:46:28.210082625Z [33m[1mTraceback (most recent call last):[0m
+2025-06-22T10:46:28.210093752Z   File "[32m/app/src/[0m[32m[1mmain.py[0m", line [33m116[0m, in [35m<module>[0m
+2025-06-22T10:46:28.210099040Z     [1masyncio[0m[35m[1m.[0m[1mrun[0m[1m([0m[1mmain[0m[1m([0m[1m)[0m[1m)[0m
+2025-06-22T10:46:28.210103687Z     [36m│       │   └ [0m[36m[1m<function main at 0x76246b8016c0>[0m
+2025-06-22T10:46:28.210108564Z     [36m│       └ [0m[36m[1m<function run at 0x76269b3135b0>[0m
+2025-06-22T10:46:28.210112881Z     [36m└ [0m[36m[1m<module 'asyncio' from '/usr/lib/python3.10/asyncio/__init__.py'>[0m
+2025-06-22T10:46:28.210121413Z   File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+2025-06-22T10:46:28.210126140Z     return loop.run_until_complete(main)
+2025-06-22T10:46:28.210130457Z            │    │                  └ <coroutine object main at 0x762485a91150>
+2025-06-22T10:46:28.210134904Z            │    └ <function BaseEventLoop.run_until_complete at 0x76269a9105e0>
+2025-06-22T10:46:28.210139250Z            └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+2025-06-22T10:46:28.210143537Z   File "/usr/lib/python3.10/asyncio/base_events.py", line 636, in run_until_complete
+2025-06-22T10:46:28.210148284Z     self.run_forever()
+2025-06-22T10:46:28.210153141Z     │    └ <function BaseEventLoop.run_forever at 0x76269a910550>
+2025-06-22T10:46:28.210157508Z     └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+2025-06-22T10:46:28.210161714Z   File "/usr/lib/python3.10/asyncio/base_events.py", line 603, in run_forever
+2025-06-22T10:46:28.210166000Z     self._run_once()
+2025-06-22T10:46:28.210184198Z     │    └ <function BaseEventLoop._run_once at 0x76269a912050>
+2025-06-22T10:46:28.210188774Z     └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+2025-06-22T10:46:28.210193121Z   File "/usr/lib/python3.10/asyncio/base_events.py", line 1909, in _run_once
+2025-06-22T10:46:28.210197377Z     handle._run()
+2025-06-22T10:46:28.210201784Z     │      └ <function Handle._run at 0x76269aa65a20>
+2025-06-22T10:46:28.210206130Z     └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.210210377Z   File "/usr/lib/python3.10/asyncio/events.py", line 80, in _run
+2025-06-22T10:46:28.210214733Z     self._context.run(self._callback, *self._args)
+2025-06-22T10:46:28.210219000Z     │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+2025-06-22T10:46:28.210224758Z     │    │            │    │           └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.210229966Z     │    │            │    └ <member '_callback' of 'Handle' objects>
+2025-06-22T10:46:28.210234233Z     │    │            └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.210238499Z     │    └ <member '_context' of 'Handle' objects>
+2025-06-22T10:46:28.210242735Z     └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.210247072Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/utils/asyncio.py", line 107, in run_coroutine
+2025-06-22T10:46:28.210251649Z     await coroutine
+2025-06-22T10:46:28.210256015Z           └ <coroutine object BaseInputTransport._audio_task_handler at 0x762463b60c10>
+2025-06-22T10:46:28.210260783Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/transports/base_input.py", line 368, in _audio_task_handler
+2025-06-22T10:46:28.210265520Z     vad_state = await self._handle_vad(frame, vad_state)
+2025-06-22T10:46:28.210269846Z                       │    │           │      └ <VADState.SPEAKING: 3>
+2025-06-22T10:46:28.210274283Z                       │    │           └ InputAudioRawFrame(audio=b'\xe1\xff\xdb\xff\xe1\xff\xe0\xff\xd1\xff\xd5\xff\xe8\xff\xf4\xff\x01\x00\x06\x00\x10\x00\x0f\x00\x...
+2025-06-22T10:46:28.210279130Z                       │    └ <function BaseInputTransport._handle_vad at 0x762631961990>
+2025-06-22T10:46:28.210283547Z                       └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.210288013Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/transports/base_input.py", line 328, in _handle_vad
+2025-06-22T10:46:28.210292400Z     await self._handle_user_interruption(frame)
+2025-06-22T10:46:28.210296686Z           │    │                         └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.210301524Z           │    └ <function BaseInputTransport._handle_user_interruption at 0x762631961630>
+2025-06-22T10:46:28.210305800Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.210310077Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/transports/base_input.py", line 266, in _handle_user_interruption
+2025-06-22T10:46:28.210314413Z     await self.push_frame(frame)
+2025-06-22T10:46:28.210319040Z           │    │          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.210323797Z           │    └ <function FrameProcessor.push_frame at 0x762696db2cb0>
+2025-06-22T10:46:28.210328234Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.210332590Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 271, in push_frame
+2025-06-22T10:46:28.210336857Z     await self.__internal_push_frame(frame, direction)
+2025-06-22T10:46:28.210341213Z           │                          │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.210350677Z           │                          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.210355234Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.210359601Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 331, in __internal_push_frame
+2025-06-22T10:46:28.210363967Z     await self._next.queue_frame(frame, direction)
+2025-06-22T10:46:28.210368274Z           │    │     │           │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.210372500Z           │    │     │           └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.210377368Z           │    │     └ <function FrameProcessor.queue_frame at 0x762696db29e0>
+2025-06-22T10:46:28.210381764Z           │    └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.210386131Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.210390457Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 239, in queue_frame
+2025-06-22T10:46:28.210394804Z     await self.process_frame(frame, direction)
+2025-06-22T10:46:28.210399270Z           │    │             │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.210403727Z           │    │             └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.210408164Z           │    └ <function RTVIProcessor.process_frame at 0x76262efc05e0>
+2025-06-22T10:46:28.210412500Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.210417618Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frameworks/rtvi.py", line 743, in process_frame
+2025-06-22T10:46:28.210422245Z     await self.push_frame(frame, direction)
+2025-06-22T10:46:28.210426601Z           │    │          │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.210430898Z           │    │          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.210435184Z           │    └ <function FrameProcessor.push_frame at 0x762696db2cb0>
+2025-06-22T10:46:28.210439551Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.210443857Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 271, in push_frame
+2025-06-22T10:46:28.210448264Z     await self.__internal_push_frame(frame, direction)
+2025-06-22T10:46:28.210452580Z           │                          │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.210456897Z           │                          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.210461243Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.210465490Z > File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 331, in __internal_push_frame
+2025-06-22T10:46:28.210469836Z     await self._next.queue_frame(frame, direction)
+2025-06-22T10:46:28.210474233Z           │    │     │           │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.210478539Z           │    │     │           └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.210482816Z           │    │     └ <function FrameProcessor.queue_frame at 0x762696db29e0>
+2025-06-22T10:46:28.210487283Z           │    └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.210496216Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.210500613Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 239, in queue_frame
+2025-06-22T10:46:28.210504889Z     await self.process_frame(frame, direction)
+2025-06-22T10:46:28.210509135Z           │    │             │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.210513943Z           │    │             └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.210518349Z           │    └ <function UltravoxSTTService.process_frame at 0x7624f7b81f30>
+2025-06-22T10:46:28.210522706Z           └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.210526942Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/services/ultravox/stt.py", line 339, in process_frame
+2025-06-22T10:46:28.210531208Z     await self.process_generator(self._process_audio_buffer())
+2025-06-22T10:46:28.210535475Z           │    │                 │    └ <function UltravoxWithContextService._process_audio_buffer at 0x76247d066710>
+2025-06-22T10:46:28.210539651Z           │    │                 └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.210543958Z           │    └ <function AIService.process_generator at 0x76263194a4d0>
+2025-06-22T10:46:28.210548304Z           └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.210552631Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/services/ai_service.py", line 100, in process_generator
+2025-06-22T10:46:28.210556997Z     async for f in generator:
+2025-06-22T10:46:28.210561354Z                    └ <coroutine object UltravoxWithContextService._process_audio_buffer at 0x76240bfabb50>
+2025-06-22T10:46:28.210569866Z [31m[1mTypeError[0m:[1m 'async for' requires an object with __aiter__ method, got coroutine[0m
+2025-06-22T10:46:28.217805066Z 2025-06-22 10:46:28.194 | ERROR    | pipecat.processors.frame_processor:__internal_push_frame:345 - Uncaught exception in RTVIProcessor#0: 'async for' requires an object with __aiter__ method, got coroutine
+2025-06-22T10:46:28.217833629Z Traceback (most recent call last):
+2025-06-22T10:46:28.217848562Z   File "/app/src/main.py", line 116, in <module>
+2025-06-22T10:46:28.217853639Z     asyncio.run(main())
+2025-06-22T10:46:28.217859007Z     │       │   └ <function main at 0x76246b8016c0>
+2025-06-22T10:46:28.217863855Z     │       └ <function run at 0x76269b3135b0>
+2025-06-22T10:46:28.217868231Z     └ <module 'asyncio' from '/usr/lib/python3.10/asyncio/__init__.py'>
+2025-06-22T10:46:28.217877405Z   File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+2025-06-22T10:46:28.217881772Z     return loop.run_until_complete(main)
+2025-06-22T10:46:28.217886088Z            │    │                  └ <coroutine object main at 0x762485a91150>
+2025-06-22T10:46:28.217891106Z            │    └ <function BaseEventLoop.run_until_complete at 0x76269a9105e0>
+2025-06-22T10:46:28.217895382Z            └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+2025-06-22T10:46:28.217899759Z   File "/usr/lib/python3.10/asyncio/base_events.py", line 636, in run_until_complete
+2025-06-22T10:46:28.217904235Z     self.run_forever()
+2025-06-22T10:46:28.217908542Z     │    └ <function BaseEventLoop.run_forever at 0x76269a910550>
+2025-06-22T10:46:28.217912908Z     └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+2025-06-22T10:46:28.217917255Z   File "/usr/lib/python3.10/asyncio/base_events.py", line 603, in run_forever
+2025-06-22T10:46:28.217921611Z     self._run_once()
+2025-06-22T10:46:28.217925938Z     │    └ <function BaseEventLoop._run_once at 0x76269a912050>
+2025-06-22T10:46:28.217930224Z     └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+2025-06-22T10:46:28.217946258Z   File "/usr/lib/python3.10/asyncio/base_events.py", line 1909, in _run_once
+2025-06-22T10:46:28.217966158Z     handle._run()
+2025-06-22T10:46:28.217970805Z     │      └ <function Handle._run at 0x76269aa65a20>
+2025-06-22T10:46:28.217975192Z     └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.217979528Z   File "/usr/lib/python3.10/asyncio/events.py", line 80, in _run
+2025-06-22T10:46:28.217983745Z     self._context.run(self._callback, *self._args)
+2025-06-22T10:46:28.217988031Z     │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+2025-06-22T10:46:28.217992398Z     │    │            │    │           └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.217999608Z     │    │            │    └ <member '_callback' of 'Handle' objects>
+2025-06-22T10:46:28.218003895Z     │    │            └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.218009623Z     │    └ <member '_context' of 'Handle' objects>
+2025-06-22T10:46:28.218014341Z     └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.218018647Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/utils/asyncio.py", line 107, in run_coroutine
+2025-06-22T10:46:28.218022953Z     await coroutine
+2025-06-22T10:46:28.218027310Z           └ <coroutine object BaseInputTransport._audio_task_handler at 0x762463b60c10>
+2025-06-22T10:46:28.218031767Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/transports/base_input.py", line 368, in _audio_task_handler
+2025-06-22T10:46:28.218036674Z     vad_state = await self._handle_vad(frame, vad_state)
+2025-06-22T10:46:28.218041001Z                       │    │           │      └ <VADState.SPEAKING: 3>
+2025-06-22T10:46:28.218045617Z                       │    │           └ InputAudioRawFrame(audio=b'\xe1\xff\xdb\xff\xe1\xff\xe0\xff\xd1\xff\xd5\xff\xe8\xff\xf4\xff\x01\x00\x06\x00\x10\x00\x0f\x00\x...
+2025-06-22T10:46:28.218050625Z                       │    └ <function BaseInputTransport._handle_vad at 0x762631961990>
+2025-06-22T10:46:28.218054931Z                       └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.218059318Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/transports/base_input.py", line 328, in _handle_vad
+2025-06-22T10:46:28.218063574Z     await self._handle_user_interruption(frame)
+2025-06-22T10:46:28.218067891Z           │    │                         └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.218072638Z           │    └ <function BaseInputTransport._handle_user_interruption at 0x762631961630>
+2025-06-22T10:46:28.218078357Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.218082683Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/transports/base_input.py", line 266, in _handle_user_interruption
+2025-06-22T10:46:28.218087040Z     await self.push_frame(frame)
+2025-06-22T10:46:28.218091767Z           │    │          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.218096233Z           │    └ <function FrameProcessor.push_frame at 0x762696db2cb0>
+2025-06-22T10:46:28.218100760Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.218105517Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 271, in push_frame
+2025-06-22T10:46:28.218110024Z     await self.__internal_push_frame(frame, direction)
+2025-06-22T10:46:28.218114291Z           │                          │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.218118597Z           │                          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.218128432Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.218132949Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 331, in __internal_push_frame
+2025-06-22T10:46:28.218137265Z     await self._next.queue_frame(frame, direction)
+2025-06-22T10:46:28.218141541Z           │    │     │           │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.218145718Z           │    │     │           └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.218150004Z           │    │     └ <function FrameProcessor.queue_frame at 0x762696db29e0>
+2025-06-22T10:46:28.218154221Z           │    └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.218158407Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.218162673Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 239, in queue_frame
+2025-06-22T10:46:28.218166869Z     await self.process_frame(frame, direction)
+2025-06-22T10:46:28.218171166Z           │    │             │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.218175382Z           │    │             └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.218179709Z           │    └ <function RTVIProcessor.process_frame at 0x76262efc05e0>
+2025-06-22T10:46:28.218183895Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.218188111Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frameworks/rtvi.py", line 743, in process_frame
+2025-06-22T10:46:28.218192338Z     await self.push_frame(frame, direction)
+2025-06-22T10:46:28.218197566Z           │    │          │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.218202112Z           │    │          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.218206619Z           │    └ <function FrameProcessor.push_frame at 0x762696db2cb0>
+2025-06-22T10:46:28.218210866Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.218215062Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 271, in push_frame
+2025-06-22T10:46:28.218219308Z     await self.__internal_push_frame(frame, direction)
+2025-06-22T10:46:28.218223535Z           │                          │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.218227731Z           │                          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.218236404Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.218240740Z > File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 331, in __internal_push_frame
+2025-06-22T10:46:28.218245047Z     await self._next.queue_frame(frame, direction)
+2025-06-22T10:46:28.218249263Z           │    │     │           │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.218253670Z           │    │     │           └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.218258177Z           │    │     └ <function FrameProcessor.queue_frame at 0x762696db29e0>
+2025-06-22T10:46:28.218262473Z           │    └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.218266719Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.218275793Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 239, in queue_frame
+2025-06-22T10:46:28.218280250Z     await self.process_frame(frame, direction)
+2025-06-22T10:46:28.218284556Z           │    │             │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.218288803Z           │    │             └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.218293149Z           │    └ <function UltravoxSTTService.process_frame at 0x7624f7b81f30>
+2025-06-22T10:46:28.218297686Z           └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.218302133Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/services/ultravox/stt.py", line 339, in process_frame
+2025-06-22T10:46:28.218306509Z     await self.process_generator(self._process_audio_buffer())
+2025-06-22T10:46:28.218310876Z           │    │                 │    └ <function UltravoxWithContextService._process_audio_buffer at 0x76247d066710>
+2025-06-22T10:46:28.218315152Z           │    │                 └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.218319408Z           │    └ <function AIService.process_generator at 0x76263194a4d0>
+2025-06-22T10:46:28.218323635Z           └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.218327921Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/services/ai_service.py", line 100, in process_generator
+2025-06-22T10:46:28.218332338Z     async for f in generator:
+2025-06-22T10:46:28.218337095Z                    └ <coroutine object UltravoxWithContextService._process_audio_buffer at 0x76240bfabb50>
+2025-06-22T10:46:28.218345668Z TypeError: 'async for' requires an object with __aiter__ method, got coroutine
+2025-06-22T10:46:28.226366347Z [32m10:46:28[0m | [36m frame_processor:345[0m | [31m[1m   ERROR[0m | [31m[1mUncaught exception in FastAPIWebsocketInputTransport#0: 'async for' requires an object with __aiter__ method, got coroutine[0m
+2025-06-22T10:46:28.226394509Z [33m[1mTraceback (most recent call last):[0m
+2025-06-22T10:46:28.226405195Z   File "[32m/app/src/[0m[32m[1mmain.py[0m", line [33m116[0m, in [35m<module>[0m
+2025-06-22T10:46:28.226410623Z     [1masyncio[0m[35m[1m.[0m[1mrun[0m[1m([0m[1mmain[0m[1m([0m[1m)[0m[1m)[0m
+2025-06-22T10:46:28.226415200Z     [36m│       │   └ [0m[36m[1m<function main at 0x76246b8016c0>[0m
+2025-06-22T10:46:28.226420088Z     [36m│       └ [0m[36m[1m<function run at 0x76269b3135b0>[0m
+2025-06-22T10:46:28.226424544Z     [36m└ [0m[36m[1m<module 'asyncio' from '/usr/lib/python3.10/asyncio/__init__.py'>[0m
+2025-06-22T10:46:28.226433227Z   File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+2025-06-22T10:46:28.226437824Z     return loop.run_until_complete(main)
+2025-06-22T10:46:28.226442231Z            │    │                  └ <coroutine object main at 0x762485a91150>
+2025-06-22T10:46:28.226446717Z            │    └ <function BaseEventLoop.run_until_complete at 0x76269a9105e0>
+2025-06-22T10:46:28.226451104Z            └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+2025-06-22T10:46:28.226455391Z   File "/usr/lib/python3.10/asyncio/base_events.py", line 636, in run_until_complete
+2025-06-22T10:46:28.226459807Z     self.run_forever()
+2025-06-22T10:46:28.226464755Z     │    └ <function BaseEventLoop.run_forever at 0x76269a910550>
+2025-06-22T10:46:28.226469151Z     └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+2025-06-22T10:46:28.226473448Z   File "/usr/lib/python3.10/asyncio/base_events.py", line 603, in run_forever
+2025-06-22T10:46:28.226477884Z     self._run_once()
+2025-06-22T10:46:28.226482171Z     │    └ <function BaseEventLoop._run_once at 0x76269a912050>
+2025-06-22T10:46:28.226486437Z     └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+2025-06-22T10:46:28.226490824Z   File "/usr/lib/python3.10/asyncio/base_events.py", line 1909, in _run_once
+2025-06-22T10:46:28.226505285Z     handle._run()
+2025-06-22T10:46:28.226510012Z     │      └ <function Handle._run at 0x76269aa65a20>
+2025-06-22T10:46:28.226514459Z     └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.226518756Z   File "/usr/lib/python3.10/asyncio/events.py", line 80, in _run
+2025-06-22T10:46:28.226523072Z     self._context.run(self._callback, *self._args)
+2025-06-22T10:46:28.226527318Z     │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+2025-06-22T10:46:28.226532697Z     │    │            │    │           └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.226537904Z     │    │            │    └ <member '_callback' of 'Handle' objects>
+2025-06-22T10:46:28.226542241Z     │    │            └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.226546537Z     │    └ <member '_context' of 'Handle' objects>
+2025-06-22T10:46:28.226550764Z     └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.226555070Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/utils/asyncio.py", line 107, in run_coroutine
+2025-06-22T10:46:28.226559407Z     await coroutine
+2025-06-22T10:46:28.226564254Z           └ <coroutine object BaseInputTransport._audio_task_handler at 0x762463b60c10>
+2025-06-22T10:46:28.226568570Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/transports/base_input.py", line 368, in _audio_task_handler
+2025-06-22T10:46:28.226573297Z     vad_state = await self._handle_vad(frame, vad_state)
+2025-06-22T10:46:28.226577624Z                       │    │           │      └ <VADState.SPEAKING: 3>
+2025-06-22T10:46:28.226582031Z                       │    │           └ InputAudioRawFrame(audio=b'\xe1\xff\xdb\xff\xe1\xff\xe0\xff\xd1\xff\xd5\xff\xe8\xff\xf4\xff\x01\x00\x06\x00\x10\x00\x0f\x00\x...
+2025-06-22T10:46:28.226586978Z                       │    └ <function BaseInputTransport._handle_vad at 0x762631961990>
+2025-06-22T10:46:28.226591274Z                       └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.226595641Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/transports/base_input.py", line 328, in _handle_vad
+2025-06-22T10:46:28.226600038Z     await self._handle_user_interruption(frame)
+2025-06-22T10:46:28.226604324Z           │    │                         └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.226609312Z           │    └ <function BaseInputTransport._handle_user_interruption at 0x762631961630>
+2025-06-22T10:46:28.226613638Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.226617914Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/transports/base_input.py", line 266, in _handle_user_interruption
+2025-06-22T10:46:28.226622241Z     await self.push_frame(frame)
+2025-06-22T10:46:28.226626738Z           │    │          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.226631505Z           │    └ <function FrameProcessor.push_frame at 0x762696db2cb0>
+2025-06-22T10:46:28.226635962Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.226640248Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 271, in push_frame
+2025-06-22T10:46:28.226644615Z     await self.__internal_push_frame(frame, direction)
+2025-06-22T10:46:28.226648901Z           │                          │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.226653288Z           │                          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.226662932Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.226667469Z > File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 331, in __internal_push_frame
+2025-06-22T10:46:28.226671825Z     await self._next.queue_frame(frame, direction)
+2025-06-22T10:46:28.226676002Z           │    │     │           │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.226680228Z           │    │     │           └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.226684635Z           │    │     └ <function FrameProcessor.queue_frame at 0x762696db29e0>
+2025-06-22T10:46:28.226688951Z           │    └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.226693258Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.226697534Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 239, in queue_frame
+2025-06-22T10:46:28.226701810Z     await self.process_frame(frame, direction)
+2025-06-22T10:46:28.226706077Z           │    │             │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.226710363Z           │    │             └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.226714780Z           │    └ <function RTVIProcessor.process_frame at 0x76262efc05e0>
+2025-06-22T10:46:28.226719116Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.226724314Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frameworks/rtvi.py", line 743, in process_frame
+2025-06-22T10:46:28.226728751Z     await self.push_frame(frame, direction)
+2025-06-22T10:46:28.226733358Z           │    │          │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.226737985Z           │    │          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.226742301Z           │    └ <function FrameProcessor.push_frame at 0x762696db2cb0>
+2025-06-22T10:46:28.226746638Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.226750904Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 271, in push_frame
+2025-06-22T10:46:28.226755271Z     await self.__internal_push_frame(frame, direction)
+2025-06-22T10:46:28.226759527Z           │                          │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.226763874Z           │                          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.226768210Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.226772496Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 331, in __internal_push_frame
+2025-06-22T10:46:28.226776893Z     await self._next.queue_frame(frame, direction)
+2025-06-22T10:46:28.226781200Z           │    │     │           │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.226785456Z           │    │     │           └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.226789923Z           │    │     └ <function FrameProcessor.queue_frame at 0x762696db29e0>
+2025-06-22T10:46:28.226794259Z           │    └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.226798636Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.226806027Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 239, in queue_frame
+2025-06-22T10:46:28.226814980Z     await self.process_frame(frame, direction)
+2025-06-22T10:46:28.226819577Z           │    │             │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.226824414Z           │    │             └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.226828801Z           │    └ <function UltravoxSTTService.process_frame at 0x7624f7b81f30>
+2025-06-22T10:46:28.226833168Z           └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.226837454Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/services/ultravox/stt.py", line 339, in process_frame
+2025-06-22T10:46:28.226841851Z     await self.process_generator(self._process_audio_buffer())
+2025-06-22T10:46:28.226846127Z           │    │                 │    └ <function UltravoxWithContextService._process_audio_buffer at 0x76247d066710>
+2025-06-22T10:46:28.226850383Z           │    │                 └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.226854720Z           │    └ <function AIService.process_generator at 0x76263194a4d0>
+2025-06-22T10:46:28.226858976Z           └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.226863293Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/services/ai_service.py", line 100, in process_generator
+2025-06-22T10:46:28.226867709Z     async for f in generator:
+2025-06-22T10:46:28.226872046Z                    └ <coroutine object UltravoxWithContextService._process_audio_buffer at 0x76240bfabb50>
+2025-06-22T10:46:28.226880699Z [31m[1mTypeError[0m:[1m 'async for' requires an object with __aiter__ method, got coroutine[0m
+2025-06-22T10:46:28.232219863Z 2025-06-22 10:46:28.217 | ERROR    | pipecat.processors.frame_processor:__internal_push_frame:345 - Uncaught exception in FastAPIWebsocketInputTransport#0: 'async for' requires an object with __aiter__ method, got coroutine
+2025-06-22T10:46:28.232245672Z Traceback (most recent call last):
+2025-06-22T10:46:28.232256388Z   File "/app/src/main.py", line 116, in <module>
+2025-06-22T10:46:28.232261115Z     asyncio.run(main())
+2025-06-22T10:46:28.232265922Z     │       │   └ <function main at 0x76246b8016c0>
+2025-06-22T10:46:28.232270749Z     │       └ <function run at 0x76269b3135b0>
+2025-06-22T10:46:28.232275136Z     └ <module 'asyncio' from '/usr/lib/python3.10/asyncio/__init__.py'>
+2025-06-22T10:46:28.232284049Z   File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+2025-06-22T10:46:28.232288466Z     return loop.run_until_complete(main)
+2025-06-22T10:46:28.232292993Z            │    │                  └ <coroutine object main at 0x762485a91150>
+2025-06-22T10:46:28.232298060Z            │    └ <function BaseEventLoop.run_until_complete at 0x76269a9105e0>
+2025-06-22T10:46:28.232302487Z            └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+2025-06-22T10:46:28.232306793Z   File "/usr/lib/python3.10/asyncio/base_events.py", line 636, in run_until_complete
+2025-06-22T10:46:28.232311230Z     self.run_forever()
+2025-06-22T10:46:28.232315627Z     │    └ <function BaseEventLoop.run_forever at 0x76269a910550>
+2025-06-22T10:46:28.232319873Z     └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+2025-06-22T10:46:28.232324139Z   File "/usr/lib/python3.10/asyncio/base_events.py", line 603, in run_forever
+2025-06-22T10:46:28.232328556Z     self._run_once()
+2025-06-22T10:46:28.232332883Z     │    └ <function BaseEventLoop._run_once at 0x76269a912050>
+2025-06-22T10:46:28.232337069Z     └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+2025-06-22T10:46:28.232343899Z   File "/usr/lib/python3.10/asyncio/base_events.py", line 1909, in _run_once
+2025-06-22T10:46:28.232348456Z     handle._run()
+2025-06-22T10:46:28.232353103Z     │      └ <function Handle._run at 0x76269aa65a20>
+2025-06-22T10:46:28.232368326Z     └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.232373153Z   File "/usr/lib/python3.10/asyncio/events.py", line 80, in _run
+2025-06-22T10:46:28.232377620Z     self._context.run(self._callback, *self._args)
+2025-06-22T10:46:28.232382036Z     │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+2025-06-22T10:46:28.232386794Z     │    │            │    │           └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.232391410Z     │    │            │    └ <member '_callback' of 'Handle' objects>
+2025-06-22T10:46:28.232396678Z     │    │            └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.232401145Z     │    └ <member '_context' of 'Handle' objects>
+2025-06-22T10:46:28.232405532Z     └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.232409838Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/utils/asyncio.py", line 107, in run_coroutine
+2025-06-22T10:46:28.232414265Z     await coroutine
+2025-06-22T10:46:28.232418581Z           └ <coroutine object BaseInputTransport._audio_task_handler at 0x762463b60c10>
+2025-06-22T10:46:28.232423168Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/transports/base_input.py", line 368, in _audio_task_handler
+2025-06-22T10:46:28.232427835Z     vad_state = await self._handle_vad(frame, vad_state)
+2025-06-22T10:46:28.232432522Z                       │    │           │      └ <VADState.SPEAKING: 3>
+2025-06-22T10:46:28.232436989Z                       │    │           └ InputAudioRawFrame(audio=b'\xe1\xff\xdb\xff\xe1\xff\xe0\xff\xd1\xff\xd5\xff\xe8\xff\xf4\xff\x01\x00\x06\x00\x10\x00\x0f\x00\x...
+2025-06-22T10:46:28.232441626Z                       │    └ <function BaseInputTransport._handle_vad at 0x762631961990>
+2025-06-22T10:46:28.232445992Z                       └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.232451971Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/transports/base_input.py", line 328, in _handle_vad
+2025-06-22T10:46:28.232456398Z     await self._handle_user_interruption(frame)
+2025-06-22T10:46:28.232460795Z           │    │                         └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.232465572Z           │    └ <function BaseInputTransport._handle_user_interruption at 0x762631961630>
+2025-06-22T10:46:28.232469808Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.232474105Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/transports/base_input.py", line 266, in _handle_user_interruption
+2025-06-22T10:46:28.232478411Z     await self.push_frame(frame)
+2025-06-22T10:46:28.232482988Z           │    │          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.232487555Z           │    └ <function FrameProcessor.push_frame at 0x762696db2cb0>
+2025-06-22T10:46:28.232492212Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.232496588Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 271, in push_frame
+2025-06-22T10:46:28.232500885Z     await self.__internal_push_frame(frame, direction)
+2025-06-22T10:46:28.232505251Z           │                          │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.232509568Z           │                          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.232514125Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.232518331Z > File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 331, in __internal_push_frame
+2025-06-22T10:46:28.232527465Z     await self._next.queue_frame(frame, direction)
+2025-06-22T10:46:28.232531971Z           │    │     │           │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.232536288Z           │    │     │           └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.232540815Z           │    │     └ <function FrameProcessor.queue_frame at 0x762696db29e0>
+2025-06-22T10:46:28.232545141Z           │    └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.232549518Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.232553854Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 239, in queue_frame
+2025-06-22T10:46:28.232558201Z     await self.process_frame(frame, direction)
+2025-06-22T10:46:28.232562587Z           │    │             │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.232566944Z           │    │             └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.232571441Z           │    └ <function RTVIProcessor.process_frame at 0x76262efc05e0>
+2025-06-22T10:46:28.232575797Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.232580094Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frameworks/rtvi.py", line 743, in process_frame
+2025-06-22T10:46:28.232584410Z     await self.push_frame(frame, direction)
+2025-06-22T10:46:28.232589638Z           │    │          │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.232594165Z           │    │          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.232598712Z           │    └ <function FrameProcessor.push_frame at 0x762696db2cb0>
+2025-06-22T10:46:28.232603008Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.232607314Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 271, in push_frame
+2025-06-22T10:46:28.232611671Z     await self.__internal_push_frame(frame, direction)
+2025-06-22T10:46:28.232617350Z           │                          │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.232621726Z           │                          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.232626033Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.232630289Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 331, in __internal_push_frame
+2025-06-22T10:46:28.232634686Z     await self._next.queue_frame(frame, direction)
+2025-06-22T10:46:28.232639002Z           │    │     │           │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.232643268Z           │    │     │           └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.232647535Z           │    │     └ <function FrameProcessor.queue_frame at 0x762696db29e0>
+2025-06-22T10:46:28.232652663Z           │    └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.232657059Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.232661366Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 239, in queue_frame
+2025-06-22T10:46:28.232665682Z     await self.process_frame(frame, direction)
+2025-06-22T10:46:28.232670369Z           │    │             │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.232679172Z           │    │             └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.232684160Z           │    └ <function UltravoxSTTService.process_frame at 0x7624f7b81f30>
+2025-06-22T10:46:28.232688576Z           └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.232692883Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/services/ultravox/stt.py", line 339, in process_frame
+2025-06-22T10:46:28.232697259Z     await self.process_generator(self._process_audio_buffer())
+2025-06-22T10:46:28.232701556Z           │    │                 │    └ <function UltravoxWithContextService._process_audio_buffer at 0x76247d066710>
+2025-06-22T10:46:28.232705752Z           │    │                 └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.232710049Z           │    └ <function AIService.process_generator at 0x76263194a4d0>
+2025-06-22T10:46:28.232714335Z           └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.232718551Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/services/ai_service.py", line 100, in process_generator
+2025-06-22T10:46:28.232722878Z     async for f in generator:
+2025-06-22T10:46:28.232727265Z                    └ <coroutine object UltravoxWithContextService._process_audio_buffer at 0x76240bfabb50>
+2025-06-22T10:46:28.232735777Z TypeError: 'async for' requires an object with __aiter__ method, got coroutine
+2025-06-22T10:46:28.237368691Z [32m10:46:28[0m | [36m         asyncio:113[0m | [31m[1m   ERROR[0m | [31m[1mFastAPIWebsocketInputTransport#0::_audio_task_handler: unexpected exception: 'async for' requires an object with __aiter__ method, got coroutine[0m
+2025-06-22T10:46:28.237397875Z [33m[1mTraceback (most recent call last):[0m
+2025-06-22T10:46:28.237410444Z   File "[32m/app/src/[0m[32m[1mmain.py[0m", line [33m116[0m, in [35m<module>[0m
+2025-06-22T10:46:28.237416603Z     [1masyncio[0m[35m[1m.[0m[1mrun[0m[1m([0m[1mmain[0m[1m([0m[1m)[0m[1m)[0m
+2025-06-22T10:46:28.237421681Z     [36m│       │   └ [0m[36m[1m<function main at 0x76246b8016c0>[0m
+2025-06-22T10:46:28.237427299Z     [36m│       └ [0m[36m[1m<function run at 0x76269b3135b0>[0m
+2025-06-22T10:46:28.237432427Z     [36m└ [0m[36m[1m<module 'asyncio' from '/usr/lib/python3.10/asyncio/__init__.py'>[0m
+2025-06-22T10:46:28.237442542Z   File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+2025-06-22T10:46:28.237448151Z     return loop.run_until_complete(main)
+2025-06-22T10:46:28.237453108Z            │    │                  └ <coroutine object main at 0x762485a91150>
+2025-06-22T10:46:28.237458466Z            │    └ <function BaseEventLoop.run_until_complete at 0x76269a9105e0>
+2025-06-22T10:46:28.237463323Z            └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+2025-06-22T10:46:28.237468321Z   File "/usr/lib/python3.10/asyncio/base_events.py", line 636, in run_until_complete
+2025-06-22T10:46:28.237473338Z     self.run_forever()
+2025-06-22T10:46:28.237478646Z     │    └ <function BaseEventLoop.run_forever at 0x76269a910550>
+2025-06-22T10:46:28.237483714Z     └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+2025-06-22T10:46:28.237488631Z   File "/usr/lib/python3.10/asyncio/base_events.py", line 603, in run_forever
+2025-06-22T10:46:28.237493649Z     self._run_once()
+2025-06-22T10:46:28.237498877Z     │    └ <function BaseEventLoop._run_once at 0x76269a912050>
+2025-06-22T10:46:28.237503904Z     └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+2025-06-22T10:46:28.237508621Z   File "/usr/lib/python3.10/asyncio/base_events.py", line 1909, in _run_once
+2025-06-22T10:46:28.237513619Z     handle._run()
+2025-06-22T10:46:28.237518756Z     │      └ <function Handle._run at 0x76269aa65a20>
+2025-06-22T10:46:28.237523724Z     └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.237554390Z   File "/usr/lib/python3.10/asyncio/events.py", line 80, in _run
+2025-06-22T10:46:28.237559968Z     self._context.run(self._callback, *self._args)
+2025-06-22T10:46:28.237565046Z     │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+2025-06-22T10:46:28.237571275Z     │    │            │    │           └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.237576603Z     │    │            │    └ <member '_callback' of 'Handle' objects>
+2025-06-22T10:46:28.237581441Z     │    │            └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.237586719Z     │    └ <member '_context' of 'Handle' objects>
+2025-06-22T10:46:28.237592077Z     └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.237597214Z > File "/usr/local/lib/python3.10/dist-packages/pipecat/utils/asyncio.py", line 107, in run_coroutine
+2025-06-22T10:46:28.237602182Z     await coroutine
+2025-06-22T10:46:28.237607099Z           └ <coroutine object BaseInputTransport._audio_task_handler at 0x762463b60c10>
+2025-06-22T10:46:28.237612127Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/transports/base_input.py", line 368, in _audio_task_handler
+2025-06-22T10:46:28.237617575Z     vad_state = await self._handle_vad(frame, vad_state)
+2025-06-22T10:46:28.237622472Z                       │    │           │      └ <VADState.SPEAKING: 3>
+2025-06-22T10:46:28.237627470Z                       │    │           └ InputAudioRawFrame(audio=b'\xe1\xff\xdb\xff\xe1\xff\xe0\xff\xd1\xff\xd5\xff\xe8\xff\xf4\xff\x01\x00\x06\x00\x10\x00\x0f\x00\x...
+2025-06-22T10:46:28.237632828Z                       │    └ <function BaseInputTransport._handle_vad at 0x762631961990>
+2025-06-22T10:46:28.237637835Z                       └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.237642793Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/transports/base_input.py", line 328, in _handle_vad
+2025-06-22T10:46:28.237647750Z     await self._handle_user_interruption(frame)
+2025-06-22T10:46:28.237652788Z           │    │                         └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.237658416Z           │    └ <function BaseInputTransport._handle_user_interruption at 0x762631961630>
+2025-06-22T10:46:28.237663293Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.237668301Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/transports/base_input.py", line 266, in _handle_user_interruption
+2025-06-22T10:46:28.237673208Z     await self.push_frame(frame)
+2025-06-22T10:46:28.237678797Z           │    │          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.237683894Z           │    └ <function FrameProcessor.push_frame at 0x762696db2cb0>
+2025-06-22T10:46:28.237688842Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.237693969Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 271, in push_frame
+2025-06-22T10:46:28.237699047Z     await self.__internal_push_frame(frame, direction)
+2025-06-22T10:46:28.237703944Z           │                          │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.237708782Z           │                          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.237713839Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.237718687Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 331, in __internal_push_frame
+2025-06-22T10:46:28.237730114Z     await self._next.queue_frame(frame, direction)
+2025-06-22T10:46:28.237735241Z           │    │     │           │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.237740269Z           │    │     │           └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.237745106Z           │    │     └ <function FrameProcessor.queue_frame at 0x762696db29e0>
+2025-06-22T10:46:28.237749893Z           │    └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.237754951Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.237759808Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 239, in queue_frame
+2025-06-22T10:46:28.237764736Z     await self.process_frame(frame, direction)
+2025-06-22T10:46:28.237769473Z           │    │             │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.237774420Z           │    │             └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.237779328Z           │    └ <function RTVIProcessor.process_frame at 0x76262efc05e0>
+2025-06-22T10:46:28.237784195Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.237789984Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frameworks/rtvi.py", line 743, in process_frame
+2025-06-22T10:46:28.237795071Z     await self.push_frame(frame, direction)
+2025-06-22T10:46:28.237799979Z           │    │          │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.237804976Z           │    │          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.237809934Z           │    └ <function FrameProcessor.push_frame at 0x762696db2cb0>
+2025-06-22T10:46:28.237814701Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.237819538Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 271, in push_frame
+2025-06-22T10:46:28.237824475Z     await self.__internal_push_frame(frame, direction)
+2025-06-22T10:46:28.237829283Z           │                          │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.237834190Z           │                          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.237839037Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.237843804Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 331, in __internal_push_frame
+2025-06-22T10:46:28.237848882Z     await self._next.queue_frame(frame, direction)
+2025-06-22T10:46:28.237853739Z           │    │     │           │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.237858617Z           │    │     │           └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.237863534Z           │    │     └ <function FrameProcessor.queue_frame at 0x762696db29e0>
+2025-06-22T10:46:28.237868471Z           │    └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.237873379Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.237878376Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 239, in queue_frame
+2025-06-22T10:46:28.237883224Z     await self.process_frame(frame, direction)
+2025-06-22T10:46:28.237888051Z           │    │             │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.237899137Z           │    │             └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.237904385Z           │    └ <function UltravoxSTTService.process_frame at 0x7624f7b81f30>
+2025-06-22T10:46:28.237909293Z           └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.237914170Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/services/ultravox/stt.py", line 339, in process_frame
+2025-06-22T10:46:28.237919158Z     await self.process_generator(self._process_audio_buffer())
+2025-06-22T10:46:28.237923995Z           │    │                 │    └ <function UltravoxWithContextService._process_audio_buffer at 0x76247d066710>
+2025-06-22T10:46:28.237929122Z           │    │                 └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.237934150Z           │    └ <function AIService.process_generator at 0x76263194a4d0>
+2025-06-22T10:46:28.237939138Z           └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.237944005Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/services/ai_service.py", line 100, in process_generator
+2025-06-22T10:46:28.237962252Z     async for f in generator:
+2025-06-22T10:46:28.237972157Z                    └ <coroutine object UltravoxWithContextService._process_audio_buffer at 0x76240bfabb50>
+2025-06-22T10:46:28.237982603Z [31m[1mTypeError[0m:[1m 'async for' requires an object with __aiter__ method, got coroutine[0m
+2025-06-22T10:46:28.241729797Z 2025-06-22 10:46:28.232 | ERROR    | pipecat.utils.asyncio:run_coroutine:113 - FastAPIWebsocketInputTransport#0::_audio_task_handler: unexpected exception: 'async for' requires an object with __aiter__ method, got coroutine
+2025-06-22T10:46:28.241754785Z Traceback (most recent call last):
+2025-06-22T10:46:28.241765631Z   File "/app/src/main.py", line 116, in <module>
+2025-06-22T10:46:28.241770348Z     asyncio.run(main())
+2025-06-22T10:46:28.241775075Z     │       │   └ <function main at 0x76246b8016c0>
+2025-06-22T10:46:28.241779752Z     │       └ <function run at 0x76269b3135b0>
+2025-06-22T10:46:28.241784049Z     └ <module 'asyncio' from '/usr/lib/python3.10/asyncio/__init__.py'>
+2025-06-22T10:46:28.241792922Z   File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+2025-06-22T10:46:28.241797218Z     return loop.run_until_complete(main)
+2025-06-22T10:46:28.241801495Z            │    │                  └ <coroutine object main at 0x762485a91150>
+2025-06-22T10:46:28.241806232Z            │    └ <function BaseEventLoop.run_until_complete at 0x76269a9105e0>
+2025-06-22T10:46:28.241810568Z            └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+2025-06-22T10:46:28.241814925Z   File "/usr/lib/python3.10/asyncio/base_events.py", line 636, in run_until_complete
+2025-06-22T10:46:28.241819272Z     self.run_forever()
+2025-06-22T10:46:28.241823538Z     │    └ <function BaseEventLoop.run_forever at 0x76269a910550>
+2025-06-22T10:46:28.241827854Z     └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+2025-06-22T10:46:28.241832031Z   File "/usr/lib/python3.10/asyncio/base_events.py", line 603, in run_forever
+2025-06-22T10:46:28.241836277Z     self._run_once()
+2025-06-22T10:46:28.241840503Z     │    └ <function BaseEventLoop._run_once at 0x76269a912050>
+2025-06-22T10:46:28.241846803Z     └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+2025-06-22T10:46:28.241851129Z   File "/usr/lib/python3.10/asyncio/base_events.py", line 1909, in _run_once
+2025-06-22T10:46:28.241855416Z     handle._run()
+2025-06-22T10:46:28.241859772Z     │      └ <function Handle._run at 0x76269aa65a20>
+2025-06-22T10:46:28.241863999Z     └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.241868235Z   File "/usr/lib/python3.10/asyncio/events.py", line 80, in _run
+2025-06-22T10:46:28.241872491Z     self._context.run(self._callback, *self._args)
+2025-06-22T10:46:28.241885601Z     │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+2025-06-22T10:46:28.241890258Z     │    │            │    │           └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.241895005Z     │    │            │    └ <member '_callback' of 'Handle' objects>
+2025-06-22T10:46:28.241900203Z     │    │            └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.241904600Z     │    └ <member '_context' of 'Handle' objects>
+2025-06-22T10:46:28.241908926Z     └ <Handle Task.task_wakeup(<Future finis...ate.QUIET: 1>>)>
+2025-06-22T10:46:28.241913092Z > File "/usr/local/lib/python3.10/dist-packages/pipecat/utils/asyncio.py", line 107, in run_coroutine
+2025-06-22T10:46:28.241917369Z     await coroutine
+2025-06-22T10:46:28.241921575Z           └ <coroutine object BaseInputTransport._audio_task_handler at 0x762463b60c10>
+2025-06-22T10:46:28.241925932Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/transports/base_input.py", line 368, in _audio_task_handler
+2025-06-22T10:46:28.241930609Z     vad_state = await self._handle_vad(frame, vad_state)
+2025-06-22T10:46:28.241934885Z                       │    │           │      └ <VADState.SPEAKING: 3>
+2025-06-22T10:46:28.241939282Z                       │    │           └ InputAudioRawFrame(audio=b'\xe1\xff\xdb\xff\xe1\xff\xe0\xff\xd1\xff\xd5\xff\xe8\xff\xf4\xff\x01\x00\x06\x00\x10\x00\x0f\x00\x...
+2025-06-22T10:46:28.241943949Z                       │    └ <function BaseInputTransport._handle_vad at 0x762631961990>
+2025-06-22T10:46:28.241961265Z                       └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.241970148Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/transports/base_input.py", line 328, in _handle_vad
+2025-06-22T10:46:28.241974615Z     await self._handle_user_interruption(frame)
+2025-06-22T10:46:28.241979041Z           │    │                         └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.241983608Z           │    └ <function BaseInputTransport._handle_user_interruption at 0x762631961630>
+2025-06-22T10:46:28.241988025Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.241992682Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/transports/base_input.py", line 266, in _handle_user_interruption
+2025-06-22T10:46:28.241997078Z     await self.push_frame(frame)
+2025-06-22T10:46:28.242001715Z           │    │          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.242006072Z           │    └ <function FrameProcessor.push_frame at 0x762696db2cb0>
+2025-06-22T10:46:28.242010769Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.242015266Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 271, in push_frame
+2025-06-22T10:46:28.242019542Z     await self.__internal_push_frame(frame, direction)
+2025-06-22T10:46:28.242023889Z           │                          │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.242028225Z           │                          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.242032822Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.242037349Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 331, in __internal_push_frame
+2025-06-22T10:46:28.242041655Z     await self._next.queue_frame(frame, direction)
+2025-06-22T10:46:28.242045952Z           │    │     │           │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.242066453Z           │    │     │           └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.242071039Z           │    │     └ <function FrameProcessor.queue_frame at 0x762696db29e0>
+2025-06-22T10:46:28.242075276Z           │    └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.242079692Z           └ <pipecat.transports.network.fastapi_websocket.FastAPIWebsocketInputTransport object at 0x76246b8a1750>
+2025-06-22T10:46:28.242084059Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 239, in queue_frame
+2025-06-22T10:46:28.242088345Z     await self.process_frame(frame, direction)
+2025-06-22T10:46:28.242092662Z           │    │             │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.242096968Z           │    │             └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.242101816Z           │    └ <function RTVIProcessor.process_frame at 0x76262efc05e0>
+2025-06-22T10:46:28.242106032Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.242110338Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frameworks/rtvi.py", line 743, in process_frame
+2025-06-22T10:46:28.242114675Z     await self.push_frame(frame, direction)
+2025-06-22T10:46:28.242119893Z           │    │          │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.242124470Z           │    │          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.242128816Z           │    └ <function FrameProcessor.push_frame at 0x762696db2cb0>
+2025-06-22T10:46:28.242133213Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.242137629Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 271, in push_frame
+2025-06-22T10:46:28.242141916Z     await self.__internal_push_frame(frame, direction)
+2025-06-22T10:46:28.242146373Z           │                          │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.242150879Z           │                          └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.242155316Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.242159582Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 331, in __internal_push_frame
+2025-06-22T10:46:28.242163859Z     await self._next.queue_frame(frame, direction)
+2025-06-22T10:46:28.242168035Z           │    │     │           │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.242172402Z           │    │     │           └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.242176708Z           │    │     └ <function FrameProcessor.queue_frame at 0x762696db29e0>
+2025-06-22T10:46:28.242181045Z           │    └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.242185311Z           └ <pipecat.processors.frameworks.rtvi.RTVIProcessor object at 0x76246b8a1a50>
+2025-06-22T10:46:28.242189567Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/processors/frame_processor.py", line 239, in queue_frame
+2025-06-22T10:46:28.242193854Z     await self.process_frame(frame, direction)
+2025-06-22T10:46:28.242198100Z           │    │             │      └ <FrameDirection.DOWNSTREAM: 1>
+2025-06-22T10:46:28.242202507Z           │    │             └ UserStoppedSpeakingFrame(id=1730, name='UserStoppedSpeakingFrame#0', pts=None, metadata={}, transport_source=None, transport_...
+2025-06-22T10:46:28.242212151Z           │    └ <function UltravoxSTTService.process_frame at 0x7624f7b81f30>
+2025-06-22T10:46:28.242216638Z           └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.242220954Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/services/ultravox/stt.py", line 339, in process_frame
+2025-06-22T10:46:28.242225251Z     await self.process_generator(self._process_audio_buffer())
+2025-06-22T10:46:28.242229437Z           │    │                 │    └ <function UltravoxWithContextService._process_audio_buffer at 0x76247d066710>
+2025-06-22T10:46:28.242233603Z           │    │                 └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.242237870Z           │    └ <function AIService.process_generator at 0x76263194a4d0>
+2025-06-22T10:46:28.242242086Z           └ <src.pipecat_pipeline.UltravoxWithContextService object at 0x76247d007100>
+2025-06-22T10:46:28.242246393Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/services/ai_service.py", line 100, in process_generator
+2025-06-22T10:46:28.242250609Z     async for f in generator:
+2025-06-22T10:46:28.242254895Z                    └ <coroutine object UltravoxWithContextService._process_audio_buffer at 0x76240bfabb50>
+2025-06-22T10:46:28.242263308Z TypeError: 'async for' requires an object with __aiter__ method, got coroutine
+2025-06-22T10:46:28.244276059Z [32m10:46:28[0m | [36m            task:580[0m | [33m[1m WARNING[0m | [33m[1mSomething went wrong: ErrorFrame#0(error: 'async for' requires an object with __aiter__ method, got coroutine, fatal: False)[0m
+2025-06-22T10:46:28.244303731Z 2025-06-22 10:46:28.244 | WARNING  | pipecat.pipeline.task:_process_up_queue:580 - Something went wrong: ErrorFrame#0(error: 'async for' requires an object with __aiter__ method, got coroutine, fatal: False)
+2025-06-22T10:46:28.244337782Z [32m10:46:28[0m | [36m            task:580[0m | [33m[1m WARNING[0m | [33m[1mSomething went wrong: ErrorFrame#1(error: 'async for' requires an object with __aiter__ method, got coroutine, fatal: False)[0m
+2025-06-22T10:46:28.244358413Z 2025-06-22 10:46:28.244 | WARNING  | pipecat.pipeline.task:_process_up_queue:580 - Something went wrong: ErrorFrame#1(error: 'async for' requires an object with __aiter__ method, got coroutine, fatal: False)
+2025-06-22T10:46:30.965218327Z [32m10:46:30[0m | [36mpipecat_pipeline:336[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:46:30.965264126Z 2025-06-22 10:46:30.964 | INFO     | src.pipecat_pipeline:monitor_context:336 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:46:30.965402143Z [32m10:46:30[0m | [36mpipecat_pipeline:341[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:46:30.965434101Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:46:30.965440611Z 2025-06-22 10:46:30.965 | INFO     | src.pipecat_pipeline:monitor_context:341 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:46:30.965445718Z 1. Use English language ONLY in all responses...
+2025-06-22T10:46:31.962199506Z [32m10:46:31[0m | [36mpipecat_pipeline:361[0m | [1m    INFO[0m | [1m📊 === PERFORMANCE METRICS ===[0m
+2025-06-22T10:46:31.962239516Z 2025-06-22 10:46:31.961 | INFO     | src.pipecat_pipeline:log_metrics:361 - 📊 === PERFORMANCE METRICS ===
+2025-06-22T10:46:31.962338425Z [32m10:46:31[0m | [36mpipecat_pipeline:372[0m | [1m    INFO[0m | [1m📊 ========================[0m
+2025-06-22T10:46:31.962345786Z 2025-06-22 10:46:31.962 | INFO     | src.pipecat_pipeline:log_metrics:372 - 📊 ========================
+2025-06-22T10:46:32.248013049Z /usr/lib/python3.10/dataclasses.py:1429: RuntimeWarning: coroutine 'UltravoxWithContextService._process_audio_buffer' was never awaited
+2025-06-22T10:46:32.248046229Z   for f in getattr(obj, _FIELDS).values():
+2025-06-22T10:46:32.248049684Z Object allocated at (most recent call last):
+2025-06-22T10:46:32.248060621Z   File "/usr/local/lib/python3.10/dist-packages/pipecat/services/ultravox/stt.py", lineno 339
+2025-06-22T10:46:32.248067071Z     await self.process_generator(self._process_audio_buffer())
+2025-06-22T10:46:33.966881685Z [32m10:46:33[0m | [36mpipecat_pipeline:336[0m | [1m    INFO[0m | [1m📝 CONTEXT: 1 messages in conversation[0m
+2025-06-22T10:46:33.966922766Z 2025-06-22 10:46:33.966 | INFO     | src.pipecat_pipeline:monitor_context:336 - 📝 CONTEXT: 1 messages in conversation
+2025-06-22T10:46:33.967098941Z [32m10:46:33[0m | [36mpipecat_pipeline:341[0m | [1m    INFO[0m | [1m   system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:46:33.967142977Z 1. Use English language ONLY in all responses...[0m
+2025-06-22T10:46:33.967149477Z 2025-06-22 10:46:33.966 | INFO     | src.pipecat_pipeline:monitor_context:341 -    system: Follow these eight instructions in ALL your responses:
+2025-06-22T10:46:33.967154684Z 1. Use English language ONLY in all responses...

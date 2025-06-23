@@ -80,7 +80,7 @@ async def run_bot(websocket_client):
     )
 
     llm = OLLamaLLMService(
-        model="llama3.1",
+        model="llama3.1:8b",
         base_url="http://localhost:11434/v1",
     )
 

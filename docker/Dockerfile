@@ -6,16 +6,11 @@ FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
 ###############################################################################
 # 1. System packages
 ###############################################################################
-
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3.10 python3.10-dev python3-pip \
     gcc g++ build-essential openssh-server espeak-ng libespeak-ng1 \
     curl wget ffmpeg libsndfile1 git \
  && rm -rf /var/lib/apt/lists/*
-
-
-
 
 ###############################################################################
 # 2. SSH (unchanged)
@@ -32,51 +27,67 @@ RUN mkdir -p /var/run/sshd && \
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1 && \
     update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
 
-# Upgrade pip
+# Upgrade pip and install uv
 RUN pip install --upgrade pip setuptools wheel uv
 
 ###############################################################################
-# 4. Install Moonshine ASR
+# 4. Install Ollama and pull model
 ###############################################################################
-RUN uv pip install useful-moonshine-onnx@git+https://git@github.com/usefulsensors/moonshine.git#subdirectory=moonshine-onnx
-
-###############################################################################
-# 5. Install Ollama and pull model
-###############################################################################
+ARG MODEL=llama3.1:8b
 RUN curl -fsSL https://ollama.com/install.sh | sh
-RUN ollama pull llama3.1
+# Start Ollama, wait for it to be ready, pull the model, then stop it.
+# This is done in a single RUN command to ensure the server is available for the pull.
+RUN bash -c '\
+  ollama serve &                                                   \
+  until curl -s http://localhost:11434/api/tags >/dev/null; do sleep 1; done && \
+  ollama pull $MODEL &&                                            \
+  pkill ollama'
 
 ###############################################################################
-# 6. Python dependencies from requirements.txt
+# 5. Python dependencies (Installed in specific order)
 ###############################################################################
-# * cu118 wheels for torch/torchvision/torchaudio 2.3.0               ─┐
-# * Pipecat with WebSocket + Silero extras                            │
-# * bitsandbytes  — optional INT8 quant                               │
-# * kokoro-onnx    — ONNX inference wrapper                           │
-# * ollama         — Ollama client library                            │
 
-# Copy requirements.txt right before installation to break cache when it changes
+# First, install libraries that need to be present before others
+RUN pip install --no-cache-dir ollama
+RUN pip install --no-cache-dir kokoro-onnx
+
+# Second, install Moonshine from Git
+RUN uv pip install --system useful-moonshine-onnx@git+https://git@github.com/usefulsensors/moonshine.git#subdirectory=moonshine-onnx
+
+# Finally, install the rest of the requirements
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
 ###############################################################################
-# 7. Copy your application code and models
+# 6. Copy your application code and models
 ###############################################################################
 WORKDIR /app
 
 COPY src/ ./src/
+# This line assumes you have an `assets` directory with the Kokoro models
+# in the root of your project.
 COPY assets/ /app/assets/
 
-# Create startup script that starts SSH, Ollama, and the app
+# Create a robust startup script with a health check
 RUN cat > /app/start.sh << 'EOF'
 #!/bin/bash
+
 # Start SSH daemon
 service ssh start
+
 # Start Ollama server in the background
+echo "Starting Ollama server..."
 ollama serve &
-# Give it a moment to initialize
-sleep 3
+
+# Wait for the Ollama server to be ready
+echo "Waiting for Ollama to be ready..."
+timeout 60 bash -c 'until curl -s http://localhost:11434/api/tags > /dev/null; do echo -n "."; sleep 1; done'
+
+echo
+echo "Ollama server is ready."
+
 # Start the voice pipeline server
+echo "Starting Pipecat voice pipeline..."
 exec python src/main.py
 EOF
 
@@ -87,6 +98,3 @@ EXPOSE 22 8000 11434
 
 # Start all services
 CMD ["/app/start.sh"]
-
-
-

@@ -1,4 +1,5 @@
 # Core Pipecat with WebSocket server + Silero VAD
+numpy>=1.26.4
 pipecat-ai[websocket,silero]
 
 # FastAPI / Uvicorn

@@ -33,12 +33,13 @@ RUN pip install --upgrade pip setuptools wheel uv
 ###############################################################################
 # 4. Install Ollama and pull model
 ###############################################################################
-ARG MODEL=llama3.1:8b
+ARG MODEL=llama3:8b
 RUN curl -fsSL https://ollama.com/install.sh | sh
+ENV OLLAMA_HOST=0.0.0.0
 # Start Ollama, wait for it to be ready, pull the model, then stop it.
 # This is done in a single RUN command to ensure the server is available for the pull.
 RUN bash -c '\
-  ollama serve &                                                   \
+  OLLAMA_HOST=0.0.0.0 ollama serve &                                                   \
   until curl -s http://localhost:11434/api/tags >/dev/null; do sleep 1; done && \
   ollama pull $MODEL &&                                            \
   pkill ollama'

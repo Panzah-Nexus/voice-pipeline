@@ -97,6 +97,7 @@ async def run_bot(websocket_client):
     pipeline = Pipeline(
         [
             transport.input(),  # Transport user input
+            rtvi,
             stt,
             context_aggregator.user(),  # User responses
             llm,  # LLM

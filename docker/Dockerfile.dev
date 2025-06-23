@@ -1,5 +1,5 @@
 # Development Dockerfile for fast iteration
-FROM mlbra2006/voice-pipeline-airgapped:uvfix
+FROM mlbra2006/voice-pipeline-airgapped:cascade2
 
 # Install git and SSH server for development access
 
@@ -31,11 +31,11 @@ GIT_URL="https://${GIT_USER}:${GIT_TOKEN}@github.com/${GIT_USER}/${GIT_REPO}.git
 
 # Clone or update source code
 if [ ! -d "/app/voice-pipeline-src" ]; then
-    echo "🔄 Cloning latest source code from tts-test branch..."
-    git clone -b tts-test "$GIT_URL" /app/voice-pipeline-src
+    echo "🔄 Cloning latest source code from moonshine branch..."
+    git clone -b moonshine "$GIT_URL" /app/voice-pipeline-src
 else
     echo "🔄 Updating source code..."
-    cd /app/voice-pipeline-src && git fetch origin tts-test && git reset --hard origin/tts-test
+    cd /app/voice-pipeline-src && git fetch origin moonshine && git reset --hard origin/moonshine
 fi
 
 # Copy source to working directory
@@ -55,7 +55,7 @@ EOF
 RUN chmod +x /app/dev_start.sh
 
 # Expose SSH port
-EXPOSE 22 8000
+EXPOSE 22 8000 11434
 
 # Default command for development
 CMD ["/app/dev_start.sh"] 

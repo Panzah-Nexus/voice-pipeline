@@ -2,8 +2,8 @@
 FROM mlbra2006/voice-pipeline-airgapped:cascade2
 
 # Install git and SSH server for development access
-
-RUN pip install --upgrade --no-cache-dir onnxruntime-gpu
+RUN pip uninstall -y onnxruntime onnxruntime-gpu
+RUN pip install onnxruntime-gpu
 # Remove the baked-in source code
 RUN rm -rf /app/src/
 

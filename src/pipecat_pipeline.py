@@ -34,7 +34,7 @@ from pipecat.serializers.protobuf import ProtobufFrameSerializer
 
 from pipecat.processors.aggregators.openai_llm_context import OpenAILLMContext
 from src.kokoro.tts import KokoroTTSService
-from src.moonshine.stt import MoonshineSTTService
+from pipecat.services.whisper.stt import WhisperSTTService, Model
 from pipecat.services.ollama.llm import OLLamaLLMService
 
 
@@ -66,11 +66,9 @@ async def run_bot(websocket_client):
 
     rtvi = RTVIProcessor(config=RTVIConfig(config=[]))
 
-    stt = MoonshineSTTService(
-        model_name="moonshine/tiny",
-        language="en",
-        vad_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(),
+    stt = WhisperSTTService(
+        model=Model.DISTIL_MEDIUM_EN,
+        device="cuda"
     )
 
     tts = KokoroTTSService(

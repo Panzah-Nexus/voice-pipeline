@@ -34,22 +34,10 @@ class Transcriber:
     Provides an interface to transcribe a speech array using Moonshine ASR. 
     This helper class mirrors the logic in your standalone demo.
     """
-    def __init__(self, model_name: str, rate: int = 16000):
+    def __init__(self, model_name: str, rate: int = 16000, providers=None):
         if rate != 16000:
             raise ValueError("Moonshine supports sampling rate 16000 Hz.")
-        self.model = MoonshineOnnxModel(model_name=model_name)
-        # === GPU CONFIGURATION: force ONNX Runtime to use CUDA first ===
-        gpu_providers = ["CUDAExecutionProvider", "CPUExecutionProvider"]
-        gpu_provider_options = [ {"device_id": 0}, {} ]
-        for session_attr in ("preprocess", "encode", "uncached_decode", "cached_decode"):            
-            session = getattr(self.model, session_attr, None)
-            if session:
-                try:
-                    session.set_providers(gpu_providers, gpu_provider_options)
-                    logger.debug(f"Set GPU providers on session '{session_attr}'")
-                except Exception as e:
-                    logger.warning(f"Could not set GPU providers on '{session_attr}': {e}")
-        # ============================================================
+        self.model = MoonshineOnnxModel(model_name=model_name, providers=providers)
         self.rate = rate
         self.tokenizer = load_tokenizer()
 
@@ -72,6 +60,23 @@ class Transcriber:
         text = self.tokenizer.decode_batch(tokens)[0]
         self.inference_secs += time.time() - start_time
         return text
+
+    def _load(self):
+        """Loads the Moonshine ASR model and warms it up."""
+        logger.debug("Loading Moonshine ONNX model...")
+        providers = ort.get_available_providers()
+        logger.info(f"Available ONNX providers: {providers}")
+        provider_list = ["CPUExecutionProvider"]
+        if "CUDAExecutionProvider" in providers:
+            logger.info("Using CUDAExecutionProvider for Moonshine STT")
+            provider_list.insert(0, "CUDAExecutionProvider")
+
+        self._transcriber = Transcriber(
+            model_name=self.model_name,
+            rate=self._rate,
+            providers=provider_list
+        )
+        logger.debug("Loaded Moonshine model.")
 
 
 class MoonshineSTTService(SegmentedSTTService):
@@ -108,12 +113,6 @@ class MoonshineSTTService(SegmentedSTTService):
         }
 
         self._load()
-
-    def _load(self):
-        """Loads the Moonshine ASR model and warms it up."""
-        logger.debug("Loading Moonshine ONNX model...")
-        self._transcriber = Transcriber(model_name=self.model_name, rate=self._rate)
-        logger.debug("Loaded Moonshine model.")
 
     async def run_stt(self, audio: bytes) -> AsyncGenerator[Frame, None]:
         """

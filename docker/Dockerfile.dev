@@ -2,17 +2,15 @@
 FROM mlbra2006/voice-pipeline-airgapped:cascade2
 
 # Install git and SSH server for development access
-RUN pip uninstall -y onnxruntime onnxruntime-gpu
-RUN pip install onnxruntime-gpu
 ENV ONNX_PROVIDER=CUDAExecutionProvider
 # Remove the baked-in source code
 RUN rm -rf /app/src/
-
 # Create startup script for development
 RUN cat > /app/dev_start.sh << 'EOF'
 #!/bin/bash
 set -e
 
+pkill -f "src.main.py" 2>/dev/null || true
 # Start SSH daemon
 service ssh start
 
@@ -48,6 +46,12 @@ if [ -d "/workspace/src" ]; then
     echo "📁 Using volume-mounted source code..."
     cp -r /workspace/src /app/
 fi
+
+# Start Ollama
+echo "Starting Ollama…"
+ollama serve &
+echo "Waiting for Ollama to be ready…"
+timeout 60 bash -c 'until curl -s http://localhost:11434/api/tags >/dev/null; do sleep 1; done'
 
 echo "🚀 Starting voice pipeline..."
 cd /app && python src/main.py

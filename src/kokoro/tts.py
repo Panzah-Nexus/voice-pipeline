@@ -34,6 +34,11 @@ except ModuleNotFoundError as e:
     )
     raise Exception(f"Missing module: {e}")
 
+import onnxruntime as ort
+
+privders = ort.get_available_providers()
+logger.info("Available providers:", privders)  # Make sure CUDAExecutionProvider is listed
+logger.info(f'Is CUDA available: {"CUDAExecutionProvider" in privders}')
 
 def language_to_kokoro_language(language: Language) -> Optional[str]:
     """Convert pipecat Language to Kokoro language code."""
@@ -88,60 +93,9 @@ class KokoroTTSService(TTSService):
             params: Additional configuration parameters
         """
         super().__init__(sample_rate=sample_rate, **kwargs)
-        logger.info(
-            f"Initializing Kokoro TTS service with model_path: {model_path} and voices_path: {voices_path}"
-        )
-
-        # ------------------------------------------------------------------
-        # Prefer GPU execution if ONNX Runtime with CUDA is available.
-        # kokoro_onnx >=0.4.4 accepts a ``providers`` kw-arg; older versions
-        # can still be used by creating the InferenceSession manually and
-        # calling ``Kokoro.from_session``.
-        # ------------------------------------------------------------------
-        providers = None
-        try:
-            import onnxruntime as ort  # type: ignore
-
-            avail = ort.get_available_providers()
-            if "CUDAExecutionProvider" in avail:
-                providers = [
-                    (
-                        "CUDAExecutionProvider",
-                        {"cudnn_conv_algo_search": "DEFAULT"},
-                    ),
-                    "CPUExecutionProvider",
-                ]
-                logger.info("ONNXRuntime CUDA provider detected – using GPU for Kokoro TTS")
-            else:
-                logger.warning("CUDAExecutionProvider not available; Kokoro will run on CPU")
-        except ImportError:
-            logger.warning("onnxruntime not installed – Kokoro will run on CPU")
-
-        # Instantiate Kokoro with the chosen providers.
-        try:
-            if providers and "providers" in Kokoro.__init__.__code__.co_varnames:
-                # Newer kokoro_onnx supports providers directly.
-                self._kokoro = Kokoro(model_path, voices_path, providers=providers)  # type: ignore[arg-type]
-            elif providers:
-                # Fallback path for older kokoro_onnx: create a session first.
-                import onnxruntime as ort  # re-import inside the fallback
-
-                session = ort.InferenceSession(model_path, providers=providers)
-                if hasattr(Kokoro, "from_session"):
-                    self._kokoro = Kokoro.from_session(session, voices_path)  # type: ignore[attr-defined]
-                else:
-                    # Ultimate fallback – run on CPU
-                    logger.warning("Kokoro `from_session` not available; falling back to CPU mode")
-                    self._kokoro = Kokoro(model_path, voices_path)
-            else:
-                # CPU only path
-                self._kokoro = Kokoro(model_path, voices_path)
-        except Exception as e:
-            logger.error(f"Failed to initialise Kokoro with GPU support: {e}")
-            self._kokoro = Kokoro(model_path, voices_path)
-
-        # ------------------------------------------------------------------
-        logger.info("Kokoro initialized (GPU={} )".format("CUDAExecutionProvider" in (providers or [])))
+        logger.info(f"Initializing Kokoro TTS service with model_path: {model_path} and voices_path: {voices_path}")
+        self._kokoro = Kokoro(model_path, voices_path)
+        logger.info(f"Kokoro initialized")
         self._settings = {
             "language": self.language_to_service_language(params.language)
             if params.language

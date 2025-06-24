@@ -94,26 +94,24 @@ class KokoroTTSService(TTSService):
         """
         super().__init__(sample_rate=sample_rate, **kwargs)
         logger.info(f"Initializing Kokoro TTS service with model_path: {model_path} and voices_path: {voices_path}")
-
         providers = ort.get_available_providers()
-        use_cuda = "CUDAExecutionProvider" in providers
+        use_cuda  = "CUDAExecutionProvider" in providers
 
-        provider_options = None
         if use_cuda:
-            logger.info("Using CUDAExecutionProvider for Kokoro TTS.")
-            provider_options = [
-                (
-                    "CUDAExecutionProvider",
-                    {"cudnn_conv_algo_search": "DEFAULT"},
-                ),
-                "CPUExecutionProvider",
-            ]
+            sess = ort.InferenceSession(model_path,
+                                        providers=[("CUDAExecutionProvider",
+                                                    {"cudnn_conv_algo_search":"EXHAUSTIVE"}),
+                                                "CPUExecutionProvider"])
+            # older kokoro versions
+            if hasattr(Kokoro, "from_session"):
+                self._kokoro = Kokoro.from_session(sess, voices_path)
+            else:                                  # ≥ 0.9.x
+                self._kokoro = Kokoro(model_path, voices_path,
+                                    providers=[("CUDAExecutionProvider",
+                                                {"cudnn_conv_algo_search":"EXHAUSTIVE"}),
+                                                "CPUExecutionProvider"])
         else:
-            logger.info("Using CPUExecutionProvider for Kokoro TTS.")
-            provider_options = ["CPUExecutionProvider"]
-
-        self._kokoro = Kokoro(model_path, voices_path, providers=provider_options)
-
+            self._kokoro = Kokoro(model_path, voices_path)
         logger.info(f"Kokoro initialized")
         self._settings = {
             "language": self.language_to_service_language(params.language)

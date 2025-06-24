@@ -52,12 +52,18 @@ RUN bash -c '\
 RUN pip install --no-cache-dir ollama
 RUN pip install --no-cache-dir kokoro-onnx[gpu]
 
+
+
 # Second, install Moonshine from Git
 RUN uv pip install --system useful-moonshine-onnx@git+https://git@github.com/usefulsensors/moonshine.git#subdirectory=moonshine-onnx
 
 # Finally, install the rest of the requirements
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
+
+RUN pip uninstall -y onnxruntime onnxruntime-gpu
+RUN pip install onnxruntime-gpu
+ENV ONNX_PROVIDER=CUDAExecutionProvider
 
 ###############################################################################
 # 6. Copy your application code and models

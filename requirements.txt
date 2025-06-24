@@ -6,7 +6,7 @@ pipecat-ai[websocket,silero]
 uvicorn[standard]
 
 # Audio helpers
-soundfile>=0.12.1
+soundfile
 
 # Optional GPU-side 8-bit quantisation (saves VRAM if you need it)
 bitsandbytes

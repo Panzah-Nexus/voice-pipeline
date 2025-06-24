@@ -50,7 +50,7 @@ RUN bash -c '\
 
 # First, install libraries that need to be present before others
 RUN pip install --no-cache-dir ollama
-RUN pip install --no-cache-dir kokoro-onnx
+RUN pip install --no-cache-dir kokoro-onnx[gpu]
 
 # Second, install Moonshine from Git
 RUN uv pip install --system useful-moonshine-onnx@git+https://git@github.com/usefulsensors/moonshine.git#subdirectory=moonshine-onnx

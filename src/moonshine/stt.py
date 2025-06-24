@@ -138,10 +138,15 @@ class MoonshineSTTService(SegmentedSTTService):
         audio_float = np.frombuffer(audio, dtype=np.int16).astype(np.float32) / 32768.0
 
         # Execute transcription on a separate thread.
+        logger.debug("Calling STT transcription thread...")
         text: str = await asyncio.to_thread(self._transcriber, audio_float)
+        logger.debug("STT transcription thread returned.")
 
+        logger.debug("Stopping TTFB metrics...")
         await self.stop_ttfb_metrics()
+        logger.debug("Stopping processing metrics...")
         await self.stop_processing_metrics()
+        logger.debug("Metrics stopped.")
 
         if text:
             logger.debug(f"Transcription: [{text}]")

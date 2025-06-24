@@ -76,7 +76,7 @@ async def run_bot(websocket_client):
     tts = KokoroTTSService(
         model_path="/app/assets/kokoro-v1.0.onnx",
         voices_path="/app/assets/voices-v1.0.bin",
-        voice_id="am_fenrir",
+        voice_id="af_bella",
     )
 
     llm = OLLamaLLMService(

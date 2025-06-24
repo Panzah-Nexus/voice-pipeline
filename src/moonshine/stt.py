@@ -19,6 +19,8 @@ from pipecat.services.stt_service import SegmentedSTTService
 from pipecat.transcriptions.language import Language
 from pipecat.utils.time import time_now_iso8601
 
+import onnxruntime as ort
+
 try:
     from moonshine_onnx import MoonshineOnnxModel, load_tokenizer
 except ModuleNotFoundError as e:
@@ -36,6 +38,18 @@ class Transcriber:
         if rate != 16000:
             raise ValueError("Moonshine supports sampling rate 16000 Hz.")
         self.model = MoonshineOnnxModel(model_name=model_name)
+        # === GPU CONFIGURATION: force ONNX Runtime to use CUDA first ===
+        gpu_providers = ["CUDAExecutionProvider", "CPUExecutionProvider"]
+        gpu_provider_options = [ {"device_id": 0}, {} ]
+        for session_attr in ("preprocess", "encode", "uncached_decode", "cached_decode"):            
+            session = getattr(self.model, session_attr, None)
+            if session:
+                try:
+                    session.set_providers(gpu_providers, gpu_provider_options)
+                    logger.debug(f"Set GPU providers on session '{session_attr}'")
+                except Exception as e:
+                    logger.warning(f"Could not set GPU providers on '{session_attr}': {e}")
+        # ============================================================
         self.rate = rate
         self.tokenizer = load_tokenizer()
 

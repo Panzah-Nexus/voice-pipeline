@@ -67,8 +67,9 @@ async def run_bot(websocket_client):
     rtvi = RTVIProcessor(config=RTVIConfig(config=[]))
 
     stt = WhisperSTTService(
-        model=Model.DISTIL_MEDIUM_EN,
-        device="cuda"
+            model=Model.DISTIL_MEDIUM_EN,
+            device="cuda",
+            transcribe_options=dict(temperature=0) 
     )
 
     tts = KokoroTTSService(

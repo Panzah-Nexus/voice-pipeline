@@ -42,6 +42,7 @@ import argparse
 import asyncio
 import base64
 import json
+import os
 import sys
 from typing import Optional
 
@@ -82,35 +83,55 @@ class KokoroServer:
         speed: float = 1.0,
         sample_rate: Optional[int] = None,
     ) -> None:
-        # Initialise Kokoro session – CUDA if available, else CPU.
+        # Initialise Kokoro session – TensorRT > CUDA > CPU
         providers = ort.get_available_providers()
-        use_cuda = "CUDAExecutionProvider" in providers
+        logger.info(f"Available ONNX Runtime providers: {providers}")
 
-        if use_cuda:
-            sess = ort.InferenceSession(
-                model_path,
-                providers=[
-                    (
-                        "CUDAExecutionProvider",
-                        {"cudnn_conv_algo_search": "EXHAUSTIVE"},
-                    ),
-                    "CPUExecutionProvider",
-                ],
-            )
+        provider_configs = []
+        use_gpu = False
+
+        # Prioritize TensorRT for best performance
+        if "TensorrtExecutionProvider" in providers:
+            logger.info("Configuring TensorrtExecutionProvider")
+            # Create cache directory if it doesn't exist
+            cache_path = "/tmp/kokoro_tensorrt_cache"
+            os.makedirs(cache_path, exist_ok=True)
+            logger.info(f"TensorRT engine cache path: {cache_path}")
+            provider_configs = [
+                (
+                    'TensorrtExecutionProvider', {
+                        'trt_fp16_enable': True,
+                        'trt_engine_cache_enable': True,
+                        'trt_engine_cache_path': cache_path,
+                    }
+                ),
+                'CUDAExecutionProvider',  # Fallback for ops not supported by TRT
+            ]
+            use_gpu = True
+        elif "CUDAExecutionProvider" in providers:
+            logger.info("TensorRT not available, configuring CUDAExecutionProvider")
+            provider_configs = [
+                (
+                    "CUDAExecutionProvider",
+                    {"cudnn_conv_algo_search": "EXHAUSTIVE"},
+                ),
+                "CPUExecutionProvider",
+            ]
+            use_gpu = True
+        else:
+            logger.info("GPU providers not available, using CPUExecutionProvider")
+            provider_configs = ["CPUExecutionProvider"]
+
+        if use_gpu:
+            # Check for older Kokoro version that needs a pre-made session
             if hasattr(Kokoro, "from_session"):
+                logger.info("Using Kokoro.from_session factory")
+                sess = ort.InferenceSession(model_path, providers=provider_configs)
                 self._kokoro = Kokoro.from_session(sess, voices_path)
             else:
-                self._kokoro = Kokoro(
-                    model_path,
-                    voices_path,
-                    providers=[
-                        (
-                            "CUDAExecutionProvider",
-                            {"cudnn_conv_algo_search": "EXHAUSTIVE"},
-                        ),
-                        "CPUExecutionProvider",
-                    ],
-                )
+                # Newer Kokoro versions take providers in constructor
+                logger.info("Passing providers to Kokoro constructor")
+                self._kokoro = Kokoro(model_path, voices_path, providers=provider_configs)
         else:
             self._kokoro = Kokoro(model_path, voices_path)
 

@@ -28,13 +28,23 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 
-from src.pipecat_pipeline import run_bot
+from src.pipecat_pipeline import run_bot, warmup_llm
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Handles FastAPI startup and shutdown."""
+    # Run warmup tasks
+    logging.info("Running startup tasks...")
+    await warmup_llm()
+    logging.info("Startup tasks complete.")
+
     yield  # Run app
+
+    # Run shutdown tasks
+    logging.info("Running shutdown tasks...")
+    # Add any cleanup logic here
+    logging.info("Shutdown tasks complete.")
 
 
 # Initialize FastAPI app with lifespan manager

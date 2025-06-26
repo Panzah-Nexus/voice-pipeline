@@ -1,8 +1,34 @@
-# 📖 Voice Pipeline Documentation
+# Documentation
 
-Welcome to the complete documentation for the **Air-Gapped Voice AI Pipeline**. This system is designed for deployment on **RunPod with NVIDIA L4 GPUs**, enabling natural, low-latency voice conversations using a fully self-contained AI stack.
+Welcome to the technical documentation for the Voice Pipeline project.
 
-All AI processing, from speech recognition to language understanding, and speech synthesis, happens within your private RunPod instance, ensuring data privacy and security with no external API dependencies during operation.
+This documentation is for developers and infrastructure engineers responsible for building, deploying, and maintaining the system.
+
+## Table of Contents
+
+1.  **[Quick Start](./1_quick_start.md)**
+    *   Learn how to build and run the pipeline locally with Docker or on a cloud GPU instance.
+
+2.  **[Architecture](./2_architecture.md)**
+    *   Get a high-level overview of the system's components and data flow, from audio input to audio output.
+
+3.  **[TTS Service](./3_tts_service.md)**
+    *   A deep dive into the isolated Text-to-Speech (TTS) subprocess, explaining its design and communication protocol.
+
+4.  **[STT Service](./4_stt_service.md)**
+    *   Details on the Speech-to-Text (STT) model, configuration, and performance expectations.
+
+5.  **[Observability](./5_observability.md)**
+    *   Instructions for enabling and configuring metrics (Pipecat) and tracing (OpenTelemetry).
+
+6.  **[Configuration](./6_configuration.md)**
+    *   A reference guide for all environment variables and command-line arguments.
+
+7.  **[Troubleshooting](./7_troubleshooting.md)**
+    *   Solutions for common errors and issues.
+
+8.  **[Contributing](./8_contributing.md)**
+    *   Guidelines for contributing to the project, including code style and testing procedures.
 
 ## 🚀 Getting Started
 

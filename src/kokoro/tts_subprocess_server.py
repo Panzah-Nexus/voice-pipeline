@@ -183,17 +183,25 @@ class KokoroServer:
                 lang=language,
             )
 
+            MAX_RAW_BYTES = 16 * 1024  # 16 KB raw PCM ⇒ ~22 KB base64, < 64 KB limit
+
             async for samples, sample_rate in stream:
                 # Convert to 16-bit PCM little-endian
                 samples_int16 = (samples * 32767).astype(np.int16)
-                chunk_b64 = base64.b64encode(samples_int16.tobytes()).decode()
-                self._send_json(
-                    {
-                        "type": "audio_chunk",
-                        "sample_rate": sample_rate,
-                        "data": chunk_b64,
-                    }
-                )
+                raw = samples_int16.tobytes()
+
+                # Split into manageable chunks so that the encoded line length
+                # never exceeds asyncio.StreamReader's default 64 KB limit.
+                for offset in range(0, len(raw), MAX_RAW_BYTES):
+                    sub = raw[offset : offset + MAX_RAW_BYTES]
+                    chunk_b64 = base64.b64encode(sub).decode()
+                    self._send_json(
+                        {
+                            "type": "audio_chunk",
+                            "sample_rate": sample_rate,
+                            "data": chunk_b64,
+                        }
+                    )
 
             self._send_json({"type": "stopped"})
         except Exception as e:  # pragma: no cover

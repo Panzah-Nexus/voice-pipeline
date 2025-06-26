@@ -55,75 +55,78 @@ class KokoroSubprocessTTSService(TTSService):
     async def run_tts(self, text: str) -> AsyncGenerator[Frame, None]:  # noqa: D401
         """Generate TTS frames for *text* using the subprocess."""
         try:
-            await self._ensure_subprocess()
-        except Exception as e:
-            logger.error(f"Failed to start subprocess: {e}")
-            yield ErrorFrame(str(e))
-            return
+            await self._start_subprocess()
 
-        assert self._writer and self._reader and self._process
+            assert self._writer and self._reader and self._process
 
-        await self.start_ttfb_metrics()
-        # send request
-        request = {
-            "text": text,
-            "voice_id": self._params.voice_id,
-            "language": self._params.language,
-            "speed": self._params.speed,
-        }
-        self._writer.write(json.dumps(request, separators=(",", ":")).encode() + b"\n")
-        await self._writer.drain()
+            await self.start_ttfb_metrics()
 
-        await self.start_tts_usage_metrics(text)
+            # send request
+            request = {
+                "text": text,
+                "voice_id": self._params.voice_id,
+                "language": self._params.language,
+                "speed": self._params.speed,
+            }
+            self._writer.write(json.dumps(request, separators=(",", ":")).encode() + b"\n")
+            await self._writer.drain()
 
-        yield TTSStartedFrame()
+            await self.start_tts_usage_metrics(text)
 
-        # process responses until "eof"
-        while True:
-            try:
+            yield TTSStartedFrame()
+
+            # process responses until "eof"
+            while True:
                 line = await self._reader.readline()
-            except Exception as e:
-                logger.error(f"Error reading from TTS subprocess: {e}")
-                yield ErrorFrame(str(e))
-                return
+                if not line:
+                    yield ErrorFrame("TTS subprocess terminated unexpectedly")
+                    break
 
-            if not line:
-                yield ErrorFrame("TTS subprocess terminated unexpectedly")
-                await self._terminate_subprocess()
-                return
-
-            try:
-                msg = json.loads(line.decode())
-            except json.JSONDecodeError:
-                logger.warning(f"Subprocess sent invalid JSON: {line[:100]}…")
-                continue
-
-            mtype = msg.get("type")
-
-            if mtype == "audio_chunk":
                 try:
-                    raw = base64.b64decode(msg["data"])
-                    sample_rate = int(msg["sample_rate"])
-                except Exception as e:
-                    logger.warning(f"Malformed audio_chunk from subprocess: {e}")
+                    msg = json.loads(line.decode())
+                except json.JSONDecodeError:
+                    logger.warning(f"Subprocess sent invalid JSON: {line[:100]}…")
                     continue
-                yield TTSAudioRawFrame(audio=raw, sample_rate=sample_rate, num_channels=1)
-            elif mtype == "started":
-                # already emitted a TTSStartedFrame; ignore
-                pass
-            elif mtype == "stopped":
-                yield TTSStoppedFrame()
-            elif mtype == "error":
-                yield ErrorFrame(msg.get("message", "Unknown error"))
-            elif mtype == "eof":
-                # request complete
-                break
-            # else: ignore unknown
+
+                mtype = msg.get("type")
+
+                if mtype == "audio_chunk":
+                    try:
+                        raw = base64.b64decode(msg["data"])
+                        sample_rate = int(msg["sample_rate"])
+                    except Exception as e:
+                        logger.warning(f"Malformed audio_chunk from subprocess: {e}")
+                        continue
+                    yield TTSAudioRawFrame(audio=raw, sample_rate=sample_rate, num_channels=1)
+                elif mtype == "started":
+                    # already emitted a TTSStartedFrame; ignore
+                    pass
+                elif mtype == "stopped":
+                    yield TTSStoppedFrame()
+                elif mtype == "error":
+                    yield ErrorFrame(msg.get("message", "Unknown error"))
+                elif mtype == "eof":
+                    # request complete
+                    break
+                # else: ignore unknown
+
+        except asyncio.CancelledError:
+            # Interruption: tear down the subprocess quickly and propagate the cancellation.
+            await self._terminate_subprocess()
+            raise
+
+        except Exception as e:
+            logger.error(f"Error in run_tts: {e}")
+            yield ErrorFrame(str(e))
+
+        finally:
+            # Ensure the subprocess is always finished.
+            await self._terminate_subprocess()
 
     # ------------------------------------------------------------------
     # internal helpers
     # ------------------------------------------------------------------
-    async def _ensure_subprocess(self) -> None:
+    async def _start_subprocess(self) -> None:
         if self._process and self._process.returncode is None:
             return  # already running
 

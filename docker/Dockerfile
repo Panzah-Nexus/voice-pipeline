@@ -3,7 +3,7 @@ FROM nvidia/cuda:12.6.1-cudnn-runtime-ubuntu22.04
 
 # 2. System packages (including default Python 3.10 on 22.04)
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3.10 python3.10-dev python3-pip \
+    python3.10 python3.10-dev python3-pip python3-venv \
     gcc g++ build-essential openssh-server espeak-ng libespeak-ng1 \
     curl wget ffmpeg libsndfile1 git \
  && rm -rf /var/lib/apt/lists/*
@@ -31,15 +31,19 @@ RUN curl -fsSL https://ollama.com/install.sh | sh \
       && ollama pull $MODEL                                              \
       && pkill ollama'
 
-# 7. Python dependencies: ONNX Runtime GPU (CUDA 12.x)
-RUN pip install --no-cache-dir onnxruntime-gpu
+# 7. Create **isolated** virtual-env for Kokoro TTS to avoid dependency clashes
+#    Heavy GPU packages live there and are invoked via /venv/tts/bin/python.
+#    The rest of the application runs with the system interpreter.
+RUN python3 -m venv /venv/tts \
+ && /venv/tts/bin/pip install --upgrade pip wheel \
+ && /venv/tts/bin/pip install --no-cache-dir \
+        kokoro-onnx[gpu]==0.4.8 \
+        onnxruntime-gpu==1.22.0
 
-# 8. Install Kokoro-ONNX with GPU extra
-RUN pip install --no-cache-dir kokoro-onnx[gpu]
-
-# 9. Install Moonshine-ONNX from GitHub
+# 8. Install Moonshine-ONNX for ASR in the *system* interpreter (no conflict).
 RUN pip install --no-cache-dir git+https://github.com/usefulsensors/moonshine.git#subdirectory=moonshine-onnx
 
+# 9. The remaining Python deps (pipecat, whisper, etc.)
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
@@ -51,7 +55,7 @@ COPY src/ ./src/
 COPY assets/ ./assets/
 
 # 11. Entrypoint script to launch SSH, Ollama, then your app
-RUN cat > /app/start.sh << 'EOF'
+RUN cat > /app/start.sh <<EOF
 #!/bin/bash
 service ssh start
 echo "Starting Ollama…"

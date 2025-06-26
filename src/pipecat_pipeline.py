@@ -11,6 +11,7 @@
 # $ uv pip install useful-moonshine-onnx@git+https://git@github.com/usefulsensors/moonshine.git#subdirectory=moonshine-onnx
 import asyncio
 import sys
+from pathlib import Path
 
 from dotenv import load_dotenv
 from loguru import logger
@@ -33,7 +34,7 @@ from pipecat.processors.frameworks.rtvi import RTVIConfig, RTVIObserver, RTVIPro
 from pipecat.serializers.protobuf import ProtobufFrameSerializer
 
 from pipecat.processors.aggregators.openai_llm_context import OpenAILLMContext
-from src.kokoro.tts import KokoroTTSService
+from src.kokoro.tts_subprocess_wrapper import KokoroSubprocessTTSService as _SubTTS
 from pipecat.services.whisper.stt import WhisperSTTService, Model
 from pipecat.services.ollama.llm import OLLamaLLMService
 
@@ -72,10 +73,16 @@ async def run_bot(websocket_client):
             transcribe_options=dict(temperature=0) 
     )
 
-    tts = KokoroTTSService(
-        model_path="/app/assets/kokoro-v1.0.onnx",
-        voices_path="/app/assets/voices-v1.0.bin",
-        voice_id="af_bella",
+    tts = _SubTTS(
+        _SubTTS.InputParams(
+            python_path=Path("/venv/tts/bin/python"),  # adjust to your pod layout
+            model_path=Path("/app/assets/kokoro-v1.0.onnx"),
+            voices_path=Path("/app/assets/voices-v1.0.bin"),
+            voice_id="af_bella",
+            language="en-us",
+            speed=1.0,
+            debug=False,
+        )
     )
 
     llm = OLLamaLLMService(

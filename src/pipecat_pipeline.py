@@ -52,73 +52,10 @@ load_dotenv(override=True)
 logger.remove(0)
 logger.add(sys.stderr, level="DEBUG")
 
-# ------------------------------------------------------------------
-# 1. Initialize services at the module level to load them only once.
-# This is crucial for services with long startup times.
-# ------------------------------------------------------------------
-logger.info("Initializing services...")
-
-stt = WhisperSTTService(
-    model=Model.DISTIL_MEDIUM_EN,
-    device="cuda",
-    # Using float16 for good performance and lower memory usage on CUDA.
-    # For maximum performance, you can use TensorRT. This requires building
-    # CTranslate2 with TensorRT support and setting compute_type="tensorrt".
-    compute_type="float16",
-    transcribe_options=dict(temperature=0)
-)
-
-tts = _SubTTS(
-    _SubTTS.InputParams(
-        python_path=Path("/venv/tts/bin/python"),  # adjust to your pod layout
-        model_path=Path("/app/assets/kokoro-v1.0.onnx"),
-        voices_path=Path("/app/assets/voices-v1.0.bin"),
-        voice_id="af_sarah",
-        language="en-us",
-        speed=1.0,
-        debug=True,
-    )
-)
-
-llm = OLLamaLLMService(
-    model="llama3:8b",
-    base_url="http://localhost:11434/v1",
-)
-
-logger.info("Services initialized.")
-# ------------------------------------------------------------------
-
-
-# ------------------------------------------------------------------
-# 2. Add a warmup function for the LLM.
-# In a server application (e.g. FastAPI), this should be called
-# from a startup event handler.
-# ------------------------------------------------------------------
-async def warmup_llm():
-    """
-    Warms up the OLLama model by sending a dummy request.
-    The first request to Ollama can be slow as it loads the model into memory.
-    """
-    logger.info("Warming up LLM model. This might take a moment...")
-    try:
-        context = OpenAILLMContext([
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": "Hello! Please respond with a short confirmation message."}
-        ])
-        async for frame in llm.run(context):
-            if frame:
-                logger.debug(f"LLM warmup response: {frame.text}")
-                break
-        logger.info("LLM model warmed up successfully.")
-    except Exception as e:
-        logger.error(f"Error during LLM warmup: {e}")
-        logger.error("Please ensure the Ollama server is running and the model is available.")
-# ------------------------------------------------------------------
-
 
 async def run_bot(websocket_client):
 
-    logger.info("Client connected, creating pipeline.")
+    logger.info("Starting bot")
 
     transport = FastAPIWebsocketTransport(
         websocket=websocket_client,
@@ -132,6 +69,29 @@ async def run_bot(websocket_client):
     )
 
     rtvi = RTVIProcessor(config=RTVIConfig(config=[]))
+
+    stt = WhisperSTTService(
+            model=Model.DISTIL_MEDIUM_EN,
+            device="cuda",
+            transcribe_options=dict(temperature=0) 
+    )
+
+    tts = _SubTTS(
+        _SubTTS.InputParams(
+            python_path=Path("/venv/tts/bin/python"),  # adjust to your pod layout
+            model_path=Path("/app/assets/kokoro-v1.0.onnx"),
+            voices_path=Path("/app/assets/voices-v1.0.bin"),
+            voice_id="af_sarah",
+            language="en-us",
+            speed=1.0,
+            debug=False,
+        )
+    )
+
+    llm = OLLamaLLMService(
+        model="llama3:8b",
+        base_url="http://localhost:11434/v1",
+    )
 
     messages = [
         {
@@ -182,13 +142,4 @@ async def run_bot(websocket_client):
 
 
 if __name__ == "__main__":
-    # In a production server, you would call warmup_llm() in a startup event
-    # handler and then call run_bot() for each new websocket connection.
-    # This example demonstrates how to run the warmup function.
-    async def main():
-        logger.info("Running warmup...")
-        await warmup_llm()
-        logger.info("Warmup complete. The bot is ready to accept connections.")
-        logger.info("To test the full pipeline, run this module within a server (e.g. FastAPI).")
-
-    asyncio.run(main())
+    asyncio.run(run_bot())

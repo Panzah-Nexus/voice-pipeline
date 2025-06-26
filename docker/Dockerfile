@@ -1,6 +1,9 @@
 # 1. Base image: CUDA 12.6.1 + cuDNN on Ubuntu 22.04 for NVIDIA L4
 FROM nvidia/cuda:12.6.1-cudnn-runtime-ubuntu22.04
 
+# Set the working directory to /workspace to align with RunPod's persistent volume.
+WORKDIR /workspace
+
 # 2. System packages (including default Python 3.10 on 22.04)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3.10 python3.10-dev python3-pip python3-venv \
@@ -32,30 +35,24 @@ RUN curl -fsSL https://ollama.com/install.sh | sh \
       && pkill ollama'
 
 # 7. Create **isolated** virtual-env for Kokoro TTS to avoid dependency clashes
-#    Heavy GPU packages live there and are invoked via /venv/tts/bin/python.
-#    The rest of the application runs with the system interpreter.
+#    This venv is created at an absolute path, so it's not affected by WORKDIR.
 RUN python3 -m venv /venv/tts \
  && /venv/tts/bin/pip install --upgrade pip wheel \
- && /venv/tts/bin/pip install --no-cache-dir \
-        kokoro-onnx[gpu]==0.4.8 \
-        onnxruntime-gpu==1.22.0
+ && /venv/tts/bin/pip install --no-cache-dir 'kokoro-onnx[gpu]' \
+ && /venv/tts/bin/pip uninstall -y onnxruntime-gpu onnxruntime \
+ && /venv/tts/bin/pip install 'onnxruntime-gpu' \
+ && /venv/tts/bin/pip install pipecat-ai
 
-# 8. Install Moonshine-ONNX for ASR in the *system* interpreter (no conflict).
-RUN pip install --no-cache-dir git+https://github.com/usefulsensors/moonshine.git#subdirectory=moonshine-onnx
+# 8. Install main application dependencies for better layer caching
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+RUN rm requirements.txt
 
-# 9. The remaining Python deps (pipecat, whisper, etc.)
-COPY requirements.txt /tmp/requirements.txt
-RUN pip install --no-cache-dir -r /tmp/requirements.txt
+# 9. Copy the rest of the application code
+COPY . .
 
-ENV ONNX_PROVIDER=CUDAExecutionProvider
-
-# 10. Copy application code and assets
-WORKDIR /app
-COPY src/ ./src/
-COPY assets/ ./assets/
-
-# 11. Entrypoint script to launch SSH, Ollama, then your app
-RUN cat > /app/start.sh <<EOF
+# 10. Entrypoint script to launch SSH, Ollama, then your app
+RUN cat > /workspace/start.sh <<EOF
 #!/bin/bash
 service ssh start
 echo "Starting Ollama…"
@@ -65,8 +62,8 @@ timeout 60 bash -c 'until curl -s http://localhost:11434/api/tags >/dev/null; do
 echo "Launching application…"
 exec python src/main.py
 EOF
-RUN chmod +x /app/start.sh
+RUN chmod +x /workspace/start.sh
 
-# 12. Expose ports and default command
+# 11. Expose ports and default command
 EXPOSE 22 8000 11434
-CMD ["/app/start.sh"]
+CMD ["/workspace/start.sh"]

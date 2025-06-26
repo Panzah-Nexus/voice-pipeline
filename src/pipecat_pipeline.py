@@ -9,10 +9,10 @@
 # copy kokoro-v1.0.onnx and voices-v1.0.bin to the assets folder
 # - Moonshine ASR onnx installed
 # $ uv pip install useful-moonshine-onnx@git+https://git@github.com/usefulsensors/moonshine.git#subdirectory=moonshine-onnx
+import os
 import asyncio
 import sys
 from pathlib import Path
-import os
 
 from dotenv import load_dotenv
 from loguru import logger
@@ -38,21 +38,14 @@ from pipecat.processors.aggregators.openai_llm_context import OpenAILLMContext
 from src.kokoro.tts_subprocess_wrapper import KokoroSubprocessTTSService as _SubTTS
 from pipecat.services.whisper.stt import WhisperSTTService, Model
 from pipecat.services.ollama.llm import OLLamaLLMService
+from pipecat.utils.tracing.setup import setup_tracing
+
 
 
 from pipecat.transports.network.fastapi_websocket import (
     FastAPIWebsocketParams,
     FastAPIWebsocketTransport,
 )
-
-# Optional tracing & latency metrics
-from pipecat.observers.metrics_pipeline_observer import MetricsPipelineObserver
-
-try:
-    # The tracing helper is available starting Pipecat 0.0.70
-    from pipecat.tracing.tracing import setup_tracing  # type: ignore
-except ImportError:
-    setup_tracing = None  # Tracing disabled if the helper is missing
 
 load_dotenv(override=True)
 
@@ -76,11 +69,6 @@ async def run_bot(websocket_client):
     )
 
     rtvi = RTVIProcessor(config=RTVIConfig(config=[]))
-
-    # ------------------------------------------------------------------
-    #   Observability helpers
-    # ------------------------------------------------------------------
-    metrics_observer = MetricsPipelineObserver()
 
     stt = WhisperSTTService(
             model=Model.DISTIL_MEDIUM_EN,
@@ -128,25 +116,22 @@ async def run_bot(websocket_client):
         ]
     )
 
+    setup_tracing(
+        console_export=True,  # Set to True for debug output
+    )
+
     task = PipelineTask(
         pipeline,
         params=PipelineParams(
             allow_interruptions=True,
-            enable_metrics=True,       # required for TTFB & processing metrics
+            enable_metrics=True,
             enable_usage_metrics=True,
             report_only_initial_ttfb=False,
         ),
-        observers=[metrics_observer, RTVIObserver(rtvi)],
-        enable_tracing=bool(os.getenv("ENABLE_TRACING")),
+        observers=[RTVIObserver(rtvi)],
+        enable_tracing=True,                                  # Enable tracing for this task
+        enable_turn_tracking=True, 
     )
-
-    # Initialise OpenTelemetry tracing if requested via env vars and supported
-    if os.getenv("ENABLE_TRACING") and setup_tracing is not None:
-        from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
-
-        exporter = OTLPSpanExporter()  # OTLP endpoint & headers come from env
-        setup_tracing(service_name="voice-pipeline", exporter=exporter)
-        logger.info("Tracing enabled – exporting OTLP spans")
 
     messages.append({"role": "system", "content": "Please introduce yourself to the user."})
     await task.queue_frames([context_aggregator.user().get_context_frame()])
@@ -154,17 +139,6 @@ async def run_bot(websocket_client):
     runner = PipelineRunner()
 
     await runner.run(task)
-
-    # ------------------------------------------------------------------
-    #   Print per-turn latency summary (one-off after run ends)
-    # ------------------------------------------------------------------
-    if metrics_observer.turn_metrics:
-        for i, metrics in enumerate(metrics_observer.turn_metrics, 1):
-            total_ms = sum(
-                v.get("processing_ms", 0) + v.get("ttfb_ms", 0)
-                for v in metrics.values()
-            )
-            logger.info(f"Turn {i} end-to-end latency: {total_ms:.0f} ms")
 
 
 if __name__ == "__main__":

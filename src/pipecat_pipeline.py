@@ -81,7 +81,7 @@ async def run_bot(websocket_client):
             python_path=Path("/venv/tts/bin/python"),  # adjust to your pod layout
             model_path=Path("/app/assets/kokoro-v1.0.onnx"),
             voices_path=Path("/app/assets/voices-v1.0.bin"),
-            voice_id="af_bella",
+            voice_id="af_sarah",
             language="en-us",
             speed=1.0,
             debug=False,

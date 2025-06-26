@@ -118,10 +118,9 @@ class KokoroSubprocessTTSService(TTSService):
         except Exception as e:
             logger.error(f"Error in run_tts: {e}")
             yield ErrorFrame(str(e))
-
-        finally:
-            # Ensure the subprocess is always finished.
             await self._terminate_subprocess()
+
+        # normal completion: keep subprocess alive for re-use
 
     # ------------------------------------------------------------------
     # internal helpers

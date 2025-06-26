@@ -76,7 +76,7 @@ tts = _SubTTS(
         voice_id="af_sarah",
         language="en-us",
         speed=1.0,
-        debug=False,
+        debug=True,
     )
 )
 

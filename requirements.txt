@@ -125,7 +125,6 @@ triton==3.3.1
 typing_extensions==4.14.0
 uritemplate==4.2.0
 urllib3==2.5.0
-useful-moonshine-onnx @ git+https://github.com/usefulsensors/moonshine.git@89981f1ba33fc471ecb2e7a64531ee44f05e7de6#subdirectory=moonshine-onnx
 uv==0.7.14
 uvicorn==0.34.3
 uvloop==0.21.0

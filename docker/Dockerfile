@@ -1,5 +1,5 @@
 # 1. Base image: CUDA 12.6.1 + cuDNN on Ubuntu 22.04 for NVIDIA L4
-FROM nvidia/cuda:12.6.1-cudnn-runtime-ubuntu22.04
+FROM nvidia/cuda:12.6.1-cudnn-devel-ubuntu22.04
 
 # Set the working directory to /workspace to align with RunPod's persistent volume.
 WORKDIR /workspace
@@ -9,6 +9,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3.10 python3.10-dev python3-pip python3-venv \
     gcc g++ build-essential openssh-server espeak-ng libespeak-ng1 \
     curl wget ffmpeg libsndfile1 git \
+    python3-libnvinfer-dev \
+    python3-libnvinfer \
+    libnvinfer-plugin-dev \
+    libnvinfer-plugin8 \  
  && rm -rf /var/lib/apt/lists/*
 
 # 3. SSH setup
@@ -45,7 +49,7 @@ RUN python3 -m venv /venv/tts \
 
 # 8. Install main application dependencies for better layer caching
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN uv pip install --no-cache-dir --no-deps --system -r requirements.txt
 RUN rm requirements.txt
 
 # 9. Copy the rest of the application code

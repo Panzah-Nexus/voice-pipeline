@@ -4,19 +4,19 @@ This guide explains how to build and run the Voice Pipeline using Docker for bot
 
 ## Prerequisites
 
+
 *   **Docker:** Ensure Docker is installed and the Docker daemon is running.
-*   **NVIDIA GPU:** A local or cloud-based NVIDIA GPU with CUDA drivers installed is required for hardware acceleration.
+*   **NVIDIA GPU:** A local or cloud-based NVIDIA GPU with CUDA drivers installed is required for hardware acceleration for cuda 12.x and cudnn 9.
 *   **Git:** For cloning the repository.
 *   **Ollama:** Make sure you have Ollama running with the `llama3-8b` model pulled.
+*   **Assets(kokoro files)** https://github.com/thewh1teagle/kokoro-onnx/releases (kokoro-v1.0.onnx and voices-v1.0.bin) which you then create an assets dir.
 
 ## Local Development & Testing
-
-Running the pipeline locally is the fastest way to test changes. The provided Docker development environment mounts the local source code, so changes are reflected without rebuilding the image.
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-org/voice-pipeline.git
+git clone https://github.com/Panzah-Nexus/voice-pipeline/
 cd voice-pipeline
 ```
 
@@ -30,28 +30,6 @@ cp .env.example .env
 
 Review the `.env` file and ensure the variables are set correctly for your local environment. At a minimum, you will likely need to configure `OLLAMA_BASE_URL`.
 
-### 3. Build the Development Docker Image
-
-The `Dockerfile.dev` image contains all dependencies but keeps your local source code mounted for live updates.
-
-```bash
-docker build -t voice-pipeline:dev -f docker/Dockerfile.dev .
-```
-
-### 4. Run the Docker Container
-
-Run the container, mounting the `src` directory and exposing the necessary ports.
-
-```bash
-docker run -it --rm \
-  --gpus all \
-  -v ./src:/app/src \
-  -p 8000:8000 \
-  --env-file .env \
-  voice-pipeline:dev
-```
-
-> **💡 Tip:** The `--gpus all` flag enables NVIDIA GPU access within the container. You may need to install the [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
 
 ## Production Deployment (RunPod)
 

@@ -1,27 +1,28 @@
 # Source Code Structure
 
-This directory contains the core server-side Python code for the voice pipeline.
+This directory contains the core server-side Python code for the voice pipeline. The architecture is a cascading pipeline (ASR -> LLM -> TTS) orchestrated by the `pipecat-ai` framework.
 
 ## Core Files
 
 ### `main.py`
-The FastAPI entry point for the voice pipeline server. It handles server startup, WebSocket routing, and basic management endpoints like `/connect`.
+The FastAPI entry point for the voice pipeline server. It handles:
+- Server startup and shutdown.
+- The `/ws` endpoint for WebSocket connections.
+- A `/connect` endpoint for clients to retrieve the correct WebSocket URL.
 
 ### `pipecat_pipeline.py`
-This is the heart of the application. It uses the `pipecat-ai` framework to wire together all the necessary AI services:
--   Integrates `UltravoxWithContextService` for unified, low-latency STT and LLM processing.
--   Uses the custom `KokoroTTSService` for fully offline, air-gapped text-to-speech.
--   Manages the WebSocket transport layer and client connections.
+This is the heart of the application. It defines the `pipecat` pipeline and wires together all the necessary AI services:
+-   `WhisperSTTService`: Transcribes user audio to text using a local, GPU-accelerated Faster Whisper model.
+-   `OLLamaLLMService`: Manages conversation history and sends prompts to the local Llama 3.1 model.
+-   `KokoroSubprocessTTSService`: A custom service that sends text to the Kokoro TTS engine and receives synthesized audio back. See below for why this runs in a subprocess.
 
-### `ultravox_with_context.py`
-A custom Pipecat service that extends the base `UltravoxSTTService` to include conversation memory. This allows the AI to maintain context across multiple turns, leading to more natural conversations.
+### `kokoro/`
+This directory contains the implementation for our custom Kokoro TTS service.
+-   **`tts_subprocess_wrapper.py`**: The `pipecat` service that is directly used in the main pipeline. It manages communication with the TTS subprocess.
+-   **`tts_subprocess_server.py`**: The server that runs inside the isolated subprocess. It loads the Kokoro ONNX model and performs the text-to-speech inference.
+-   **`tts.py`**: A direct Python wrapper around the Kokoro ONNX model logic.
 
-### `kokoro_tts_service.py`
-A custom Pipecat-compatible TTS service for the Kokoro engine. It receives text from the pipeline and streams synthesized audio back in real-time.
+## Key Architecture Note: Subprocess Isolation
 
-## Architecture Notes
-
-1.  **Air-Gapped Design**: All AI processing (STT, LLM, TTS) happens on the deployed GPU without external API calls during operation.
-2.  **Unified STT/LLM**: The use of `UltravoxWithContextService` is a key design choice to minimize latency by avoiding a separate transcription step.
-3.  **Dockerized Deployment**: The models are downloaded when the Docker container is first initialized on RunPod, ensuring they are cached in the pod's volume for fast subsequent startups.
+A major technical challenge was resolving the `onnxruntime-gpu` dependency conflicts between the ASR and TTS models. The solution was to run the entire Kokoro TTS engine in an **isolated subprocess** with its own Python environment. This allows both the main pipeline and the TTS service to have conflicting dependencies while still achieving full GPU acceleration for all models, which was critical for meeting the low-latency requirements of the project.
 

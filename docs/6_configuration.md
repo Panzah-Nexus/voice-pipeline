@@ -1,44 +1,94 @@
-# 6. Configuration Reference
-
-This document provides a reference for all the environment variables and command-line arguments used to configure the voice pipeline.
+# 6. Configuration
 
 ## Environment Variables
 
-Configuration is primarily handled through environment variables. Create a `.env` file in the project root to manage these settings.
+Create a `.env` file in the project root:
 
-### Core Pipeline
-| Variable | Description | Default |
-| --- | --- | --- |
-| `OLLAMA_BASE_URL` | The base URL for the Ollama server API. | `http://localhost:11434` |
-| `LLM_MODEL` | The name of the LLM model to use from Ollama. | `llama3-8b` |
+```bash
+# Core Settings
+OLLAMA_BASE_URL=http://localhost:11434
+LLM_MODEL=llama3:8b
 
-### TTS Service (`KokoroSubprocessTTSService`)
-| Variable | Description | Default |
-| --- | --- | --- |
-| `KOKORO_PYTHON_PATH` | The absolute path to the Python executable inside the isolated TTS virtual environment. | `/venv/tts/bin/python` |
-| `KOKORO_MODEL_PATH` | Path to the `kokoro-vX.Y.onnx` model file. | `assets/kokoro-v1.0.onnx` |
-| `KOKORO_VOICES_PATH` | Path to the `voices-vX.Y.bin` file. | `assets/voices-v1.0.bin` |
-| `KOKORO_VOICE_ID` | The default voice ID to use for synthesis. | `af_sarah` |
-| `KOKORO_LANGUAGE` | The default language code. | `en-us` |
-| `KOKORO_SPEED` | The default speaking speed. | `1.0` |
+# TTS Settings
+KOKORO_VOICE_ID=af_sarah
+KOKORO_LANGUAGE=en-us
+KOKORO_SPEED=1.0
 
-### STT Service (`FasterWhisperSTTService`)
-| Variable | Description | Default |
-| --- | --- | --- |
-| `STT_MODEL` | The `faster-whisper` model to use. | `distil-medium-en` |
+# STT Settings
+STT_MODEL=distil-medium-en
+STT_DEVICE=cuda
+STT_TEMPERATURE=0
 
-### Observability
-| Variable | Description | Default |
-| --- | --- | --- |
-| `ENABLE_METRICS` | Set to `True` to enable `pipecat` service metrics. | `False` |
-| `ENABLE_TRACING` | Set to `True` to enable OpenTelemetry tracing. | `False` |
-| `OTEL_EXPORTER_OTLP_ENDPOINT`| The OTLP collector endpoint for traces. | `http://localhost:4317` |
-| `OTEL_SERVICE_NAME` | The service name to report in traces. | `voice-pipeline` |
+# Observability
+ENABLE_METRICS=True
+ENABLE_TRACING=True
+```
 
-## Command-Line Arguments
+## Key Settings
 
-The primary entry point `src/main.py` accepts command-line arguments that can override environment variables.
+### Model Paths
+- **Kokoro Model**: [TO BE ADDED] - Where is kokoro-v1.0.onnx located?
+- **Kokoro Voices**: [TO BE ADDED] - Where is voices-v1.0.bin located?
+- **Python Path**: [TO BE ADDED] - What's the TTS Python path?
 
-*   `--host`: The host interface to bind the server to. (Default: `0.0.0.0`)
-*   `--port`: The port to bind the server to. (Default: `8000`)
-*   `--log-level`: The logging level for the application. (Default: `INFO`) 
+### Performance Tuning
+- **VAD Parameters**: [TO BE ADDED] - What are the optimal VAD settings?
+- **STT Temperature**: 0 (deterministic transcription)
+- **LLM Temperature**: [TO BE ADDED] - What creativity level for responses?
+- **TTS Speed**: [TO BE ADDED] - What's the optimal speech rate?
+
+### Deployment Settings
+- **Host**: [TO BE ADDED] - What host to bind to?
+- **Port**: [TO BE ADDED] - What port to use?
+- **GPU Memory**: [TO BE ADDED] - How much GPU memory to allocate?
+
+## Docker Configuration
+
+### GPU Requirements
+```dockerfile
+# [TO BE ADDED] - What GPU requirements?
+--gpus all
+--shm-size=2g
+```
+
+### Volume Mounts
+```bash
+# [TO BE ADDED] - What volumes to mount?
+-v /path/to/models:/app/assets
+-v /path/to/cache:/app/cache
+```
+
+### Resource Limits
+```bash
+# [TO BE ADDED] - What resource limits?
+--memory=8g
+--cpus=4
+```
+
+## Client Configuration
+
+### WebSocket Settings
+```javascript
+// [TO BE ADDED] - What WebSocket settings?
+const wsUrl = 'ws://localhost:8000/ws';
+const audioConfig = {
+  sampleRate: 16000,
+  channels: 1
+};
+```
+
+### Audio Settings
+- **Sample Rate**: [TO BE ADDED] - What sample rate to use?
+- **Channels**: [TO BE ADDED] - Mono or stereo?
+- **Bit Depth**: [TO BE ADDED] - What bit depth?
+
+## Validation
+
+**Configuration Check**: [TO BE ADDED]
+- How to validate all settings are correct?
+- What tests to run?
+- What logs to check?
+
+---
+
+**Next**: Read [Troubleshooting](./7_troubleshooting.md) for common issues and solutions. 

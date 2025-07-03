@@ -1,52 +1,172 @@
 # 7. Troubleshooting
 
-This guide provides solutions to common errors and issues you might encounter while working with the voice pipeline.
+## Common Issues
+
+### GPU Not Detected
+**Error**: `Could not find an enabled CUDA execution provider`
+
+**Solution**:
+```bash
+# Check NVIDIA drivers
+nvidia-smi
+
+# Install NVIDIA Container Toolkit
+# Follow: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/
+
+# Run with GPU support
+docker run --gpus all voice-pipeline
+```
+
+### TTS Service Fails
+**Error**: `TTS subprocess terminated unexpectedly`
+
+**Solution**:
+```bash
+# Check model files exist
+ls assets/kokoro-v1.0.onnx
+ls assets/voices-v1.0.bin
+
+# Verify Python path
+echo $KOKORO_PYTHON_PATH
+
+# Test TTS manually
+/venv/tts/bin/python src/kokoro/tts_subprocess_server.py --debug
+```
+
+### Ollama Not Running
+**Error**: Connection refused to Ollama
+
+**Solution**:
+```bash
+# Start Ollama
+ollama serve
+
+# Check model is available
+ollama list
+
+# Pull model if needed
+ollama pull llama3:8b
+```
+
+### Whisper Model Not Found
+**Error**: Whisper model download failed
+
+**Solution**:
+```bash
+# Check CUDA is available
+nvidia-smi
+
+# Verify Faster Whisper installation
+python -c "import faster_whisper; print('Faster Whisper OK')"
+
+# Download model manually if needed
+# Models are auto-downloaded on first use
+```
+
+### WebSocket Connection Fails
+**Error**: WebSocket connection refused
+
+**Solution**:
+```bash
+# Check server is running
+curl http://localhost:8000/
+
+# Check port is exposed
+docker ps | grep 8000
+
+# Test WebSocket endpoint
+wscat -c ws://localhost:8000/ws
+```
+
+## Debug Commands
+
+### Check System Status
+```bash
+# GPU status
+nvidia-smi
+
+# Docker status
+docker ps
+docker logs voice-pipeline
+
+# Ollama status
+ollama list
+curl http://localhost:11434/api/tags
+```
+
+### Check Logs
+```bash
+# Container logs
+docker logs -f voice-pipeline
+
+# Application logs
+docker exec voice-pipeline tail -f /app/logs/app.log
+
+# TTS subprocess logs
+docker exec voice-pipeline tail -f /app/logs/tts.log
+```
+
+### Performance Issues
+**High Latency**: [TO BE ADDED]
+- What causes high latency?
+- How to measure latency?
+- What optimizations to try?
+
+**High Memory Usage**: [TO BE ADDED]
+- What causes high memory usage?
+- How to monitor memory?
+- What memory optimizations?
+
+**GPU Memory Issues**: [TO BE ADDED]
+- What causes GPU OOM?
+- How to reduce GPU memory?
+- What GPU settings to adjust?
+
+## Recovery Procedures
+
+### Restart Services
+```bash
+# Restart container
+docker restart voice-pipeline
+
+# Restart Ollama
+pkill ollama
+ollama serve
+
+# Restart client
+# Refresh browser or restart client app
+```
+
+### Reset Configuration
+```bash
+# Clear cache
+docker exec voice-pipeline rm -rf /app/cache/*
+
+# Reset models
+docker exec voice-pipeline rm -rf /app/models/*
+
+# Rebuild container
+docker build --no-cache -t voice-pipeline .
+```
+
+## Getting Help
+
+### Information to Include
+- **Error logs**: [TO BE ADDED] - What logs to include?
+- **System info**: [TO BE ADDED] - What system details?
+- **Configuration**: [TO BE ADDED] - What config to share?
+
+### Debug Mode
+```bash
+# Enable debug logging
+ENABLE_TRACING=True
+ENABLE_METRICS=True
+LOG_LEVEL=DEBUG
+
+# Run with debug flags
+docker run --gpus all -e LOG_LEVEL=DEBUG voice-pipeline
+```
 
 ---
 
-### 1. Error: `Could not find an enabled CUDA execution provider.`
-
-*   **Symptom:** The application fails to start, and logs show an error related to `onnxruntime` not finding a CUDA provider.
-*   **Cause:** This typically means that the NVIDIA drivers or the NVIDIA Container Toolkit are not set up correctly, so the Docker container cannot access the host's GPU.
-*   **Solution:**
-    1.  **Verify NVIDIA Drivers:** Ensure you have the correct NVIDIA drivers installed on your host machine.
-    2.  **Install NVIDIA Container Toolkit:** Follow the [official installation guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) for your Linux distribution.
-    3.  **Use `--gpus all`:** When running `docker run`, make sure you include the `--gpus all` flag to expose the GPU devices to the container.
-
----
-
-### 2. Error: `TTS subprocess terminated unexpectedly.`
-
-*   **Symptom:** The pipeline runs, but no audio is produced, and an error about the TTS sub-process is logged. Checking the container logs might reveal an error from `src/kokoro/tts_subprocess_server.py`.
-*   **Cause:** This is a generic error that can have several causes related to the isolated TTS environment.
-*   **Solution:**
-    1.  **Check Model Paths:** Verify that the paths to the Kokoro model and voices files in your `.env` file (`KOKORO_MODEL_PATH`, `KOKORO_VOICES_PATH`) are correct and that the files exist.
-    2.  **Check Python Path:** Ensure `KOKORO_PYTHON_PATH` points to the correct Python executable in the TTS virtual environment (`/venv/tts/bin/python`).
-    3.  **Run Manually:** For deeper debugging, you can execute the sub-process server directly inside the running container to see more detailed errors:
-        ```bash
-        # Inside the container
-        /venv/tts/bin/python /app/src/kokoro/tts_subprocess_server.py \
-          --model-path /path/to/model.onnx \
-          --voices-path /path/to/voices.bin \
-          --debug
-        ```
-
----
-
-### 3. Error: `JSON line too long` or `Invalid JSON`
-
-*   **Symptom:** An error related to JSON decoding appears in the logs, originating from the `KokoroSubprocessTTSService`.
-*   **Cause:** This error occurs if the TTS sub-process sends a malformed or excessively long line of JSON to the parent process. This should be rare due to the built-in 16KB chunking mechanism.
-*   **Solution:**
-    1.  **Check for Custom Modifications:** If you have modified the TTS sub-process code (`tts_subprocess_server.py`), ensure you have not changed the audio chunking logic (`MAX_RAW_BYTES`).
-    2.  **Inspect Logs:** Enable debug logging (`--log-level DEBUG`) to see the raw messages being passed between the processes, which can help identify the source of the malformed data.
-
----
-
-### 4. Error: `Frame is not JSON serializable`
-
-*   **Symptom:** The pipeline fails with a `TypeError` indicating that a `pipecat` frame object cannot be serialized to JSON.
-*   **Cause:** This typically happens in custom development when attempting to put a non-serializable object (like a complex class instance) into a frame that needs to be transported or logged.
-*   **Solution:**
-    1.  **Review Custom Frames:** If you have created custom `pipecat` frames, ensure all data you store in them is JSON-serializable (e.g., strings, numbers, lists, dicts).
-    2.  **Check `user_data`:** Be cautious about what you store in the `user_data` dictionaries of services. Only add data that can be safely serialized. 
+**Next**: Review [Contributing](./8_contributing.md) for development guidelines. 

@@ -1,5 +1,5 @@
 # This example demonstrates how to create an interruptible PURELY LOCAL audio pipeline using Pipecat.
-# It uses the Moonshine ASR for speech-to-text, Kokoro for text-to-speech, and Ollama for LLM.
+# It uses Faster Whisper for speech-to-text, Kokoro for text-to-speech, and Ollama for LLM.
 # The pipeline is designed to be interruptible, allowing for real-time interaction with the user.
 #
 # Note you need to have the following services running:
@@ -7,8 +7,7 @@
 # - Kokoro-onnx in assets folder 
 # $ pip install kokoro-onnx
 # copy kokoro-v1.0.onnx and voices-v1.0.bin to the assets folder
-# - Moonshine ASR onnx installed
-# $ uv pip install useful-moonshine-onnx@git+https://git@github.com/usefulsensors/moonshine.git#subdirectory=moonshine-onnx
+# - Faster Whisper (included with pipecat-whisper)
 import os
 import asyncio
 import sys

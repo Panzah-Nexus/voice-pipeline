@@ -57,7 +57,8 @@ async def root():
         "service": "Voice Pipeline - Air-gapped",
         "status": "ready",
         "components": {
-            "stt_llm": "Ultravox v0.5 (Llama-3-8B)",
+            "stt": "Faster Whisper (distil-medium-en)",
+            "llm": "Ollama (Llama-3-8B)",
             "tts": os.getenv("KOKORO_VOICE_ID", "af_sarah"),
             "framework": "Pipecat + RTVI"
         }

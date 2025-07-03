@@ -61,3 +61,6 @@ When configuring your RunPod pod:
 4.  Configure the environment variables from your `.env` file in the RunPod template settings.
 
 Once the pod is running, the voice pipeline will be accessible via the pod's public endpoint on port `8000`. 
+
+## Running the client
+Follow the instructions in this [README](..\client\websocket-client\README.md) 

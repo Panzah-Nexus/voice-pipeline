@@ -1,20 +1,21 @@
-# Voice Pipeline
+# Voice Pipeline for Real-Time Coaching Avatars
 
-This project provides a real-time, interruptible voice AI testing pipeline designed to find the optimal hardware and software configuration for real-time coaching avatars. It's built to run locally on constrained hardware (like an NVIDIA L4 GPU) and deliver low-latency, conversational experiences.
+This project is a real-time, interruptible voice AI pipeline designed to find the optimal hardware and software configuration for **real-time coaching avatars**. It's built to run entirely air-gapped on local, consumer-grade hardware (like an NVIDIA L4 GPU) and deliver low-latency, conversational experiences for training simulations.
 
-The system is designed for realistic role-playing scenarios to help train sales and customer service teams.
+The system is architected for realistic role-playing scenarios to help train sales and customer service teams.
 
-## Key Features
+## Key Technical Features
 
-*   **Real-time & Interruptible:** Built with `pipecat-ai`, the pipeline supports fluid, natural-sounding conversations.
-*   **High-Performance STT/TTS:** Uses `faster-whisper` for speech-to-text and `kokoro-onnx` for text-to-speech, both optimized for GPU execution.
-*   **Isolated TTS Environment:** Manages heavy TTS dependencies in a separate Python virtual environment, keeping the main application lightweight.
-*   **LLM Integration:** Connects to a local Llama3-8B model served via Ollama.
-*   **Deployable with Docker:** Includes Dockerfiles for consistent builds and deployment.
-*   **Built-in Observability:** Comes with optional support for metrics and tracing through OpenTelemetry.
+*   **Cascading Architecture:** A flexible pipeline (ASR → LLM → TTS) that allows for independent component optimization and robust feature support.
+*   **Low Latency (~1.1s):** Built with `pipecat-ai` and optimized for real-time, interruptible conversations.
+*   **VRAM Efficient (~12GB):** The pipeline is designed to run on accessible hardware, using significantly less VRAM than alternative end-to-end models.
+*   **GPU-Accelerated ASR/TTS:** Uses `faster-whisper` for speech-to-text and `kokoro-onnx` for text-to-speech, with full GPU acceleration.
+*   **Isolated TTS Subprocess:** Manages conflicting `onnxruntime-gpu` dependencies by running Kokoro TTS in a separate, isolated Python process—a key solution to achieve full GPU utilization.
+*   **Local LLM Integration:** Connects to a local, quantized `Llama-3.1-8B` model served via Ollama.
+*   **Reproducible Docker Deployment:** A `CUDA 12` based Dockerfile manages all complex dependencies to ensure a consistent and stable environment.
 
 ## Documentation
 
-For detailed information on architecture, setup, configuration, and troubleshooting, please see the full documentation in the [`docs/`](./docs/README.md) directory.
+For detailed information on architecture, setup, and model decisions, please see the full documentation in the [`docs/`](./docs/README.md) directory.
 
 
